@@ -31,6 +31,7 @@ Ces règles s'appliquent à toutes les conversations de ce projet.
 
 - Chaque simulation est un seul fichier HTML, en français, sans aucune ressource externe.
 - Enregistre chaque simulation directement dans le dossier de ce projet, sans sous-dossier, avec un nom de fichier court et parlant, sans espace ni accent, par exemple « titrage.html ». Si un fichier de ce nom existe déjà pour une autre simulation, ne l'écrase jamais : choisis un autre nom (par exemple « titrage-2.html »). Pour une modification, garde le même fichier.
+- Ajoute dans chaque simulation, en haut à droite, un petit bouton fixe et discret « ↩ Retour à Antigravity » : un lien `<a href="antigravity://">`, qui rouvre Antigravity quand la simulation est ouverte dans un navigateur. Il ne doit jamais gêner la simulation (petit, au-dessus du reste, sans cacher de commande). Garde-le à chaque modification.
 - Tout en haut du fichier, juste après `<!DOCTYPE html>`, mets ce commentaire, avec le vrai nom du dossier du projet et la vraie adresse complète du fichier, et garde-le à jour à chaque modification :
   `<!-- Ceci est le CODE de la simulation : ne la regarde pas ici. Pour la voir, ouvre le dossier « nom du dossier du projet » et double-clique sur ce fichier, ou copie cette adresse dans la barre d'adresse de ton navigateur (Chrome, Firefox, Safari, Edge) : file:///chemin/complet/du/fichier.html -->`
 
