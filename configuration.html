@@ -523,8 +523,11 @@ Quand AGENTS.md est créé, réponds seulement par cet encadré :
   <span><b>Réponds à l'IA</b> <em>dans la zone de message d'Antigravity, en bas à gauche</em><span class="quoi">👉 Écris « continue », puis Entrée.</span></span></div>
 <script>
 const etapes = [...document.querySelectorAll(".etape")], ronds = [...document.querySelectorAll("#st li")];
-let n = 0;
+// L'étape ouverte est dans l'adresse (#1 … #7) : un lien peut ouvrir directement une étape, et le rechargement la garde
+let n = Math.max(0, Math.min(etapes.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+window.addEventListener("hashchange", () => { const k = parseInt(location.hash.slice(1), 10); if (k >= 1 && k <= etapes.length && k - 1 !== n) { n = k - 1; montrer(); } });
 function montrer() {
+  history.replaceState(null, "", "#" + (n + 1));
   etapes.forEach((e, i) => e.classList.toggle("ici", i === n));
   ronds.forEach((r, i) => { r.className = i < n ? "fait" : i === n ? "ici" : ""; });
   document.getElementById("prec").hidden = n === 0;
