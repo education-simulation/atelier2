@@ -35,10 +35,12 @@
             <figure><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><figcaption>② Décoche la 1<sup>re</sup> case si elle est cochée, puis <b class="cle">Continue</b></figcaption></figure>
           </div>
         </li>
-        <li>C'est installé ✅ Réponds maintenant à la <b class="cle">question 2</b>, juste en dessous.</li>
+        <li>Quand Antigravity est ouvert et connecté, clique ici :
+          <div class="phrase"><button type="button" class="pret" data-choix="installe">✅ Antigravity est installé</button></div></li>
       </ol>
     </section>
 
+    <div id="bloc-q2" hidden>
     <p class="question" id="q2">2 · As-tu configuré un projet dans Antigravity ?</p>
     <div class="choix">
       <a class="carte" href="ateliers.html"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Oui, mon projet est prêt</b><small>Aller directement aux ateliers</small></span></a>
@@ -102,6 +104,7 @@ file:///chemin/complet/du/fichier.html
         <li>À la fin de la page de configuration, écris <b class="cle">continue</b> dans Antigravity : il te fait vérifier ta configuration (le modèle et le mode « Auto »).</li>
       </ol>
     </section>
+    </div>
   </div>
 </div>
 <script>
@@ -112,11 +115,12 @@ const montrer = (id) => {
   document.getElementById("ariane-ag").outerHTML = '<a href="antigravity.html" id="ariane-ag">Antigravity</a>';
   document.getElementById("ariane-choix").innerHTML = '<i class="sep"> › </i><span aria-current="page">' + etapes[id] + '</span>';
   document.querySelectorAll("section[id]").forEach((s) => { s.hidden = s.id !== id; });
+  document.getElementById("bloc-q2").hidden = id === "installer";   // la question 2 n'apparaît qu'une fois Antigravity installé
   document.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === id || (b.dataset.choix === "installe" && id === "configurer"))));
 };
 document.querySelectorAll("[data-choix]").forEach((b) => b.addEventListener("click", () => {
   montrer(b.dataset.choix); history.replaceState(null, "", "#" + b.dataset.choix);
-  (document.getElementById(b.dataset.choix) || document.getElementById("q2")).scrollIntoView({ behavior: "smooth" });
+  (b.dataset.choix === "installe" ? document.getElementById("q2") : document.getElementById(b.dataset.choix)).scrollIntoView({ behavior: "smooth" });
 }));
 // Le système de l'ordinateur : deviné, puis modifiable (gardé dans le navigateur)
 const deviner = () => { const u = navigator.userAgent; return /Windows/i.test(u) ? "win" : /Mac/i.test(u) ? "mac" : /Linux|X11/i.test(u) ? "linux" : "mac"; };
