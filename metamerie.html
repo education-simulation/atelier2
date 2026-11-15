@@ -43,6 +43,7 @@
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
+      <p class="replie-ligne vue voir-ligne"><span>✓</span> <b>Ma simulation est prête</b> <button type="button" class="voir-retour">‹ revenir en arrière (elle n'est pas encore prête)</button></p>
       <h3 class="partie">👀 Voir ta simulation dans ton navigateur</h3>
       <div class="ecran-va" role="img" aria-label="D'abord dans Antigravity : clic sur l'icône de copie à droite de l'adresse file:///… ; puis dans ton navigateur (Chrome, Firefox, Safari, Edge) : clic dans la barre d'adresse, coller, Entrée : la simulation s'affiche">
         <div class="va-scene va-a">
@@ -122,6 +123,7 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
+      <p class="replie-ligne vue voir-ligne"><span>✓</span> <b>Ma simulation est prête</b> <button type="button" class="voir-retour">‹ revenir en arrière (elle n'est pas encore prête)</button></p>
       <h3 class="partie">👀 Voir ta simulation dans ton navigateur</h3>
       <div class="ecran-va" role="img" aria-label="D'abord dans Antigravity : clic sur l'icône de copie à droite de l'adresse file:///… ; puis dans ton navigateur (Chrome, Firefox, Safari, Edge) : clic dans la barre d'adresse, coller, Entrée : la simulation s'affiche">
         <div class="va-scene va-a">
@@ -240,6 +242,7 @@ function etat(panneau, etape) {
 }
 document.querySelectorAll("[data-panneau]").forEach((p) => {
   if (!p.querySelector(".bloc-partie.attendre")) return;
+  p.querySelector(".voir-retour").addEventListener("click", () => { etat(p, "attente"); p.querySelector(".bloc-partie.attendre").scrollIntoView({ behavior: "smooth", block: "nearest" }); });   // « revenir en arrière » : on repatiente
   p.querySelector("button.pret").addEventListener("click", () => { etat(p, "pret"); p.querySelector(".bloc-partie.voir").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
   // un nouveau message : rien pendant les 10 s du bandeau jaune, puis « Patiente » (avec l'animation « Allow » dedans)
   p.querySelectorAll("button.copier").forEach((b) => {
