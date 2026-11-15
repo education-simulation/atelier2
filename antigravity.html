@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity</title>
-<link rel="stylesheet" href="style.css?v=31">
+<link rel="stylesheet" href="style.css?v=32">
 </head>
 <body>
 <div class="fen">
@@ -14,9 +14,12 @@
     <div class="titre-haut"><h1><img src="logos/antigravity.png" alt="" style="width:34px;height:34px;vertical-align:-6px"> Je commence avec Antigravity</h1></div>
   </header>
   <div class="corps">
-    <div class="choix">
-      <button type="button" class="carte" data-choix="installe"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>J'ai déjà installé Antigravity sur mon ordinateur</b><small>Je passe au projet</small></span></button>
-      <button type="button" class="carte" data-choix="installer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span class="txt"><b>Je n'ai pas encore installé Antigravity</b><small>Télécharger, installer et se connecter</small></span></button>
+    <div class="pas" id="e1">
+      <div class="pas-tete"><span class="pas-num">1</span><b>Antigravity sur ton ordinateur</b><span class="pas-fait">✅ Installé</span><button type="button" class="pas-modif" data-choix="">modifier</button></div>
+      <div class="pas-actions">
+        <button type="button" class="btn-un" data-choix="installer">⬇️ Installer Antigravity</button>
+        <button type="button" class="btn-deux" data-choix="installe">✓ Il est déjà installé</button>
+      </div>
     </div>
 
     <section id="installer" hidden>
@@ -39,10 +42,12 @@
       </ol>
     </section>
 
-    <div id="bloc-q2" hidden>
-    <div class="choix" id="q2">
-      <a class="carte" href="ateliers.html"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>J'ai déjà configuré un projet dans Antigravity</b><small>Aller directement aux ateliers</small></span></a>
-      <button type="button" class="carte" data-choix="configurer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h4"/><path d="M12 12h8"/><circle cx="10" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg></span><span class="txt"><b>Je n'ai pas encore configuré de projet</b><small>Créer et configurer mon projet</small></span></button>
+    <div class="pas" id="e2" hidden>
+      <div class="pas-tete"><span class="pas-num">2</span><b>Ton projet dans Antigravity</b></div>
+      <div class="pas-actions">
+        <button type="button" class="btn-un" data-choix="configurer">⚙️ Créer mon projet</button>
+        <a class="btn-deux" href="ateliers.html">✓ Mon projet est déjà prêt › ateliers</a>
+      </div>
     </div>
 
     <section id="configurer" hidden>
@@ -102,23 +107,27 @@ file:///chemin/complet/du/fichier.html
         <li>À la fin de la page de configuration, écris <b class="cle">continue</b> dans Antigravity : il te fait vérifier ta configuration (le modèle et le mode « Auto »).</li>
       </ol>
     </section>
-    </div>
   </div>
 </div>
 <script>
-// Question 1 : « installe » (oui) ou « installer » (non) ; question 2 : « configurer » (non)
-// Les réponses restent dans l'adresse (#installer, #installe, #configurer) pour survivre au rechargement
-const etapes = { installer:"Installer", installe:"Projet", configurer:"Configurer un projet" };
+// Deux étapes : 1 (installer / déjà installé), 2 (créer le projet / déjà prêt).
+// L'état reste dans l'adresse (#installer, #installe, #configurer) pour survivre au rechargement
+const etapes = { installer:"Installer", installe:"Projet", configurer:"Créer mon projet" };
 const montrer = (id) => {
-  document.getElementById("ariane-ag").outerHTML = '<a href="antigravity.html" id="ariane-ag">Antigravity</a>';
-  document.getElementById("ariane-choix").innerHTML = '<i class="sep"> › </i><span aria-current="page">' + etapes[id] + '</span>';
+  const fait1 = id === "installe" || id === "configurer";
+  document.getElementById("e1").classList.toggle("fait", fait1);
+  document.getElementById("e2").hidden = !fait1;   // l'étape 2 n'apparaît qu'une fois Antigravity installé
   document.querySelectorAll("section[id]").forEach((s) => { s.hidden = s.id !== id; });
-  document.getElementById("bloc-q2").hidden = id === "installer";   // la question 2 n'apparaît qu'une fois Antigravity installé
-  document.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === id || (b.dataset.choix === "installe" && id === "configurer"))));
+  document.querySelectorAll(".pas [data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === id)));
+  const ag = document.getElementById("ariane-ag");
+  ag.outerHTML = id ? '<a href="antigravity.html" id="ariane-ag">Antigravity</a>' : '<span aria-current="page" id="ariane-ag">Antigravity</span>';
+  document.getElementById("ariane-choix").innerHTML = id ? '<i class="sep"> › </i><span aria-current="page">' + etapes[id] + '</span>' : "";
 };
 document.querySelectorAll("[data-choix]").forEach((b) => b.addEventListener("click", () => {
-  montrer(b.dataset.choix); history.replaceState(null, "", "#" + b.dataset.choix);
-  (b.dataset.choix === "installe" ? document.getElementById("q2") : document.getElementById(b.dataset.choix)).scrollIntoView({ behavior: "smooth" });
+  const id = b.dataset.choix;
+  montrer(id); history.replaceState(null, "", id ? "#" + id : location.pathname);
+  const cible = id === "installe" ? document.getElementById("e2") : document.getElementById(id) || document.getElementById("e1");
+  cible.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }));
 // Le système de l'ordinateur : deviné, puis modifiable (gardé dans le navigateur)
 const deviner = () => { const u = navigator.userAgent; return /Windows/i.test(u) ? "win" : /Mac/i.test(u) ? "mac" : /Linux|X11/i.test(u) ? "linux" : "mac"; };
@@ -149,7 +158,7 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
       window.removeEventListener("blur", parti);
       if (!ouvert && document.hasFocus()) {
         retour.hidden = false;
-        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Clique sur <b class=\"cle\">« Je n'ai pas encore installé Antigravity »</b>, plus haut.";
+        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Clique sur <b class=\"cle\">« ⬇️ Installer Antigravity »</b>, plus haut.";
       }
     }, 2500);
   }
