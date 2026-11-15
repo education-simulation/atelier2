@@ -53,35 +53,35 @@ file:///chemin/complet/du/fichier.html
 
 ## Les ateliers : démarrer ou reprendre avec un seul mot
 
-Le professeur démarre un atelier en écrivant seulement une de ces commandes, dans une nouvelle conversation de ce projet :
+Le professeur démarre ou reprend un atelier en écrivant seulement une de ces commandes, dans une nouvelle conversation de ce projet :
 
-| Commande | Atelier | Nom de la conversation | Page de l'atelier |
+| Commande | Atelier | Nom de la conversation | Page de l'atelier (lien à donner) |
 | :--- | :--- | :--- | :--- |
-| `go titrage` ou `go 1` | Simulation d'un titrage (Analyse) | Simulation titrage | https://atelier2.rasf.fr/titrage.html |
-| `go metamerie` ou `go 2` | Simulation de la métamérie (Formulation) | Simulation métamérie | https://atelier2.rasf.fr/metamerie.html |
-| `go cinetique` ou `go 3` | Cinétique chimique : les profils réactionnels (Synthèse) | Simulation cinétique | https://atelier2.rasf.fr/cinetique.html |
+| `go titrage` ou `go 1` | Simulation d'un titrage (Analyse) | Simulation titrage | https://atelier2.rasf.fr/titrage.html#simple |
+| `go metamerie` ou `go 2` | Simulation de la métamérie (Formulation) | Simulation métamérie | https://atelier2.rasf.fr/metamerie.html#simple |
+| `go cinetique` ou `go 3` | Cinétique chimique : les profils réactionnels (Synthèse) | Simulation cinétique | https://atelier2.rasf.fr/cinetique.html#simple |
 
 (Accepte aussi les variantes avec ou sans accent, en majuscules, ou `go métamérisme`.)
 
-Quand tu reçois une de ces commandes :
+Quand tu reçois une de ces commandes, **ne crée aucun fichier et ne commence pas la simulation** : la simulation se construit ensuite avec la page de l'atelier.
 
 1. **Regarde d'abord dans `conversations.md`** si une autre conversation de ce projet fait déjà cet atelier.
-   - **Si oui**, ne crée rien. Réponds seulement par cet encadré, avec les vrais liens :
+2. **Si oui**, réponds seulement par cet encadré, avec le vrai lien :
 
-     > [!NOTE]
-     > 📂 **Tu as déjà commencé cet atelier.**
-     >
-     > 👉 [Reprendre la conversation « Simulation titrage »](conversation://<identifiant de cette conversation-là>)
+   > [!NOTE]
+   > 📂 **Tu as déjà commencé cet atelier.**
+   >
+   > 👉 [Reprendre la conversation « Simulation titrage »](conversation://<identifiant de cette conversation-là>)
 
-     suivi, en dehors de l'encadré, de l'adresse du fichier dans un bloc de code ` ```text `, pour qu'elle ait son bouton de copie.
-   - **Si non**, inscris cette conversation dans `conversations.md` (avec le nom de la conversation du tableau), puis réalise tout de suite la simulation, d'après le cahier des charges ci-dessous, sans rien demander d'autre.
-2. Quand la simulation est prête, réponds par les deux parties habituelles (section « Quand une simulation est prête »), puis ajoute à la fin : « 📘 La suite de l'atelier (modifier ta simulation, vérifier la chimie) : » suivi de la page de l'atelier.
+   suivi, en dehors de l'encadré et seulement si le fichier existe, de son adresse dans un bloc de code ` ```text `, pour qu'elle ait son bouton de copie.
+3. **Si non**, inscris cette conversation dans `conversations.md` (avec le nom de la conversation du tableau, et un tiret pour le fichier), puis réponds seulement par cet encadré, avec la page de l'atelier du tableau :
 
-### Cahier des charges des ateliers
+   > [!IMPORTANT]
+   > 🧪 **Atelier « Simulation titrage »**
+   >
+   > 👉 **Clique sur ce lien pour commencer l'atelier :** https://atelier2.rasf.fr/titrage.html#simple
 
-- **Titrage** : une simulation de titrage acido-basique : une burette au-dessus d'un bécher, un indicateur coloré qui change de couleur, l'affichage du pH, et la courbe pH = f(V) qui se trace au fur et à mesure que l'on verse. Des boutons pour verser et pour recommencer.
-- **Métamérie** : deux échantillons de couleur côte à côte, qui paraissent identiques à la lumière du jour (illuminant D65) mais différents sous une lampe à incandescence (illuminant A) ou sous un tube fluorescent (illuminant F11). Les courbes de réflectance des deux échantillons, le spectre de l'illuminant choisi, les coordonnées L*a*b* de chaque échantillon et l'écart de couleur ΔE*ab. Des boutons pour changer d'illuminant.
-- **Cinétique** : les profils réactionnels : le graphique de l'énergie en fonction de la coordonnée de réaction, avec les réactifs, l'état de transition et les produits. On règle l'énergie d'activation Ea et l'enthalpie de réaction ΔrH (réaction exothermique ou endothermique), on choisit un mécanisme en une ou deux étapes (avec un intermédiaire réactionnel), et on peut ajouter un catalyseur qui abaisse la barrière. Les flèches Ea et ΔrH sur le graphique, et une phrase qui dit si la réaction est exothermique ou endothermique, rapide ou lente.
+   Le professeur suivra alors la page de l'atelier : il collera ici les prompts de l'atelier, et c'est seulement à ce moment-là que tu construiras la simulation.
 
 ## Le registre des conversations (conversations.md)
 
