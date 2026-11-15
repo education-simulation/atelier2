@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=54">
-<link rel="stylesheet" href="clair.css?v=6" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=55">
+<link rel="stylesheet" href="clair.css?v=9" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -16,10 +16,13 @@
     <div class="titre-haut"><h1>🧪 Choisis ton atelier</h1></div>
   </header>
   <div class="corps">
+    <div class="q" id="q1">
     <p class="question">Où lis-tu cette page ?</p>
     <div class="choix">
       <button type="button" class="carte" data-ou="dans"><span class="rond"><img src="logos/antigravity.png" alt="" style="width:30px;height:30px"></span><span class="txt"><b>Je suis dans Antigravity</b><small>Dans la conversation de configuration, ou dans mon projet</small></span></button>
       <button type="button" class="carte" data-ou="hors"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg></span><span class="txt"><b>Je ne suis pas dans Antigravity</b><small>Dans mon navigateur habituel</small></span></button>
+    </div>
+    <p class="q-fait"><span class="q-num">1</span> <b class="q-txt"></b> <span class="q-ok">✓</span><button type="button" class="q-modif">modifier</button></p>
     </div>
 
     <section class="info" id="hors" hidden>
@@ -40,11 +43,14 @@
     </section>
 
     <div id="suite-ateliers" hidden>
+    <div class="q" id="q2">
     <p class="question">Que veux-tu construire ?</p>
     <div class="choix">
       <button type="button" class="carte" data-choix="page"><span class="num">1</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="m10 13-2 2 2 2"/><path d="m14 13 2 2-2 2"/></svg></span><span class="txt"><b>Une simple page de simulation</b><small>Une page HTML, qui s'ouvre d'un double-clic</small></span></button>
       <button type="button" class="carte" disabled><span class="num">2</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><span class="txt"><b>Une page de simulation avec serveur local</b><small>Bientôt</small></span></button>
       <button type="button" class="carte" disabled><span class="num">3</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg></span><span class="txt"><b>Un exemple de site avec serveur, et publier mon site en ligne</b><small>Bientôt</small></span></button>
+    </div>
+    <p class="q-fait"><span class="q-num">2</span> <b class="q-txt"></b> <span class="q-ok">✓</span><button type="button" class="q-modif">modifier</button></p>
     </div>
 
     <section id="page" hidden>
@@ -119,11 +125,20 @@
   </div>
 </template>
 <script>
+// Une question à la fois : une fois répondue, elle se replie en une ligne verte (« modifier » la rouvre)
+function plier(id, texte) {
+  const q = document.getElementById(id);
+  q.classList.toggle("fait", !!texte);
+  q.querySelector(".q-txt").textContent = texte;
+}
+document.querySelector("#q1 .q-modif").addEventListener("click", () => { document.getElementById("q1").classList.remove("fait"); });
+document.querySelector("#q2 .q-modif").addEventListener("click", () => { document.getElementById("q2").classList.remove("fait"); });
 // « Où lis-tu cette page ? » : gardé dans le navigateur (atelier.ou)
 function ou(v) {
   document.querySelectorAll("[data-ou]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.ou === v)));
   document.getElementById("hors").hidden = v !== "hors";
   document.getElementById("suite-ateliers").hidden = v !== "dans";
+  plier("q1", v ? (v === "dans" ? "Je suis dans Antigravity" : "Je ne suis pas dans Antigravity") : "");
   try { localStorage.setItem("atelier.ou", v); } catch {}
 }
 document.querySelectorAll("[data-ou]").forEach((b) => b.addEventListener("click", () => ou(b.dataset.ou)));
@@ -135,6 +150,7 @@ const noms = { page: "Simple page de simulation" }, sims = { titrage: "Titrage",
 function montrer(choix, sim) {
   document.querySelectorAll("section[id]").forEach((s) => { s.hidden = s.id !== choix; });
   document.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === choix)));
+  plier("q2", choix ? noms[choix] : "");
   document.querySelectorAll("[data-sim]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.sim === sim)));
   document.getElementById("sim-retour").hidden = true;
   const a = document.getElementById("ariane-ateliers");
