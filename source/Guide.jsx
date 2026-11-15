@@ -526,7 +526,7 @@ function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastil
       <rect x="482" y="36" width="150" height="18" rx="5" fill="#3a3a44" /><text x="489" y="49" fontSize="9.5" fill="#fff" style={t}>Découvre Antigravity  ×</text>
       <text x="654" y="50" fontSize="14" fill="#d4d4d8" textAnchor="middle" style={t}>+</text>
       <text x="700" y="49" fontSize="12" fill="#a1a1aa" textAnchor="middle" style={t}>↗</text>
-      <rect x="482" y="62" width="272" height="16" rx="8" fill="#d4d9e2" /><text x="492" y="73" fontSize="8.5" fill="#64748b" style={t}>https://atelier.rasf.fr/decouvrir.html</text>
+      <rect x="482" y="62" width="272" height="16" rx="8" fill="#d4d9e2" /><text x="492" y="73" fontSize="8.5" fill="#64748b" style={t}>https://atelier2.rasf.fr/decouvrir.html</text>
       {/* la page « Découvre Antigravity », en miniature */}
       <rect x="492" y="90" width="252" height="250" rx="12" fill="#0b0b0f" />
       <text x="618" y="132" fontSize="26" textAnchor="middle" style={t}>🧭</text>
