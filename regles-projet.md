@@ -21,6 +21,10 @@ Ce fichier s'adresse à l'IA d'Antigravity qui prépare le projet d'un professeu
 
 Ces règles s'appliquent à toutes les conversations de ce projet.
 
+## Organisation
+
+- Chaque simulation ou atelier (titrage, métamérie, cinétique chimique, etc.) se fait dans sa propre conversation, dans ce même projet.
+
 ## Les simulations
 
 - Chaque simulation est un seul fichier HTML, en français, sans aucune ressource externe.
@@ -48,9 +52,12 @@ file:///chemin/complet/du/fichier.html
 ## Le registre des conversations (conversations.md)
 
 - Le fichier `conversations.md`, à la racine du projet, est l'annuaire de toutes les conversations du projet.
-- Au premier message de chaque nouvelle conversation, ajoute-y une ligne : la date et l'heure, le sujet de la conversation (par exemple « Simulation titrage »), le fichier de la simulation (un tiret tant qu'il n'existe pas) et le lien direct vers cette conversation, sous la forme `[Ouvrir](conversation://<identifiant de cette conversation>)`.
-- Quand le fichier de la simulation est créé ou renommé, mets à jour sa ligne, avec un lien local : `[titrage.html](file:///chemin/complet/titrage.html)`.
-- Si on te demande quelles conversations, quels ateliers ou quelles simulations existent, lis `conversations.md` et affiche la liste, avec les liens directs.
+- Au premier message de chaque nouvelle conversation, et dès qu'elle produit un travail, inscris-la dans `conversations.md` (une ligne par conversation, mise à jour si elle existe déjà) :
+  1. la date et l'heure ;
+  2. le sujet ou le but précis de la conversation (par exemple « Simulation de titrage acido-basique ») ;
+  3. le fichier créé, avec son lien local cliquable : `[titrage.html](file:///chemin/complet/titrage.html)` (un tiret tant qu'il n'existe pas) ;
+  4. le lien direct cliquable vers cette conversation, avec son vrai identifiant (Conversation ID) : `👉 [Accéder à la conversation](conversation://<identifiant de cette conversation>)`.
+- Si on te demande la liste des conversations, des ateliers ou des simulations, lis `conversations.md` et affiche un tableau avec, pour chaque conversation, la date, le sujet, le fichier associé et **obligatoirement** son lien direct cliquable `👉 [Ouvrir …](conversation://…)`, pour s'y rendre en un clic.
 ~~~~
 
 ## Contenu de conversations.md
@@ -58,6 +65,6 @@ file:///chemin/complet/du/fichier.html
 ~~~~
 # Registre des conversations du projet
 
-| Date | Sujet | Fichier | Conversation |
+| Date | Atelier / Sujet | Fichier associé | Accès direct à la conversation |
 | :--- | :--- | :--- | :--- |
 ~~~~
