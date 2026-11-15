@@ -315,3 +315,4 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes va-cmdv { 0%, 38% { opacity:0; } 40%, 50% { opacity:1; } 52%, 100% { opacity:0; } }
 @keyframes va-entree { 0%, 53% { opacity:0; } 55%, 63% { opacity:1; } 65%, 100% { opacity:0; } }
 @keyframes va-page { 0%, 63% { opacity:0; } 66%, 98% { opacity:1; } 100% { opacity:0; } }
+.hors-etapes { margin:8px 0; padding-left:22px; display:grid; gap:8px; }

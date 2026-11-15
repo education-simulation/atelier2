@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=45">
+<link rel="stylesheet" href="style.css?v=47">
 <link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -23,11 +23,19 @@
     </div>
 
     <section class="info" id="hors" hidden>
-      <h2>⚙️ D'abord, configure Antigravity</h2>
-      <p>Les ateliers se font <b class="cle">dans Antigravity</b>, dans une conversation de ton projet : le projet donne à Antigravity les règles des simulations (un seul fichier HTML, enregistré dans le dossier du projet…).</p>
-      <p>Commence donc par le message de configuration : Antigravity te ramènera ensuite ici, au bon endroit.</p>
-      <div class="suite"><a class="suivant" href="antigravity.html#configurer">Configurer Antigravity ›</a></div>
-      <p class="note">Antigravity n'est pas encore installé ? <a class="mail" href="antigravity.html#installer">Installe-le d'abord</a>.</p>
+      <h2>🚀 Ouvre l'atelier dans Antigravity</h2>
+      <p>Les ateliers se font <b class="cle">dans Antigravity</b>. Ton projet est déjà configuré ? Il suffit d'ouvrir cette page dans Antigravity :</p>
+      <ol class="hors-etapes">
+        <li><b>Copie ce message :</b>
+          <div class="phrase"><code>Sans rien lancer, réponds seulement par cet encadré, rien d'autre :
+
+&gt; [!IMPORTANT]
+&gt; 👉 **Clique sur ce lien pour ouvrir l'atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans#page</code><button type="button" class="copier hors-copier">📋 Copier</button></div></li>
+        <li>Ouvre Antigravity et clique sur <b class="cle">« + New Conversation »</b>, en haut à gauche.</li>
+        <li>Colle le message (<b class="cle">Cmd + V</b> sur Mac, <b class="cle">Ctrl + V</b> sur Windows), puis <b class="cle">Entrée</b>.</li>
+        <li>Clique sur <b class="cle">le lien de sa réponse</b> : cette page s'ouvre dans Antigravity, et tu choisis ton atelier.</li>
+      </ol>
+      <p class="note">Antigravity n'est pas encore configuré ? <a class="mail" href="antigravity.html#configurer">Configure-le d'abord</a>. Pas encore installé ? <a class="mail" href="antigravity.html#installer">Installe-le</a>.</p>
     </section>
 
     <div id="suite-ateliers" hidden>
@@ -169,6 +177,14 @@ function ouvrirConv(sim) {
   document.body.appendChild(v);
 }
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && document.querySelector(".nc-voile")) fermerConv(); });
+// « Je ne suis pas dans Antigravity » : copier le message qui ouvre cette page dans Antigravity
+document.querySelectorAll(".hors-copier").forEach((b) => b.addEventListener("click", async () => {
+  const c = b.previousElementSibling;
+  b.textContent = "✅ Copié";
+  setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
+  try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
+  catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
+}));
 document.querySelectorAll("a.sim[data-sim]").forEach((a) => a.addEventListener("click", (e) => {
   if (e.metaKey || e.ctrlKey || e.shiftKey) return;   // ouvrir dans un onglet : on laisse faire
   e.preventDefault();
