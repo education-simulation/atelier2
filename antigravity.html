@@ -14,11 +14,10 @@
     <div class="titre-haut"><h1><img src="logos/antigravity.png" alt="" style="width:34px;height:34px;vertical-align:-6px"> Je commence avec Antigravity</h1></div>
   </header>
   <div class="corps">
-    <p class="question">Où en es-tu ?</p>
+    <p class="question">1 · As-tu installé Antigravity sur ton ordinateur ?</p>
     <div class="choix">
-      <button type="button" class="carte" data-choix="installer"><span class="num">1</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span class="txt"><b>Installer Antigravity</b><small>Télécharger, installer et se connecter</small></span></button>
-      <button type="button" class="carte" data-choix="configurer"><span class="num">2</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h4"/><path d="M12 12h8"/><circle cx="10" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg></span><span class="txt"><b>Configurer Antigravity</b><small>Le modèle, le mode Auto, la découverte</small></span></button>
-      <a class="carte" href="ateliers.html"><span class="num">3</span><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Antigravity est déjà configuré</b><small>Aller directement aux ateliers</small></span></a>
+      <button type="button" class="carte" data-choix="installe"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Oui, il est installé</b><small>Je passe à la question 2</small></span></button>
+      <button type="button" class="carte" data-choix="installer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span class="txt"><b>Non, pas encore</b><small>Télécharger, installer et se connecter</small></span></button>
     </div>
 
     <section id="installer" hidden>
@@ -36,9 +35,15 @@
             <figure><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><figcaption>② Décoche la 1<sup>re</sup> case si elle est cochée, puis <b class="cle">Continue</b></figcaption></figure>
           </div>
         </li>
-        <li>C'est installé ✅ Clique maintenant sur <b class="cle">« 2 · Configurer Antigravity »</b>, plus haut.</li>
+        <li>C'est installé ✅ Réponds maintenant à la <b class="cle">question 2</b>, juste en dessous.</li>
       </ol>
     </section>
+
+    <p class="question" id="q2">2 · As-tu configuré un projet dans Antigravity ?</p>
+    <div class="choix">
+      <a class="carte" href="ateliers.html"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Oui, mon projet est prêt</b><small>Aller directement aux ateliers</small></span></a>
+      <button type="button" class="carte" data-choix="configurer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h4"/><path d="M12 12h8"/><circle cx="10" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg></span><span class="txt"><b>Non, pas encore</b><small>Créer et configurer mon projet</small></span></button>
+    </div>
 
     <section id="configurer" hidden>
       <ol class="etapes">
@@ -100,17 +105,18 @@ file:///chemin/complet/du/fichier.html
   </div>
 </div>
 <script>
-// Un choix à la fois ; le choix reste dans l'adresse (#installer, #configurer) pour survivre au rechargement
-const etapes = { installer:"Installer", configurer:"Configurer" };
+// Question 1 : « installe » (oui) ou « installer » (non) ; question 2 : « configurer » (non)
+// Les réponses restent dans l'adresse (#installer, #installe, #configurer) pour survivre au rechargement
+const etapes = { installer:"Installer", installe:"Projet", configurer:"Configurer un projet" };
 const montrer = (id) => {
   document.getElementById("ariane-ag").outerHTML = '<a href="antigravity.html" id="ariane-ag">Antigravity</a>';
   document.getElementById("ariane-choix").innerHTML = '<i class="sep"> › </i><span aria-current="page">' + etapes[id] + '</span>';
   document.querySelectorAll("section[id]").forEach((s) => { s.hidden = s.id !== id; });
-  document.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === id)));
+  document.querySelectorAll("[data-choix]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.choix === id || (b.dataset.choix === "installe" && id === "configurer"))));
 };
 document.querySelectorAll("[data-choix]").forEach((b) => b.addEventListener("click", () => {
   montrer(b.dataset.choix); history.replaceState(null, "", "#" + b.dataset.choix);
-  document.getElementById(b.dataset.choix).scrollIntoView({ behavior: "smooth" });
+  (document.getElementById(b.dataset.choix) || document.getElementById("q2")).scrollIntoView({ behavior: "smooth" });
 }));
 // Le système de l'ordinateur : deviné, puis modifiable (gardé dans le navigateur)
 const deviner = () => { const u = navigator.userAgent; return /Windows/i.test(u) ? "win" : /Mac/i.test(u) ? "mac" : /Linux|X11/i.test(u) ? "linux" : "mac"; };
@@ -123,7 +129,7 @@ let osDepart = null; try { osDepart = localStorage.getItem("atelier.os"); } catc
 choisirOs(osDepart || deviner());
 document.querySelectorAll(".lien-os").forEach((b) => b.addEventListener("click", () => choisirOs(b.dataset.os)));
 const depart = location.hash.slice(1);
-if (depart === "installer" || depart === "configurer") montrer(depart);
+if (depart in etapes) montrer(depart);
 document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", async () => {
   const c = b.previousElementSibling, texte = b.textContent;
   try { await navigator.clipboard.writeText(c.textContent); }
@@ -141,7 +147,7 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
       window.removeEventListener("blur", parti);
       if (!ouvert && document.hasFocus()) {
         retour.hidden = false;
-        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Clique sur <b class=\"cle\">« 1 · Installer Antigravity »</b>, plus haut.";
+        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Réponds « Non, pas encore » à la <b class=\"cle\">question 1</b>, plus haut.";
       }
     }, 2500);
   }
