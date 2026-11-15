@@ -228,6 +228,37 @@ b.cle { color:#fde68a; }
 .vers-atelier:hover { background:#fbbf24; }
 .note-atelier { text-align:center; color:#a1a1aa; font-size:15px; }
 .etapes-projet { margin:14px 0 0; padding-left:26px; display:grid; gap:10px; font-size:18px; line-height:1.5; }
+/* ===== atelier2 : la page en blanc partout (comme Antigravity en thème clair) ===== */
+body { color:#27272a; }
+.fen { background:#fff; box-shadow:0 18px 50px rgba(15,23,42,.15); }
+.barre { background:#f4f4f5; border-bottom-color:#e4e4e7; } .barre i { background:#d4d4d8; } .barre b { color:#18181b; }
+h1, .etape h2 { color:#18181b; }
+.titre-haut { background:#fff; border-bottom-color:#e4e4e7; }
+.ariane { background:#fafafa; border-bottom-color:#e4e4e7; color:#a1a1aa; } .ariane a { color:#52525b; } .ariane a:hover, .ariane span[aria-current] { color:#b45309; } .ariane i.sep { color:#d4d4d8; }
+.st li { color:#71717a; } .st li:not(:last-child)::after { background:#e4e4e7; } .st .rond { background:#f4f4f5; border-color:#d4d4d8; color:#52525b; }
+.st .ici { color:#b45309; } .st .ici .rond { border-color:#fcd34d; }
+.etape { background:#fffbeb; }
+b.cle, .dec-carte b { color:#b45309; }
+.nav .prec { background:#f4f4f5; color:#3f3f46; border-color:#d4d4d8; }
+.fini { color:#15803d; } .absent, .note-atelier { color:#71717a; }
+.mot-continue { background:#fef3c7; }
+/* les écrans d'Antigravity, en clair */
+.ecran { background:#fff; border-color:#e4e4e7; }
+.saisie { background:#fff; border-color:#d4d4d8; color:#71717a; box-shadow:0 2px 8px rgba(0,0,0,.06); } .saisie .bas { color:#3f3f46; }
+.bouton-ag { color:#18181b; }
+.menu { background:#fff; border-color:#e4e4e7; box-shadow:0 12px 30px rgba(0,0,0,.15) !important; } .menu p { color:#71717a; } .menu p b { color:#18181b; } .menu .titre { color:#a1a1aa; }
+.e2 .menu .ligne { color:#27272a; } .e2 .menu .ligne.off, .e2 .menu .off .tag { color:#a1a1aa; } .e2 .menu .ligne.usage { border-top-color:#e4e4e7; }
+.e2 .menu .tag { background:#f4f4f5; color:#71717a; } .e2 .menu .niv, .e2 .menu .chev { color:#71717a; }
+.carte-ag { background:#fff; border-color:#e4e4e7; color:#71717a; box-shadow:0 6px 18px rgba(0,0,0,.1); } .carte-ag b { color:#18181b; } .carte-ag i { background:#f4f4f5; color:#3f3f46; } .carte-ag i.dismiss { color:#18181b; }
+.zone-ag { background:#fff; border-color:#d4d4d8; } .zone-haut { color:#18181b; } .zone-haut .curseur { background:#18181b; } .zone-bas { color:#3f3f46; } .zone-bas i { color:#71717a; }
+.zone-bas .envoyer { background:#18181b; color:#fff; }
+.dec-carte { background:#fff; color:#3f3f46; border-color:#e4e4e7; box-shadow:0 10px 30px rgba(0,0,0,.08); } .dec-titre { color:#18181b; }
+.e6s { background:#fff; } .ag-titre, .ag-gauche { background:#f4f4f5; } .ag-gauche { color:#27272a; } .ag-new, .ag-conv { background:#e4e4e7; }
+.ag-msg { color:#18181b; } .ag-ligne { background:#e4e4e7; } .ag-saisie { background:#fff; border-color:#d4d4d8; } .onglets-ag { background:#f4f4f5; } .og { background:#fff; color:#18181b; } .og .x { color:#18181b; } .og-plus { color:#52525b; }
+@keyframes m-flash { 0%, 36% { background:transparent; } 38%, 66% { background:#f4f4f5; } 69%, 100% { background:transparent; } }
+@keyframes m-lowb { 0%, 58% { color:#18181b; } 60%, 100% { color:#1f1300; } }
+@keyframes a-autob { 0%, 53% { color:#18181b; } 55%, 100% { color:#1f1300; } }
+@keyframes z-envoyer { 0%, 55% { background:#18181b; transform:scale(1); box-shadow:none; } 60% { background:#f59e0b; transform:scale(.88); box-shadow:0 0 0 6px rgba(245,158,11,.4); } 66%, 100% { background:#18181b; transform:scale(1); box-shadow:none; } }
 </style>
 </head>
 <body>
