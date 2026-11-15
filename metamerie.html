@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Simulation de la métamérie</title>
-<link rel="stylesheet" href="style.css?v=71">
-<link rel="stylesheet" href="clair.css?v=17" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=72">
+<link rel="stylesheet" href="clair.css?v=18" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -29,7 +29,8 @@
       <div class="bloc-partie creer">
       <h3 class="partie">① Créer la simulation <small>le code HTML s'écrit dans Antigravity</small></h3>
       <p>Dans la conversation de configuration d'Antigravity, clique sur <b class="cle">📋 Copier</b>, colle le message dans la zone de message, en bas à gauche, puis appuie sur <b class="cle">Entrée</b>.</p>
-      <div class="phrase"><code>Fais-moi une simulation de la métamérie : deux échantillons de couleur côte à côte, qui paraissent identiques à la lumière du jour (illuminant D65) mais différents sous une lampe à incandescence (illuminant A) ou sous un tube fluorescent (illuminant F11). Affiche les courbes de réflectance des deux échantillons, le spectre de l'illuminant choisi, les coordonnées L*a*b* de chaque échantillon et l'écart de couleur ΔE*ab. Ajoute des boutons pour changer d'illuminant.</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
+      <div class="phrase"><code class="prompt-plus" data-base="Fais-moi une simulation de la métamérie" data-details="[&quot;deux échantillons de couleur côte à côte, identiques à la lumière du jour (illuminant D65) mais différents sous une lampe à incandescence (illuminant A) ou sous un tube fluorescent (illuminant F11)&quot;, &quot;les courbes de réflectance des deux échantillons&quot;, &quot;le spectre de l&#x27;illuminant choisi&quot;, &quot;les coordonnées L*a*b* de chaque échantillon et l&#x27;écart de couleur ΔE*ab&quot;, &quot;des boutons pour changer d&#x27;illuminant&quot;]">Fais-moi une simulation de la métamérie.</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
+      <div class="plus-details"><button type="button" class="plus-btn">＋ Ajouter un détail</button><button type="button" class="moins-btn" hidden>－ Retirer le dernier</button><span class="plus-compte"></span></div>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
@@ -241,7 +242,7 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=10"></script>
+<script src="copier.js?v=11"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];

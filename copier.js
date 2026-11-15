@@ -142,3 +142,24 @@ document.addEventListener("click", (e) => {
   v.addEventListener("click", (ev) => { if (ev.target === v || ev.target.closest(".allow-fermer")) fermer(); });
   document.addEventListener("keydown", function esc(ev) { if (ev.key === "Escape") { fermer(); document.removeEventListener("keydown", esc); } });
 });
+
+// Prompt simple : une phrase courte, et un bouton « ＋ Ajouter un détail » qui ajoute les précisions une à une
+// (le nombre de détails est gardé dans le navigateur, par page)
+document.querySelectorAll("code.prompt-plus").forEach((code) => {
+  const base = code.dataset.base, details = JSON.parse(code.dataset.details);
+  const bloc = code.closest(".phrase").nextElementSibling;
+  const plus = bloc.querySelector(".plus-btn"), moins = bloc.querySelector(".moins-btn"), compte = bloc.querySelector(".plus-compte");
+  const cle = "atelier." + (location.pathname.split("/").pop().replace(".html", "") || "page") + ".details";
+  let n = 0; try { n = Math.min(details.length, parseInt(localStorage.getItem(cle), 10) || 0); } catch {}
+  const liste = (xs) => xs.length < 2 ? xs.join("") : xs.slice(0, -1).join(", ") + " et " + xs[xs.length - 1];
+  const rendre = () => {
+    code.textContent = n ? base + " : " + liste(details.slice(0, n)) + "." : base + ".";
+    plus.hidden = n >= details.length;
+    moins.hidden = n === 0;
+    compte.textContent = n ? n + " détail" + (n > 1 ? "s" : "") + " sur " + details.length : "";
+    try { localStorage.setItem(cle, String(n)); } catch {}
+  };
+  plus.addEventListener("click", () => { n = Math.min(details.length, n + 1); rendre(); });
+  moins.addEventListener("click", () => { n = Math.max(0, n - 1); rendre(); });
+  rendre();
+});

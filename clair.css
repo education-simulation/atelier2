@@ -88,3 +88,4 @@ ol.etapes > li, .info { background:#fffbeb; }
 .wk-working { background:linear-gradient(90deg,#a1a1aa 0%,#18181b 45%,#a1a1aa 90%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; }
 .wk-temps { color:#71717a; } .wk-tip b { color:#15803d; } .wk-tip i { color:#ea580c; }
 .allow-fenetre { background:#fff; }
+.moins-btn { color:#b45309; } .plus-compte { color:#71717a; }

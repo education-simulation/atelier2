@@ -461,3 +461,8 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .allow-fenetre { position:relative; width:min(780px,100%); box-sizing:border-box; background:#0b0b0f; border:2px solid #f59e0b; border-radius:16px; padding:18px 18px 14px; }
 .allow-fermer { all:unset; cursor:pointer; position:absolute; top:6px; right:10px; font-size:24px; font-weight:800; color:#a1a1aa; }
 .allow-fermer:hover { color:#dc2626; }
+.plus-details { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.plus-btn, .moins-btn { all:unset; cursor:pointer; font-weight:800; font-size:14px; border-radius:999px; padding:5px 14px; border:2px solid #f59e0b; color:#fde68a; }
+.plus-btn { background:#f59e0b; color:#1f1300; } .plus-btn:hover { background:#fbbf24; }
+.moins-btn:hover { border-color:#fbbf24; } .plus-btn[hidden], .moins-btn[hidden] { display:none; }
+.plus-compte { font-size:13px; color:#a1a1aa; }
