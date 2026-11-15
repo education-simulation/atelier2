@@ -237,48 +237,63 @@ b.cle { color:#fde68a; }
 .p-new { background:#26262e; }
 .p-menu { color:#a1a1aa; }
 .p-titre { color:#71717a; font-size:12px; display:flex; justify-content:space-between; align-items:center; }
-.p-plus { border-radius:5px; padding:0 4px; font-size:12px; animation:p-plus 14s infinite; }
+.p-plus { border-radius:5px; padding:0 4px; font-size:12px; animation:p-plus 18s infinite; }
 .p-projet, .p-conv { opacity:0; }
-.p-projet { animation:p-apres 14s infinite, p-vise 14s infinite; }
-.p-conv { animation:p-apres 14s infinite; background:#3a3a44; }
+.p-projet { animation:p-apres 18s infinite, p-vise 18s infinite; }
+.p-conv { animation:p-apres 18s infinite; background:#3a3a44; }
 .p-saisie { position:absolute; left:216px; right:14px; bottom:14px; background:#1e1e25; border:1px solid #3f3f46; border-radius:14px; padding:10px 12px; font-size:13px; color:#71717a; }
-.p-chip { display:inline-block; opacity:0; margin-bottom:8px; background:#2e2e36; color:#e4e4e7; border-radius:999px; padding:3px 12px; font-weight:800; animation:p-apres 14s infinite, p-chip 14s infinite; }
+.p-chip { display:inline-block; opacity:0; margin-bottom:8px; background:#2e2e36; color:#e4e4e7; border-radius:999px; padding:3px 12px; font-weight:800; animation:p-apres 18s infinite, p-chip 18s infinite; }
 .p-bas { display:flex; justify-content:space-between; margin-top:12px; color:#d4d4d8; }
-.p-dlg { position:absolute; left:220px; top:14px; width:540px; height:296px; max-width:calc(100% - 230px); background:#26262e; border:1px solid #52525b; border-radius:12px; box-shadow:0 14px 34px rgba(0,0,0,.45); opacity:0; z-index:8; font-size:13px; color:#d4d4d8; animation:p-dlg 14s infinite; }
+.p-dlg { position:absolute; left:220px; top:14px; width:540px; height:296px; max-width:calc(100% - 230px); background:#26262e; border:1px solid #52525b; border-radius:12px; box-shadow:0 14px 34px rgba(0,0,0,.45); opacity:0; z-index:8; font-size:13px; color:#d4d4d8; animation:p-dlg 18s infinite; }
 .p-dlg-titre { padding:10px 14px; font-weight:800; color:#fff; border-bottom:1px solid #3f3f46; }
 .p-lieux { position:absolute; left:0; top:40px; bottom:52px; width:140px; border-right:1px solid #3f3f46; padding:8px; box-sizing:border-box; }
 .p-fichiers { position:absolute; left:150px; right:10px; top:48px; }
 .p-lieux p, .p-fichiers p { margin:0 0 6px; padding:3px 8px; border-radius:6px; white-space:nowrap; }
-.p-cree { opacity:0; animation:p-cree 14s infinite; }
+.p-cree { opacity:0; animation:p-cree 18s infinite; }
 .p-btn { position:absolute; bottom:12px; border-radius:8px; padding:5px 12px; background:#3a3a44; color:#fff; font-weight:700; white-space:nowrap; }
-.p-nouveau { left:150px; animation:p-nouveau 14s infinite; }
+.p-nouveau { left:150px; animation:p-nouveau 18s infinite; }
 .p-annuler { right:96px; }
-.p-ouvrir { right:12px; background:#2563eb; animation:p-ouvrir 14s infinite; }
-.p-nom { position:absolute; left:110px; top:70px; width:300px; background:#2e2e36; border:1px solid #52525b; border-radius:12px; padding:12px 14px 50px; box-shadow:0 10px 26px rgba(0,0,0,.4); opacity:0; z-index:9; animation:p-nom 14s infinite; }
+.p-ouvrir { right:12px; background:#2563eb; animation:p-ouvrir 18s infinite; }
+.p-nom { position:absolute; left:110px; top:70px; width:300px; background:#2e2e36; border:1px solid #52525b; border-radius:12px; padding:12px 14px 50px; box-shadow:0 10px 26px rgba(0,0,0,.4); opacity:0; z-index:9; animation:p-nom 18s infinite; }
 .p-nom b { display:block; color:#fff; margin-bottom:8px; }
 .p-champ { display:block; border:2px solid #3b82f6; border-radius:8px; padding:5px 8px; background:#1c1c22; color:#fff; min-height:18px; }
-.p-tape { display:inline-block; overflow:hidden; white-space:nowrap; vertical-align:bottom; width:0; animation:p-tape 14s steps(15) infinite; }
+.p-tape { display:inline-block; overflow:hidden; white-space:nowrap; vertical-align:bottom; width:0; animation:p-tape 18s steps(15) infinite; }
 .p-creer { right:14px; background:#2563eb; }
-.e6p .souris { z-index:12; left:560px; top:250px; animation:p-souris 14s infinite; }
+.e6p .souris { z-index:12; left:560px; top:250px; animation:p-souris 18s infinite; }
 .p-legende { margin:10px 0 0; padding-left:22px; display:grid; gap:6px; font-size:16px; }
 @keyframes p-souris {
   0% { left:560px; top:250px; transform:scale(1); }
-  8% { left:166px; top:128px; transform:scale(1); } 9% { left:166px; top:128px; transform:scale(.8); } 10% { left:166px; top:128px; transform:scale(1); }
-  20% { left:420px; top:282px; transform:scale(1); } 22% { left:420px; top:282px; transform:scale(.8); } 23% { left:420px; top:282px; transform:scale(1); }
-  40% { left:420px; top:282px; } 46% { left:560px; top:196px; transform:scale(1); } 47% { left:560px; top:196px; transform:scale(.8); } 48% { left:560px; top:196px; transform:scale(1); }
-  56% { left:700px; top:282px; transform:scale(1); } 58% { left:700px; top:282px; transform:scale(.8); } 59% { left:700px; top:282px; transform:scale(1); }
-  72%, 100% { left:300px; top:236px; transform:scale(1); }
+  6% { left:166px; top:128px; transform:scale(1); } 7% { left:166px; top:128px; transform:scale(.8); } 8% { left:166px; top:128px; transform:scale(1); }
+  15% { left:420px; top:282px; transform:scale(1); } 17% { left:420px; top:282px; transform:scale(.8); } 18% { left:420px; top:282px; transform:scale(1); }
+  31% { left:420px; top:282px; } 35% { left:560px; top:196px; transform:scale(1); } 36% { left:560px; top:196px; transform:scale(.8); } 37% { left:560px; top:196px; transform:scale(1); }
+  42% { left:700px; top:282px; transform:scale(1); } 44% { left:700px; top:282px; transform:scale(.8); } 45% { left:700px; top:282px; transform:scale(1); }
+  52%, 56% { left:330px; top:262px; transform:scale(1); }
+  66% { left:calc(100% - 44px); top:298px; transform:scale(1); } 68% { left:calc(100% - 44px); top:298px; transform:scale(.8); } 69%, 100% { left:calc(100% - 44px); top:298px; transform:scale(1); }
 }
-@keyframes p-plus { 0%, 6% { background:transparent; } 7%, 12% { background:#f59e0b; color:#1f1300; } 13%, 100% { background:transparent; } }
-@keyframes p-dlg { 0%, 9% { opacity:0; } 11%, 58% { opacity:1; } 60%, 100% { opacity:0; } }
-@keyframes p-nouveau { 0%, 18% { box-shadow:none; } 19%, 24% { box-shadow:0 0 0 3px #f59e0b; } 25%, 100% { box-shadow:none; } }
-@keyframes p-nom { 0%, 22% { opacity:0; } 24%, 47% { opacity:1; } 49%, 100% { opacity:0; } }
-@keyframes p-tape { 0%, 26% { width:0; } 40%, 100% { width:15ch; } }
-@keyframes p-cree { 0%, 47% { opacity:0; } 49%, 58% { opacity:1; background:#f59e0b; color:#1f1300; } 60%, 100% { opacity:0; } }
-@keyframes p-ouvrir { 0%, 54% { box-shadow:none; } 55%, 59% { box-shadow:0 0 0 3px #f59e0b; } 60%, 100% { box-shadow:none; } }
-@keyframes p-apres { 0%, 59% { opacity:0; } 61%, 98% { opacity:1; } 100% { opacity:0; } }
-@keyframes p-vise { 0%, 60% { background:transparent; } 62%, 98% { background:#3a2a08; outline:2px solid #f59e0b; } }
-@keyframes p-chip { 0%, 64% { box-shadow:none; } 66%, 98% { box-shadow:0 0 0 3px #f59e0b; } }
+@keyframes p-plus { 0%, 4% { background:transparent; } 5%, 10% { background:#f59e0b; color:#1f1300; } 11%, 100% { background:transparent; } }
+@keyframes p-dlg { 0%, 7% { opacity:0; } 9%, 45% { opacity:1; } 47%, 100% { opacity:0; } }
+@keyframes p-nouveau { 0%, 14% { box-shadow:none; } 15%, 19% { box-shadow:0 0 0 3px #f59e0b; } 20%, 100% { box-shadow:none; } }
+@keyframes p-nom { 0%, 17% { opacity:0; } 19%, 36% { opacity:1; } 38%, 100% { opacity:0; } }
+@keyframes p-tape { 0%, 20% { width:0; } 31%, 100% { width:15ch; } }
+@keyframes p-cree { 0%, 36% { opacity:0; } 38%, 45% { opacity:1; background:#f59e0b; color:#1f1300; } 47%, 100% { opacity:0; } }
+@keyframes p-ouvrir { 0%, 41% { box-shadow:none; } 42%, 45% { box-shadow:0 0 0 3px #f59e0b; } 46%, 100% { box-shadow:none; } }
+@keyframes p-apres { 0%, 46% { opacity:0; } 48%, 98% { opacity:1; } 100% { opacity:0; } }
+@keyframes p-vise { 0%, 47% { background:transparent; } 49%, 98% { background:#3a2a08; outline:2px solid #f59e0b; } }
+@keyframes p-chip { 0%, 49% { box-shadow:none; } 51%, 56% { box-shadow:0 0 0 3px #f59e0b; } 58%, 100% { box-shadow:none; } }
+@keyframes p-cmdv { 0%, 56% { opacity:0; transform:scale(.6); } 58%, 62% { opacity:1; transform:scale(1); } 64%, 100% { opacity:0; } }
+@keyframes p-colle { 0%, 58% { opacity:0; } 60%, 68% { opacity:1; } 70%, 100% { opacity:0; } }
+@keyframes p-indice { 0%, 58% { opacity:1; } 60%, 68% { opacity:0; } 70%, 100% { opacity:1; } }
+@keyframes p-envoi { 0%, 65% { box-shadow:none; } 66%, 69% { box-shadow:0 0 0 4px rgba(245,158,11,.7); } 70%, 100% { box-shadow:none; } }
+@keyframes p-rep { 0%, 71% { opacity:0; } 74%, 98% { opacity:1; } 100% { opacity:0; } }
+.p-ask { position:relative; min-height:18px; }
+.p-colle { position:absolute; left:0; top:0; right:70px; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; opacity:0; animation:p-colle 18s infinite; }
+.p-indice { animation:p-indice 18s infinite; }
+.p-cmdv { position:absolute; right:0; top:-4px; background:#f59e0b; color:#1f1300; font-weight:800; border-radius:6px; padding:1px 8px; opacity:0; animation:p-cmdv 18s infinite; }
+.p-envoi { display:inline-grid; place-items:center; width:22px; height:22px; margin-left:8px; border-radius:50%; background:#fff; color:#0b0b0f; font-weight:800; animation:p-envoi 18s infinite; }
+.p-rep { position:absolute; left:226px; right:20px; top:16px; border-left:3px solid #22c55e; padding:4px 10px; font-size:13px; color:#e4e4e7; opacity:0; animation:p-rep 18s infinite; }
+.p-rep > b:first-child { color:#4ade80; font-size:11px; }
+.p-num { margin:14px 0 6px; }
+.p-num > span:first-child { width:26px; height:26px; margin-right:6px; vertical-align:1px; border-radius:50%; display:inline-grid; place-items:center; background:#f59e0b; color:#1f1300; font-weight:800; font-size:14px; }
 /* étape 7 : le message à copier */
 .p-phrase { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; margin:10px 0; }
 .p-phrase code { flex:1 1 100%; max-height:170px; overflow-y:auto; background:#0b0b0f; border:1px dashed #f59e0b; border-radius:10px; padding:10px 12px; font:13.5px Menlo,Consolas,monospace; color:#fff; white-space:pre-wrap; overflow-wrap:anywhere; }
@@ -325,8 +340,9 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-btn { background:#f4f4f5; color:#18181b; border:1px solid #d4d4d8; } .p-ouvrir, .p-creer { background:#2563eb; color:#fff; border-color:#2563eb; }
 .p-nom { background:#fff; border-color:#d4d4d8; box-shadow:0 10px 26px rgba(0,0,0,.15); } .p-nom b { color:#18181b; } .p-champ { background:#fff; color:#18181b; }
 .p-phrase code { background:#fafafa; color:#18181b; }
-@keyframes p-vise { 0%, 60% { background:transparent; } 62%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
 .p-menu { color:#52525b; }
+.p-colle { color:#18181b; } .p-envoi { background:#18181b; color:#fff; } .p-rep { color:#27272a; } .p-rep > b:first-child { color:#15803d; }
+@keyframes p-vise { 0%, 47% { background:transparent; } 49%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -338,7 +354,7 @@ b.cle, .dec-carte b { color:#b45309; }
     <div class="titre-haut"><h1>Configuration d'Antigravity</h1></div>
   </header>
   <div class="corps">
-    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li><li><span class="rond">6</span>Projet</li><li><span class="rond">✓</span>Règles</li></ol>
+    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li><li><span class="rond">6</span>Le projet</li><li><span class="rond">✓</span>Atelier</li></ol>
 
     <section class="etape">
       <h2>1. Fermer les petites fenêtres</h2>
@@ -415,46 +431,8 @@ b.cle, .dec-carte b { color:#b45309; }
     </section>
 
     <section class="etape e6">
-      <h2>6. Crée ton projet dans Antigravity</h2>
-      <p>Dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>. Une fenêtre s'ouvre pour choisir <b class="cle">le dossier de ton projet</b> : tes simulations (un fichier HTML chacune) et leurs règles y seront rangées.</p>
-      <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans">
-        <div class="p-gauche">
-          <p class="p-new">+ New Conversation</p>
-          <p class="p-menu">◷ Automations</p>
-          <p class="p-menu">⧉ Customizations</p>
-          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
-          <p class="p-projet">📁 mes simulations</p>
-          <p class="p-titre">Conversations</p>
-          <p class="p-conv">💬 Nouvelle conversation</p>
-        </div>
-        <div class="p-saisie">
-          <span class="p-chip">📁 mes simulations ⌄</span>
-          <div class="p-ask">Ask anything, @ to mention, / for actions</div>
-          <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🔒 Default ⌃</span></div>
-        </div>
-        <div class="p-dlg">
-          <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
-          <div class="p-lieux"><p>🖥 Bureau</p><p>📄 Documents</p><p>⬇ Téléchargements</p></div>
-          <div class="p-fichiers"><p>📁 cours</p><p>📁 TP</p><p class="p-cree">📁 mes simulations</p></div>
-          <span class="p-btn p-nouveau">Nouveau dossier</span><span class="p-btn p-annuler">Annuler</span><span class="p-btn p-ouvrir">Ouvrir</span>
-          <div class="p-nom"><b>Nom du nouveau dossier</b><span class="p-champ"><span class="p-tape">mes simulations</span></span><span class="p-btn p-creer">Créer</span></div>
-        </div>
-        <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
-      </div>
-      <ul class="p-legende">
-        <li><b class="cle">Nouveau dossier :</b> donne-lui un nom (par exemple <b class="cle">mes simulations</b>), crée-le, puis clique sur <b class="cle">Ouvrir</b> (sur Windows : <b class="cle">Sélectionner un dossier</b>).</li>
-        <li><b class="cle">Dossier existant :</b> clique simplement dessus, puis sur <b class="cle">Ouvrir</b>.</li>
-        <li>Ton projet apparaît sous « Projects », et <b class="cle">une conversation s'ouvre dans le projet</b> : son nom s'affiche au-dessus de la zone de message.</li>
-      </ul>
-      <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
-    </section>
-
-    <section class="etape e7">
-      <h2>7. Les règles de ton projet</h2>
-      <ol class="etapes-projet">
-        <li><b class="cle">Dans la conversation du projet</b>, regarde le mode, en bas à droite : il est revenu sur <b class="cle">« Default »</b>. Repasse-le sur <b class="cle">« Auto »</b>, comme à l'étape 3.</li>
-        <li>Copie ce message, colle-le dans cette conversation, puis Entrée. L'IA écrit le fichier <b class="cle">AGENTS.md</b> : les règles de toutes les conversations de ce projet.</li>
-      </ol>
+      <h2>6. Ton projet dans Antigravity</h2>
+      <p class="p-num"><span>1</span> <b>Copie d'abord ce message</b> : il contient les règles de ton projet.</p>
       <div class="p-phrase"><code>Prépare ce projet pour mes simulations. Ne fais rien d'autre.
 
 1. Crée, à la racine du dossier de ce projet, un fichier AGENTS.md qui contient, en français, toutes les règles ci-dessous : elles doivent s'appliquer à toutes les conversations de ce projet.
@@ -485,8 +463,45 @@ Quand AGENTS.md est créé, réponds seulement par cet encadré :
 &gt; ✅ **Ton projet est configuré.** Ses règles sont dans AGENTS.md : elles valent pour toutes les conversations de ce projet.
 &gt;
 &gt; 👉 **Choisis ton atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans</code><button type="button" class="p-copier">📋 Copier</button></div>
-      <p>Elle te demandera peut-être une autorisation (« Allow… ? ») : choisis <b class="cle">Yes, and always allow</b>. Elle répond par l'encadré vert <b class="cle">« ✅ Ton projet est configuré »</b>.</p>
-      <p style="text-align:center;margin:18px 0 8px"><a class="vers-atelier" href="ateliers.html?ou=dans">🧪 Mon projet est configuré : choisir mon atelier ›</a></p>
+      <p class="p-num"><span>2</span> <b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
+      <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est configuré »">
+        <div class="p-gauche">
+          <p class="p-new">+ New Conversation</p>
+          <p class="p-menu">◷ Automations</p>
+          <p class="p-menu">⧉ Customizations</p>
+          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
+          <p class="p-projet">📁 mes simulations</p>
+          <p class="p-titre">Conversations</p>
+          <p class="p-conv">💬 Nouvelle conversation</p>
+        </div>
+        <div class="p-saisie">
+          <span class="p-chip">📁 mes simulations ⌄</span>
+          <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Ne fais rien d'autre…</span><span class="p-cmdv">Cmd + V</span></div>
+          <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🔒 Default ⌃ <span class="p-envoi">↑</span></span></div>
+        </div>
+        <div class="p-rep"><b>TIP</b><br>✅ <b>Ton projet est configuré.</b> Ses règles sont dans AGENTS.md.<br>👉 Choisis ton atelier : <u>atelier2.rasf.fr/ateliers.html</u></div>
+        <div class="p-dlg">
+          <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
+          <div class="p-lieux"><p>🖥 Bureau</p><p>📄 Documents</p><p>⬇ Téléchargements</p></div>
+          <div class="p-fichiers"><p>📁 cours</p><p>📁 TP</p><p class="p-cree">📁 mes simulations</p></div>
+          <span class="p-btn p-nouveau">Nouveau dossier</span><span class="p-btn p-annuler">Annuler</span><span class="p-btn p-ouvrir">Ouvrir</span>
+          <div class="p-nom"><b>Nom du nouveau dossier</b><span class="p-champ"><span class="p-tape">mes simulations</span></span><span class="p-btn p-creer">Créer</span></div>
+        </div>
+        <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
+      </div>
+      <ul class="p-legende">
+        <li><b class="cle">Nouveau dossier :</b> donne-lui un nom (par exemple <b class="cle">mes simulations</b>), crée-le, puis clique sur <b class="cle">Ouvrir</b> (sur Windows : <b class="cle">Sélectionner un dossier</b>).</li>
+        <li><b class="cle">Dossier existant :</b> clique simplement dessus, puis sur <b class="cle">Ouvrir</b>.</li>
+      </ul>
+      <p class="p-num"><span>3</span> <b>Colle le message</b> dans la conversation qui s'ouvre dans le projet (son nom s'affiche au-dessus de la zone de message) : <b class="cle">Cmd + V</b> (Mac) ou <b class="cle">Ctrl + V</b> (Windows), puis <b class="cle">Entrée</b>.</p>
+      <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
+    </section>
+
+    <section class="etape e7">
+      <h2>7. Ton projet est prêt</h2>
+      <p>L'IA écrit le fichier <b class="cle">AGENTS.md</b> dans le dossier de ton projet : les règles de <b class="cle">toutes les conversations de ce projet</b>. Elle te demandera peut-être une autorisation (« Allow… ? ») : choisis <b class="cle">Yes, and always allow</b>.</p>
+      <p>Elle répond par l'encadré vert <b class="cle">« ✅ Ton projet est configuré »</b>. Place à la simulation !</p>
+      <p style="text-align:center;margin:22px 0 8px"><a class="vers-atelier" href="ateliers.html?ou=dans">🧪 Choisir mon atelier ›</a></p>
     </section>
 
     <div class="nav"><button type="button" class="prec" id="prec">‹ Précédent</button><button type="button" class="suiv" id="suiv">Suivant ›</button></div>
