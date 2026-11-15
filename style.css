@@ -387,3 +387,7 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .q-ok { color:#86efac; font-weight:800; }
 .q-modif { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
 .q.fait > .question, .q.fait > .choix { display:none; } .q.fait > .q-fait { display:flex; }
+.nc-liste { border-top:1px solid #27272a; padding-top:10px; display:grid; gap:8px; }
+.nc-liste-bouton { all:unset; cursor:pointer; justify-self:start; font-weight:800; font-size:15px; color:#e4e4e7; border:1px solid #52525b; border-radius:999px; padding:6px 14px; }
+.nc-liste-bouton:hover, .nc-liste-bouton[aria-expanded="true"] { border-color:#f59e0b; }
+.nc-liste-corps { display:grid; gap:6px; } .nc-liste-corps[hidden] { display:none; }

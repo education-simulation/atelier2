@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=55">
-<link rel="stylesheet" href="clair.css?v=9" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=56">
+<link rel="stylesheet" href="clair.css?v=10" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -120,6 +120,13 @@
       <p class="p-num"><span>4</span> Clique sur <b class="cle">le lien de sa réponse</b> : la page de l'atelier s'ouvre à droite, et tu continues là.</p>
       </div>
       </div>
+      <div class="nc-liste">
+        <button type="button" class="nc-liste-bouton" aria-expanded="false">🗂️ Retrouver mes conversations du projet</button>
+        <div class="nc-liste-corps" hidden>
+          <p>Copie ce message, colle-le dans <b class="cle">n'importe quelle conversation de ton projet</b>, puis <b class="cle">Entrée</b> : l'IA affiche tes conversations, avec <b class="cle">un lien pour ouvrir chacune</b> en un clic.</p>
+          <div class="phrase"><code>Donne-moi la liste de toutes les conversations de ce projet avec leur sujet et un lien direct cliquable pour ouvrir chacune d'elles.</code><button type="button" class="copier nc-copier-liste">📋 Copier</button></div>
+        </div>
+      </div>
       <p class="note">Tu n'es pas dans Antigravity ? <a class="mail nc-direct" href="#">Ouvrir quand même la page de l'atelier ›</a></p>
     </div>
   </div>
@@ -201,6 +208,17 @@ function ouvrirConv(sim) {
   let dejaCopie = false; try { dejaCopie = localStorage.getItem("atelier.copie." + sim) === "1"; } catch {}
   copie(dejaCopie);
   v.querySelector(".nc-copier-q").addEventListener("click", async (e) => {
+    const b = e.currentTarget, c = b.previousElementSibling;
+    b.textContent = "✅ Copié";
+    setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
+    try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
+    catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
+  });
+  // « Retrouver mes conversations » : le message qui demande la liste, avec les liens conversation://
+  const lb = v.querySelector(".nc-liste-bouton"), lc = v.querySelector(".nc-liste-corps");
+  lb.addEventListener("click", () => { lc.hidden = !lc.hidden; lb.setAttribute("aria-expanded", String(!lc.hidden)); try { localStorage.setItem("atelier.liste", lc.hidden ? "" : "1"); } catch {} });
+  try { if (localStorage.getItem("atelier.liste") === "1") { lc.hidden = false; lb.setAttribute("aria-expanded", "true"); } } catch {}
+  v.querySelector(".nc-copier-liste").addEventListener("click", async (e) => {
     const b = e.currentTarget, c = b.previousElementSibling;
     b.textContent = "✅ Copié";
     setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
