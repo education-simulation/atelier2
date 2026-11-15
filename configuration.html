@@ -235,6 +235,7 @@ b.cle { color:#fde68a; }
 .p-gauche { position:absolute; left:0; top:0; bottom:0; width:200px; background:#16161b; padding:10px; box-sizing:border-box; font-size:13px; color:#d4d4d8; }
 .p-gauche p { margin:0 0 8px; padding:4px 8px; border-radius:6px; white-space:nowrap; }
 .p-new { background:#26262e; }
+.p-menu { color:#a1a1aa; }
 .p-titre { color:#71717a; font-size:12px; display:flex; justify-content:space-between; align-items:center; }
 .p-plus { border-radius:5px; padding:0 4px; font-size:12px; animation:p-plus 14s infinite; }
 .p-projet, .p-conv { opacity:0; }
@@ -262,7 +263,7 @@ b.cle { color:#fde68a; }
 .p-legende { margin:10px 0 0; padding-left:22px; display:grid; gap:6px; font-size:16px; }
 @keyframes p-souris {
   0% { left:560px; top:250px; transform:scale(1); }
-  8% { left:174px; top:56px; transform:scale(1); } 9% { left:174px; top:56px; transform:scale(.8); } 10% { left:174px; top:56px; transform:scale(1); }
+  8% { left:166px; top:128px; transform:scale(1); } 9% { left:166px; top:128px; transform:scale(.8); } 10% { left:166px; top:128px; transform:scale(1); }
   20% { left:420px; top:282px; transform:scale(1); } 22% { left:420px; top:282px; transform:scale(.8); } 23% { left:420px; top:282px; transform:scale(1); }
   40% { left:420px; top:282px; } 46% { left:560px; top:196px; transform:scale(1); } 47% { left:560px; top:196px; transform:scale(.8); } 48% { left:560px; top:196px; transform:scale(1); }
   56% { left:700px; top:282px; transform:scale(1); } 58% { left:700px; top:282px; transform:scale(.8); } 59% { left:700px; top:282px; transform:scale(1); }
@@ -325,6 +326,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-nom { background:#fff; border-color:#d4d4d8; box-shadow:0 10px 26px rgba(0,0,0,.15); } .p-nom b { color:#18181b; } .p-champ { background:#fff; color:#18181b; }
 .p-phrase code { background:#fafafa; color:#18181b; }
 @keyframes p-vise { 0%, 60% { background:transparent; } 62%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
+.p-menu { color:#52525b; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -418,6 +420,8 @@ b.cle, .dec-carte b { color:#b45309; }
       <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans">
         <div class="p-gauche">
           <p class="p-new">+ New Conversation</p>
+          <p class="p-menu">◷ Automations</p>
+          <p class="p-menu">⧉ Customizations</p>
           <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
           <p class="p-projet">📁 mes simulations</p>
           <p class="p-titre">Conversations</p>
