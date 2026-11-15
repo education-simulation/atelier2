@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=43">
+<link rel="stylesheet" href="style.css?v=44">
 <link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -59,7 +59,8 @@
       <h2 id="nc-titre"><span class="nc-ico"></span> <span class="nc-nom"></span></h2>
       <p class="nc-intro">Chaque simulation se fait dans <b class="cle">sa propre conversation, dans ton projet</b> : les règles du projet s'y appliquent toutes seules.</p>
       <div class="choix nc-choix">
-        <button type="button" class="carte" data-deja="oui"><span class="rond">💬</span><span class="txt"><b>J'ai déjà la conversation « <span class="nc-conv"></span> »</b><small>Dans mon projet</small></span></button>
+        <a class="carte nc-dedans" href="#"><span class="rond">✓</span><span class="txt"><b>Je suis dans la conversation « <span class="nc-conv"></span> »</b><small>J'ouvre directement la page de l'atelier</small></span></a>
+        <button type="button" class="carte" data-deja="oui"><span class="rond">💬</span><span class="txt"><b>Elle existe, mais je n'y suis pas</b><small>Je la retrouve dans mon projet</small></span></button>
         <button type="button" class="carte" data-deja="non"><span class="rond">+</span><span class="txt"><b>Je n'ai pas encore cette conversation</b><small>Je la crée dans mon projet</small></span></button>
       </div>
       <div class="nc-oui" hidden>
@@ -145,6 +146,7 @@ function ouvrirConv(sim) {
   v.querySelectorAll(".nc-conv").forEach((e) => { e.textContent = convs[sim]; });
   v.querySelector(".nc-nouveau").textContent = "💬 " + convs[sim];
   v.querySelector(".nc-direct2").href = sim + ".html#simple";
+  v.querySelector(".nc-dedans").href = sim + ".html#simple";   // déjà dans la conversation : la page directement
   // « As-tu déjà la conversation ? » : la réponse est gardée dans le navigateur, par simulation
   const repondre = (r) => {
     v.querySelectorAll("[data-deja]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.deja === r)));
