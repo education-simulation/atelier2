@@ -336,14 +336,14 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes va-clic-app { 0%, 50% { transform:scale(1); box-shadow:0 6px 16px rgba(0,0,0,.35); } 52% { transform:scale(.85); box-shadow:0 0 0 6px rgba(245,158,11,.6); } 55%, 100% { transform:scale(1.1); box-shadow:0 0 0 6px rgba(245,158,11,.6); } }
 @keyframes va-souris {
   0% { left:55%; top:220px; transform:scale(1); }
-  12% { left:calc(100% - 36px); top:112px; transform:scale(1); } 14% { left:calc(100% - 36px); top:112px; transform:scale(.8); } 16%, 30% { left:calc(100% - 36px); top:112px; transform:scale(1); }
+  12% { left:calc(68% - 39px); top:174px; transform:scale(1); } 14% { left:calc(68% - 39px); top:174px; transform:scale(.8); } 16%, 30% { left:calc(68% - 39px); top:174px; transform:scale(1); }
   42% { left:50%; top:200px; }
   50% { left:calc(50% - 70px); top:140px; transform:scale(1); } 52% { left:calc(50% - 70px); top:140px; transform:scale(.8); } 54% { left:calc(50% - 70px); top:140px; transform:scale(1); }
   62% { left:240px; top:76px; transform:scale(1); } 64% { left:240px; top:76px; transform:scale(.8); } 66%, 100% { left:240px; top:76px; transform:scale(1); }
 }
 @keyframes va-souris-ff {
   0% { left:55%; top:220px; transform:scale(1); }
-  12% { left:calc(100% - 36px); top:112px; transform:scale(1); } 14% { left:calc(100% - 36px); top:112px; transform:scale(.8); } 16%, 30% { left:calc(100% - 36px); top:112px; transform:scale(1); }
+  12% { left:calc(68% - 39px); top:174px; transform:scale(1); } 14% { left:calc(68% - 39px); top:174px; transform:scale(.8); } 16%, 30% { left:calc(68% - 39px); top:174px; transform:scale(1); }
   42% { left:50%; top:200px; }
   50% { left:calc(50% + 80px); top:140px; transform:scale(1); } 52% { left:calc(50% + 80px); top:140px; transform:scale(.8); } 54% { left:calc(50% + 80px); top:140px; transform:scale(1); }
   62% { left:240px; top:76px; transform:scale(1); } 64% { left:240px; top:76px; transform:scale(.8); } 66%, 100% { left:240px; top:76px; transform:scale(1); }
@@ -422,3 +422,17 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes nc-info-1 { 0%, 16% { opacity:0; transform:translateY(6px); } 19%, 36% { opacity:1; transform:none; } 39%, 100% { opacity:0; } }
 @keyframes nc-info-2 { 0%, 42% { opacity:0; transform:translateY(6px); } 45%, 66% { opacity:1; transform:none; } 69%, 100% { opacity:0; } }
 .nc-info-2 { bottom:124px; }
+/* « Voir ta simulation », scène ① : Antigravity en 3 parties (menu, conversation, navigateur intégré avec la page de l'atelier) */
+.ecran-va { height:320px; }
+.va-ag-gauche { width:130px; font-size:10.5px; } .va-ag-gauche p { margin:0 0 3px; padding:2px 5px; } .va-petit { font-size:9.5px; margin-top:6px !important; } .va-retrait { margin-left:10px !important; }
+.va-ag-milieu { padding:8px 10px; font-size:11.5px; display:flex; flex-direction:column; gap:5px; }
+.va-imp { border-left:3px solid #a855f7; padding:1px 8px; font-size:11px; } .va-imp b { color:#c084fc; font-size:9.5px; margin-right:4px; } .va-imp u { color:#60a5fa; }
+.va-moi { align-self:flex-end; background:#26262e; border-radius:10px; padding:3px 10px; font-size:11px; }
+.va-ligne { margin:0; font-size:11px; }
+.va-url { padding:6px 8px; font-size:11px; }
+.va-copie-bulle { top:auto; bottom:30px; }
+.va-ag-droite { width:32%; flex:none; border-left:1px solid #3f3f46; background:#e9ecf2; display:flex; flex-direction:column; }
+.va-ag-adresse { margin:5px; padding:2px 8px; border-radius:8px; background:#d4d9e2; color:#475569; font-size:9.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.va-ag-page { flex:1; margin:0 5px 5px; border-radius:8px; background:#fff; padding:8px; display:flex; flex-direction:column; gap:5px; color:#18181b; font-size:10.5px; }
+.va-dom { align-self:flex-start; font-style:normal; font-weight:800; font-size:9px; background:#fbbf24; color:#1f1300; border-radius:999px; padding:0 6px; }
+.va-mini { height:28px; border-radius:6px; border:2px solid #f59e0b; background:#fffbeb; } .va-mini.b { border-color:#3b82f6; background:#eff6ff; height:22px; } .va-mini.court { width:70%; }
