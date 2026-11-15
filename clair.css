@@ -65,3 +65,8 @@ ol.etapes > li, .info { background:#fffbeb; }
 @keyframes nc-survol { 0%, 14% { background:transparent; } 16%, 100% { background:#e4e4e7; } }
 @keyframes nc-vieux { 0%, 32% { background:#e4e4e7; } 34%, 100% { background:transparent; } }
 .nc-new { background:#e4e4e7; }
+
+/* « Voir ta simulation », en clair */
+.ecran-va { background:#fafafa; border-color:#e4e4e7; } .va-ag { background:#fff; color:#27272a; box-shadow:0 2px 8px rgba(0,0,0,.06); } .va-qui { color:#18181b; } .va-ligne { color:#71717a; }
+.va-code { background:#18181b; border-color:#27272a; }
+.va-nav { border-color:#d4d4d8; box-shadow:0 6px 18px rgba(0,0,0,.08); }
