@@ -144,7 +144,8 @@ if (c === "page") montrer("page", sims[s] ? s : undefined);
 // et donne le message qui y ouvre la page de l'atelier. Elle reste ouverte au rechargement (#page/titrage).
 const icones = { titrage: "⚗️", metamerie: "🎨", cinetique: "⏱️" };
 const titres = { titrage: "Simulation d'un titrage", metamerie: "Simulation de la métamérie", cinetique: "Cinétique chimique" };
-const demarrer = { titrage: "Démarrer la simulation d'un titrage", metamerie: "Démarrer la simulation de la métamérie", cinetique: "Démarrer la simulation de cinétique chimique" };
+const titreFenetre = "Ajoute une conversation au projet « mes simulations »";   // le même titre pour les trois ateliers
+const demarrer = { titrage: titreFenetre, metamerie: titreFenetre, cinetique: titreFenetre };
 const convs = { titrage: "Simulation titrage", metamerie: "Simulation métamérie", cinetique: "Simulation cinétique" };
 function fermerConv() { document.querySelector(".nc-voile")?.remove(); if (location.hash.split("/")[1]) montrer("page"); }
 const mots = { titrage: "go titrage", metamerie: "go metamerie", cinetique: "go cinetique" };
