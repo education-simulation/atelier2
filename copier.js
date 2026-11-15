@@ -148,7 +148,7 @@ document.addEventListener("click", (e) => {
 // Le nombre de détails est gardé dans le navigateur, par page.
 document.querySelectorAll("code.prompt-plus").forEach((code) => {
   const base = code.dataset.base, details = JSON.parse(code.dataset.details);
-  const bloc = code.closest(".phrase").nextElementSibling;
+  const bloc = code.closest(".bloc-partie").querySelector(".plus-details");
   const plus = bloc.querySelector(".plus-btn"), moins = bloc.querySelector(".moins-btn"), zero = bloc.querySelector(".zero-btn"), compte = bloc.querySelector(".plus-compte"), tag = bloc.querySelector(".prompt-tag");
   const cle = "atelier." + (location.pathname.split("/").pop().replace(".html", "") || "page") + ".details";
   let n = 0; try { n = Math.min(details.length, parseInt(localStorage.getItem(cle), 10) || 0); } catch {}

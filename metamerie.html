@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Simulation de la métamérie</title>
-<link rel="stylesheet" href="style.css?v=75">
-<link rel="stylesheet" href="clair.css?v=20" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=76">
+<link rel="stylesheet" href="clair.css?v=21" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -30,14 +30,15 @@
       <h3 class="partie">① Créer la simulation <small>le code HTML s'écrit dans Antigravity</small></h3>
       <p>Dans la conversation de configuration d'Antigravity, clique sur <b class="cle">📋 Copier</b>, colle le message dans la zone de message, en bas à gauche, puis appuie sur <b class="cle">Entrée</b>.</p>
       <div class="phrase"><code class="prompt-plus" data-base="Fais-moi une simulation de la métamérie" data-details="[&quot;deux échantillons de couleur côte à côte, identiques à la lumière du jour (illuminant D65) mais différents sous une lampe à incandescence (illuminant A) ou sous un tube fluorescent (illuminant F11)&quot;, &quot;les courbes de réflectance des deux échantillons&quot;, &quot;le spectre de l&#x27;illuminant choisi&quot;, &quot;les coordonnées L*a*b* de chaque échantillon et l&#x27;écart de couleur ΔE*ab&quot;, &quot;des boutons pour changer d&#x27;illuminant&quot;, &quot;les tables officielles de la CIE (observateur 1931 2°, illuminants D65, A et F11, au pas de 10 nm)&quot;, &quot;une phrase qui dit si l&#x27;écart est visible (au-delà d&#x27;environ 1 à 2)&quot;, &quot;un indice de métamérie : l&#x27;écart ΔE*ab sous l&#x27;illuminant A&quot;]">Fais-moi une simulation de la métamérie.</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
+      <p class="note-nouvelle" hidden>🔀 <b class="cle">Nouvelle version à comparer :</b> change le message (ajoute ou retire des détails), puis copie-le dans la même conversation. Antigravity l'ajoutera <b class="cle">dans le même fichier, dans un nouvel onglet</b> « Version 2 », pour comparer.</p>
       <div class="plus-details"><span class="prompt-tag"></span><button type="button" class="plus-btn">＋ Ajouter un détail</button><span class="plus-compte"></span><button type="button" class="moins-btn" hidden>－ Retirer le dernier</button><button type="button" class="zero-btn" hidden title="Revenir au prompt minimal">↺ Revenir à zéro</button></div>
       <p class="note plus-aide">💡 Commence par le <b class="cle">prompt minimal</b>, regarde ce que fait l'IA, puis <b class="cle">ajoute des détails</b> un à un : chaque précision (le matériel, les espèces chimiques, les valeurs, les repères sur la courbe…) rend la simulation plus juste. Tu pourras comparer les versions dans le même fichier.</p>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
       <div class="ecran-wk" aria-hidden="true">
-        <span class="wk-working">Working</span>
+        <span class="wk-working wk-s1">Working</span><span class="wk-working wk-s2">Reading metamerie.html ›</span><span class="wk-working wk-s3">Editing metamerie.html ›</span>
         <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
         <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
       </div>
@@ -90,7 +91,7 @@
       <p class="replie-ligne voir-vu-ligne"><span>✓</span> <b>J'ai visualisé ma simulation</b> <button type="button" class="vu-retour">‹ revenir en arrière</button></p>
       <div class="voir-suite" hidden>
       <h3 class="partie">② Discutons ensemble des résultats obtenus</h3>
-      <div><button type="button" class="aller-onglet" data-aller="modifier">🛠️ On modifie la simulation ›</button></div>
+      <div class="discuter-boutons"><button type="button" class="aller-onglet" data-aller="modifier">🛠️ On modifie la simulation ›</button><button type="button" class="nouvelle-version">🔀 Créer une nouvelle version à comparer</button></div>
       </div>
       </div>
     </section>
@@ -129,9 +130,9 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
       <div class="ecran-wk" aria-hidden="true">
-        <span class="wk-working">Working</span>
+        <span class="wk-working wk-s1">Working</span><span class="wk-working wk-s2">Reading metamerie.html ›</span><span class="wk-working wk-s3">Editing metamerie.html ›</span>
         <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
         <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
       </div>
@@ -184,7 +185,7 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
       <p class="replie-ligne voir-vu-ligne"><span>✓</span> <b>J'ai visualisé ma simulation</b> <button type="button" class="vu-retour">‹ revenir en arrière</button></p>
       <div class="voir-suite" hidden>
       <h3 class="partie">② Discutons ensemble des résultats obtenus</h3>
-      <div><button type="button" class="aller-onglet" data-aller="modifier">🛠️ On modifie la simulation ›</button></div>
+      <div class="discuter-boutons"><button type="button" class="aller-onglet" data-aller="modifier">🛠️ On modifie la simulation ›</button><button type="button" class="nouvelle-version">🔀 Créer une nouvelle version à comparer</button></div>
       </div>
       </div>
     </section>
@@ -244,7 +245,7 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=13"></script>
+<script src="copier.js?v=14"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];
@@ -272,6 +273,15 @@ function etat(panneau, etape) {
 }
 document.querySelectorAll("[data-panneau]").forEach((p) => {
   if (!p.querySelector(".bloc-partie.attendre")) return;
+  // « Créer une nouvelle version à comparer » : on revient au message de départ, déplié, pour en faire un autre
+  p.querySelector(".nouvelle-version")?.addEventListener("click", () => {
+    etat(p, "");
+    const creer = p.querySelector(".bloc-partie.creer");
+    creer.classList.remove("replie"); creer.querySelectorAll(".phrase.replie").forEach((x) => x.classList.remove("replie"));
+    creer.querySelectorAll(".replie-ligne").forEach((x) => x.classList.remove("vue"));
+    const note = creer.querySelector(".note-nouvelle"); if (note) note.hidden = false;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
   p.querySelector(".vu-btn").addEventListener("click", () => { etat(p, "vu"); p.querySelector(".voir-suite").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
   p.querySelector(".vu-retour").addEventListener("click", () => etat(p, "pret"));   // revenir en arrière : on revoit « Voir ta simulation »
   p.querySelector(".voir-retour").addEventListener("click", () => { etat(p, "attente"); p.querySelector(".bloc-partie.attendre").scrollIntoView({ behavior: "smooth", block: "nearest" }); });   // « revenir en arrière » : on repatiente

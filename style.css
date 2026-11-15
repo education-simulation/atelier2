@@ -471,3 +471,12 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .note-version { margin:0; padding:8px 12px; border-radius:10px; background:#1e1b4b; border:1px solid #6366f1; font-size:15px; }
 .plus-compte { font-weight:800; font-size:14px; color:#fde68a; background:#1f1a10; border:1px solid #f59e0b; border-radius:999px; padding:3px 10px; min-width:38px; text-align:center; }
 .zero-btn { all:unset; cursor:pointer; font-size:13px; color:#a1a1aa; text-decoration:underline; } .zero-btn:hover { color:#f87171; } .zero-btn[hidden] { display:none; }
+/* les statuts d'Antigravity qui se suivent pendant le travail : Working, Reading, Editing (dans les 10 premières secondes) */
+.wk-s1 { animation:wk-s1 14s infinite, wk-reflet 1.6s linear infinite; } .wk-s2 { opacity:0; animation:wk-s2 14s infinite, wk-reflet 1.6s linear infinite; } .wk-s3 { opacity:0; animation:wk-s3 14s infinite, wk-reflet 1.6s linear infinite; }
+@keyframes wk-s1 { 0%, 22% { opacity:1; } 24%, 100% { opacity:0; } }
+@keyframes wk-s2 { 0%, 23% { opacity:0; } 25%, 46% { opacity:1; } 48%, 100% { opacity:0; } }
+@keyframes wk-s3 { 0%, 47% { opacity:0; } 49%, 70% { opacity:1; } 72%, 100% { opacity:0; } }
+.discuter-boutons { display:flex; flex-wrap:wrap; gap:10px; }
+.nouvelle-version { all:unset; cursor:pointer; font-weight:800; font-size:16px; border-radius:12px; padding:10px 18px; border:2px solid #6366f1; color:#c7d2fe; }
+.nouvelle-version:hover { background:rgba(99,102,241,.15); }
+.note-nouvelle { margin:0; padding:8px 12px; border-radius:10px; background:#1e1b4b; border:1px solid #6366f1; font-size:15px; } .note-nouvelle[hidden] { display:none; }
