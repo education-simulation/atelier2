@@ -344,3 +344,13 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-recopier { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
 .nc-e1.fait > .p-num, .nc-e1.fait > .phrase { display:none; }
 .nc-e1.fait > .nc-e1-fait { display:flex; }
+/* Après Copier : le message se replie en une ligne verte */
+.replie-ligne { display:none; margin:0; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; background:#0c1a10; border:1px solid #166534; color:#bbf7d0; }
+.replie-ligne > span { width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center; background:#22c55e; color:#052e14; font-weight:800; }
+.replie-ligne > button { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
+.replie-ligne.vue { display:flex; }
+.bloc-partie.creer.replie > :not(h3):not(.replie-ligne) { display:none; }
+.phrase.replie { display:none; }
+/* Les onglets restent en haut (dans l'en-tête collant) */
+.onglets-haut { background:#0b0b0f; padding:10px 22px 0; border-bottom:1px solid #27272a; }
+.onglets-haut .onglets { border-bottom:none; }

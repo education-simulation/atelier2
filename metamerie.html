@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Simulation de la métamérie</title>
-<link rel="stylesheet" href="style.css?v=48">
-<link rel="stylesheet" href="clair.css?v=5" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=51">
+<link rel="stylesheet" href="clair.css?v=8" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -14,17 +14,19 @@
   <div class="barre"><i></i><i></i><i></i><b>Atelier · Simulation de la métamérie</b><a href="ateliers.html#page">‹ Ateliers</a></div>
   <nav class="ariane" aria-label="Fil d'Ariane"><a href="./">🏠 Accueil</a><i class="sep">›</i><a href="antigravity.html">Antigravity</a><i class="sep">›</i><a href="ateliers.html">Ateliers</a><i class="sep">›</i><a href="ateliers.html#page">Simple page de simulation</a><i class="sep">›</i><span aria-current="page">Métamérie</span></nav>
     <div class="titre-haut"><h1>🎨 Simulation de la métamérie <span class="domaine-titre">Formulation</span></h1></div>
-  </header>
-  <div class="corps">
-    <div class="aides">
-      <a class="aide-bouton" href="antigravity.html#configurer">⚙️ Configurer Antigravity</a>
-      <a class="aide-bouton" href="decouvrir.html?mode=demo&amp;v=6">🧭 Découvrir Antigravity</a>
-    </div>
+    <div class="onglets-haut">
     <div class="onglets" role="tablist">
       <button type="button" role="tab" data-onglet="simple">✏️ Prompt simple</button>
       <button type="button" role="tab" data-onglet="modifier">🛠️ On modifie</button>
       <button type="button" role="tab" data-onglet="detaille">📝 Prompt détaillé</button>
       <button type="button" role="tab" data-onglet="verifier">⚠️ À vérifier</button>
+    </div>
+    </div>
+  </header>
+  <div class="corps">
+    <div class="aides">
+      <a class="aide-bouton" href="antigravity.html#configurer">⚙️ Configurer Antigravity</a>
+      <a class="aide-bouton" href="decouvrir.html?mode=demo&amp;v=6">🧭 Découvrir Antigravity</a>
     </div>
 
     <section class="panneau" data-panneau="simple">
@@ -238,6 +240,26 @@ document.querySelectorAll("[data-panneau]").forEach((p) => {
   });
   let etape = ""; try { etape = localStorage.getItem("atelier.metamerie.etape." + p.dataset.panneau) || ""; } catch {}
   etat(p, etape);
+});
+// Après Copier, le message se replie en une ligne « ✓ Message copié » (gardé dans le navigateur).
+// Un seul message dans le cadre ① : tout le cadre se replie ; plusieurs (prompt détaillé) : ce message seulement.
+const PAGE = location.pathname.split("/").pop().replace(".html", "") || "page";
+document.querySelectorAll("[data-panneau] .bloc-partie.creer .phrase").forEach((ph, i) => {
+  const b = ph.querySelector("button.copier");
+  if (!b) return;
+  const bloc = ph.closest(".bloc-partie.creer");
+  const unique = bloc.querySelectorAll(".phrase").length === 1;
+  const cible = unique ? bloc : ph;
+  const ligne = document.createElement("p");
+  ligne.className = "replie-ligne";
+  ligne.innerHTML = '<span>✓</span> <b>Message copié</b> <button type="button">voir le message ou le recopier</button>';
+  if (unique) bloc.querySelector("h3").after(ligne); else ph.before(ligne);
+  const cle = "atelier." + PAGE + ".copie." + i;
+  const replier = (oui) => { cible.classList.toggle("replie", oui); ligne.classList.toggle("vue", oui); try { localStorage.setItem(cle, oui ? "1" : ""); } catch {} };
+  ligne.querySelector("button").addEventListener("click", () => replier(false));
+  b.addEventListener("click", () => setTimeout(() => replier(true), 700));
+  let r = false; try { r = localStorage.getItem(cle) === "1"; } catch {}
+  replier(r);
 });
 // Le système de l'ordinateur (Mac, Windows, Linux), comme sur la page Antigravity
 let os = null; try { os = localStorage.getItem("atelier.os"); } catch {}
