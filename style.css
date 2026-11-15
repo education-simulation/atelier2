@@ -436,3 +436,4 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .va-ag-page { flex:1; margin:0 5px 5px; border-radius:8px; background:#fff; padding:8px; display:flex; flex-direction:column; gap:5px; color:#18181b; font-size:10.5px; }
 .va-dom { align-self:flex-start; font-style:normal; font-weight:800; font-size:9px; background:#fbbf24; color:#1f1300; border-radius:999px; padding:0 6px; }
 .va-mini { height:28px; border-radius:6px; border:2px solid #f59e0b; background:#fffbeb; } .va-mini.b { border-color:#3b82f6; background:#eff6ff; height:22px; } .va-mini.court { width:70%; }
+.voir-nav { display:grid; gap:10px; } .voir-nav[hidden], .voir-suite[hidden] { display:none; } .voir-suite { display:grid; gap:10px; }
