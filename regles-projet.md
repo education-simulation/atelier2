@@ -35,6 +35,13 @@ Ces règles s'appliquent à toutes les conversations de ce projet.
 - Tout en haut du fichier, juste après `<!DOCTYPE html>`, mets ce commentaire, avec le vrai nom du dossier du projet et la vraie adresse complète du fichier, et garde-le à jour à chaque modification :
   `<!-- Ceci est le CODE de la simulation : ne la regarde pas ici. Pour la voir, ouvre le dossier « nom du dossier du projet » et double-clique sur ce fichier, ou copie cette adresse dans la barre d'adresse de ton navigateur (Chrome, Firefox, Safari, Edge) : file:///chemin/complet/du/fichier.html -->`
 
+## Les versions d'une simulation (pour comparer des prompts)
+
+- **Une nouvelle version, dans le même fichier.** Si on te redonne un prompt de départ (par exemple « Fais-moi une simulation de titrage… ») pour une simulation dont le fichier existe déjà, ne crée pas d'autre fichier et n'écrase pas l'existant. Si ce n'est pas dit clairement, demande d'abord : « Veux-tu une nouvelle version, à comparer avec l'existante, dans le même fichier ? (1 : oui, 2 : non, je modifie l'existante) ».
+- **Des onglets en haut de la page.** Dès qu'il y a plusieurs versions, le fichier a des onglets tout en haut : « Version 1 », « Version 2 »…, chacun avec un nom court qui rappelle le prompt (par exemple « Version 1 · prompt minimal », « Version 2 · prompt détaillé »). Chaque version est complète et indépendante des autres ; l'onglet ouvert est gardé dans l'adresse (#v1, #v2…).
+- **Une modification : demander à quelle(s) version(s).** Quand le fichier contient plusieurs versions et qu'on te demande une modification, demande d'abord à quelle(s) version(s) l'appliquer, avec la liste numérotée des versions et « toutes » ; on peut en choisir plusieurs (par exemple « 1 et 3 »). Applique-la ensuite seulement à celles-là.
+- Le commentaire en haut du fichier, le bouton « ↩ Retour à Antigravity » et la réponse « Ta simulation est prête » restent les mêmes (une seule fois pour le fichier).
+
 ## Quand une simulation est prête
 
 Quand une simulation est prête (création ou modification), réponds seulement par ces deux parties, avec les vrais noms du dossier du projet et du fichier et le vrai chemin complet du fichier. Garde la partie ② EN DEHORS de l'encadré, avec l'adresse seule dans un vrai bloc de code, pour qu'elle ait son bouton de copie :
