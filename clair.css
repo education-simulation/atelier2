@@ -83,3 +83,7 @@ ol.etapes > li, .info { background:#fffbeb; }
 @keyframes nc-ajout { 0%, 65% { opacity:0; background:transparent; } 67%, 98% { opacity:1; background:#e4e4e7; } 100% { opacity:0; } }
 .va-moi { background:#f4f4f5; } .va-imp b { color:#7e22ce; } .va-imp u { color:#2563eb; } .va-ag-droite { border-left-color:#e4e4e7; }
 .barre a.icone { background:#fff; border-color:#d4d4d8; }
+/* « Antigravity travaille », en clair */
+.ecran-wk { background:#fff; border-color:#e4e4e7; color:#27272a; }
+.wk-working { background:linear-gradient(90deg,#a1a1aa 0%,#18181b 45%,#a1a1aa 90%); background-size:250% 100%; -webkit-background-clip:text; background-clip:text; }
+.wk-temps { color:#71717a; } .wk-tip b { color:#15803d; } .wk-tip i { color:#ea580c; }
