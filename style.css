@@ -216,3 +216,4 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .pas.fait .pas-actions { display:none; }
 .pas.fait .pas-fait { display:inline; color:#86efac; font-weight:700; }
 .pas.fait .pas-modif { display:inline; all:unset; margin-left:auto; cursor:pointer; color:#a1a1aa; font-size:14px; text-decoration:underline; }
+.pas[hidden] { display:none; }
