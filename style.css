@@ -221,3 +221,51 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 /* Le bouton du thème (blanc / noir), dans la barre du haut : voir theme.js */
 .theme-bascule { all:unset; cursor:pointer; margin-left:auto; font-size:13px; font-weight:800; border-radius:999px; padding:3px 10px; background:#27272a; color:#e4e4e7; border:1px solid #3f3f46; white-space:nowrap; }
 .theme-bascule + a { margin-left:10px; }
+
+/* La fenêtre « ouvre une conversation dans ton projet » (page Ateliers) */
+.nc-voile { position:fixed; inset:0; z-index:100; background:rgba(15,23,42,.6); display:grid; place-items:center; padding:14px; overflow:auto; }
+.nc-fenetre { position:relative; width:min(760px,100%); max-height:calc(100vh - 28px); overflow:auto; box-sizing:border-box; background:#0b0b0f; color:#e4e4e7; border:2px solid #f59e0b; border-radius:16px; padding:18px 20px; display:grid; gap:12px; font-size:16px; line-height:1.5; }
+.nc-fenetre h2 { margin:0; padding-right:36px; font:800 21px/1.25 'Outfit',system-ui,sans-serif; color:#fff; }
+.nc-fenetre p { margin:0; }
+.nc-fermer { all:unset; cursor:pointer; position:absolute; top:10px; right:12px; width:32px; height:32px; display:grid; place-items:center; border-radius:8px; font-size:24px; font-weight:800; color:#a1a1aa; }
+.nc-fermer:hover { background:#dc2626; color:#fff; }
+.nc-etapes { margin:0; padding-left:24px; display:grid; gap:8px; }
+/* l'animation (10 s, en boucle) */
+.ecran-nc { position:relative; height:270px; overflow:hidden; background:#111114; border:1px solid #3f3f46; border-radius:12px; font-size:13px; }
+.nc-gauche { position:absolute; left:0; top:0; bottom:0; width:190px; background:#16161b; padding:10px; box-sizing:border-box; color:#d4d4d8; }
+.nc-gauche p { margin:0 0 6px; padding:4px 8px; border-radius:6px; white-space:nowrap; position:relative; }
+.nc-titre-g { color:#71717a; font-size:12px; }
+.nc-projet { animation:nc-survol 10s infinite; }
+.nc-plus { position:absolute; right:6px; top:2px; width:18px; height:18px; display:grid; place-items:center; border-radius:5px; font-weight:800; opacity:0; animation:nc-plus 10s infinite; }
+.nc-vieux { animation:nc-vieux 10s infinite; }
+.nc-nouveau { opacity:0; background:#3a3a44; animation:nc-apres 10s infinite; }
+.nc-milieu { position:absolute; left:204px; right:12px; top:12px; bottom:12px; }
+.nc-ancien { display:grid; gap:8px; animation:nc-avant 10s infinite; } .nc-ancien span { height:8px; border-radius:4px; background:#3f3f46; } .nc-ancien .court { width:60%; }
+.nc-reponse { position:absolute; left:0; top:0; width:min(320px,100%); border-left:3px solid #a855f7; padding:4px 10px; color:#e4e4e7; opacity:0; animation:nc-reponse 10s infinite; }
+.nc-reponse b { color:#c084fc; font-size:11px; } .nc-lien { color:#60a5fa; animation:nc-lien 10s infinite; }
+.nc-saisie { position:absolute; left:0; right:0; bottom:0; background:#1e1e25; border:1px solid #3f3f46; border-radius:12px; padding:8px 10px; }
+.nc-chip { display:inline-block; margin-bottom:6px; background:#2e2e36; color:#e4e4e7; border-radius:999px; padding:2px 10px; font-weight:800; opacity:0; animation:nc-apres 10s infinite; }
+.nc-ask { position:relative; min-height:18px; color:#71717a; }
+.nc-indice { animation:nc-indice 10s infinite; }
+.nc-msg { position:absolute; left:0; top:0; right:0; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; opacity:0; animation:nc-msg 10s infinite; }
+.nc-bas { display:flex; justify-content:space-between; align-items:center; margin-top:8px; color:#d4d4d8; }
+.nc-envoi { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:#fff; color:#0b0b0f; font-weight:800; animation:nc-envoi 10s infinite; }
+.ecran-nc .souris { position:absolute; filter:drop-shadow(0 2px 3px rgba(0,0,0,.6)); z-index:5; left:420px; top:160px; animation:nc-souris 10s infinite; }
+@keyframes nc-souris {
+  0% { left:420px; top:160px; transform:scale(1); }
+  18% { left:90px; top:40px; transform:scale(1); }
+  28% { left:172px; top:40px; transform:scale(1); } 30% { left:172px; top:40px; transform:scale(.8); } 32% { left:172px; top:40px; transform:scale(1); }
+  46% { left:400px; top:214px; transform:scale(1); }
+  62% { left:640px; top:236px; transform:scale(1); } 64% { left:640px; top:236px; transform:scale(.8); } 66% { left:640px; top:236px; transform:scale(1); }
+  80%, 100% { left:300px; top:60px; transform:scale(1); }
+}
+@keyframes nc-survol { 0%, 14% { background:transparent; } 16%, 32% { background:#26262e; } 34%, 100% { background:#26262e; } }
+@keyframes nc-plus { 0%, 15% { opacity:0; } 17%, 26% { opacity:1; background:transparent; } 27%, 33% { opacity:1; background:#f59e0b; color:#1f1300; } 36%, 100% { opacity:0; } }
+@keyframes nc-vieux { 0%, 32% { background:#3a3a44; } 34%, 100% { background:transparent; } }
+@keyframes nc-apres { 0%, 32% { opacity:0; } 34%, 98% { opacity:1; } 100% { opacity:0; } }
+@keyframes nc-avant { 0%, 32% { opacity:1; } 34%, 100% { opacity:0; } }
+@keyframes nc-indice { 0%, 48% { opacity:1; } 50%, 66% { opacity:0; } 68%, 100% { opacity:1; } }
+@keyframes nc-msg { 0%, 48% { opacity:0; } 50%, 66% { opacity:1; } 68%, 100% { opacity:0; } }
+@keyframes nc-envoi { 0%, 61% { box-shadow:none; } 62%, 66% { box-shadow:0 0 0 4px rgba(245,158,11,.6); } 68%, 100% { box-shadow:none; } }
+@keyframes nc-reponse { 0%, 67% { opacity:0; } 70%, 98% { opacity:1; } 100% { opacity:0; } }
+@keyframes nc-lien { 0%, 78% { background:transparent; } 80%, 100% { background:rgba(245,158,11,.35); } }

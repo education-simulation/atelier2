@@ -53,3 +53,14 @@ ol.etapes > li, .info { background:#fffbeb; }
 .btn-deux { color:#3f3f46; border-color:#d4d4d8; } .btn-deux:hover { color:#18181b; border-color:#a1a1aa; }
 .pas.fait { background:#f0fdf4; border-color:#86efac; } .pas.fait .pas-tete b { color:#14532d; } .pas.fait .pas-fait { color:#15803d; } .pas.fait .pas-modif { color:#71717a; }
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
+
+/* la fenêtre « ouvre une conversation dans ton projet », en clair */
+.nc-fenetre { background:#fff; color:#27272a; } .nc-fenetre h2 { color:#18181b; }
+.ecran-nc { background:#fff; border-color:#e4e4e7; }
+.nc-gauche { background:#f4f4f5; color:#27272a; } .nc-nouveau { background:#e4e4e7; }
+.nc-ancien span { background:#e4e4e7; }
+.nc-reponse { color:#27272a; } .nc-reponse b { color:#7e22ce; } .nc-lien { color:#2563eb; }
+.nc-saisie { background:#fff; border-color:#d4d4d8; } .nc-chip { background:#f4f4f5; color:#18181b; }
+.nc-msg { color:#18181b; } .nc-bas { color:#3f3f46; } .nc-envoi { background:#18181b; color:#fff; }
+@keyframes nc-survol { 0%, 14% { background:transparent; } 16%, 100% { background:#e4e4e7; } }
+@keyframes nc-vieux { 0%, 32% { background:#e4e4e7; } 34%, 100% { background:transparent; } }
