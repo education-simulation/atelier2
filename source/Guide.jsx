@@ -473,104 +473,115 @@ function Pastille({ id, actif, setActif }) {
   );
 }
 
-function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastilles = true, conv = 0, replie = false, ferme = false, curseur = null, etiquettes = false, niveau = "Medium", fenetre = 0 }) {
+function SchemaAntigravity({ clair = false, actif, setActif, spot = false, zones = null, pastilles = true, conv = 0, replie = false, ferme = false, curseur = null, etiquettes = false, niveau = "Medium", fenetre = 0 }) {
   const t = { fontFamily: "Nunito, system-ui, sans-serif" };
+  // Les couleurs d'Antigravity : thème sombre ou clair (« fond blanc »)
+  const C = clair
+    ? { fond: "#ffffff", gauche: "#f4f4f5", bouton: "#e4e4e7", texte: "#18181b", texte2: "#27272a", gris: "#71717a", gris2: "#52525b", trait: "#d4d4d8", bulle: "#f1f1f3", panneau: "#ffffff", choisi: "#e4e4e7", bord: "#d4d4d8", choisi2: "#f4f4f5", fort: "#09090b", envoi: "#18181b", envoiTexte: "#ffffff", onglets: "#f4f4f5", onglet: "#ffffff", ongletTexte: "#18181b" }
+    : { fond: "#0b0b0f", gauche: "#16161b", bouton: "#26262e", texte: "#e4e4e7", texte2: "#d4d4d8", gris: "#71717a", gris2: "#a1a1aa", trait: "#3f3f46", bulle: "#1e1e25", panneau: "#1c1c22", choisi: "#3a3a44", bord: "#52525b", choisi2: "#2e2e36", fort: "#ffffff", envoi: "#ffffff", envoiTexte: "#0b0b0f", onglets: "#1c1c22", onglet: "#3a3a44", ongletTexte: "#ffffff" };
   // zones : la démo passe ses propres rectangles (plusieurs possibles) ; sinon, la zone du numéro actif.
   const liste = zones || (actif && ZONES[actif] ? [ZONES[actif]] : []);
   const z = liste[0];
   return (
     <svg viewBox="0 0 760 430" role="img" aria-label="Schéma de la fenêtre d'Antigravity, avec ses parties numérotées" style={{ width: "100%", height: "auto", display: "block" }}>
-      <rect x="0" y="0" width="760" height="430" rx="14" fill="#0b0b0f" />
+      <rect x="0" y="0" width="760" height="430" rx="14" fill={C.fond} />
       <g id="g-base">
       {/* barre du haut */}
-      <circle cx="18" cy="16" r="5" fill="#3f3f46" /><circle cx="34" cy="16" r="5" fill="#3f3f46" /><circle cx="50" cy="16" r="5" fill="#3f3f46" />
-      <rect x="64" y="7" width="18" height="18" rx="3" fill="none" stroke="#a1a1aa" strokeWidth="1.6" /><line x1="70" y1="9" x2="70" y2="23" stroke="#a1a1aa" strokeWidth="1.6" />
-      <rect x="706" y="7" width="18" height="18" rx="3" fill="none" stroke="#a1a1aa" strokeWidth="1.6" /><line x1="718" y1="9" x2="718" y2="23" stroke="#a1a1aa" strokeWidth="1.6" />
-      <text x="743" y="22" fontSize="15" fill="#a1a1aa" textAnchor="middle" style={t}>⤢</text>
-      {/* barre de gauche */}
-      <rect x="0" y="32" width="150" height="398" fill="#16161b" />
-      <rect x="10" y="44" width="130" height="22" rx="6" fill="#26262e" /><text x="20" y="59" fontSize="11" fill="#e4e4e7" style={t}>+ New Conversation</text>
-      <text x="16" y="92" fontSize="10" fill="#71717a" style={t}>Conversations</text>
-      <rect x="10" y="100" width="130" height="20" rx="5" fill={conv === 0 ? "#3a3a44" : "transparent"} style={{ transition: "fill .3s" }} /><text x="18" y="114" fontSize="10" fill="#d4d4d8" style={t}>Atelier simulation</text>
-      <rect x="10" y="124" width="130" height="20" rx="5" fill={conv === 1 ? "#3a3a44" : "transparent"} style={{ transition: "fill .3s" }} /><text x="18" y="138" fontSize="10" fill="#d4d4d8" style={t}>Ma simulation</text>
-      <text x="16" y="414" fontSize="10" fill="#a1a1aa" style={t}>⚙ Settings</text>
+      <circle cx="18" cy="16" r="5" fill={C.trait} /><circle cx="34" cy="16" r="5" fill={C.trait} /><circle cx="50" cy="16" r="5" fill={C.trait} />
+      <rect x="64" y="7" width="18" height="18" rx="3" fill="none" stroke={C.gris2} strokeWidth="1.6" /><line x1="70" y1="9" x2="70" y2="23" stroke={C.gris2} strokeWidth="1.6" />
+      <text x="100" y="21" fontSize="12" fill={C.gris2} textAnchor="middle" style={t}>←</text><text x="118" y="21" fontSize="12" fill={C.gris2} textAnchor="middle" style={t}>→</text><text x="140" y="21" fontSize="11" fill={C.gris2} textAnchor="middle" style={t}>🔍</text>
+      <rect x="706" y="7" width="18" height="18" rx="3" fill="none" stroke={C.gris2} strokeWidth="1.6" /><line x1="718" y1="9" x2="718" y2="23" stroke={C.gris2} strokeWidth="1.6" />
+      <text x="743" y="22" fontSize="15" fill={C.gris2} textAnchor="middle" style={t}>⤢</text>
+      {/* barre de gauche : tous les éléments du menu, comme dans Antigravity */}
+      <rect x="0" y="32" width="150" height="398" fill={C.gauche} />
+      <rect x="8" y="40" width="134" height="20" rx="6" fill={C.bouton} /><text x="16" y="54" fontSize="10.5" fill={C.texte} style={t}>+  New Conversation</text>
+      <text x="16" y="76" fontSize="10.5" fill={C.texte2} style={t}>◷  Automations</text>
+      <text x="16" y="96" fontSize="10.5" fill={C.texte2} style={t}>⧉  Customizations</text>
+      <text x="16" y="126" fontSize="9.5" fill={C.gris} style={t}>Projects</text>
+      <text x="112" y="126" fontSize="10" fill={C.gris} style={t}>≡</text>
+      <rect x="126" y="117" width="14" height="11" rx="2" fill="none" stroke={C.gris} strokeWidth="1.2" /><text x="133" y="126" fontSize="9" fill={C.gris} textAnchor="middle" style={t}>+</text>
+      <text x="16" y="146" fontSize="10" fill={C.texte2} style={t}>📁 Mes simulations</text>
+      <text x="16" y="176" fontSize="9.5" fill={C.gris} style={t}>Conversations</text>
+      <text x="134" y="176" fontSize="11" fill={C.gris} textAnchor="middle" style={t}>+</text>
+      <rect x="8" y="184" width="134" height="20" rx="5" fill={conv === 0 ? C.choisi : "transparent"} style={{ transition: "fill .3s" }} /><text x="16" y="198" fontSize="10" fill={C.texte2} style={t}>Atelier simulation</text><text x="136" y="198" fontSize="8.5" fill={C.gris} textAnchor="end" style={t}>now</text>
+      <rect x="8" y="206" width="134" height="20" rx="5" fill={conv === 1 ? C.choisi : "transparent"} style={{ transition: "fill .3s" }} /><text x="16" y="220" fontSize="10" fill={C.texte2} style={t}>Ma simulation</text><text x="136" y="220" fontSize="8.5" fill={C.gris} textAnchor="end" style={t}>37m</text>
+      <text x="16" y="414" fontSize="10" fill={C.gris2} style={t}>⚙ Settings</text>
       {/* conversation (le milieu change avec la conversation choisie à gauche) */}
       {conv === 0 ? (
         <g key="c0" className="g-apparait">
-        <rect x="166" y="48" width="200" height="34" rx="10" fill="#1e1e25" /><text x="176" y="69" fontSize="10" fill="#d4d4d8" style={t}>Lis le fichier AGENTS.md…</text>
-        <text x="166" y="106" fontSize="10" fill="#71717a" style={t}>Ran commands ›</text>
-        <text x="166" y="132" fontSize="11" fill="#fff" fontWeight="700" style={t}>💬 Pour toi :</text>
-        <text x="166" y="152" fontSize="10.5" fill="#e4e4e7" style={t}>Dans quel dossier ranger tes simulations ?</text>
-        <text x="166" y="174" fontSize="10.5" fill="#d4d4d8" style={t}>1. Bureau (recommandé)</text>
-        <text x="166" y="190" fontSize="10.5" fill="#d4d4d8" style={t}>2. Documents</text>
-        <text x="166" y="228" fontSize="10" fill="#a1a1aa" fontStyle="italic" style={t}>✍️ Écris le numéro dans la zone de message</text>
+        <rect x="166" y="48" width="200" height="34" rx="10" fill={C.bulle} /><text x="176" y="69" fontSize="10" fill={C.texte2} style={t}>Lis le fichier AGENTS.md…</text>
+        <text x="166" y="106" fontSize="10" fill={C.gris} style={t}>Ran commands ›</text>
+        <text x="166" y="132" fontSize="11" fill={C.fort} fontWeight="700" style={t}>💬 Pour toi :</text>
+        <text x="166" y="152" fontSize="10.5" fill={C.texte} style={t}>Dans quel dossier ranger tes simulations ?</text>
+        <text x="166" y="174" fontSize="10.5" fill={C.texte2} style={t}>1. Bureau (recommandé)</text>
+        <text x="166" y="190" fontSize="10.5" fill={C.texte2} style={t}>2. Documents</text>
+        <text x="166" y="228" fontSize="10" fill={C.gris2} fontStyle="italic" style={t}>✍️ Écris le numéro dans la zone de message</text>
         </g>
       ) : (
         <g key="c1" className="g-apparait">
-          <rect x="226" y="48" width="200" height="34" rx="10" fill="#1e1e25" /><text x="236" y="69" fontSize="10" fill="#d4d4d8" style={t}>Active les 3 boutons d'illuminants</text>
-          <text x="166" y="106" fontSize="10" fill="#71717a" style={t}>Edited 1 file ›</text>
-          <text x="166" y="132" fontSize="11" fill="#fff" fontWeight="700" style={t}>💬 Pour toi :</text>
-          <text x="166" y="152" fontSize="10.5" fill="#e4e4e7" style={t}>✅ Les 3 boutons fonctionnent.</text>
-          <text x="166" y="172" fontSize="10.5" fill="#d4d4d8" style={t}>👉 Recharge ta page : Cmd + R.</text>
+          <rect x="226" y="48" width="200" height="34" rx="10" fill={C.bulle} /><text x="236" y="69" fontSize="10" fill={C.texte2} style={t}>Active les 3 boutons d'illuminants</text>
+          <text x="166" y="106" fontSize="10" fill={C.gris} style={t}>Edited 1 file ›</text>
+          <text x="166" y="132" fontSize="11" fill={C.fort} fontWeight="700" style={t}>💬 Pour toi :</text>
+          <text x="166" y="152" fontSize="10.5" fill={C.texte} style={t}>✅ Les 3 boutons fonctionnent.</text>
+          <text x="166" y="172" fontSize="10.5" fill={C.texte2} style={t}>👉 Recharge ta page : Cmd + R.</text>
         </g>
       )}
       {/* zone de message */}
-      <rect x="160" y="340" width="300" height="74" rx="14" fill="#1e1e25" stroke="#3f3f46" />
-      <text x="176" y="366" fontSize="11" fill="#71717a" style={t}>Ask anything…   ← écris ici</text>
-      <text x="176" y="401" fontSize="10.5" fill="#d4d4d8" style={t}>+   Gemini 3.8 Flash <tspan fill="#a1a1aa">{niveau}</tspan> ⌃</text>
-      <text x="360" y="401" fontSize="10.5" fill="#d4d4d8" style={t}>Auto   🎤</text>
-      <circle cx="440" cy="397" r="10" fill="#fff" /><text x="440" y="401" fontSize="11" textAnchor="middle" fill="#0b0b0f" style={t}>↑</text>
+      <rect x="160" y="340" width="300" height="74" rx="14" fill={C.bulle} stroke={C.trait} />
+      <text x="176" y="366" fontSize="11" fill={C.gris} style={t}>Ask anything…   ← écris ici</text>
+      <text x="176" y="401" fontSize="10.5" fill={C.texte2} style={t}>+   Gemini 3.8 Flash <tspan fill={C.gris2}>{niveau}</tspan> ⌃</text>
+      <text x="360" y="401" fontSize="10.5" fill={C.texte2} style={t}>Auto   🎤</text>
+      <circle cx="440" cy="397" r="10" fill={C.envoi} /><text x="440" y="401" fontSize="11" textAnchor="middle" fill={C.envoiTexte} style={t}>↑</text>
       {/* volet de droite */}
       <rect x="476" y="32" width="284" height="398" fill="#e9ecf2" />
-      <rect x="476" y="32" width="284" height="26" fill="#1c1c22" />
-      <rect x="482" y="36" width="150" height="18" rx="5" fill="#3a3a44" /><text x="489" y="49" fontSize="9.5" fill="#fff" style={t}>Découvre Antigravity  ×</text>
-      <text x="654" y="50" fontSize="14" fill="#d4d4d8" textAnchor="middle" style={t}>+</text>
-      <text x="700" y="49" fontSize="12" fill="#a1a1aa" textAnchor="middle" style={t}>↗</text>
+      <rect x="476" y="32" width="284" height="26" fill={C.onglets} />
+      <rect x="482" y="36" width="150" height="18" rx="5" fill={C.onglet} /><text x="489" y="49" fontSize="9.5" fill={C.ongletTexte} style={t}>Découvre Antigravity  ×</text>
+      <text x="654" y="50" fontSize="14" fill={C.texte2} textAnchor="middle" style={t}>+</text>
+      <text x="700" y="49" fontSize="12" fill={C.gris2} textAnchor="middle" style={t}>↗</text>
       <rect x="482" y="62" width="272" height="16" rx="8" fill="#d4d9e2" /><text x="492" y="73" fontSize="8.5" fill="#64748b" style={t}>https://atelier2.rasf.fr/decouvrir.html</text>
       {/* la page « Découvre Antigravity », en miniature */}
       <rect x="492" y="90" width="252" height="250" rx="12" fill="#0b0b0f" />
       <text x="618" y="132" fontSize="26" textAnchor="middle" style={t}>🧭</text>
       <text x="618" y="160" fontSize="15" fontWeight="800" fill="#fff" textAnchor="middle" style={t}>Découvre Antigravity</text>
       <rect x="512" y="174" width="212" height="6" rx="3" fill="#3f3f46" /><rect x="526" y="186" width="184" height="6" rx="3" fill="#3f3f46" /><rect x="548" y="198" width="140" height="6" rx="3" fill="#3f3f46" />
-      <rect x="548" y="220" width="64" height="24" rx="6" fill="#2563eb" /><text x="580" y="236" fontSize="10" fontWeight="800" fill="#fff" textAnchor="middle" style={t}>▶ Démo</text>
-      <rect x="620" y="220" width="72" height="24" rx="6" fill="#f59e0b" /><text x="656" y="236" fontSize="10" fontWeight="800" fill="#1f1300" textAnchor="middle" style={t}>Explorer</text>
+      <rect x="584" y="220" width="68" height="24" rx="6" fill="#2563eb" /><text x="618" y="236" fontSize="10" fontWeight="800" fill="#fff" textAnchor="middle" style={t}>▶ Démo</text>
       {/* menu des modèles, montré pour 4 et 5 */}
       {/* les pastilles numérotées, sous les fenêtres qui s'ouvrent (menus, Settings…) */}
       {/* démo : le menu de gauche replié, le volet de droite fermé */}
-      <rect x="0" y="32" width={replie ? 150 : 0} height="398" fill="#0b0b0f" style={{ transition: "width .6s cubic-bezier(.2,.8,.2,1)" }} />
-      <rect x={ferme ? 476 : 760} y="32" width={ferme ? 284 : 0} height="398" fill="#0b0b0f" style={{ transition: "all .6s cubic-bezier(.2,.8,.2,1)" }} />
+      <rect x="0" y="32" width={replie ? 150 : 0} height="398" fill={C.fond} style={{ transition: "width .6s cubic-bezier(.2,.8,.2,1)" }} />
+      <rect x={ferme ? 476 : 760} y="32" width={ferme ? 284 : 0} height="398" fill={C.fond} style={{ transition: "all .6s cubic-bezier(.2,.8,.2,1)" }} />
       {pastilles && PARTIES.map((p) => <Pastille key={p.id} id={p.id} actif={actif} setActif={setActif} />)}
       {/* le menu des modèles (comme dans Antigravity), montré pour 4 et 5 */}
       {(actif === "4" || actif === "5") && (
         <g>
-          <rect x="164" y="196" width="230" height="186" rx="10" fill="#1c1c22" stroke="#52525b" />
-          <text x="176" y="214" fontSize="9.5" fill="#a1a1aa" style={t}>Model</text>
-          <rect x="170" y="221" width="218" height="22" rx="6" fill={actif === "4" ? "#f59e0b" : "#2e2e36"} />
-          <text x="178" y="236" fontSize="10.5" fontWeight="800" fill={actif === "4" ? "#1f1300" : "#fff"} style={t}>Gemini 3.8 Flash  {niveau}</text>
-          <text x="380" y="236" fontSize="11" fill={actif === "4" ? "#1f1300" : "#a1a1aa"} textAnchor="end" style={t}>›</text>
-          <text x="178" y="260" fontSize="10" fill="#d4d4d8" style={t}>Claude Sonnet 4.6 (Thinking)</text>
-          <text x="178" y="280" fontSize="10" fill="#d4d4d8" style={t}>Claude Opus 4.6 (Thinking)</text>
-          <text x="178" y="300" fontSize="10" fill="#d4d4d8" style={t}>GPT-OSS 120B (Medium)</text>
-          <text x="178" y="320" fontSize="10" fill="#71717a" style={t}>Gemini 4 …  Unavailable</text>
-          <line x1="170" y1="332" x2="388" y2="332" stroke="#3f3f46" />
+          <rect x="164" y="196" width="230" height="186" rx="10" fill={C.panneau} stroke={C.bord} />
+          <text x="176" y="214" fontSize="9.5" fill={C.gris2} style={t}>Model</text>
+          <rect x="170" y="221" width="218" height="22" rx="6" fill={actif === "4" ? "#f59e0b" : C.choisi2} />
+          <text x="178" y="236" fontSize="10.5" fontWeight="800" fill={actif === "4" ? "#1f1300" : C.fort} style={t}>Gemini 3.8 Flash  {niveau}</text>
+          <text x="380" y="236" fontSize="11" fill={actif === "4" ? "#1f1300" : C.gris2} textAnchor="end" style={t}>›</text>
+          <text x="178" y="260" fontSize="10" fill={C.texte2} style={t}>Claude Sonnet 4.6 (Thinking)</text>
+          <text x="178" y="280" fontSize="10" fill={C.texte2} style={t}>Claude Opus 4.6 (Thinking)</text>
+          <text x="178" y="300" fontSize="10" fill={C.texte2} style={t}>GPT-OSS 120B (Medium)</text>
+          <text x="178" y="320" fontSize="10" fill={C.gris} style={t}>Gemini 4 …  Unavailable</text>
+          <line x1="170" y1="332" x2="388" y2="332" stroke={C.trait} />
           <rect x="170" y="340" width="218" height="24" rx="6" fill={actif === "5" ? "#f59e0b" : "transparent"} />
-          <text x="178" y="356" fontSize="10.5" fontWeight="700" fill={actif === "5" ? "#1f1300" : "#e4e4e7"} style={t}>⏱ View Usage</text>
-          <text x="380" y="356" fontSize="11" fill={actif === "5" ? "#1f1300" : "#a1a1aa"} textAnchor="end" style={t}>›</text>
+          <text x="178" y="356" fontSize="10.5" fontWeight="700" fill={actif === "5" ? "#1f1300" : C.texte} style={t}>⏱ View Usage</text>
+          <text x="380" y="356" fontSize="11" fill={actif === "5" ? "#1f1300" : C.gris2} textAnchor="end" style={t}>›</text>
         </g>
       )}
       {/* View Usage : ce qu'il reste pour chaque famille de modèles (montré pour 5), comme dans Antigravity */}
       {actif === "5" && (
         <g>
-          <rect x="398" y="262" width="210" height="112" rx="10" fill="#1c1c22" stroke="#f59e0b" strokeWidth="1.5" />
-          <text x="410" y="280" fontSize="9.5" fill="#a1a1aa" style={t}>Usage</text>
+          <rect x="398" y="262" width="210" height="112" rx="10" fill={C.panneau} stroke="#f59e0b" strokeWidth="1.5" />
+          <text x="410" y="280" fontSize="9.5" fill={C.gris2} style={t}>Usage</text>
           {[["Gemini Models", "Weekly limit, resets in 6d 22h", 41, 300], ["Claude and GPT models", "Weekly limit", 100, 340]].map(([nom, sous, reste, y]) => {
             const c = 2 * Math.PI * 6;
             return (
               <g key={nom}>
-                <text x="410" y={y} fontSize="10.5" fontWeight="700" fill="#fff" style={t}>{nom}</text>
-                <text x="410" y={y + 14} fontSize="9" fill="#a1a1aa" style={t}>{sous}</text>
-                <text x="584" y={y} fontSize="9.5" fill="#d4d4d8" textAnchor="end" style={t}>{reste}% left</text>
-                <circle cx="596" cy={y - 3.5} r="6" fill="none" stroke="#3f3f46" strokeWidth="2" />
+                <text x="410" y={y} fontSize="10.5" fontWeight="700" fill={C.fort} style={t}>{nom}</text>
+                <text x="410" y={y + 14} fontSize="9" fill={C.gris2} style={t}>{sous}</text>
+                <text x="584" y={y} fontSize="9.5" fill={C.texte2} textAnchor="end" style={t}>{reste}% left</text>
+                <circle cx="596" cy={y - 3.5} r="6" fill="none" stroke={C.trait} strokeWidth="2" />
                 <circle cx="596" cy={y - 3.5} r="6" fill="none" stroke="#4ade80" strokeWidth="2" strokeDasharray={`${(c * reste) / 100} ${c}`} transform={`rotate(-90 596 ${y - 3.5})`} />
               </g>
             );
@@ -580,12 +591,12 @@ function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastil
       {/* les 3 niveaux de Gemini : ils s'ouvrent quand la souris passe sur le modèle */}
       {actif === "4" && (
         <g>
-          <rect x="398" y="214" width="138" height="86" rx="10" fill="#1c1c22" stroke="#f59e0b" strokeWidth="1.5" />
+          <rect x="398" y="214" width="138" height="86" rx="10" fill={C.panneau} stroke="#f59e0b" strokeWidth="1.5" />
           {[["Low", "faible", 222], ["Medium", "moyen", 246], ["High", "élevé", 270]].map(([n, fr, y]) => (
             <g key={n}>
-              {n === niveau && <rect x="404" y={y} width="126" height="22" rx="6" fill="#3f3f46" style={{ transition: "all .3s" }} />}
-              <text x="410" y={y + 15} fontSize="10.5" fontWeight={n === niveau ? 800 : 400} fill={n === niveau ? "#fff" : "#e4e4e7"} style={t}>{n} <tspan fill="#a1a1aa" fontWeight="400">· {fr}</tspan></text>
-              {n === niveau && <text x="522" y={y + 15} fontSize="10.5" fill="#fff" textAnchor="end" style={t}>✓</text>}
+              {n === niveau && <rect x="404" y={y} width="126" height="22" rx="6" fill={C.trait} style={{ transition: "all .3s" }} />}
+              <text x="410" y={y + 15} fontSize="10.5" fontWeight={n === niveau ? 800 : 400} fill={n === niveau ? C.fort : C.texte} style={t}>{n} <tspan fill={C.gris2} fontWeight="400">· {fr}</tspan></text>
+              {n === niveau && <text x="522" y={y + 15} fontSize="10.5" fill={C.fort} textAnchor="end" style={t}>✓</text>}
             </g>
           ))}
         </g>
@@ -593,16 +604,16 @@ function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastil
       {/* Settings : la fenêtre qui s'ouvre, ton nom, puis « Sign Out » (montré pour 8) */}
       {actif === "8" && (
         <g>
-          <rect x="12" y="232" width="250" height="160" rx="10" fill="#1c1c22" stroke="#52525b" />
-          <text x="24" y="252" fontSize="10.5" fontWeight="800" fill="#fff" style={t}>Settings</text>
-          <text x="24" y="270" fontSize="9" fill="#a1a1aa" style={t}>General · Models · Account…</text>
+          <rect x="12" y="232" width="250" height="160" rx="10" fill={C.panneau} stroke={C.bord} />
+          <text x="24" y="252" fontSize="10.5" fontWeight="800" fill={C.fort} style={t}>Settings</text>
+          <text x="24" y="270" fontSize="9" fill={C.gris2} style={t}>General · Models · Account…</text>
           <rect x="18" y="280" width="238" height="30" rx="7" fill="#f59e0b" />
           <circle cx="34" cy="295" r="9" fill="#2563eb" /><text x="34" y="299" fontSize="10" fill="#fff" textAnchor="middle" style={t}>P</text>
           <text x="50" y="292" fontSize="10.5" fontWeight="800" fill="#1f1300" style={t}>Ton nom</text>
           <text x="50" y="304" fontSize="8.5" fill="#3a2500" style={t}>prenom.nom@rasf.fr</text>
           <text x="214" y="298" fontSize="9.5" fontWeight="800" fill="#1f1300" style={t}>② clic</text>
-          <rect x="120" y="318" width="136" height="54" rx="8" fill="#26262e" stroke="#f59e0b" strokeWidth="1.5" />
-          <text x="130" y="336" fontSize="9.5" fill="#a1a1aa" style={t}>Manage account</text>
+          <rect x="120" y="318" width="136" height="54" rx="8" fill={C.bouton} stroke="#f59e0b" strokeWidth="1.5" />
+          <text x="130" y="336" fontSize="9.5" fill={C.gris2} style={t}>Manage account</text>
           <rect x="125" y="344" width="126" height="22" rx="6" fill="#f59e0b" />
           <text x="133" y="359" fontSize="10.5" fontWeight="800" fill="#1f1300" style={t}>Sign Out   ③ clic</text>
           <text x="24" y="384" fontSize="9.5" fontWeight="800" fill="#f59e0b" style={t}>① clic sur Settings ↓</text>
@@ -637,7 +648,7 @@ function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastil
               {liste.map((r, n) => <rect key={n} x={r.x} y={r.y} width={r.w} height={r.h} rx="8" />)}
             </clipPath>
           </defs>
-          <use href="#g-base" clipPath="url(#g-zones-clip)" style={{ filter: "brightness(1.9) contrast(1.1)" }} />
+          <use href="#g-base" clipPath="url(#g-zones-clip)" style={{ filter: clair ? "none" : "brightness(1.9) contrast(1.1)" }} />
         </g>
       )}
       {/* zone(s) encadrée(s) */}
@@ -647,17 +658,17 @@ function SchemaAntigravity({ actif, setActif, spot = false, zones = null, pastil
       {/* démo : la petite fenêtre d'autorisation, au-dessus de la zone de prompt (1 : affichée, 2 : 3e choix sélectionné) */}
       {fenetre > 0 && (
         <g className="g-apparait" pointerEvents="none">
-          <rect x="160" y="208" width="300" height="128" rx="12" fill="#1c1c22" stroke="#52525b" />
-          <text x="172" y="226" fontSize="10.5" fontWeight="800" fill="#fff" style={t}>📄 Allow write access to this path?</text>
-          <rect x="170" y="233" width="280" height="15" rx="4" fill="#26262e" /><text x="176" y="244" fontSize="8" fill="#d4d4d8" fontFamily="Menlo, monospace">/Users/…/Desktop/atelier-simulation/metamerisme.html</text>
+          <rect x="160" y="208" width="300" height="128" rx="12" fill={C.panneau} stroke={C.bord} />
+          <text x="172" y="226" fontSize="10.5" fontWeight="800" fill={C.fort} style={t}>📄 Allow write access to this path?</text>
+          <rect x="170" y="233" width="280" height="15" rx="4" fill={C.bouton} /><text x="176" y="244" fontSize="8" fill={C.texte2} fontFamily="Menlo, monospace">/Users/…/Desktop/atelier-simulation/metamerisme.html</text>
           {["Yes, allow this time", "Yes, and always allow in this conversation", "Yes, and always allow", "No (tell the agent what to do instead)"].map((txt, n) => (
             <g key={n}>
-              {(fenetre === 2 ? n === 2 : n === 0) && <rect x="168" y={252 + n * 18} width="284" height="17" rx="5" fill={n === 2 ? "#f59e0b" : "#2e2e36"} />}
-              <text x="176" y={264 + n * 18} fontSize="9.5" fill={fenetre === 2 && n === 2 ? "#1f1300" : "#d4d4d8"} fontWeight={fenetre === 2 && n === 2 ? 800 : 400} style={t}>{n + 1}   {txt}</text>
+              {(fenetre === 2 ? n === 2 : n === 0) && <rect x="168" y={252 + n * 18} width="284" height="17" rx="5" fill={n === 2 ? "#f59e0b" : C.choisi2} />}
+              <text x="176" y={264 + n * 18} fontSize="9.5" fill={fenetre === 2 && n === 2 ? "#1f1300" : C.texte2} fontWeight={fenetre === 2 && n === 2 ? 800 : 400} style={t}>{n + 1}   {txt}</text>
             </g>
           ))}
           <rect x="404" y="318" width="48" height="15" rx="7" fill="#2563eb" /><text x="428" y="329" fontSize="9" fontWeight="800" fill="#fff" textAnchor="middle" style={t}>Submit ↵</text>
-          <text x="384" y="329" fontSize="9" fill="#a1a1aa" textAnchor="middle" style={t}>Skip</text>
+          <text x="384" y="329" fontSize="9" fill={C.gris2} textAnchor="middle" style={t}>Skip</text>
         </g>
       )}
       {/* démo : le nom des 3 parties */}
@@ -742,7 +753,9 @@ const Z = {
   gauche: { x: 0, y: 32, w: 150, h: 398 }, milieu: { x: 152, y: 32, w: 322, h: 398 }, droite: { x: 476, y: 32, w: 284, h: 398 },
   reduire: { x: 59, y: 3, w: 28, h: 26 }, historique: { x: 158, y: 40, w: 312, h: 200 }, prompt: { x: 160, y: 340, w: 300, h: 40 },
   reglages: { x: 164, y: 386, w: 268, h: 24 }, modele: { x: 164, y: 386, w: 158, h: 24 }, auto: { x: 352, y: 386, w: 56, h: 24 },
-  menuModeles: { x: 164, y: 196, w: 230, h: 186 }, niveaux: { x: 398, y: 214, w: 138, h: 86 }, usage: { x: 398, y: 262, w: 210, h: 112 }, conversations: { x: 6, y: 96, w: 138, h: 52 },
+  menuModeles: { x: 164, y: 196, w: 230, h: 186 }, niveaux: { x: 398, y: 214, w: 138, h: 86 }, usage: { x: 398, y: 262, w: 210, h: 112 }, conversations: { x: 6, y: 168, w: 138, h: 60 },
+  nouvelle: { x: 6, y: 38, w: 138, h: 24 }, automations: { x: 6, y: 64, w: 138, h: 18 }, customizations: { x: 6, y: 84, w: 138, h: 18 },
+  projets: { x: 6, y: 114, w: 138, h: 40 }, creerProjet: { x: 122, y: 113, w: 22, h: 18 }, recherche: { x: 90, y: 5, w: 60, h: 22 }, loupe: { x: 130, y: 5, w: 20, h: 22 },
   onglets: { x: 478, y: 34, w: 236, h: 22 }, adresse: { x: 480, y: 60, w: 276, h: 20 }, fermer: { x: 702, y: 3, w: 26, h: 26 },
   barre: { x: 468, y: 60, w: 16, h: 330 }, fenetre: { x: 160, y: 208, w: 300, h: 128 }, settings: { x: 6, y: 400, w: 84, h: 22 }, fenetreSettings: { x: 12, y: 232, w: 250, h: 160 },
 };
@@ -751,7 +764,14 @@ const DEMO = [
   { titre: "③ À droite : le navigateur", texte: "C'est là que tu vois la démo : ta simulation s'affiche ici, à côté de la conversation.", zones: [Z.droite], etiquettes: true, bulle: { x: 150, y: 270 } },
   { titre: "② Au milieu : Antigravity", texte: "C'est là que tu rédiges tes prompts et que tu lis les réponses de l'IA.", zones: [Z.milieu], etiquettes: true, bulle: { x: 440, y: 270 } },
   { titre: "① À gauche : le menu", texte: "Tes conversations, le bouton pour en commencer une nouvelle, et les réglages (Settings).", zones: [Z.gauche], etiquettes: true, bulle: { x: 170, y: 270 } },
-  { titre: "① Le menu, à gauche", texte: "Tout en haut, « New Conversation » ouvre une nouvelle conversation. Dessous, la liste de tes conversations. Tout en bas, « Settings » : les réglages, et la déconnexion.", zones: [Z.gauche] },
+  { titre: "① Le menu, à gauche", texte: "Faisons le tour du menu, de haut en bas : New Conversation, Automations, Customizations, Projects, Conversations, et tout en bas Settings.", zones: [Z.gauche] },
+  { titre: "New Conversation", texte: "Ouvre une nouvelle conversation avec l'IA, vide. Attention : une nouvelle conversation repart du mode « Default » ; vérifie qu'elle est bien sur « Auto ».", zones: [Z.nouvelle], bulle: { x: 170, y: 40 }, images: [{ curseur: { x: 60, y: 50 } }] },
+  { titre: "Automations", texte: "Pour programmer des tâches que l'IA fait toute seule, à des moments choisis. Tu n'en as pas besoin pour l'atelier.", zones: [Z.automations], bulle: { x: 170, y: 60 } },
+  { titre: "Customizations", texte: "Les réglages avancés de l'IA (ses règles, ses outils). Tu n'as pas besoin d'y toucher pour l'atelier.", zones: [Z.customizations], bulle: { x: 170, y: 80 } },
+  { titre: "Projects : tes projets", texte: "Un projet regroupe tes conversations autour d'un même travail, par exemple « Mes simulations ». L'icône du dossier avec un +, à droite de « Projects », crée un nouveau projet.", zones: [Z.projets], bulle: { x: 170, y: 110 }, images: [{ curseur: { x: 60, y: 146 } }, { zones: [Z.projets, Z.creerProjet], curseur: { x: 133, y: 124 } }] },
+  { titre: "Conversations", texte: "La liste de tes conversations, la plus récente en haut, avec le temps écoulé depuis le dernier message (now, 37m…). Le + à droite de « Conversations » en ouvre une nouvelle.", zones: [Z.conversations], bulle: { x: 170, y: 170 } },
+  { titre: "Une conversation = un écran", texte: "Le milieu montre la conversation choisie à gauche. Clique sur une autre conversation, et le milieu change.", zones: [Z.conversations, Z.milieu], bulle: { x: 20, y: 250 }, images: [{ conv: 0, curseur: { x: 60, y: 194 } }, { conv: 1, curseur: { x: 60, y: 216 } }] },
+  { titre: "Chercher et naviguer", texte: "Tout en haut, la loupe 🔍 cherche dans toutes tes conversations. Les flèches ← → reviennent à l'écran précédent ou suivant, comme dans un navigateur.", zones: [Z.recherche], bulle: { x: 170, y: 40 }, images: [{ curseur: { x: 140, y: 18 } }] },
   { titre: "Réduire le menu", texte: "Le petit rectangle tout en haut à gauche replie le menu pour gagner de la place. Un 2e clic le rouvre.", zones: [Z.reduire, Z.gauche], bulle: { x: 170, y: 60 }, images: [{ curseur: { x: 72, y: 18 } }, { curseur: { x: 72, y: 18 }, replie: true }] },
   { titre: "② Au milieu : Antigravity", texte: "C'est ici que tu parles avec l'IA Gemini : elle t'écrit, tu lui réponds.", zones: [Z.milieu] },
   { titre: "L'historique", texte: "Les messages de la conversation, du plus ancien au plus récent. Ceux qui sont pour toi commencent par 💬 Pour toi. Le reste (« Ran commands »…) est technique : tu peux l'ignorer.", zones: [Z.historique] },
@@ -760,13 +780,12 @@ const DEMO = [
   { titre: "Ton usage", texte: "Dans ce même menu, « View Usage » montre ce qu'il te reste pour la semaine, pour chaque famille de modèles. À 0 %, écris à marc-olivier.reula@rasf.fr.", zones: [Z.modele, Z.menuModeles, Z.usage], images: [{ actif: "5", curseur: { x: 260, y: 352 } }] },
   { titre: "« Auto »", texte: "« Auto » laisse l'IA travailler seule ; elle te demande la permission quand il le faut (les petites fenêtres d'autorisation en anglais). Laisse-le tel quel.", zones: [Z.auto] },
   { titre: "Les petites fenêtres d'autorisation en anglais", texte: "Avant certaines actions, l'IA demande la permission dans une petite fenêtre, au-dessus de la zone de prompt. Clique sur « Yes, and always allow » (le 3e choix), puis sur Submit.", zones: [Z.fenetre], bulle: { x: 470, y: 200 }, boucle: false, images: [{ fenetre: 1 }, { fenetre: 1, curseur: { x: 300, y: 300 } }, { fenetre: 2, curseur: { x: 300, y: 300 } }, { fenetre: 2, curseur: { x: 428, y: 326 } }, { zones: [Z.prompt], curseur: { x: 428, y: 326 } }] },
-  { titre: "Une conversation = un écran", texte: "Le milieu montre la conversation choisie à gauche. Tu peux en avoir plusieurs : clique sur une autre, et le milieu change.", zones: [Z.conversations, Z.milieu], bulle: { x: 20, y: 250 }, images: [{ conv: 0, curseur: { x: 60, y: 110 } }, { conv: 1, curseur: { x: 60, y: 134 } }] },
   { titre: "③ À droite : le navigateur", texte: "Un navigateur intégré à Antigravity, comme Chrome : tu peux y ouvrir ta simulation, à côté de la conversation.", zones: [Z.droite] },
   { titre: "Les onglets", texte: "Comme dans Chrome : un clic sur un onglet pour passer de l'un à l'autre, le × pour le fermer, le + pour en ouvrir un nouveau, ↗ pour l'ouvrir dans ton navigateur habituel.", zones: [Z.onglets] },
   { titre: "L'adresse", texte: "La barre d'adresse montre la page ouverte. Ta simulation est un fichier de ton ordinateur : son adresse commence par file://, et toi seul la vois.", zones: [Z.adresse] },
   { titre: "Refermer le navigateur", texte: "Le rectangle tout en haut à droite ferme le navigateur ; un 2e clic le rouvre.", zones: [Z.fermer], images: [{ curseur: { x: 716, y: 18 } }, { curseur: { x: 716, y: 18 }, ferme: true }] },
   { titre: "Régler la largeur", texte: "La fine barre verticale entre le milieu et le navigateur se déplace : garde le bouton de la souris appuyé dessus et glisse à gauche ou à droite.", zones: [Z.barre], images: [{ actif: "6c", curseur: { x: 476, y: 244 } }, { actif: "6c", curseur: { x: 420, y: 244 } }, { actif: "6c", curseur: { x: 530, y: 244 } }] },
-  { titre: "Quitter Antigravity", texte: "En bas à gauche : Settings, puis ton nom, puis « Sign Out » pour te déconnecter. Pour fermer Antigravity : Cmd + Q (Mac) ou la croix de la fenêtre (Windows).", zones: [Z.settings, Z.fenetreSettings], bulle: { x: 300, y: 250 }, images: [{ curseur: { x: 40, y: 412 } }, { actif: "8", curseur: { x: 200, y: 296 } }, { actif: "8", curseur: { x: 190, y: 356 } }] },
+  { titre: "Quitter Antigravity", texte: "En bas à gauche : Settings, puis ton nom, puis « Sign Out » pour te déconnecter. Pour fermer Antigravity : Cmd + Q (Mac) ou la croix de la fenêtre (Windows).", zones: [Z.settings, Z.fenetreSettings], bulle: { x: 300, y: 250 }, images: [{ curseur: { x: 40, y: 411 } }, { actif: "8", curseur: { x: 200, y: 296 } }, { actif: "8", curseur: { x: 190, y: 356 } }] },
 ];
 const dureeEtape = (e) => Math.max(dureeLecture(e.texte), e.boucle === false ? e.images.length * 1000 + 1500 : 0);
 const dureeLecture = (texte) => Math.max(3, Math.round(texte.split(/\s+/).length / 6)) * 1000;
@@ -789,8 +808,11 @@ function placerBulle(zones, etiquettes, bulle) {
   return { left: pc(x, 760), bottom: pc(430 - h + 14, 430), width: largeur };      // au-dessus
 }
 
-function DemoAntigravity({ explorer }) {
+const CLE_THEME = "atelier.demo.theme";
+function DemoAntigravity({ finir }) {
   const [i, setI] = useState(0);
+  const [clair, setClair] = useState(() => { try { return localStorage.getItem(CLE_THEME) !== "sombre"; } catch { return true; } });
+  const basculer = () => setClair((c) => { try { localStorage.setItem(CLE_THEME, c ? "sombre" : "clair"); } catch {} return !c; });
   const [auto, setAuto] = useState(true);
   const [img, setImg] = useState(0);
   const fin = i >= DEMO.length;
@@ -814,7 +836,7 @@ function DemoAntigravity({ explorer }) {
     window.addEventListener("keydown", touche);
     return () => window.removeEventListener("keydown", touche);
   }, []);
-  useEffect(() => { if (fin) explorer(true); }, [fin, explorer]);
+  useEffect(() => { if (fin) finir(); }, [fin, finir]);
   if (fin) return null;
   const vue = etape.images ? etape.images[img % etape.images.length] : {};
   const zonesVues = vue.zones || etape.zones;
@@ -823,11 +845,11 @@ function DemoAntigravity({ explorer }) {
       <div className="v-tete">
         <h1><span aria-hidden="true">🧭</span> Découvre Antigravity</h1>
         <span className="v-compte">Étape {i + 1} sur {DEMO.length}</span>
-        <button type="button" className="v-bouton orange" onClick={explorer}>🔢 Explorer</button>
+        <button type="button" className="v-bouton" onClick={basculer}>{clair ? "🌙 Fond noir" : "☀️ Fond blanc"}</button>
       </div>
       <div className="v-barre" aria-hidden="true"><div style={{ width: `${((i + 1) / DEMO.length) * 100}%` }} /></div>
       <div className="v-scene">
-        <SchemaAntigravity spot pastilles={false} zones={zonesVues} etiquettes={etape.etiquettes} setActif={() => {}} {...vue} />
+        <SchemaAntigravity clair={clair} spot pastilles={false} zones={zonesVues} etiquettes={etape.etiquettes} setActif={() => {}} {...vue} />
         <div className="v-bulle" key={i} aria-live="polite" style={placerBulle(etape.zones, etape.etiquettes, etape.bulle)}>
           <h2>{etape.titre}</h2>
           <p>{etape.texte}</p>
@@ -850,29 +872,29 @@ function DemoAntigravity({ explorer }) {
 
 // La page en ligne : un accueil avec deux boutons (Démo / Explorer), et depuis chaque mode un bouton vers l'autre.
 export function VisiteAntigravity() {
-  // ?mode=demo ou ?mode=explorer : on arrive directement dans ce mode (boutons de la page de configuration).
-  const [mode, setMode] = useState(() => { const m = new URLSearchParams(window.location.search).get("mode"); return m === "demo" || m === "explorer" ? m : "accueil"; });
-  const [fini, setFini] = useState(false);   // on arrive sur « Explorer » à la fin de la démo
+  // ?mode=demo : la démo démarre tout de suite (bouton « Démo » de la page de configuration).
+  const [mode, setMode] = useState(() => (new URLSearchParams(window.location.search).get("mode") === "demo" ? "demo" : "accueil"));
   return (
     <div className="v">
       {mode === "accueil" && (
         <div className="v-accueil">
           <span className="g-main" aria-hidden="true">🧭</span>
           <h1>Découvre Antigravity</h1>
-          <p>Deux façons de le découvrir : la <b>démo</b>, une présentation animée d'environ 1 minute, ou <b>explorer</b> l'écran toi-même, partie par partie, avec les numéros.</p>
+          <p>Une présentation animée de tout l'écran d'Antigravity, partie par partie, et de chaque élément du menu.</p>
           <div className="v-commandes" style={{ justifyContent: "center" }}>
             <button type="button" className="v-bouton bleu" onClick={() => setMode("demo")}>▶ Démo</button>
-            <button type="button" className="v-bouton orange" onClick={() => setMode("explorer")}>🔢 Explorer</button>
           </div>
         </div>
       )}
-      {mode === "demo" && <DemoAntigravity explorer={(fini) => { setFini(fini === true); setMode("explorer"); }} />}
-      {mode === "explorer" && fini && (
-        <p className="v-fini">🎉 <b>Tu connais Antigravity !</b> {window.self !== window.top ? <>Clique sur <b>« ↩ Revenir à la configuration »</b>, sous cette fenêtre.</> : <>Reviens dans Antigravity.</>} Ou explore encore l'écran ici, numéro par numéro.</p>
-      )}
-      {mode === "explorer" && (
-        <div className="g-fenetre-aide g-paysage v-explorer">
-          <ExplorerAntigravity bouton={<button type="button" className="v-bouton bleu" onClick={() => { setFini(false); setMode("demo"); }}>▶ Démo</button>} />
+      {mode === "demo" && <DemoAntigravity finir={() => setMode("fin")} />}
+      {mode === "fin" && (
+        <div className="v-accueil">
+          <span className="g-main" aria-hidden="true">🎉</span>
+          <h1>Tu connais Antigravity !</h1>
+          <p>{window.self !== window.top ? <>Clique sur <b>« ↩ Revenir à la configuration »</b>, sous cette fenêtre.</> : <>Reviens dans Antigravity.</>}</p>
+          <div className="v-commandes" style={{ justifyContent: "center" }}>
+            <button type="button" className="v-bouton bleu" onClick={() => setMode("demo")}>↺ Revoir la démo</button>
+          </div>
         </div>
       )}
     </div>

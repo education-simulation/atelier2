@@ -227,6 +227,7 @@ b.cle { color:#fde68a; }
 .vers-atelier { display:inline-block; background:#f59e0b; color:#1f1300; font:800 20px 'Outfit',system-ui,sans-serif; text-decoration:none; border-radius:14px; padding:14px 26px; box-shadow:0 0 0 6px rgba(245,158,11,.25); }
 .vers-atelier:hover { background:#fbbf24; }
 .note-atelier { text-align:center; color:#a1a1aa; font-size:15px; }
+.etapes-projet { margin:14px 0 0; padding-left:26px; display:grid; gap:10px; font-size:18px; line-height:1.5; }
 </style>
 </head>
 <body>
@@ -237,7 +238,7 @@ b.cle { color:#fde68a; }
     <div class="titre-haut"><h1>Configuration d'Antigravity</h1></div>
   </header>
   <div class="corps">
-    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li><li><span class="rond">✓</span>Atelier</li></ol>
+    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li><li><span class="rond">✓</span>Projet</li></ol>
 
     <section class="etape">
       <h2>1. Fermer les petites fenêtres</h2>
@@ -297,8 +298,8 @@ b.cle { color:#fde68a; }
       <div class="dec-carte">
         <span class="dec-ic" aria-hidden="true">🧭</span>
         <p class="dec-titre">Découvre Antigravity</p>
-        <p>Deux façons de le découvrir : la <b>démo</b>, une présentation animée d'environ 1 minute, ou <b>explorer</b> l'écran toi-même, partie par partie, avec les numéros. Tu peux aussi passer cette étape.</p>
-        <div class="rangee-dec"><button type="button" class="btn-dec" data-popup="decouvrir.html?mode=demo&amp;v=5">▶ Démo</button><button type="button" class="btn-dec orange" data-popup="decouvrir.html?mode=explorer&amp;v=5">🔢 Explorer</button></div>
+        <p>La <b>démo</b> te fait faire le tour de l'écran d'Antigravity, partie par partie, et de chaque élément du menu. Tu peux aussi passer cette étape.</p>
+        <div class="rangee-dec"><button type="button" class="btn-dec" data-popup="decouvrir.html?mode=demo&amp;v=6">▶ Démo</button></div>
       </div>
       <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
@@ -314,10 +315,13 @@ b.cle { color:#fde68a; }
     </section>
 
     <section class="etape e6">
-      <h2>6. Choisis ton atelier</h2>
-      <p>Antigravity est configuré ✅ Place à la simulation : choisis ce que tu veux construire.</p>
-      <p style="text-align:center;margin:28px 0"><a class="vers-atelier" href="ateliers.html?ou=dans">🧪 Choisir mon atelier ›</a></p>
-      <p class="note-atelier">Tu pourras aussi y revenir plus tard : <b class="cle">atelier2.rasf.fr/ateliers.html</b></p>
+      <h2>6. Crée ton projet dans Antigravity</h2>
+      <ol class="etapes-projet">
+        <li>Dans le menu de gauche d'Antigravity, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b> (« Create New Project »).</li>
+        <li>Donne un nom à ton projet, par exemple <b class="cle">« Mes simulations »</b>, puis valide.</li>
+        <li>Ton projet apparaît sous « Projects ». Tes simulations se feront dans ce projet.</li>
+      </ol>
+      <p style="text-align:center;margin:22px 0 8px"><a class="vers-atelier" href="ateliers.html?ou=dans">🧪 Mon projet est créé : choisir mon atelier ›</a></p>
     </section>
 
     <div class="nav"><button type="button" class="prec" id="prec">‹ Précédent</button><button type="button" class="suiv" id="suiv">Suivant ›</button></div>
