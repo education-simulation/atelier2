@@ -14,10 +14,9 @@
     <div class="titre-haut"><h1><img src="logos/antigravity.png" alt="" style="width:34px;height:34px;vertical-align:-6px"> Je commence avec Antigravity</h1></div>
   </header>
   <div class="corps">
-    <p class="question">1 · As-tu installé Antigravity sur ton ordinateur ?</p>
     <div class="choix">
-      <button type="button" class="carte" data-choix="installe"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Oui, il est installé</b><small>Je passe à la question 2</small></span></button>
-      <button type="button" class="carte" data-choix="installer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span class="txt"><b>Non, pas encore</b><small>Télécharger, installer et se connecter</small></span></button>
+      <button type="button" class="carte" data-choix="installe"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>J'ai déjà installé Antigravity sur mon ordinateur</b><small>Je passe au projet</small></span></button>
+      <button type="button" class="carte" data-choix="installer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg></span><span class="txt"><b>Je n'ai pas encore installé Antigravity</b><small>Télécharger, installer et se connecter</small></span></button>
     </div>
 
     <section id="installer" hidden>
@@ -41,10 +40,9 @@
     </section>
 
     <div id="bloc-q2" hidden>
-    <p class="question" id="q2">2 · As-tu configuré un projet dans Antigravity ?</p>
-    <div class="choix">
-      <a class="carte" href="ateliers.html"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>Oui, mon projet est prêt</b><small>Aller directement aux ateliers</small></span></a>
-      <button type="button" class="carte" data-choix="configurer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h4"/><path d="M12 12h8"/><circle cx="10" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg></span><span class="txt"><b>Non, pas encore</b><small>Créer et configurer mon projet</small></span></button>
+    <div class="choix" id="q2">
+      <a class="carte" href="ateliers.html"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><span class="txt"><b>J'ai déjà configuré un projet dans Antigravity</b><small>Aller directement aux ateliers</small></span></a>
+      <button type="button" class="carte" data-choix="configurer"><span class="rond"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h4"/><path d="M12 12h8"/><circle cx="10" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg></span><span class="txt"><b>Je n'ai pas encore configuré de projet</b><small>Créer et configurer mon projet</small></span></button>
     </div>
 
     <section id="configurer" hidden>
@@ -151,7 +149,7 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
       window.removeEventListener("blur", parti);
       if (!ouvert && document.hasFocus()) {
         retour.hidden = false;
-        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Réponds « Non, pas encore » à la <b class=\"cle\">question 1</b>, plus haut.";
+        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Clique sur <b class=\"cle\">« Je n'ai pas encore installé Antigravity »</b>, plus haut.";
       }
     }, 2500);
   }
