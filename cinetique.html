@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Cinétique chimique</title>
-<link rel="stylesheet" href="style.css?v=69">
+<link rel="stylesheet" href="style.css?v=70">
 <link rel="stylesheet" href="clair.css?v=15" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -32,10 +32,15 @@
       <div class="phrase"><code>Fais-moi une simulation des profils réactionnels : le graphique de l'énergie en fonction de la coordonnée de réaction, avec les réactifs, l'état de transition et les produits. Je dois pouvoir régler l'énergie d'activation Ea et l'enthalpie de réaction ΔrH (réaction exothermique ou endothermique), choisir un mécanisme en une ou deux étapes (avec un intermédiaire réactionnel), et ajouter un catalyseur qui abaisse la barrière. Affiche les flèches Ea et ΔrH sur le graphique, et une phrase qui dit si la réaction est exothermique ou endothermique, rapide ou lente.</code><button type="button" class="copier" data-allow data-sim="cinetique">📋 Copier</button></div>
       </div>
       <div class="bloc-partie attendre">
-      <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
+      <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
       <div class="allow-zone" hidden></div>
-      <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
+      <p><b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <div class="ecran-wk" aria-hidden="true">
+        <span class="wk-working">Working</span>
+        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> cinetique.html</div></div>
+        <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
+      </div>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
@@ -123,10 +128,15 @@ Exemple pour tester (CH3I + C2H5ONa → CH3OC2H5 + NaI) : T = 283, 293, 303 et 3
       <p class="note">💡 Sois patient : chaque réponse peut prendre plusieurs minutes.</p>
       </div>
       <div class="bloc-partie attendre">
-      <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
+      <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
       <div class="allow-zone" hidden></div>
-      <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
+      <p><b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <div class="ecran-wk" aria-hidden="true">
+        <span class="wk-working">Working</span>
+        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> cinetique.html</div></div>
+        <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
+      </div>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
