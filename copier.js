@@ -149,14 +149,15 @@ document.addEventListener("click", (e) => {
 document.querySelectorAll("code.prompt-plus").forEach((code) => {
   const base = code.dataset.base, details = JSON.parse(code.dataset.details);
   const bloc = code.closest(".phrase").nextElementSibling;
-  const plus = bloc.querySelector(".plus-btn"), moins = bloc.querySelector(".moins-btn"), compte = bloc.querySelector(".plus-compte"), tag = bloc.querySelector(".prompt-tag");
+  const plus = bloc.querySelector(".plus-btn"), moins = bloc.querySelector(".moins-btn"), zero = bloc.querySelector(".zero-btn"), compte = bloc.querySelector(".plus-compte"), tag = bloc.querySelector(".prompt-tag");
   const cle = "atelier." + (location.pathname.split("/").pop().replace(".html", "") || "page") + ".details";
   let n = 0; try { n = Math.min(details.length, parseInt(localStorage.getItem(cle), 10) || 0); } catch {}
   const rendre = () => {
     code.textContent = n ? base + ", avec :\n" + details.slice(0, n).map((d) => "- " + d + " ;").join("\n").replace(/ ;$/, ".") : base + ".";
     plus.hidden = n >= details.length;
     moins.hidden = n === 0;
-    compte.textContent = n ? n + " détail" + (n > 1 ? "s" : "") + " sur " + details.length : "";
+    zero.hidden = n === 0;
+    compte.textContent = n + " / " + details.length;   // le compteur, toujours visible
     const niveau = n === 0 ? ["minimal", "Prompt minimal"] : n < details.length / 2 ? ["enrichi", "Prompt enrichi"] : n < details.length ? ["precis", "Prompt précis"] : ["detaille", "Prompt détaillé"];
     tag.className = "prompt-tag " + niveau[0];
     tag.textContent = "🏷️ " + niveau[1];
@@ -164,5 +165,6 @@ document.querySelectorAll("code.prompt-plus").forEach((code) => {
   };
   plus.addEventListener("click", () => { n = Math.min(details.length, n + 1); rendre(); });
   moins.addEventListener("click", () => { n = Math.max(0, n - 1); rendre(); });
+  zero.addEventListener("click", () => { n = 0; rendre(); });
   rendre();
 });

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Cinétique chimique</title>
-<link rel="stylesheet" href="style.css?v=74">
-<link rel="stylesheet" href="clair.css?v=19" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=75">
+<link rel="stylesheet" href="clair.css?v=20" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -30,7 +30,7 @@
       <h3 class="partie">① Créer la simulation <small>le code HTML s'écrit dans Antigravity</small></h3>
       <p>Dans la conversation de configuration d'Antigravity, clique sur <b class="cle">📋 Copier</b>, colle le message dans la zone de message, en bas à gauche, puis appuie sur <b class="cle">Entrée</b>.</p>
       <div class="phrase"><code class="prompt-plus" data-base="Fais-moi une simulation des profils réactionnels" data-details="[&quot;le graphique de l&#x27;énergie en fonction de la coordonnée de réaction, avec les réactifs, l&#x27;état de transition et les produits&quot;, &quot;des réglages pour l&#x27;énergie d&#x27;activation Ea et l&#x27;enthalpie de réaction ΔrH (réaction exothermique ou endothermique)&quot;, &quot;le choix d&#x27;un mécanisme en une ou deux étapes, avec un intermédiaire réactionnel&quot;, &quot;un catalyseur qui abaisse la barrière&quot;, &quot;les flèches Ea et ΔrH sur le graphique, et une phrase qui dit si la réaction est exothermique ou endothermique, rapide ou lente&quot;, &quot;la loi d&#x27;Arrhenius, k = A·exp(−Ea/(R·T)), avec un curseur de température et l&#x27;affichage de k&quot;, &quot;le temps de demi-réaction t1/2 = ln 2 / k (réaction d&#x27;ordre 1)&quot;, &quot;l&#x27;exemple du cours : CH3I + C2H5ONa → CH3OC2H5 + NaI, avec Ea = 87 kJ/mol&quot;]">Fais-moi une simulation des profils réactionnels.</code><button type="button" class="copier" data-allow data-sim="cinetique">📋 Copier</button></div>
-      <div class="plus-details"><span class="prompt-tag"></span><button type="button" class="plus-btn">＋ Ajouter un détail</button><button type="button" class="moins-btn" hidden>－ Retirer le dernier</button><span class="plus-compte"></span></div>
+      <div class="plus-details"><span class="prompt-tag"></span><button type="button" class="plus-btn">＋ Ajouter un détail</button><span class="plus-compte"></span><button type="button" class="moins-btn" hidden>－ Retirer le dernier</button><button type="button" class="zero-btn" hidden title="Revenir au prompt minimal">↺ Revenir à zéro</button></div>
       <p class="note plus-aide">💡 Commence par le <b class="cle">prompt minimal</b>, regarde ce que fait l'IA, puis <b class="cle">ajoute des détails</b> un à un : chaque précision (le matériel, les espèces chimiques, les valeurs, les repères sur la courbe…) rend la simulation plus juste. Tu pourras comparer les versions dans le même fichier.</p>
       </div>
       <div class="bloc-partie attendre">
@@ -246,7 +246,7 @@ Exemple pour tester (CH3I + C2H5ONa → CH3OC2H5 + NaI) : T = 283, 293, 303 et 3
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=12"></script>
+<script src="copier.js?v=13"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];

@@ -469,3 +469,5 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .prompt-tag { font-weight:800; font-size:13px; border-radius:999px; padding:4px 12px; color:#fff; }
 .prompt-tag.minimal { background:#71717a; } .prompt-tag.enrichi { background:#2563eb; } .prompt-tag.precis { background:#7c3aed; } .prompt-tag.detaille { background:#16a34a; }
 .note-version { margin:0; padding:8px 12px; border-radius:10px; background:#1e1b4b; border:1px solid #6366f1; font-size:15px; }
+.plus-compte { font-weight:800; font-size:14px; color:#fde68a; background:#1f1a10; border:1px solid #f59e0b; border-radius:999px; padding:3px 10px; min-width:38px; text-align:center; }
+.zero-btn { all:unset; cursor:pointer; font-size:13px; color:#a1a1aa; text-decoration:underline; } .zero-btn:hover { color:#f87171; } .zero-btn[hidden] { display:none; }
