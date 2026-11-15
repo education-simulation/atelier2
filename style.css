@@ -391,3 +391,5 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-liste-bouton { all:unset; cursor:pointer; justify-self:start; font-weight:800; font-size:15px; color:#e4e4e7; border:1px solid #52525b; border-radius:999px; padding:6px 14px; }
 .nc-liste-bouton:hover, .nc-liste-bouton[aria-expanded="true"] { border-color:#f59e0b; }
 .nc-liste-corps { display:grid; gap:6px; } .nc-liste-corps[hidden] { display:none; }
+.nc-go { display:flex; align-items:center; gap:12px; }
+.nc-go code { font:800 24px Menlo,Consolas,monospace; color:#fde68a; background:#1f1a10; border:2px dashed #f59e0b; border-radius:12px; padding:8px 18px; }
