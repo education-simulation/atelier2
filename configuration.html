@@ -556,7 +556,12 @@ pCopie(pDeja);
 document.querySelector(".p-recopier").addEventListener("click", () => pE1.classList.remove("fait"));
 document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click", async () => {
   const c = b.previousElementSibling, texte = b.textContent;
-  setTimeout(() => { pCopie(true); pSuite.scrollIntoView({ behavior: "smooth", block: "start" }); }, 700);
+  setTimeout(() => {
+    pCopie(true);
+    // on descend juste ce qu'il faut : la ligne « Message copié » reste visible sous l'en-tête collant, avec le début de « Crée ton projet »
+    const haut = document.querySelector(".haut")?.offsetHeight || 0;
+    window.scrollTo({ top: pE1.getBoundingClientRect().top + window.scrollY - haut - 12, behavior: "smooth" });
+  }, 700);
   b.textContent = "✅ Copié";
   setTimeout(() => { b.textContent = texte; }, 2500);
   try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
