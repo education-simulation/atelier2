@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Cinétique chimique</title>
-<link rel="stylesheet" href="style.css?v=52">
+<link rel="stylesheet" href="style.css?v=53">
 <link rel="stylesheet" href="clair.css?v=8" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -57,10 +57,14 @@
             </div>
           </div>
         </div>
+        <div class="va-scene va-d">
+          <div class="va-etiq">② Ouvre <b>ton navigateur</b> (Chrome, Firefox, Safari, Edge)</div>
+          <div class="va-dock"><span class="va-app va-app-chrome"><i class="va-ico ico-chrome"></i>Chrome</span><span class="va-app va-app-firefox"><i class="va-ico ico-firefox"></i>Firefox</span></div>
+        </div>
         <div class="va-scene va-b">
-          <div class="va-etiq">② Dans <b>ton navigateur</b> (Chrome, Firefox, Safari, Edge) : colle l'adresse</div>
+          <div class="va-etiq">③ Dans <b>ton navigateur</b> : colle l'adresse</div>
           <div class="va-fen va-nav">
-            <div class="va-onglets"><i></i><i></i><i></i><span class="va-onglet"><span class="va-titre-onglet">Nouvel onglet</span><span class="va-titre-sim">cinetique.html</span> ×</span><span class="va-plus">+</span></div>
+            <div class="va-onglets"><i></i><i></i><i></i><span class="va-onglet"><span class="va-titre-onglet">Nouvel onglet</span><span class="va-titre-sim">cinetique.html</span> ×</span><span class="va-plus">+</span><span class="va-logo"></span></div>
             <div class="va-barre-nav"><span>←</span><span>→</span><span>↻</span><div class="va-adresse"><span class="va-vide">🔍 Rechercher ou saisir une adresse</span><span class="va-tape">file:///Users/…/mes%20simulations/cinetique.html</span></div></div>
             <div class="va-accueil"><span class="va-recherche">🔍</span></div>
             <div class="va-page"><b>⏱️ Cinétique</b><svg viewBox="0 0 120 50" aria-hidden="true"><path d="M5 45 C40 44 50 40 58 25 C62 12 75 8 115 6" fill="none" stroke="#2563eb" stroke-width="3"/></svg></div>
@@ -134,10 +138,14 @@ Exemple pour tester (CH3I + C2H5ONa → CH3OC2H5 + NaI) : T = 283, 293, 303 et 3
             </div>
           </div>
         </div>
+        <div class="va-scene va-d">
+          <div class="va-etiq">② Ouvre <b>ton navigateur</b> (Chrome, Firefox, Safari, Edge)</div>
+          <div class="va-dock"><span class="va-app va-app-chrome"><i class="va-ico ico-chrome"></i>Chrome</span><span class="va-app va-app-firefox"><i class="va-ico ico-firefox"></i>Firefox</span></div>
+        </div>
         <div class="va-scene va-b">
-          <div class="va-etiq">② Dans <b>ton navigateur</b> (Chrome, Firefox, Safari, Edge) : colle l'adresse</div>
+          <div class="va-etiq">③ Dans <b>ton navigateur</b> : colle l'adresse</div>
           <div class="va-fen va-nav">
-            <div class="va-onglets"><i></i><i></i><i></i><span class="va-onglet"><span class="va-titre-onglet">Nouvel onglet</span><span class="va-titre-sim">cinetique.html</span> ×</span><span class="va-plus">+</span></div>
+            <div class="va-onglets"><i></i><i></i><i></i><span class="va-onglet"><span class="va-titre-onglet">Nouvel onglet</span><span class="va-titre-sim">cinetique.html</span> ×</span><span class="va-plus">+</span><span class="va-logo"></span></div>
             <div class="va-barre-nav"><span>←</span><span>→</span><span>↻</span><div class="va-adresse"><span class="va-vide">🔍 Rechercher ou saisir une adresse</span><span class="va-tape">file:///Users/…/mes%20simulations/cinetique.html</span></div></div>
             <div class="va-accueil"><span class="va-recherche">🔍</span></div>
             <div class="va-page"><b>⏱️ Cinétique</b><svg viewBox="0 0 120 50" aria-hidden="true"><path d="M5 45 C40 44 50 40 58 25 C62 12 75 8 115 6" fill="none" stroke="#2563eb" stroke-width="3"/></svg></div>
@@ -242,6 +250,9 @@ document.querySelectorAll("[data-panneau]").forEach((p) => {
   });
   let etape = ""; try { etape = localStorage.getItem("atelier.cinetique.etape." + p.dataset.panneau) || ""; } catch {}
   etat(p, etape);
+  // cohérence : le prompt simple n'a qu'un message ; s'il n'a pas été copié, on repart de zéro
+  let copieSimple = false; try { copieSimple = localStorage.getItem("atelier." + (location.pathname.split("/").pop().replace(".html", "") || "page") + ".copie.0") === "1"; } catch {}
+  if (p.dataset.panneau === "simple" && etape && !copieSimple) etat(p, "");
 });
 // Après Copier, le message se replie en une ligne « ✓ Message copié » (gardé dans le navigateur).
 // Un seul message dans le cadre ① : tout le cadre se replie ; plusieurs (prompt détaillé) : ce message seulement.
@@ -262,6 +273,12 @@ document.querySelectorAll("[data-panneau] .bloc-partie.creer .phrase").forEach((
   b.addEventListener("click", () => setTimeout(() => replier(true), 700));
   let r = false; try { r = localStorage.getItem(cle) === "1"; } catch {}
   replier(r);
+});
+// « Voir ta simulation » : à chaque tour, l'animation ouvre Chrome ou Firefox, au hasard
+document.querySelectorAll(".ecran-va").forEach((e) => {
+  const tirer = () => { e.dataset.nav = Math.random() < 0.5 ? "chrome" : "firefox"; };
+  tirer();
+  e.addEventListener("animationiteration", (ev) => { if (ev.target.classList.contains("va-a")) tirer(); });
 });
 // Le système de l'ordinateur (Mac, Windows, Linux), comme sur la page Antigravity
 let os = null; try { os = localStorage.getItem("atelier.os"); } catch {}
