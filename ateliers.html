@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=49">
+<link rel="stylesheet" href="style.css?v=54">
 <link rel="stylesheet" href="clair.css?v=6" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -68,13 +68,18 @@
       <h2 id="nc-titre"><span class="nc-ico"></span> <span class="nc-nom"></span></h2>
       <p class="nc-intro">Chaque simulation se fait dans <b class="cle">sa propre conversation, dans ton projet</b> : les règles du projet s'y appliquent toutes seules.</p>
       <div class="choix nc-choix">
-        <a class="carte nc-dedans" href="#"><span class="rond">✓</span><span class="txt"><b>Je suis dans la conversation « <span class="nc-conv"></span> »</b><small>J'ouvre directement la page de l'atelier</small></span></a>
-        <button type="button" class="carte" data-deja="oui"><span class="rond">💬</span><span class="txt"><b>Elle existe, mais je n'y suis pas</b><small>Je la retrouve dans mon projet</small></span></button>
+        <a class="carte nc-dedans" href="#"><span class="rond">✓</span><span class="txt"><b>Je suis dans une conversation du projet</b><small>J'ouvre directement la page de l'atelier</small></span></a>
+        <button type="button" class="carte" data-deja="oui"><span class="rond">?</span><span class="txt"><b>Je ne sais pas</b><small>Je demande à Antigravity où je suis</small></span></button>
         <button type="button" class="carte" data-deja="non"><span class="rond">+</span><span class="txt"><b>Je n'ai pas encore cette conversation</b><small>Je la crée dans mon projet</small></span></button>
       </div>
       <div class="nc-oui" hidden>
-        <p>Dans le menu de gauche d'Antigravity, sous ton projet, <b class="cle">clique sur la conversation « <span class="nc-conv"></span> »</b> : tu reprends là où tu en étais, avec ta simulation.</p>
-        <p>Puis rouvre la page de l'atelier : <a class="vers-atelier-petit nc-direct2" href="#">Ouvrir la page de l'atelier ›</a></p>
+        <p class="p-num"><span>1</span> <b>Copie cette question</b>, colle-la dans ta conversation d'Antigravity, puis <b class="cle">Entrée</b> :</p>
+        <div class="phrase"><code class="nc-question">Dans quel dossier et projet es-tu ouvert actuellement ? Donne-moi le chemin complet de ton dossier de travail.</code><button type="button" class="copier nc-copier-q">📋 Copier</button></div>
+        <p class="p-num"><span>2</span> <b>Lis sa réponse :</b></p>
+        <div class="nc-verdict">
+          <a class="carte nc-direct2" href="#"><span class="rond">✓</span><span class="txt"><b>Il me donne le dossier de mon projet</b><small>(par exemple …/mes simulations) : j'ouvre la page de l'atelier</small></span></a>
+          <button type="button" class="carte" data-deja="non"><span class="rond">+</span><span class="txt"><b>Autre chose, ou aucun dossier</b><small>Je crée une conversation dans mon projet</small></span></button>
+        </div>
       </div>
       <div class="nc-non" hidden>
       <div class="nc-e1">
@@ -146,6 +151,7 @@ if (c === "page") montrer("page", sims[s] ? s : undefined);
 // et donne le message qui y ouvre la page de l'atelier. Elle reste ouverte au rechargement (#page/titrage).
 const icones = { titrage: "⚗️", metamerie: "🎨", cinetique: "⏱️" };
 const titres = { titrage: "Simulation d'un titrage", metamerie: "Simulation de la métamérie", cinetique: "Cinétique chimique" };
+const demarrer = { titrage: "Démarrer la simulation d'un titrage", metamerie: "Démarrer la simulation de la métamérie", cinetique: "Démarrer la simulation de cinétique chimique" };
 const convs = { titrage: "Simulation titrage", metamerie: "Simulation métamérie", cinetique: "Simulation cinétique" };
 function fermerConv() { document.querySelector(".nc-voile")?.remove(); if (location.hash.split("/")[1]) montrer("page"); }
 function ouvrirConv(sim) {
@@ -153,7 +159,7 @@ function ouvrirConv(sim) {
   const url = "https://atelier2.rasf.fr/" + sim + ".html#simple";
   const v = document.getElementById("tpl-conv").content.firstElementChild.cloneNode(true);
   v.querySelector(".nc-ico").textContent = icones[sim];
-  v.querySelector(".nc-nom").textContent = titres[sim] + " : ouvre une conversation dans ton projet";
+  v.querySelector(".nc-nom").textContent = demarrer[sim];
   // la 1re ligne donne son nom à la conversation (« Simulation titrage »)
   v.querySelector(".nc-texte").textContent = convs[sim] + "\n\nSans rien lancer, réponds seulement par cet encadré, rien d'autre :\n\n> [!IMPORTANT]\n> 👉 **Clique sur ce lien pour ouvrir l'atelier « " + convs[sim] + " » :** " + url;
   v.querySelectorAll(".nc-conv").forEach((e) => { e.textContent = convs[sim]; });
@@ -178,6 +184,13 @@ function ouvrirConv(sim) {
   const copie = (oui) => { e1.classList.toggle("fait", oui); suite.hidden = !oui; try { localStorage.setItem("atelier.copie." + sim, oui ? "1" : ""); } catch {} };
   let dejaCopie = false; try { dejaCopie = localStorage.getItem("atelier.copie." + sim) === "1"; } catch {}
   copie(dejaCopie);
+  v.querySelector(".nc-copier-q").addEventListener("click", async (e) => {
+    const b = e.currentTarget, c = b.previousElementSibling;
+    b.textContent = "✅ Copié";
+    setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
+    try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
+    catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
+  });
   v.querySelector(".nc-recopier").addEventListener("click", () => e1.classList.remove("fait"));
   v.querySelector(".nc-copier").addEventListener("click", async (e) => {
     const b = e.currentTarget, c = b.previousElementSibling;
