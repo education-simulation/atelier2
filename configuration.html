@@ -310,6 +310,12 @@ b.cle { color:#fde68a; }
 .suiv-msg { margin:0; text-align:right; font-weight:800; color:#fbbf24; }
 .suiv-msg[hidden] { display:none; }
 .p-suite[hidden] ~ .vers-suivant { display:none; }
+/* étape 6 : les bulles d'explication, une fois le projet créé */
+.p-info { position:absolute; z-index:9; left:226px; right:20px; bottom:118px; background:#f59e0b; color:#1f1300; font-weight:800; font-size:13.5px; line-height:1.35; border-radius:10px; padding:7px 12px; box-shadow:0 6px 16px rgba(0,0,0,.3); opacity:0; pointer-events:none; }
+.p-info-1 { animation:p-info-1 18s infinite; } .p-info-2 { animation:p-info-2 18s infinite; }
+@keyframes p-info-1 { 0%, 47% { opacity:0; transform:translateY(6px); } 49%, 56% { opacity:1; transform:none; } 57%, 100% { opacity:0; } }
+@keyframes p-info-2 { 0%, 56% { opacity:0; transform:translateY(6px); } 58%, 69% { opacity:1; transform:none; } 70%, 100% { opacity:0; } }
+@keyframes p-chip { 0%, 48% { box-shadow:none; } 49%, 69% { box-shadow:0 0 0 3px #f59e0b; } 70%, 100% { box-shadow:none; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -470,6 +476,8 @@ b.cle, .dec-carte b { color:#b45309; }
           <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>
           <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🔒 Default ⌃ <span class="p-envoi">↑</span></span></div>
         </div>
+        <span class="p-info p-info-1">✅ Ton projet est créé : le dossier <b>« 📁 mes simulations »</b> est bien affiché au-dessus de la zone de message</span>
+        <span class="p-info p-info-2">📋 Colle maintenant le message de l'étape ① (Cmd + V), puis valide (Entrée)</span>
         <div class="p-rep"><b>TIP</b><br>✅ <b>Ton projet est configuré.</b> Ses règles sont dans AGENTS.md.<br>👉 Choisis ton atelier : <u>atelier2.rasf.fr/ateliers.html</u></div>
         <div class="p-dlg">
           <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
