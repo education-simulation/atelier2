@@ -402,3 +402,16 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes nc-tape { 0%, 48% { width:0; } 60%, 98% { width:12.5ch; } 100% { width:0; } }
 @keyframes nc-caret { 50% { border-right-color:transparent; } }
 .nc-sous { margin-left:14px !important; color:#a1a1aa; } .nc-plus-conv { float:right; }
+/* après l'envoi de « go titrage » : la conversation s'ajoute au projet, le message en haut, « Thinking » dessous */
+.nc-ajout { opacity:0; color:inherit !important; animation:nc-ajout 10s infinite; }
+.nc-bulle { position:absolute; right:0; top:0; background:#26262e; color:#fff; border-radius:12px; padding:6px 12px; font:800 13px Menlo,Consolas,monospace; opacity:0; animation:nc-envoye 10s infinite; }
+.nc-think { position:absolute; left:0; top:44px; font-weight:700; color:#a1a1aa; opacity:0; background:linear-gradient(90deg,#71717a 0%,#fff 50%,#71717a 100%); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:nc-think 10s infinite, nc-reflet 1.4s linear infinite; }
+@keyframes nc-ajout { 0%, 65% { opacity:0; background:transparent; } 67%, 98% { opacity:1; background:#3a3a44; } 100% { opacity:0; } }
+@keyframes nc-envoye { 0%, 65% { opacity:0; transform:translateY(8px); } 67%, 98% { opacity:1; transform:none; } 100% { opacity:0; } }
+@keyframes nc-think { 0%, 69% { opacity:0; } 71%, 98% { opacity:1; } 100% { opacity:0; } }
+@keyframes nc-reflet { from { background-position:200% 0; } to { background-position:-200% 0; } }
+@keyframes nc-indice { 0%, 48% { opacity:1; } 50%, 65% { opacity:0; } 66%, 100% { opacity:1; } }
+@keyframes nc-msg { 0%, 48% { opacity:0; } 50%, 65% { opacity:1; } 66%, 100% { opacity:0; } }
+@keyframes nc-tape { 0%, 48% { width:0; } 60%, 65% { width:12.5ch; } 66%, 100% { width:0; } }
+@keyframes nc-vieux { 0%, 32% { background:#3a3a44; } 34%, 100% { background:transparent; } }
+.ecran-nc { height:310px; }

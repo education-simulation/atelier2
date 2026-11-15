@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=60">
-<link rel="stylesheet" href="clair.css?v=12" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=62">
+<link rel="stylesheet" href="clair.css?v=13" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -80,11 +80,14 @@
           <p class="nc-titre-g">Projects</p>
           <p class="nc-projet">📁 mes simulations <span class="nc-plus">+</span></p>
           <p class="nc-sous">💬 Configuration du projet</p>
+          <p class="nc-sous nc-ajout">💬 <span class="nc-titre-conv"></span></p>
           <p class="nc-titre-g">Conversations <span class="nc-plus-conv">+</span></p>
           <p class="nc-vieux">💬 Script de configuration…</p>
         </div>
         <div class="nc-milieu">
           <div class="nc-ancien"><span></span><span></span><span class="court"></span></div>
+          <div class="nc-bulle"></div>
+          <div class="nc-think">Thinking<span class="nc-points">…</span></div>
           <div class="nc-saisie">
             <span class="nc-chip">📁 mes simulations ⌄</span>
             <div class="nc-ask"><span class="nc-indice">Ask anything…</span><span class="nc-msg"></span></div>
@@ -155,6 +158,8 @@ function ouvrirConv(sim) {
   v.querySelector(".nc-ico").textContent = icones[sim];
   v.querySelector(".nc-nom").textContent = demarrer[sim];
   v.querySelector(".nc-msg").textContent = mots[sim];   // l'animation tape « go titrage » dans la nouvelle conversation
+  v.querySelector(".nc-bulle").textContent = mots[sim];  // puis, une fois envoyé : le message en haut, « Thinking » dessous
+  v.querySelector(".nc-titre-conv").textContent = convs[sim];   // et la conversation s'ajoute dans le projet
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".nc-fermer")) fermerConv(); });
   document.body.appendChild(v);
 }
