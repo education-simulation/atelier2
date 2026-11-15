@@ -66,7 +66,7 @@ ol.etapes > li, .info { background:#fffbeb; }
 @keyframes nc-vieux { 0%, 32% { background:#e4e4e7; } 34%, 100% { background:transparent; } }
 .nc-new { background:#e4e4e7; }
 
-/* « Voir ta simulation », en clair */
-.ecran-va { background:#fafafa; border-color:#e4e4e7; } .va-ag { background:#fff; color:#27272a; box-shadow:0 2px 8px rgba(0,0,0,.06); } .va-qui { color:#18181b; } .va-ligne { color:#71717a; }
+/* « Voir ta simulation », en clair (le navigateur externe reste clair dans les deux thèmes) */
+.ecran-va { background:#fafafa; border-color:#e4e4e7; }
+.va-ag { background:#fff; border-color:#e4e4e7; color:#27272a; } .va-ag-gauche { background:#f4f4f5; } .va-sel { background:#e4e4e7; } .va-ligne { color:#71717a; } .va-tip b { color:#15803d; }
 .va-code { background:#18181b; border-color:#27272a; }
-.va-nav { border-color:#d4d4d8; box-shadow:0 6px 18px rgba(0,0,0,.08); }
