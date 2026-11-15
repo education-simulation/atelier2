@@ -69,7 +69,7 @@ Quand tu reçois une de ces commandes, **ne crée aucun fichier et ne commence p
 2. **Si oui**, réponds seulement par cet encadré, avec le vrai lien :
 
    > [!NOTE]
-   > 📂 **Tu as déjà commencé cet atelier.**
+   > ## 📂 Tu as déjà commencé cet atelier
    >
    > 👉 [Reprendre la conversation « Simulation titrage »](conversation://<identifiant de cette conversation-là>)
 
@@ -77,7 +77,7 @@ Quand tu reçois une de ces commandes, **ne crée aucun fichier et ne commence p
 3. **Si non**, inscris cette conversation dans `conversations.md` (avec le nom de la conversation du tableau, et un tiret pour le fichier), puis réponds seulement par cet encadré, avec la page de l'atelier du tableau :
 
    > [!IMPORTANT]
-   > 🧪 **Atelier « Simulation titrage »**
+   > ## 🧪 Atelier « Simulation titrage »
    >
    > 👉 **Clique sur ce lien pour commencer l'atelier :** https://atelier2.rasf.fr/titrage.html#simple
 
