@@ -393,3 +393,7 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-liste-corps { display:grid; gap:6px; } .nc-liste-corps[hidden] { display:none; }
 .nc-go { display:flex; align-items:center; gap:12px; }
 .nc-go code { font:800 24px Menlo,Consolas,monospace; color:#fde68a; background:#1f1a10; border:2px dashed #f59e0b; border-radius:12px; padding:8px 18px; }
+/* fenêtre des Ateliers : « go titrage » reste écrit dans la zone de message jusqu'à la fin de l'animation */
+.nc-fenetre .nc-msg { font:800 15px Menlo,Consolas,monospace; color:#fde68a; }
+@keyframes nc-indice { 0%, 48% { opacity:1; } 50%, 98% { opacity:0; } 100% { opacity:1; } }
+@keyframes nc-msg { 0%, 48% { opacity:0; } 50%, 98% { opacity:1; } 100% { opacity:0; } }

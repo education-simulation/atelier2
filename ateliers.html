@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=57">
-<link rel="stylesheet" href="clair.css?v=11" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=58">
+<link rel="stylesheet" href="clair.css?v=12" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -72,8 +72,6 @@
     <div class="nc-fenetre">
       <button type="button" class="nc-fermer" aria-label="Fermer">×</button>
       <h2 id="nc-titre"><span class="nc-ico"></span> <span class="nc-nom"></span></h2>
-      <p class="nc-intro">Chaque simulation a <b class="cle">sa propre conversation, dans ton projet</b>. Tu l'as déjà commencée ? Pas de souci : Antigravity te donnera le lien pour la reprendre.</p>
-      <p class="p-num"><span>1</span> <b>Ouvre une nouvelle conversation dans ton projet</b> : dans le menu de gauche, <b class="cle">passe la souris sur le nom de ton projet</b> ; un <b class="cle">+</b> apparaît à droite (il reste caché tant que la souris n'est pas dessus). Clique sur ce <b class="cle">+</b>.</p>
       <div class="ecran-nc" role="img" aria-label="Antigravity : la souris passe sur le nom du projet, un + apparaît à droite, clic dessus : une nouvelle conversation s'ouvre dans le projet ; on y colle le message, Entrée, puis on clique sur le lien de la réponse">
         <div class="nc-gauche">
           <p class="nc-new">+ New Conversation</p>
@@ -82,11 +80,9 @@
           <p class="nc-titre-g">Projects</p>
           <p class="nc-projet">📁 mes simulations <span class="nc-plus">+</span></p>
           <p class="nc-vieux">💬 Configuration…</p>
-          <p class="nc-nouveau">💬 Nouvelle conversation</p>
         </div>
         <div class="nc-milieu">
           <div class="nc-ancien"><span></span><span></span><span class="court"></span></div>
-          <div class="nc-reponse"><b>Antigravity</b><br>🧪 Je crée ta <span class="nc-sujet"></span>…<br><u class="nc-lien"></u></div>
           <div class="nc-saisie">
             <span class="nc-chip">📁 mes simulations ⌄</span>
             <div class="nc-ask"><span class="nc-indice">Ask anything…</span><span class="nc-msg"></span></div>
@@ -95,21 +91,6 @@
         </div>
         <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
       </div>
-      <p class="p-num"><span>2</span> <b>Écris seulement ce mot</b>, puis <b class="cle">Entrée</b> :</p>
-      <div class="nc-go"><code class="nc-texte"></code><button type="button" class="copier nc-copier">📋 Copier</button></div>
-      <p class="p-num"><span>3</span> Antigravity <b class="cle">démarre la simulation</b>. Si tu l'avais déjà commencée, il te donne <b class="cle">le lien vers sa conversation</b> pour la reprendre.</p>
-      <p>La simulation prête, reviens sur la page de l'atelier pour la suite (la voir, la modifier, vérifier la chimie) : <a class="vers-atelier-petit nc-direct" href="#">Page de l'atelier ›</a></p>
-      <div class="nc-liste">
-        <button type="button" class="nc-liste-bouton" aria-expanded="false">🗂️ Retrouver mes conversations du projet</button>
-        <div class="nc-liste-corps" hidden>
-          <p>Copie ce message, colle-le dans <b class="cle">n'importe quelle conversation de ton projet</b>, puis <b class="cle">Entrée</b> : l'IA affiche tes conversations, de la plus ancienne à la plus récente, avec <b class="cle">un lien pour ouvrir chacune</b> en un clic et l'adresse de son fichier à copier.</p>
-          <div class="phrase"><code>Donne-moi la liste de toutes les conversations de ce projet classées par date de création avec pour chacune :
-1. Son sujet / but
-2. Le lien direct cliquable (conversation://...) pour ouvrir la conversation
-3. L'adresse complète du fichier HTML dans un bloc de code séparé (avec bouton de copie) pour l'ouvrir dans mon navigateur externe</code><button type="button" class="copier nc-copier-liste">📋 Copier</button></div>
-        </div>
-      </div>
-      <p class="note">Tu n'es pas dans Antigravity ? <a class="mail nc-direct" href="#">Ouvrir quand même la page de l'atelier ›</a></p>
     </div>
   </div>
 </template>
@@ -171,18 +152,8 @@ function ouvrirConv(sim) {
   const v = document.getElementById("tpl-conv").content.firstElementChild.cloneNode(true);
   v.querySelector(".nc-ico").textContent = icones[sim];
   v.querySelector(".nc-nom").textContent = demarrer[sim];
-  v.querySelector(".nc-texte").textContent = mots[sim];
-  v.querySelector(".nc-msg").textContent = mots[sim];
-  v.querySelector(".nc-sujet").textContent = convs[sim].toLowerCase();
-  v.querySelector(".nc-nouveau").textContent = "💬 " + convs[sim];
-  v.querySelector(".nc-direct").href = sim + ".html#simple";
+  v.querySelector(".nc-msg").textContent = mots[sim];   // l'animation tape « go titrage » dans la nouvelle conversation
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".nc-fermer")) fermerConv(); });
-  v.querySelector(".nc-copier").addEventListener("click", (e) => copierTexte(e.currentTarget, mots[sim], "📋 Copier"));
-  // « Retrouver mes conversations » : le message qui demande la liste (liens conversation:// et adresses des fichiers)
-  const lb = v.querySelector(".nc-liste-bouton"), lc = v.querySelector(".nc-liste-corps");
-  lb.addEventListener("click", () => { lc.hidden = !lc.hidden; lb.setAttribute("aria-expanded", String(!lc.hidden)); try { localStorage.setItem("atelier.liste", lc.hidden ? "" : "1"); } catch {} });
-  try { if (localStorage.getItem("atelier.liste") === "1") { lc.hidden = false; lb.setAttribute("aria-expanded", "true"); } } catch {}
-  v.querySelector(".nc-copier-liste").addEventListener("click", (e) => copierTexte(e.currentTarget, e.currentTarget.previousElementSibling.textContent, "📋 Copier"));
   document.body.appendChild(v);
 }
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && document.querySelector(".nc-voile")) fermerConv(); });

@@ -77,3 +77,4 @@ ol.etapes > li, .info { background:#fffbeb; }
 .q-fait { background:#f0fdf4; border-color:#86efac; color:#14532d; } .q-ok { color:#15803d; } .q-modif { color:#71717a; }
 .nc-liste { border-top-color:#e4e4e7; } .nc-liste-bouton { color:#3f3f46; border-color:#d4d4d8; }
 .nc-go code { color:#92400e; background:#fffbeb; }
+.nc-fenetre .nc-msg { color:#b45309; }
