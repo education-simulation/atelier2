@@ -30,8 +30,9 @@
           <div class="phrase"><code>Sans rien lancer, réponds seulement par cet encadré, rien d'autre :
 
 &gt; [!IMPORTANT]
-&gt; 👉 **Clique sur ce lien pour ouvrir l'atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans#page</code><button type="button" class="copier hors-copier">📋 Copier</button></div></li>
-        <li>Ouvre Antigravity et clique sur <b class="cle">« + New Conversation »</b>, en haut à gauche.</li>
+&gt; 👉 **Clique sur ce lien pour ouvrir l'atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans#page</code><button type="button" class="copier hors-copier">📋 Copier et ouvrir Antigravity</button></div>
+          <p class="note" id="hors-retour" hidden></p></li>
+        <li>Antigravity s'ouvre (si ton navigateur demande d'ouvrir Antigravity, accepte) : clique sur <b class="cle">« + New Conversation »</b>, en haut à gauche.</li>
         <li>Colle le message (<b class="cle">Cmd + V</b> sur Mac, <b class="cle">Ctrl + V</b> sur Windows), puis <b class="cle">Entrée</b>.</li>
         <li>Clique sur <b class="cle">le lien de sa réponse</b> : cette page s'ouvre dans Antigravity, et tu choisis ton atelier.</li>
       </ol>
@@ -181,9 +182,19 @@ document.addEventListener("keydown", (e) => { if (e.key === "Escape" && document
 document.querySelectorAll(".hors-copier").forEach((b) => b.addEventListener("click", async () => {
   const c = b.previousElementSibling;
   b.textContent = "✅ Copié";
-  setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
+  setTimeout(() => { b.textContent = "📋 Copier et ouvrir Antigravity"; }, 2500);
   try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
   catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
+  // puis ouvre l'application Antigravity (adresse antigravity://) ; si rien ne s'ouvre, on le dit
+  let ouvert = false;
+  const parti = () => { ouvert = true; };
+  window.addEventListener("blur", parti, { once: true });
+  setTimeout(() => { location.href = "antigravity://"; }, 300);
+  setTimeout(() => {
+    window.removeEventListener("blur", parti);
+    const retour = document.getElementById("hors-retour");
+    if (!ouvert && document.hasFocus() && retour) { retour.hidden = false; retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié."; }
+  }, 2500);
 }));
 document.querySelectorAll("a.sim[data-sim]").forEach((a) => a.addEventListener("click", (e) => {
   if (e.metaKey || e.ctrlKey || e.shiftKey) return;   // ouvrir dans un onglet : on laisse faire
