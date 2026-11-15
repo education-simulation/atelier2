@@ -32,11 +32,11 @@
       <h3 class="partie">① Créer la simulation <small>le code HTML s'écrit dans Antigravity</small></h3>
       <p>Dans la conversation de configuration d'Antigravity, clique sur <b class="cle">📋 Copier</b>, colle le message dans la zone de message, en bas à gauche, puis appuie sur <b class="cle">Entrée</b>.</p>
       <div class="phrase"><code>Fais-moi une simulation de titrage acido-basique : une burette au-dessus d'un bécher, un indicateur coloré qui change de couleur, l'affichage du pH, et la courbe pH = f(V) qui se trace au fur et à mesure que je verse. Ajoute des boutons pour verser et pour recommencer.</code><button type="button" class="copier" data-allow data-sim="titrage">📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
+      <div class="allow-zone" hidden></div>
       <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
@@ -74,7 +74,6 @@ J'aimerais que la page affiche un graphique en histogramme, avec en abscisse les
 Il faudrait prévoir une saisie manuelle de la valeur de l'avancement X pour le faire évoluer entre 0 et Xf. Le graphique devrait alors se mettre à jour automatiquement (plus X augmente, plus les histogrammes des réactifs doivent diminuer et ceux des produits augmenter, jusqu'à disparition complète du réactif limitant !).
 
 En plus du graphique, la page doit bien sûr afficher l'équation de la réaction, les quantités de matière initiales et l'avancement final Xf ! Merci</code><button type="button" class="copier" data-allow data-sim="titrage">📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="etiquette-prompt">② Le dosage</p>
       <div class="phrase"><code>Merci. Tu peux maintenant générer un nouveau code, similaire au précédent, mais qui illustre le cas particulier d'un dosage. Dans un dosage, l'espèce A sera définie par défaut comme l'espèce titrée, et B comme l'espèce titrante. Cette fois-ci, ce n'est pas X l'avancement qu'on entrera, mais VB, le volume d'espèce titrante ajouté. VB varie entre 0 et Veq, le volume à l'équivalence versé d'espèce titrante.
 
@@ -83,15 +82,14 @@ En plus du graphique, la page doit bien sûr afficher l'équation de la réactio
 Avant l'équivalence (pour un volume VB donné, compris entre 0 et Veq), le réactif titrant B est toujours limitant, donc nB = cB·VB − b·X = 0, donc X = cB·VB/b, avec VB le volume en mL de B versé dans le bécher. On a donc nA = nA,0 − a·X, nC = c·X et nD = d·X. Lorsque VB = Veq, X = Xeq = cB·Veq/b : normalement, on doit donc avoir nA,eq = nB,eq = 0. Pour VB &gt; Veq, le réactif titrant s'accumule : nB = cB·(VB − Veq), nA = 0, nC = c·Xeq et nD = d·Xeq.
 
 Le code doit être similaire au précédent : afficher l'équation de la réaction, la concentration de l'espèce titrée A, le volume de A, la concentration de l'espèce titrante B, le même graphique qu'avant… etc. !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="etiquette-prompt">③ L'exploitation de mesures (fichier Excel ou CSV)</p>
       <div class="phrase"><code>Merci. Parfait pour prévoir le volume à l'équivalence ! Maintenant, j'aimerais que tu ajoutes un autre onglet où l'on puisse charger un fichier de type Excel ou CSV, et que la page reconnaisse la colonne du volume V et celle de la grandeur mesurée (par exemple le pH ou un potentiel), et trace l'évolution de la grandeur mesurée en fonction du volume. Et qu'on puisse directement, dans cet onglet, faire l'exploitation, avec le tracé de la dérivée première, de la dérivée seconde, et éventuellement des tangentes ?</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="note">💡 Sois patient : chaque réponse peut prendre plusieurs minutes.</p>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
+      <div class="allow-zone" hidden></div>
       <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
@@ -154,7 +152,7 @@ Le code doit être similaire au précédent : afficher l'équation de la réacti
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=8"></script>
+<script src="copier.js?v=9"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];
@@ -178,7 +176,11 @@ function etat(panneau, etape) {
 document.querySelectorAll("[data-panneau]").forEach((p) => {
   if (!p.querySelector(".bloc-partie.attendre")) return;
   p.querySelector("button.pret").addEventListener("click", () => { etat(p, "pret"); p.querySelector(".bloc-partie.voir").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
-  p.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", () => etat(p, "attente")));   // un nouveau message : on patiente
+  // un nouveau message : rien pendant les 10 s du bandeau jaune, puis « Patiente » (avec l'animation « Allow » dedans)
+  p.querySelectorAll("button.copier").forEach((b) => {
+    b.addEventListener("click", () => etat(p, ""));
+    b.addEventListener("apres-bande", () => { etat(p, "attente"); p.querySelector(".bloc-partie.attendre").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
+  });
   let etape = ""; try { etape = localStorage.getItem("atelier.titrage.etape." + p.dataset.panneau) || ""; } catch {}
   etat(p, etape);
 });

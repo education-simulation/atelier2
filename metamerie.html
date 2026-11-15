@@ -32,11 +32,11 @@
       <h3 class="partie">① Créer la simulation <small>le code HTML s'écrit dans Antigravity</small></h3>
       <p>Dans la conversation de configuration d'Antigravity, clique sur <b class="cle">📋 Copier</b>, colle le message dans la zone de message, en bas à gauche, puis appuie sur <b class="cle">Entrée</b>.</p>
       <div class="phrase"><code>Fais-moi une simulation de la métamérie : deux échantillons de couleur côte à côte, qui paraissent identiques à la lumière du jour (illuminant D65) mais différents sous une lampe à incandescence (illuminant A) ou sous un tube fluorescent (illuminant F11). Affiche les courbes de réflectance des deux échantillons, le spectre de l'illuminant choisi, les coordonnées L*a*b* de chaque échantillon et l'écart de couleur ΔE*ab. Ajoute des boutons pour changer d'illuminant.</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
+      <div class="allow-zone" hidden></div>
       <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
@@ -65,7 +65,6 @@ Puis les coordonnées CIELAB, avec Xn, Yn, Zn le blanc de référence du même i
 L* = 116·f(Y/Yn) − 16 ; a* = 500·[f(X/Xn) − f(Y/Yn)] ; b* = 200·[f(Y/Yn) − f(Z/Zn)], avec f(t) = t^(1/3) si t &gt; (6/29)³, et f(t) = t/(3·(6/29)²) + 4/29 sinon.
 
 J'aimerais que la page affiche le graphique de la réflectance R(λ) et du spectre de l'illuminant, une pastille de la couleur obtenue (convertie en sRGB pour l'écran), et les valeurs de X, Y, Z, L*, a* et b*. On doit pouvoir changer d'illuminant (D65, A, F11) avec des boutons, et tout doit se mettre à jour automatiquement. Merci</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="etiquette-prompt">② La paire métamère</p>
       <div class="phrase"><code>Merci. Tu peux maintenant ajouter un deuxième échantillon pour illustrer la métamérie : deux couleurs qui paraissent identiques sous un illuminant, mais différentes sous un autre.
 
@@ -74,15 +73,14 @@ Construis la réflectance du deuxième échantillon ainsi : R2(λ) = R1(λ) + β
 Pour chaque illuminant, affiche les L*a*b* des deux échantillons et l'écart de couleur ΔE*ab = √(ΔL*² + Δa*² + Δb*²). Sous D65, l'écart doit être quasi nul ; sous A et F11, il doit apparaître. Affiche aussi les deux pastilles côte à côte, les deux courbes de réflectance sur le même graphique (elles doivent se croiser au moins trois fois), et un indice de métamérie : le ΔE*ab sous l'illuminant A.
 
 Le code doit être similaire au précédent : même graphique, mêmes boutons d'illuminant… etc. !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="etiquette-prompt">③ L'exploitation de mesures (fichier Excel ou CSV du spectrophotomètre)</p>
       <div class="phrase"><code>Merci. Parfait pour comprendre la métamérie ! Maintenant, j'aimerais que tu ajoutes un autre onglet où l'on puisse charger un fichier de type Excel ou CSV exporté d'un spectrophotomètre, et que la page reconnaisse la colonne des longueurs d'onde et les colonnes de réflectance (une par échantillon, en % ou entre 0 et 1), trace les courbes, puis calcule pour chaque échantillon les L*a*b* sous D65, A et F11, et pour chaque paire l'écart ΔE*ab sous chaque illuminant. Et qu'on puisse directement, dans cet onglet, dire si les deux échantillons sont métamères (écart faible sous D65, mais grand sous un autre illuminant) ?</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-          <div class="allow-zone" hidden></div>
       <p class="note">💡 Sois patient : chaque réponse peut prendre plusieurs minutes.</p>
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⏳ Patiente <small>pendant qu'Antigravity écrit le code</small></h3>
       <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
+      <div class="allow-zone" hidden></div>
       <p>C'est prêt quand il te répond par l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> avec <b class="cle">① ton code</b> (un lien qui l'ouvre dans Antigravity), suivi juste en dessous de <b class="cle">② le rendu</b> (comment le voir dans ton navigateur).</p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
@@ -147,7 +145,7 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=8"></script>
+<script src="copier.js?v=9"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];
@@ -171,7 +169,11 @@ function etat(panneau, etape) {
 document.querySelectorAll("[data-panneau]").forEach((p) => {
   if (!p.querySelector(".bloc-partie.attendre")) return;
   p.querySelector("button.pret").addEventListener("click", () => { etat(p, "pret"); p.querySelector(".bloc-partie.voir").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
-  p.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", () => etat(p, "attente")));   // un nouveau message : on patiente
+  // un nouveau message : rien pendant les 10 s du bandeau jaune, puis « Patiente » (avec l'animation « Allow » dedans)
+  p.querySelectorAll("button.copier").forEach((b) => {
+    b.addEventListener("click", () => etat(p, ""));
+    b.addEventListener("apres-bande", () => { etat(p, "attente"); p.querySelector(".bloc-partie.attendre").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
+  });
   let etape = ""; try { etape = localStorage.getItem("atelier.metamerie.etape." + p.dataset.panneau) || ""; } catch {}
   etat(p, etape);
 });

@@ -275,3 +275,5 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-oui, .nc-non { display:grid; gap:12px; } .nc-oui[hidden], .nc-non[hidden] { display:none; }
 .vers-atelier-petit { display:inline-block; margin-left:6px; background:#f59e0b; color:#1f1300; font-weight:800; text-decoration:none; border-radius:10px; padding:6px 14px; }
 .vers-atelier-petit:hover { background:#fbbf24; }
+.p-num { margin:4px 0 0; }
+.p-num > span:first-child { width:26px; height:26px; margin-right:6px; vertical-align:1px; border-radius:50%; display:inline-grid; place-items:center; background:#f59e0b; color:#1f1300; font-weight:800; font-size:14px; }

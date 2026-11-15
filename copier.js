@@ -6,7 +6,12 @@ let minuteurBande = null;
 let enAttente = null;   // le bouton dont l'animation attend la fin du bandeau
 function finBande() {
   if (bande) bande.hidden = true;
-  if (enAttente) { montrerAllow(enAttente); enAttente = null; }
+  if (enAttente) {
+    // la fin du bandeau : la page montre alors « Patiente » (événement « apres-bande »), puis l'animation « Allow » dedans
+    enAttente.dispatchEvent(new CustomEvent("apres-bande", { bubbles: true }));
+    if (enAttente.hasAttribute("data-allow")) montrerAllow(enAttente);
+    enAttente = null;
+  }
 }
 const tpl = document.getElementById("tpl-allow");
 
@@ -19,7 +24,8 @@ function ajuster(cadre) {
 }
 
 function montrerAllow(b) {
-  const zone = b.closest(".phrase").nextElementSibling;
+  // l'animation va dans le cadre « Patiente » du même onglet s'il en a un, sinon juste sous le message
+  const zone = b.closest("[data-panneau]")?.querySelector(".bloc-partie.attendre .allow-zone") || b.closest(".phrase").nextElementSibling;
   if (!tpl || !zone || !zone.classList.contains("allow-zone")) return;
   if (!zone.firstElementChild) {
     const anim = document.createElement("div");
@@ -86,7 +92,7 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
   if (!b.dataset.texte) b.dataset.texte = b.textContent;
   // D'abord ce qu'on voit (bandeau 10 s, animation), puis la copie
   // Puis, quand le bandeau disparaît (10 s, ou fermé à la main), l'animation « Allow write access »
-  enAttente = b.hasAttribute("data-allow") ? b : null;
+  enAttente = b;
   if (bande) {
     bande.hidden = false;
     clearTimeout(minuteurBande);
