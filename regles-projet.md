@@ -35,11 +35,23 @@ Ces règles s'appliquent à toutes les conversations de ce projet.
 - Tout en haut du fichier, juste après `<!DOCTYPE html>`, mets ce commentaire, avec le vrai nom du dossier du projet et la vraie adresse complète du fichier, et garde-le à jour à chaque modification :
   `<!-- Ceci est le CODE de la simulation : ne la regarde pas ici. Pour la voir, ouvre le dossier « nom du dossier du projet » et double-clique sur ce fichier, ou copie cette adresse dans la barre d'adresse de ton navigateur (Chrome, Firefox, Safari, Edge) : file:///chemin/complet/du/fichier.html -->`
 
+## Les questions à choix (toujours en liste)
+
+- Chaque fois que tu poses une question avec plusieurs choix (quelle version, vérification du modèle, option à retenir…), écris la question seule sur sa ligne, puis **les choix en vraie liste numérotée Markdown, un choix par ligne**, puis une ligne vide et la manière de répondre. Jamais plusieurs choix à la suite sur une même ligne. Par exemple :
+
+  > **À quelle(s) version(s) veux-tu appliquer cette modification ?**
+  >
+  > 1. Version 1 · prompt initial
+  > 2. Version 2 · burette, indicateur, pH
+  > 3. Toutes
+  >
+  > Réponds par le numéro, ou par plusieurs (par exemple « 1 et 2 »).
+
 ## Les versions d'une simulation (pour comparer des prompts)
 
-- **Une nouvelle version, dans le même fichier.** Si on te redonne un prompt de départ (par exemple « Fais-moi une simulation de titrage… ») pour une simulation dont le fichier existe déjà, ne crée pas d'autre fichier et n'écrase pas l'existant. Si ce n'est pas dit clairement, demande d'abord : « Veux-tu une nouvelle version, à comparer avec l'existante, dans le même fichier ? (1 : oui, 2 : non, je modifie l'existante) ».
+- **Une nouvelle version, dans le même fichier.** Si on te redonne un prompt de départ (par exemple « Fais-moi une simulation de titrage… ») pour une simulation dont le fichier existe déjà, ne crée pas d'autre fichier et n'écrase pas l'existant. Si ce n'est pas dit clairement, demande d'abord « Veux-tu une nouvelle version, à comparer avec l'existante, dans le même fichier ? », avec les choix en liste (1. Oui, une nouvelle version · 2. Non, je modifie l'existante).
 - **Des onglets en haut de la page.** Dès qu'il y a plusieurs versions, le fichier a des onglets tout en haut : « Version 1 », « Version 2 »…, chacun avec un nom court qui rappelle le prompt (par exemple « Version 1 · prompt minimal », « Version 2 · prompt détaillé »). Chaque version est complète et indépendante des autres ; l'onglet ouvert est gardé dans l'adresse (#v1, #v2…).
-- **Une modification : demander à quelle(s) version(s).** Quand le fichier contient plusieurs versions et qu'on te demande une modification, demande d'abord à quelle(s) version(s) l'appliquer, avec la liste numérotée des versions et « toutes » ; on peut en choisir plusieurs (par exemple « 1 et 3 »). Applique-la ensuite seulement à celles-là.
+- **Une modification : demander à quelle(s) version(s).** Quand le fichier contient plusieurs versions et qu'on te demande une modification, demande d'abord à quelle(s) version(s) l'appliquer, avec les versions en liste numérotée, une par ligne, et « Toutes » en dernier ; on peut en choisir plusieurs (par exemple « 1 et 3 »). Applique-la ensuite seulement à celles-là.
 - **L'historique en haut de chaque version.** En haut de chaque version (même s'il n'y en a qu'une), mets un petit encadré repliable « 📜 Comment cette version a été obtenue », replié par défaut, avec seulement ce que le professeur a écrit :
   - « Prompt de départ : » suivi de son message de départ, recopié **mot pour mot**, même s'il est très court ;
   - « Modifications demandées : » suivi de la liste numérotée de **ses** demandes de modification pour cette version (date et heure, et sa demande recopiée mot pour mot), dans l'ordre. Tant qu'il n'en a fait aucune, écris « Aucune pour l'instant ».
