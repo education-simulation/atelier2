@@ -298,6 +298,11 @@ b.cle { color:#fde68a; }
 .p-phrase { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; margin:10px 0; }
 .p-phrase code { flex:1 1 100%; max-height:170px; overflow-y:auto; background:#0b0b0f; border:1px dashed #f59e0b; border-radius:10px; padding:10px 12px; font:13.5px Menlo,Consolas,monospace; color:#fff; white-space:pre-wrap; overflow-wrap:anywhere; }
 .p-copier { all:unset; cursor:pointer; background:#16a34a; color:#fff; font-weight:800; border-radius:10px; padding:10px 16px; }
+.p-suite[hidden] { display:none; }
+.p-e1-fait { display:none; margin:6px 0; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; background:#0c1a10; border:1px solid #166534; color:#bbf7d0; }
+.p-e1-fait > span { width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center; background:#22c55e; color:#052e14; font-weight:800; }
+.p-recopier { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
+.p-e1.fait > .p-num, .p-e1.fait > .p-phrase { display:none; } .p-e1.fait > .p-e1-fait { display:flex; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -343,6 +348,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-menu { color:#52525b; }
 .p-colle { color:#18181b; } .p-envoi { background:#18181b; color:#fff; } .p-rep { color:#27272a; } .p-rep > b:first-child { color:#15803d; }
 @keyframes p-vise { 0%, 47% { background:transparent; } 49%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
+.p-e1-fait { background:#f0fdf4; border-color:#86efac; color:#14532d; } .p-recopier { color:#71717a; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -432,6 +438,7 @@ b.cle, .dec-carte b { color:#b45309; }
 
     <section class="etape e6">
       <h2>6. Ton projet dans Antigravity</h2>
+      <div class="p-e1">
       <p class="p-num"><span>1</span> <b>Copie d'abord ce message</b> : il contient les règles de ton projet.</p>
       <div class="p-phrase"><code>Prépare ce projet pour mes simulations. Ne fais rien d'autre.
 
@@ -463,6 +470,9 @@ Quand AGENTS.md est créé, réponds seulement par cet encadré :
 &gt; ✅ **Ton projet est configuré.** Ses règles sont dans AGENTS.md : elles valent pour toutes les conversations de ce projet.
 &gt;
 &gt; 👉 **Choisis ton atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans</code><button type="button" class="p-copier">📋 Copier</button></div>
+        <p class="p-e1-fait"><span>✓</span> <b>Message copié</b> <button type="button" class="p-recopier">voir le message ou le recopier</button></p>
+      </div>
+      <div class="p-suite" hidden>
       <p class="p-num"><span>2</span> <b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
       <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est configuré »">
         <div class="p-gauche">
@@ -494,6 +504,7 @@ Quand AGENTS.md est créé, réponds seulement par cet encadré :
         <li><b class="cle">Dossier existant :</b> clique simplement dessus, puis sur <b class="cle">Ouvrir</b>.</li>
       </ul>
       <p class="p-num"><span>3</span> <b>Colle le message</b> dans la conversation qui s'ouvre dans le projet (son nom s'affiche au-dessus de la zone de message) : <b class="cle">Cmd + V</b> (Mac) ou <b class="cle">Ctrl + V</b> (Windows), puis <b class="cle">Entrée</b>.</p>
+      </div>
       <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
 
@@ -538,8 +549,15 @@ document.addEventListener("click", (ev) => {
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".revenir")) v.remove(); });
   document.body.appendChild(v);
 });
+// étape 6 : une fois le message copié, ① se replie et la création du projet apparaît (gardé dans le navigateur)
+const pE1 = document.querySelector(".p-e1"), pSuite = document.querySelector(".p-suite");
+const pCopie = (oui) => { pE1.classList.toggle("fait", oui); pSuite.hidden = !oui; try { localStorage.setItem("atelier.copie.projet", oui ? "1" : ""); } catch {} };
+let pDeja = false; try { pDeja = localStorage.getItem("atelier.copie.projet") === "1"; } catch {}
+pCopie(pDeja);
+document.querySelector(".p-recopier").addEventListener("click", () => pE1.classList.remove("fait"));
 document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click", async () => {
   const c = b.previousElementSibling, texte = b.textContent;
+  setTimeout(() => { pCopie(true); pSuite.scrollIntoView({ behavior: "smooth", block: "start" }); }, 700);
   b.textContent = "✅ Copié";
   setTimeout(() => { b.textContent = texte; }, 2500);
   try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }

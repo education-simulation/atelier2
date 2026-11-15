@@ -334,3 +334,13 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes va-accueil { 0%, 73% { opacity:1; } 75%, 97% { opacity:0; } 100% { opacity:1; } }
 @keyframes va-page { 0%, 73% { opacity:0; } 76%, 97% { opacity:1; } 100% { opacity:0; } }
 .hors-etapes { margin:8px 0; padding-left:22px; display:grid; gap:8px; }
+/* fenêtre des Ateliers : une chose à la fois */
+.nc-choix .carte { padding:10px 12px; } .nc-choix .rond { width:38px; height:38px; }
+.nc-choix:has([aria-pressed="true"]) .carte small { display:none; }
+.nc-choix:has([aria-pressed="true"]) .carte:not([aria-pressed="true"]) { opacity:.6; }
+.nc-suite { display:grid; gap:10px; } .nc-suite[hidden] { display:none; }
+.nc-e1-fait { display:none; margin:0; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; background:#0c1a10; border:1px solid #166534; color:#bbf7d0; }
+.nc-e1-fait > span { width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center; background:#22c55e; color:#052e14; font-weight:800; }
+.nc-recopier { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
+.nc-e1.fait > .p-num, .nc-e1.fait > .phrase { display:none; }
+.nc-e1.fait > .nc-e1-fait { display:flex; }
