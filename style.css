@@ -480,3 +480,14 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nouvelle-version { all:unset; cursor:pointer; font-weight:800; font-size:16px; border-radius:12px; padding:10px 18px; border:2px solid #6366f1; color:#c7d2fe; }
 .nouvelle-version:hover { background:rgba(99,102,241,.15); }
 .note-nouvelle { margin:0; padding:8px 12px; border-radius:10px; background:#1e1b4b; border:1px solid #6366f1; font-size:15px; } .note-nouvelle[hidden] { display:none; }
+/* « Antigravity travaille » : les statuts tournent en boucle (9 s) tant qu'on n'a pas cliqué « Antigravity a fini » */
+.wk-travail .ecran-wk { height:80px; }
+.wk-travail .wk-s1 { animation:wk-b1 9s infinite, wk-reflet 1.6s linear infinite; } .wk-travail .wk-s2 { animation:wk-b2 9s infinite, wk-reflet 1.6s linear infinite; } .wk-travail .wk-s3 { animation:wk-b3 9s infinite, wk-reflet 1.6s linear infinite; }
+.wk-travail .wk-e1 { opacity:1; animation:none; }
+@keyframes wk-b1 { 0%, 31% { opacity:1; } 33%, 100% { opacity:0; } }
+@keyframes wk-b2 { 0%, 32% { opacity:0; } 34%, 64% { opacity:1; } 66%, 100% { opacity:0; } }
+@keyframes wk-b3 { 0%, 65% { opacity:0; } 67%, 98% { opacity:1; } 100% { opacity:0; } }
+.wk-fixe { height:auto; padding:14px 18px; } .wk-fixe .wk-fini { position:static; opacity:1; animation:none; }
+.wk-travail, .wk-verif { display:grid; gap:10px; } .wk-travail[hidden], .wk-verif[hidden] { display:none; }
+.fini-btn { all:unset; cursor:pointer; background:#8b5cf6; color:#fff; font-weight:800; font-size:16px; border-radius:12px; padding:10px 18px; box-shadow:0 0 0 4px rgba(139,92,246,.25); } .fini-btn:hover { background:#7c3aed; }
+.fini-retour { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }

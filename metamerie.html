@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Simulation de la métamérie</title>
-<link rel="stylesheet" href="style.css?v=76">
-<link rel="stylesheet" href="clair.css?v=21" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=77">
+<link rel="stylesheet" href="clair.css?v=22" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -36,14 +36,23 @@
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <div class="wk-travail">
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente.</p>
       <div class="ecran-wk" aria-hidden="true">
         <span class="wk-working wk-s1">Working</span><span class="wk-working wk-s2">Reading metamerie.html ›</span><span class="wk-working wk-s3">Editing metamerie.html ›</span>
-        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
-        <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
+        <span class="wk-etiquette wk-e1">⏳ Il travaille : patiente</span>
       </div>
       <p class="allow-ligne">🔐 S'il te demande une autorisation (« Allow write access to this path? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>. <button type="button" class="allow-rejouer allow-popup">🔐 Voir quoi choisir</button></p>
-      <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
+      <div><button type="button" class="fini-btn">✅ Antigravity a fini de travailler</button></div>
+      </div>
+      <div class="wk-verif" hidden>
+      <p class="replie-ligne vue"><span>✓</span> <b>Antigravity a fini de travailler</b> <button type="button" class="fini-retour">‹ revenir en arrière (il travaille encore)</button></p>
+      <p>Tu dois voir <b class="cle">l'équivalent de ceci</b> dans Antigravity :</p>
+      <div class="ecran-wk wk-fixe" aria-hidden="true">
+        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
+      </div>
+      <div><button type="button" class="pret">✅ Je confirme : ma simulation est prête</button></div>
+      </div>
       </div>
       <div class="bloc-partie voir" hidden>
       <p class="replie-ligne vue voir-ligne"><span>✓</span> <b>Ma simulation est prête</b> <button type="button" class="voir-retour">‹ revenir en arrière (elle n'est pas encore prête)</button></p>
@@ -130,14 +139,23 @@ Le code doit être similaire au précédent : même graphique, mêmes boutons d'
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <div class="wk-travail">
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b> (ou « Reading… », « Editing… »), il travaille : patiente.</p>
       <div class="ecran-wk" aria-hidden="true">
         <span class="wk-working wk-s1">Working</span><span class="wk-working wk-s2">Reading metamerie.html ›</span><span class="wk-working wk-s3">Editing metamerie.html ›</span>
-        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
-        <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
+        <span class="wk-etiquette wk-e1">⏳ Il travaille : patiente</span>
       </div>
       <p class="allow-ligne">🔐 S'il te demande une autorisation (« Allow write access to this path? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>. <button type="button" class="allow-rejouer allow-popup">🔐 Voir quoi choisir</button></p>
-      <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
+      <div><button type="button" class="fini-btn">✅ Antigravity a fini de travailler</button></div>
+      </div>
+      <div class="wk-verif" hidden>
+      <p class="replie-ligne vue"><span>✓</span> <b>Antigravity a fini de travailler</b> <button type="button" class="fini-retour">‹ revenir en arrière (il travaille encore)</button></p>
+      <p>Tu dois voir <b class="cle">l'équivalent de ceci</b> dans Antigravity :</p>
+      <div class="ecran-wk wk-fixe" aria-hidden="true">
+        <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> metamerie.html</div></div>
+      </div>
+      <div><button type="button" class="pret">✅ Je confirme : ma simulation est prête</button></div>
+      </div>
       </div>
       <div class="bloc-partie voir" hidden>
       <p class="replie-ligne vue voir-ligne"><span>✓</span> <b>Ma simulation est prête</b> <button type="button" class="voir-retour">‹ revenir en arrière (elle n'est pas encore prête)</button></p>
@@ -262,7 +280,10 @@ ouvrir(location.hash.slice(1));
 // Les cadres sous « Créer » : rien avant la copie ; « Patiente » après Copier ; « Discutons… » après « Ma simulation est prête »
 // L'étape (vide, "attente", "pret") est gardée dans le navigateur pour survivre au rechargement
 function etat(panneau, etape) {
-  panneau.querySelector(".bloc-partie.attendre").hidden = etape !== "attente";
+  panneau.querySelector(".bloc-partie.attendre").hidden = etape !== "attente" && etape !== "fini";
+  // « Antigravity a fini de travailler » : on montre ce qu'il doit afficher, puis « Je confirme »
+  panneau.querySelector(".wk-travail").hidden = etape === "fini";
+  panneau.querySelector(".wk-verif").hidden = etape !== "fini";
   if (etape === "attente") panneau.querySelectorAll(".ecran-wk *").forEach((el) => el.getAnimations().forEach((x) => { x.currentTime = 0; }));   // « Working » repart du début
   panneau.querySelector(".bloc-partie.voir").hidden = etape !== "pret" && etape !== "vu";
   // « J'ai visualisé ma simulation » : « Voir » se replie en une ligne verte, « Discutons » apparaît
@@ -282,6 +303,8 @@ document.querySelectorAll("[data-panneau]").forEach((p) => {
     const note = creer.querySelector(".note-nouvelle"); if (note) note.hidden = false;
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+  p.querySelector(".fini-btn").addEventListener("click", () => etat(p, "fini"));
+  p.querySelector(".fini-retour").addEventListener("click", () => etat(p, "attente"));   // cliqué par erreur : on revient à « il travaille »
   p.querySelector(".vu-btn").addEventListener("click", () => { etat(p, "vu"); p.querySelector(".voir-suite").scrollIntoView({ behavior: "smooth", block: "nearest" }); });
   p.querySelector(".vu-retour").addEventListener("click", () => etat(p, "pret"));   // revenir en arrière : on revoit « Voir ta simulation »
   p.querySelector(".voir-retour").addEventListener("click", () => { etat(p, "attente"); p.querySelector(".bloc-partie.attendre").scrollIntoView({ behavior: "smooth", block: "nearest" }); });   // « revenir en arrière » : on repatiente
