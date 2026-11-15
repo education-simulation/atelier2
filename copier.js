@@ -122,3 +122,23 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
   }, 2500);
 }));
 if (bande) bande.querySelector(".bande-x").addEventListener("click", () => { clearTimeout(minuteurBande); finBande(); });
+
+// « Voir quoi choisir » : l'animation « Allow write access » dans une fenêtre par-dessus la page
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".allow-popup") || !tpl) return;
+  const v = document.createElement("div");
+  v.className = "allow-voile";
+  v.innerHTML = '<div class="allow-fenetre"><button type="button" class="allow-fermer" aria-label="Fermer">×</button><div class="allow-zone"></div></div>';
+  const zone = v.querySelector(".allow-zone");
+  const anim = document.createElement("div");
+  anim.className = "allow-anim";
+  anim.appendChild(tpl.content.cloneNode(true));
+  zone.appendChild(anim);
+  document.body.appendChild(v);
+  const cadre = zone.querySelector(".cadre-allow");
+  new ResizeObserver(() => ajuster(cadre)).observe(cadre);
+  ajuster(cadre);
+  const fermer = () => v.remove();
+  v.addEventListener("click", (ev) => { if (ev.target === v || ev.target.closest(".allow-fermer")) fermer(); });
+  document.addEventListener("keydown", function esc(ev) { if (ev.key === "Escape") { fermer(); document.removeEventListener("keydown", esc); } });
+});

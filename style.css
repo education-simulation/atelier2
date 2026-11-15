@@ -455,3 +455,9 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes wk-working { 0%, 70% { opacity:1; } 72%, 100% { opacity:0; } }
 @keyframes wk-fini { 0%, 71% { opacity:0; transform:translateY(6px); } 74%, 98% { opacity:1; transform:none; } 100% { opacity:0; } }
 @keyframes wk-reflet { from { background-position:150% 0; } to { background-position:-100% 0; } }
+/* l'animation « Allow write access » dans une fenêtre */
+.allow-ligne { margin:0; } .allow-ligne .allow-popup { margin-left:6px; padding:4px 12px; font-size:14px; }
+.allow-voile { position:fixed; inset:0; z-index:120; background:rgba(15,23,42,.6); display:grid; place-items:center; padding:14px; }
+.allow-fenetre { position:relative; width:min(780px,100%); box-sizing:border-box; background:#0b0b0f; border:2px solid #f59e0b; border-radius:16px; padding:18px 18px 14px; }
+.allow-fermer { all:unset; cursor:pointer; position:absolute; top:6px; right:10px; font-size:24px; font-weight:800; color:#a1a1aa; }
+.allow-fermer:hover { color:#dc2626; }

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Cinétique chimique</title>
-<link rel="stylesheet" href="style.css?v=70">
-<link rel="stylesheet" href="clair.css?v=16" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=71">
+<link rel="stylesheet" href="clair.css?v=17" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -33,14 +33,13 @@
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
-      <div class="allow-zone" hidden></div>
-      <p><b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
       <div class="ecran-wk" aria-hidden="true">
         <span class="wk-working">Working</span>
         <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> cinetique.html</div></div>
         <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
       </div>
+      <p class="allow-ligne">🔐 S'il te demande une autorisation (« Allow write access to this path? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>. <button type="button" class="allow-rejouer allow-popup">🔐 Voir quoi choisir</button></p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
@@ -129,14 +128,13 @@ Exemple pour tester (CH3I + C2H5ONa → CH3OC2H5 + NaI) : T = 283, 293, 303 et 3
       </div>
       <div class="bloc-partie attendre">
       <h3 class="partie">⚙️ Antigravity travaille <small>il écrit le code de ta simulation</small></h3>
-      <p>Cela peut prendre <b class="cle">quelques minutes</b>. S'il te demande une autorisation (« Allow… ? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>.</p>
-      <div class="allow-zone" hidden></div>
-      <p><b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
+      <p>Cela peut prendre <b class="cle">quelques minutes</b>. <b class="cle">Tant qu'Antigravity affiche « Working »</b>, il travaille : patiente. Quand il a fini, il affiche l'encadré vert <b class="cle">« ✅ Ta simulation est prête »</b> : clique alors sur le bouton vert, en dessous.</p>
       <div class="ecran-wk" aria-hidden="true">
         <span class="wk-working">Working</span>
         <div class="wk-fini"><span class="wk-temps">Worked for 1m ›</span><div class="wk-tip"><b>TIP</b><br>✅ Ta simulation est prête.<br>① Ton code, dans Antigravity : <i>&lt;/&gt;</i> cinetique.html</div></div>
         <span class="wk-etiquette wk-e1">⏳ « Working » : patiente</span><span class="wk-etiquette wk-e2">✅ C'est prêt : clique sur le bouton vert</span>
       </div>
+      <p class="allow-ligne">🔐 S'il te demande une autorisation (« Allow write access to this path? »), choisis <b class="cle">3 · Yes, and always allow</b>, puis <b class="cle">Submit</b>. <button type="button" class="allow-rejouer allow-popup">🔐 Voir quoi choisir</button></p>
       <div><button type="button" class="pret">✅ Ma simulation est prête</button></div>
       </div>
       <div class="bloc-partie voir" hidden>
@@ -245,7 +243,7 @@ Exemple pour tester (CH3I + C2H5ONa → CH3OC2H5 + NaI) : T = 283, 293, 303 et 3
 <div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
   <span><b>Colle le message dans Antigravity</b> <em>dans la zone de message, en bas à gauche</em><span class="quoi">👉 <span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span>, puis Entrée.</span></span>
   <button type="button" class="bande-x" aria-label="Fermer">×</button></div>
-<script src="copier.js?v=9"></script>
+<script src="copier.js?v=10"></script>
 <script>
 // Les onglets ; l'onglet ouvert reste dans l'adresse (#simple, #detaille…) pour survivre au rechargement
 const ongl = [...document.querySelectorAll("[data-onglet]")];
@@ -263,6 +261,7 @@ ouvrir(location.hash.slice(1));
 // L'étape (vide, "attente", "pret") est gardée dans le navigateur pour survivre au rechargement
 function etat(panneau, etape) {
   panneau.querySelector(".bloc-partie.attendre").hidden = etape !== "attente";
+  if (etape === "attente") panneau.querySelectorAll(".ecran-wk *").forEach((el) => el.getAnimations().forEach((x) => { x.currentTime = 0; }));   // « Working » repart du début
   panneau.querySelector(".bloc-partie.voir").hidden = etape !== "pret" && etape !== "vu";
   // « J'ai visualisé ma simulation » : « Voir » se replie en une ligne verte, « Discutons » apparaît
   panneau.querySelector(".voir-nav").hidden = etape === "vu";
