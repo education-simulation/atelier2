@@ -808,7 +808,7 @@ function placerBulle(zones, etiquettes, bulle) {
   return { left: pc(x, 760), bottom: pc(430 - h + 14, 430), width: largeur };      // au-dessus
 }
 
-const CLE_THEME = "atelier.demo.theme";
+const CLE_THEME = "atelier.theme";   // le même choix que le bouton 🌙 / ☀️ des pages
 function DemoAntigravity({ finir }) {
   const [i, setI] = useState(0);
   const [clair, setClair] = useState(() => { try { return localStorage.getItem(CLE_THEME) !== "sombre"; } catch { return true; } });

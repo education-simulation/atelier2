@@ -217,3 +217,7 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .pas.fait .pas-fait { display:inline; color:#86efac; font-weight:700; }
 .pas.fait .pas-modif { display:inline; all:unset; margin-left:auto; cursor:pointer; color:#a1a1aa; font-size:14px; text-decoration:underline; }
 .pas[hidden] { display:none; }
+
+/* Le bouton du thème (blanc / noir), dans la barre du haut : voir theme.js */
+.theme-bascule { all:unset; cursor:pointer; margin-left:auto; font-size:13px; font-weight:800; border-radius:999px; padding:3px 10px; background:#27272a; color:#e4e4e7; border:1px solid #3f3f46; white-space:nowrap; }
+.theme-bascule + a { margin-left:10px; }
