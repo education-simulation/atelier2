@@ -303,6 +303,9 @@ b.cle { color:#fde68a; }
 .p-e1-fait > span { width:24px; height:24px; border-radius:50%; display:inline-grid; place-items:center; background:#22c55e; color:#052e14; font-weight:800; }
 .p-recopier { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
 .p-e1.fait > .p-num, .p-e1.fait > .p-phrase { display:none; } .p-e1.fait > .p-e1-fait { display:flex; }
+.p-conv { margin-left:14px !important; }
+.p-script { background:#3a3a44; animation:p-script 18s infinite; }
+@keyframes p-script { 0%, 46% { background:#3a3a44; } 48%, 100% { background:transparent; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -349,6 +352,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-colle { color:#18181b; } .p-envoi { background:#18181b; color:#fff; } .p-rep { color:#27272a; } .p-rep > b:first-child { color:#15803d; }
 @keyframes p-vise { 0%, 47% { background:transparent; } 49%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
 .p-e1-fait { background:#f0fdf4; border-color:#86efac; color:#14532d; } .p-recopier { color:#71717a; }
+@keyframes p-script { 0%, 46% { background:#e4e4e7; } 48%, 100% { background:transparent; } }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -452,8 +456,9 @@ b.cle, .dec-carte b { color:#b45309; }
           <p class="p-menu">⧉ Customizations</p>
           <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
           <p class="p-projet">📁 mes simulations</p>
-          <p class="p-titre">Conversations</p>
           <p class="p-conv">💬 Nouvelle conversation</p>
+          <p class="p-titre">Conversations <span>+</span></p>
+          <p class="p-script">💬 Script de configuration…</p>
         </div>
         <div class="p-saisie">
           <span class="p-chip">📁 mes simulations ⌄</span>

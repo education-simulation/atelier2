@@ -397,3 +397,8 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-fenetre .nc-msg { font:800 15px Menlo,Consolas,monospace; color:#fde68a; }
 @keyframes nc-indice { 0%, 48% { opacity:1; } 50%, 98% { opacity:0; } 100% { opacity:1; } }
 @keyframes nc-msg { 0%, 48% { opacity:0; } 50%, 98% { opacity:1; } 100% { opacity:0; } }
+/* « go titrage » se tape lettre par lettre, avec un curseur qui clignote */
+.nc-fenetre .nc-msg { right:auto; width:0; text-overflow:clip; border-right:2px solid currentColor; padding-right:2px; animation:nc-msg 10s infinite, nc-tape 10s steps(12) infinite, nc-caret .8s step-end infinite; }
+@keyframes nc-tape { 0%, 48% { width:0; } 60%, 98% { width:12.5ch; } 100% { width:0; } }
+@keyframes nc-caret { 50% { border-right-color:transparent; } }
+.nc-sous { margin-left:14px !important; color:#a1a1aa; } .nc-plus-conv { float:right; }
