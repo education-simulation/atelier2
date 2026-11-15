@@ -415,3 +415,10 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 @keyframes nc-tape { 0%, 48% { width:0; } 60%, 65% { width:12.5ch; } 66%, 100% { width:0; } }
 @keyframes nc-vieux { 0%, 32% { background:#3a3a44; } 34%, 100% { background:transparent; } }
 .ecran-nc { height:310px; }
+/* les bulles d'explication de l'animation des Ateliers */
+.nc-info { position:absolute; z-index:6; max-width:300px; background:#f59e0b; color:#1f1300; font-weight:800; font-size:13px; line-height:1.35; border-radius:10px; padding:6px 10px; box-shadow:0 6px 16px rgba(0,0,0,.3); opacity:0; pointer-events:none; }
+.nc-info-1 { left:205px; top:150px; animation:nc-info-1 10s infinite; }
+.nc-info-2 { left:214px; bottom:96px; animation:nc-info-2 10s infinite; }
+@keyframes nc-info-1 { 0%, 16% { opacity:0; transform:translateY(6px); } 19%, 36% { opacity:1; transform:none; } 39%, 100% { opacity:0; } }
+@keyframes nc-info-2 { 0%, 42% { opacity:0; transform:translateY(6px); } 45%, 66% { opacity:1; transform:none; } 69%, 100% { opacity:0; } }
+.nc-info-2 { bottom:124px; }

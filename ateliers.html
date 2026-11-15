@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=62">
+<link rel="stylesheet" href="style.css?v=64">
 <link rel="stylesheet" href="clair.css?v=13" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -94,6 +94,8 @@
             <div class="nc-bas"><span>+ Gemini 3.8 Flash Low</span><span class="nc-envoi">↑</span></div>
           </div>
         </div>
+        <span class="nc-info nc-info-1">➕ Ajoute une nouvelle conversation dans ton projet</span>
+        <span class="nc-info nc-info-2"></span>
         <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
       </div>
     </div>
@@ -160,6 +162,7 @@ function ouvrirConv(sim) {
   v.querySelector(".nc-msg").textContent = mots[sim];   // l'animation tape « go titrage » dans la nouvelle conversation
   v.querySelector(".nc-bulle").textContent = mots[sim];  // puis, une fois envoyé : le message en haut, « Thinking » dessous
   v.querySelector(".nc-titre-conv").textContent = convs[sim];   // et la conversation s'ajoute dans le projet
+  v.querySelector(".nc-info-2").innerHTML = "✍️ Écris <b>" + mots[sim] + "</b>, puis valide (Entrée) pour démarrer l'atelier " + ({ titrage: "titrage", metamerie: "métamérie", cinetique: "cinétique" })[sim];
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".nc-fermer")) fermerConv(); });
   document.body.appendChild(v);
 }
