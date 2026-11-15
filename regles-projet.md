@@ -74,7 +74,7 @@ Quand tu reçois une de ces commandes, **ne crée aucun fichier et ne commence p
    >
    > 👉 [Reprendre la conversation « Simulation titrage »](conversation://<identifiant de cette conversation-là>)
 
-   suivi, en dehors de l'encadré et seulement si le fichier existe, de son adresse dans un bloc de code ` ```text `, pour qu'elle ait son bouton de copie.
+   suivi, en dehors de l'encadré et seulement si le fichier existe, de son adresse dans un bloc de code ` ```text `, pour qu'elle ait son bouton de copie. Termine par cette phrase : « 🗑️ Cette conversation-ci ne sert plus : dans le menu de gauche, passe la souris sur elle et clique sur l'icône **Archive conversation** pour la ranger. » Dans ce cas, n'inscris pas cette conversation dans `conversations.md`.
 3. **Si non**, inscris cette conversation dans `conversations.md` (avec le nom de la conversation du tableau, et un tiret pour le fichier), puis réponds seulement par cet encadré, avec la page de l'atelier du tableau :
 
    > [!IMPORTANT]
