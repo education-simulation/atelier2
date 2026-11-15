@@ -306,6 +306,10 @@ b.cle { color:#fde68a; }
 .p-conv { margin-left:14px !important; }
 .p-script { background:#3a3a44; animation:p-script 18s infinite; }
 @keyframes p-script { 0%, 46% { background:#3a3a44; } 48%, 100% { background:transparent; } }
+.nav .suiv.bloque { opacity:.4; cursor:not-allowed; }
+.suiv-msg { margin:0; text-align:right; font-weight:800; color:#fbbf24; }
+.suiv-msg[hidden] { display:none; }
+.p-suite[hidden] ~ .vers-suivant { display:none; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -353,6 +357,7 @@ b.cle, .dec-carte b { color:#b45309; }
 @keyframes p-vise { 0%, 47% { background:transparent; } 49%, 98% { background:#fef3c7; outline:2px solid #f59e0b; } }
 .p-e1-fait { background:#f0fdf4; border-color:#86efac; color:#14532d; } .p-recopier { color:#71717a; }
 @keyframes p-script { 0%, 46% { background:#e4e4e7; } 48%, 100% { background:transparent; } }
+.suiv-msg { color:#b45309; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -441,7 +446,7 @@ b.cle, .dec-carte b { color:#b45309; }
     </section>
 
     <section class="etape e6">
-      <h2>6. Ton projet dans Antigravity</h2>
+      <h2>6. Créer un projet simulation dans Antigravity</h2>
       <div class="p-e1">
       <p class="p-num"><span>1</span> <b>Copie d'abord ce message</b> : il contient les règles de ton projet.</p>
       <div class="p-phrase"><code>Prépare ce projet pour mes simulations. Lis les instructions complètes sur https://atelier2.rasf.fr/regles-projet.md et suis-les exactement : elles te disent quels fichiers créer (AGENTS.md, .agent/rules/simulations.md et le registre conversations.md) et comment me répondre. Ne fais rien d'autre.</code><button type="button" class="p-copier">📋 Copier</button></div>
@@ -492,6 +497,7 @@ b.cle, .dec-carte b { color:#b45309; }
     </section>
 
     <div class="nav"><button type="button" class="prec" id="prec">‹ Précédent</button><button type="button" class="suiv" id="suiv">Suivant ›</button></div>
+    <p class="suiv-msg" id="suiv-msg" hidden>📋 Copie d'abord le message de l'étape ①, puis crée ton projet : le bouton « Suivant » se débloque ensuite.</p>
   </div>
 </div>
 
@@ -508,6 +514,9 @@ function montrer() {
   ronds.forEach((r, i) => { r.className = i < n ? "fait" : i === n ? "ici" : ""; });
   document.getElementById("prec").hidden = n === 0;
   document.getElementById("suiv").hidden = n === etapes.length - 1;
+  // étape 6 : « Suivant » reste bloqué tant que le message n'a pas été copié
+  document.getElementById("suiv").classList.toggle("bloque", etapes[n].classList.contains("e6") && !document.querySelector(".p-e1")?.classList.contains("fait"));
+  document.getElementById("suiv-msg").hidden = true;
   // le bandeau jaune : seulement à l'étape « C'est prêt », et 10 secondes
   const bandeau = document.getElementById("bande");
   clearTimeout(window.minuteurBande);
@@ -516,7 +525,10 @@ function montrer() {
   // chaque animation repart du début quand on arrive sur son étape
   etapes[n].querySelectorAll("*").forEach((el) => el.getAnimations().forEach((a) => { a.currentTime = 0; }));
 }
-document.getElementById("suiv").addEventListener("click", () => { n = Math.min(etapes.length - 1, n + 1); montrer(); });
+document.getElementById("suiv").addEventListener("click", (e) => {
+  if (e.currentTarget.classList.contains("bloque")) { document.getElementById("suiv-msg").hidden = false; return; }
+  n = Math.min(etapes.length - 1, n + 1); montrer();
+});
 document.getElementById("prec").addEventListener("click", () => { n = Math.max(0, n - 1); montrer(); });
 montrer();
 document.addEventListener("click", (ev) => {
@@ -530,7 +542,7 @@ document.addEventListener("click", (ev) => {
 });
 // étape 6 : une fois le message copié, ① se replie et la création du projet apparaît (gardé dans le navigateur)
 const pE1 = document.querySelector(".p-e1"), pSuite = document.querySelector(".p-suite");
-const pCopie = (oui) => { pE1.classList.toggle("fait", oui); pSuite.hidden = !oui; try { localStorage.setItem("atelier.copie.projet", oui ? "1" : ""); } catch {} };
+const pCopie = (oui) => { pE1.classList.toggle("fait", oui); pSuite.hidden = !oui; if (etapes[n].classList.contains("e6")) { document.getElementById("suiv").classList.toggle("bloque", !oui); if (oui) document.getElementById("suiv-msg").hidden = true; } try { localStorage.setItem("atelier.copie.projet", oui ? "1" : ""); } catch {} };
 let pDeja = false; try { pDeja = localStorage.getItem("atelier.copie.projet") === "1"; } catch {}
 pCopie(pDeja);
 document.querySelector(".p-recopier").addEventListener("click", () => pE1.classList.remove("fait"));
