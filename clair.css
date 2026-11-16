@@ -94,3 +94,6 @@ ol.etapes > li, .info { background:#fffbeb; }
 .nouvelle-version { color:#4338ca; } .note-nouvelle { background:#eef2ff; border-color:#a5b4fc; }
 .fini-retour { color:#71717a; }
 .pas-expl { color:#3f3f46; }
+.token-popup { background:#fff; color:#18181b; border-color:#e4e4e7; box-shadow:0 20px 60px rgba(0,0,0,.2); }
+.token-popup input { background:#fafafa; border-color:#d4d4d8; }
+.token-erreur { color:#dc2626; } .token-aide { color:#52525b; } .token-fermer:hover { color:#18181b; }
