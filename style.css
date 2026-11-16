@@ -491,3 +491,4 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .wk-travail, .wk-verif { display:grid; gap:10px; } .wk-travail[hidden], .wk-verif[hidden] { display:none; }
 .fini-btn { all:unset; cursor:pointer; background:#8b5cf6; color:#fff; font-weight:800; font-size:16px; border-radius:12px; padding:10px 18px; box-shadow:0 0 0 4px rgba(139,92,246,.25); } .fini-btn:hover { background:#7c3aed; }
 .fini-retour { all:unset; cursor:pointer; margin-left:auto; font-size:14px; text-decoration:underline; color:#a1a1aa; }
+.pas-expl { margin:0; font-size:15px; line-height:1.5; color:#d4d4d8; }

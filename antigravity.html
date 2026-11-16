@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity</title>
-<link rel="stylesheet" href="style.css?v=40">
-<link rel="stylesheet" href="clair.css?v=1" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=41">
+<link rel="stylesheet" href="clair.css?v=2" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -46,8 +46,9 @@
 
     <div class="pas" id="e2" hidden>
       <div class="pas-tete"><span class="pas-num">2</span><b>Créer un projet simulation dans Antigravity</b></div>
+      <p class="pas-expl">Dans Antigravity, un <b class="cle">projet</b> est relié à <b class="cle">un dossier de ton ordinateur</b> : toutes tes simulations y seront enregistrées, et toutes les conversations du projet suivront les mêmes règles. On va créer le dossier <b class="cle">« mes simulations »</b> et en faire ton projet.</p>
       <div class="pas-actions">
-        <button type="button" class="btn-un" data-choix="configurer">⚙️ Créer mon projet</button>
+        <button type="button" class="btn-un" data-choix="configurer">⚙️ Créer mon projet « mes simulations »</button>
         <a class="btn-deux" href="ateliers.html">✓ Mon projet est déjà prêt › ateliers</a>
       </div>
     </div>
@@ -98,7 +99,7 @@ Si je réponds 2, réponds par cet encadré, puis repose la même question :
 <script>
 // Deux étapes : 1 (installer / déjà installé), 2 (créer le projet / déjà prêt).
 // L'état reste dans l'adresse (#installer, #installe, #configurer) pour survivre au rechargement
-const etapes = { installer:"Installer", installe:"Projet", configurer:"Créer mon projet" };
+const etapes = { installer:"Installer", installe:"Projet", configurer:"Créer mon projet « mes simulations »" };
 const montrer = (id) => {
   const fait1 = id === "installe" || id === "configurer";
   document.getElementById("e1").classList.toggle("fait", fait1);
