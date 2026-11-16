@@ -108,33 +108,40 @@
     <section class="panneau" data-panneau="detaille" hidden>
       <div class="bloc-partie creer">
       <h3 class="partie">① Créer la simulation <small>un prompt très précis, à comparer avec ce que donne un prompt minimal</small></h3>
-      <p class="note-version">🔀 <b class="cle">Tu as déjà fait le prompt simple ?</b> Colle ces messages dans la même conversation : Antigravity en fera <b class="cle">une version 2 dans le même fichier</b> (le message ② en fera une version 3, le ③ l'enrichira), avec des onglets en haut de la page pour comparer les deux. Ensuite, pour chaque modification, il te demandera à quelle(s) version(s) l'appliquer.</p>
+      <p class="note-version">🔀 <b class="cle">Tu as déjà fait le prompt simple ?</b> Colle ces messages dans la même conversation : Antigravity en fera <b class="cle">une version 2 dans le même fichier</b> (les messages ② et ③ enrichiront cette même version), avec des onglets en haut de la page pour comparer les deux. Ensuite, pour chaque modification, il te demandera à quelle(s) version(s) l'appliquer.</p>
       <p>Les trois messages l'un après l'autre, <b class="cle">dans la même conversation</b> : clique sur <b class="cle">📋 Copier</b>, colle, puis <b class="cle">Entrée</b>. Attends la fin de chaque réponse, et ouvre la page pour voir le résultat avant de passer au message suivant.</p>
       <p class="etiquette-prompt">① La couleur d'un échantillon</p>
-      <div class="phrase"><code>Bonjour, je souhaiterais que tu m'aides à concevoir une simulation en HTML (donc un fichier texte avec l'extension .html, et pas un fichier Python) que je puisse facilement partager à mes collègues.
+      <div class="phrase"><code>Bonjour, je souhaiterais que tu m'aides à concevoir une simulation en HTML (un seul fichier .html, pas de Python), que je puisse facilement partager à mes collègues.
 
-Cette simulation doit calculer la couleur d'un échantillon à partir de son spectre de réflectance, comme le fait un spectrophotomètre.
+Cette simulation calcule la couleur d'un échantillon à partir de son spectre de réflectance, comme le fait un spectrophotomètre.
 
 Le domaine de longueurs d'onde va de 380 à 780 nm, au pas de 10 nm. Intègre dans le fichier les tables officielles de la CIE à ce pas : les fonctions colorimétriques de l'observateur de référence CIE 1931 (2°) x̄(λ), ȳ(λ), z̄(λ), et les répartitions spectrales des illuminants D65 (lumière du jour), A (lampe à incandescence) et F11 (tube fluorescent).
+Contrôle des tables : pour le blanc parfait (R = 1 partout), tu dois retrouver environ Xn = 95,05 ; Yn = 100 ; Zn = 108,88 sous D65, Xn = 109,85 ; Zn = 35,58 sous A, et Xn = 100,96 ; Zn = 64,35 sous F11. Affiche ces valeurs de contrôle dans un petit encadré.
 
-La réflectance R(λ) de l'échantillon (entre 0 et 1) doit être modifiable facilement : par exemple une courbe en cloche dont on règle le centre, la largeur et la hauteur, plus un niveau de fond.
+La réflectance R(λ) de l'échantillon (entre 0 et 1) se règle avec des curseurs : une courbe en cloche dont on règle le centre, la largeur et la hauteur, plus un niveau de fond.
 
 Pour l'illuminant choisi, de répartition spectrale S(λ), le programme calcule :
 X = k·Σ S(λ)·R(λ)·x̄(λ)·Δλ ; Y = k·Σ S(λ)·R(λ)·ȳ(λ)·Δλ ; Z = k·Σ S(λ)·R(λ)·z̄(λ)·Δλ, avec k = 100 / Σ S(λ)·ȳ(λ)·Δλ (ainsi, Y = 100 pour le blanc parfait).
-Puis les coordonnées CIELAB, avec Xn, Yn, Zn le blanc de référence du même illuminant (R = 1 partout) :
+Puis les coordonnées CIELAB, avec Xn, Yn, Zn le blanc de référence du même illuminant :
 L* = 116·f(Y/Yn) − 16 ; a* = 500·[f(X/Xn) − f(Y/Yn)] ; b* = 200·[f(Y/Yn) − f(Z/Zn)], avec f(t) = t^(1/3) si t &gt; (6/29)³, et f(t) = t/(3·(6/29)²) + 4/29 sinon.
 
-J'aimerais que la page affiche le graphique de la réflectance R(λ) et du spectre de l'illuminant, une pastille de la couleur obtenue (convertie en sRGB pour l'écran), et les valeurs de X, Y, Z, L*, a* et b*. On doit pouvoir changer d'illuminant (D65, A, F11) avec des boutons, et tout doit se mettre à jour automatiquement. Merci</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
+La page affiche le graphique de la réflectance R(λ) et du spectre de l'illuminant, une pastille de la couleur obtenue et les valeurs de X, Y, Z, L*, a* et b*. Pour la pastille, convertis XYZ en sRGB (matrice sRGB et correction gamma) ; sous A et F11, fais d'abord une adaptation chromatique de Bradford vers D65, pour que le blanc reste blanc à l'écran. On change d'illuminant (D65, A, F11) avec des boutons, et tout se met à jour aussitôt. Merci !</code><button type="button" class="copier" data-allow data-sim="metamerie">📋 Copier</button></div>
       <p class="etiquette-prompt">② La paire métamère</p>
-      <div class="phrase"><code>Merci. Tu peux maintenant ajouter un deuxième échantillon pour illustrer la métamérie : deux couleurs qui paraissent identiques sous un illuminant, mais différentes sous un autre.
+      <div class="phrase"><code>Merci. Ajoute maintenant, dans la même page, un deuxième échantillon pour illustrer la métamérie : deux couleurs qui paraissent identiques sous un illuminant, mais différentes sous un autre.
 
-Construis la réflectance du deuxième échantillon ainsi : R2(λ) = R1(λ) + β(λ), où β(λ) est un « noir métamérique » : une courbe qui oscille, choisie pour que X, Y et Z sous D65 ne changent pas. Pour cela, pars d'une oscillation (par exemple une sinusoïde dont on règle l'amplitude et la période), puis retire-lui sa projection sur les trois fonctions S_D65(λ)·x̄(λ), S_D65(λ)·ȳ(λ) et S_D65(λ)·z̄(λ) (projection orthogonale, par les moindres carrés). Veille à ce que R2 reste entre 0 et 1.
+Construis la réflectance du deuxième échantillon ainsi : R2(λ) = R1(λ) + β(λ), où β(λ) est un « noir métamérique » : une courbe qui oscille, choisie pour que X, Y et Z sous D65 ne changent pas. Pour cela, pars d'une oscillation (une sinusoïde dont on règle l'amplitude et la période), puis retire-lui sa projection sur les trois fonctions S_D65(λ)·x̄(λ), S_D65(λ)·ȳ(λ) et S_D65(λ)·z̄(λ) (projection orthogonale, par les moindres carrés). Pour que R2 reste entre 0 et 1, réduis automatiquement l'amplitude au besoin, sans jamais écrêter la courbe (l'écrêtage casserait l'égalité sous D65), et signale-le.
 
-Pour chaque illuminant, affiche les L*a*b* des deux échantillons et l'écart de couleur ΔE*ab = √(ΔL*² + Δa*² + Δb*²). Sous D65, l'écart doit être quasi nul ; sous A et F11, il doit apparaître. Affiche aussi les deux pastilles côte à côte, les deux courbes de réflectance sur le même graphique (elles doivent se croiser au moins trois fois), et un indice de métamérie : le ΔE*ab sous l'illuminant A.
+Pour chaque illuminant, affiche les L*a*b* des deux échantillons et l'écart de couleur ΔE*ab = √(ΔL*² + Δa*² + Δb*²). Sous D65, l'écart doit être quasi nul (inférieur à 0,1) ; sous A et F11, il doit apparaître. Affiche aussi les deux pastilles côte à côte, les deux courbes de réflectance sur le même graphique (elles doivent se croiser au moins trois fois, et tu indiques le nombre de croisements), et un indice de métamérie : le ΔE*ab sous l'illuminant A.
 
-Le code doit être similaire au précédent : même graphique, mêmes boutons d'illuminant… etc. !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-      <p class="etiquette-prompt">③ L'exploitation de mesures (fichier Excel ou CSV du spectrophotomètre)</p>
-      <div class="phrase"><code>Merci. Parfait pour comprendre la métamérie ! Maintenant, j'aimerais que tu ajoutes un autre onglet où l'on puisse charger un fichier de type Excel ou CSV exporté d'un spectrophotomètre, et que la page reconnaisse la colonne des longueurs d'onde et les colonnes de réflectance (une par échantillon, en % ou entre 0 et 1), trace les courbes, puis calcule pour chaque échantillon les L*a*b* sous D65, A et F11, et pour chaque paire l'écart ΔE*ab sous chaque illuminant. Et qu'on puisse directement, dans cet onglet, dire si les deux échantillons sont métamères (écart faible sous D65, mais grand sous un autre illuminant) ?</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
+Garde le même graphique et les mêmes boutons d'illuminant. Merci !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
+      <p class="etiquette-prompt">③ L'exploitation de mesures (copier-coller depuis Excel ou fichier CSV du spectrophotomètre)</p>
+      <div class="phrase"><code>Merci, parfait pour comprendre la métamérie ! Maintenant, j'aimerais que tu ajoutes un onglet « Mes mesures » pour exploiter de vraies mesures de spectrophotomètre.
+
+On y colle ses mesures copiées depuis Excel, ou on charge un fichier CSV (séparateur « ; » ou « , », virgule décimale acceptée), sans aucune bibliothèque externe. La page reconnaît la colonne des longueurs d'onde et les colonnes de réflectance (une par échantillon, en % ou entre 0 et 1, détecté automatiquement) ; si les longueurs d'onde ne tombent pas au pas de 10 nm, elle interpole linéairement.
+
+Elle trace les courbes, calcule pour chaque échantillon les L*a*b* sous D65, A et F11, et pour chaque paire l'écart ΔE*ab sous chaque illuminant, dans un tableau. Pour chaque paire, elle conclut : « métamères » si ΔE*ab &lt; 1 sous D65 et ΔE*ab &gt; 2 sous A ou F11 ; sinon « couleurs différentes » ou « couleurs identiques sous tous les illuminants ».
+
+Ajoute un bouton qui télécharge un exemple de fichier CSV pour tester (par exemple les deux échantillons de l'onglet de simulation). Merci !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
       <p class="note">💡 Sois patient : chaque réponse peut prendre plusieurs minutes.</p>
       </div>
       <div class="bloc-partie attendre">
