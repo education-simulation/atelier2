@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Choisis ton atelier</title>
-<link rel="stylesheet" href="style.css?v=64">
-<link rel="stylesheet" href="clair.css?v=13" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=65">
+<link rel="stylesheet" href="clair.css?v=14" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -164,6 +164,11 @@ function ouvrirConv(sim) {
   v.querySelector(".nc-bulle").textContent = mots[sim];  // puis, une fois envoyé : le message en haut, « Thinking » dessous
   v.querySelector(".nc-titre-conv").textContent = convs[sim];   // et la conversation s'ajoute dans le projet
   v.querySelector(".nc-info-2").innerHTML = "✍️ Écris <b>" + mots[sim] + "</b>, puis valide (Entrée) pour démarrer l'atelier " + ({ titrage: "titrage", metamerie: "métamérie", cinetique: "cinétique" })[sim];
+  // Déjà une conversation pour cet atelier : on la rouvre dans le menu de gauche, et on va directement à la page de l'atelier
+  const deja = document.createElement("div"); deja.className = "nc-deja";
+  deja.innerHTML = '<a class="nc-deja-btn" href="' + sim + '.html#simple">📂 J\'ai déjà une conversation ' + ({ titrage: "titrage", metamerie: "métamérie", cinetique: "cinétique" })[sim] + '</a>'
+    + '<span>Ouvre-la dans le menu de gauche d\'Antigravity, sous le projet « mes simulations » (« ' + convs[sim] + ' »), puis continue l\'atelier sur sa page.</span>';
+  v.querySelector(".nc-fenetre").appendChild(deja);
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".nc-fermer")) fermerConv(); });
   document.body.appendChild(v);
 }

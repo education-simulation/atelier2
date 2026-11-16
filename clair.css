@@ -98,3 +98,4 @@ ol.etapes > li, .info { background:#fffbeb; }
 .token-popup input { background:#fafafa; border-color:#d4d4d8; }
 .token-erreur { color:#dc2626; } .token-aide { color:#52525b; } .token-fermer:hover { color:#18181b; }
 .token-lien { color:#52525b; }
+.nc-deja { border-top-color:#e4e4e7; } .nc-deja-btn { background:#fff; color:#18181b; border-color:#d4d4d8; } .nc-deja span { color:#52525b; }
