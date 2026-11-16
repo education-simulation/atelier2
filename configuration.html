@@ -316,6 +316,9 @@ b.cle { color:#fde68a; }
 @keyframes p-info-1 { 0%, 47% { opacity:0; transform:translateY(6px); } 49%, 56% { opacity:1; transform:none; } 57%, 100% { opacity:0; } }
 @keyframes p-info-2 { 0%, 56% { opacity:0; transform:translateY(6px); } 58%, 69% { opacity:1; transform:none; } 70%, 100% { opacity:0; } }
 @keyframes p-chip { 0%, 48% { box-shadow:none; } 49%, 69% { box-shadow:0 0 0 3px #f59e0b; } 70%, 100% { box-shadow:none; } }
+.vers-zone-ag { display:flex; align-items:flex-end; gap:10px; margin:6px 0 0 -8px; color:#dc2626; font-weight:700; font-size:15px; }
+.vers-zone-ag svg { flex:none; animation:vza 1.4s ease-in-out infinite; }
+@keyframes vza { 0%,100% { transform:translate(0,0); } 50% { transform:translate(-10px,9px); } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -448,6 +451,7 @@ b.cle, .dec-carte b { color:#b45309; }
         <div class="zone-haut"><span class="indice">Ask anything, @ to mention, / for actions</span><span class="tape">continue</span><span class="curseur"></span></div>
         <div class="zone-bas"><span>+</span><span>Gemini 3.8 Flash <i>Low</i> ⌃</span><span class="esp"></span><span>🛡 Auto ⌃</span><span>🎤</span><span class="envoyer">⏎</span></div>
       </div>
+      <div class="vers-zone-ag" aria-hidden="true"><svg viewBox="0 0 120 110" width="120" height="110"><path d="M110 8 C 80 30, 50 55, 18 92" fill="none" stroke="#dc2626" stroke-width="7" stroke-linecap="round"/><path d="M8 62 L14 100 L50 92" fill="none" stroke="#dc2626" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>La vraie zone de message est dans Antigravity, <b>en bas à gauche</b></span></div>
       <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
 
