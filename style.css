@@ -503,3 +503,10 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .token-ok { all:unset; cursor:pointer; text-align:center; background:#00bbf9; color:#fff; font-weight:800; border-radius:8px; padding:10px 18px; } .token-ok:hover { background:#38cbfb; }
 .token-aide { margin:0; font-size:13px; color:#a1a1aa; }
 .token-fermer { all:unset; cursor:pointer; position:absolute; top:10px; right:12px; font-size:16px; color:#a1a1aa; } .token-fermer:hover { color:#fff; }
+.token-popup form, .token-e2, .token-e3 { display:grid; gap:10px; } .token-popup [hidden] { display:none !important; }
+.token-popup p { margin:0; }
+.token-lien { all:unset; cursor:pointer; justify-self:center; font-size:14px; text-decoration:underline; color:#a1a1aa; }
+.token-attente { font-weight:700; color:#00bbf9; animation:token-pulse 1.4s ease-in-out infinite; } @keyframes token-pulse { 50% { opacity:.45; } }
+.token-reponse { display:grid; gap:8px; border-radius:10px; padding:12px 14px; border:1px solid; }
+.token-reponse.ok { border-color:#16a34a; background:rgba(22,163,74,.12); } .token-reponse.ko { border-color:#dc2626; background:rgba(220,38,38,.12); }
+.token-rep-titre { font-weight:800; font-size:16px; }
