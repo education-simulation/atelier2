@@ -111,39 +111,56 @@
       <p class="note-version">🔀 <b class="cle">Tu as déjà fait le prompt simple ?</b> Colle ces messages dans la même conversation : Antigravity en fera <b class="cle">une version 2 dans le même fichier</b> (le message ② en fera une version 3, le ③ l'enrichira), avec des onglets en haut de la page pour comparer les deux. Ensuite, pour chaque modification, il te demandera à quelle(s) version(s) l'appliquer.</p>
       <p>Les trois messages l'un après l'autre, <b class="cle">dans la même conversation</b> : clique sur <b class="cle">📋 Copier</b>, colle, puis <b class="cle">Entrée</b>. Attends la fin de chaque réponse, et ouvre la page pour voir le résultat avant de passer au message suivant.</p>
       <p class="etiquette-prompt">① L'avancement d'une réaction</p>
-      <div class="phrase"><code>Bonjour, je souhaiterais que tu m'aides à concevoir une simulation en HTML (donc un fichier texte avec l'extension .html, et pas un fichier Python) que je puisse facilement partager à mes collègues.
+      <div class="phrase"><code>Bonjour, je souhaiterais que tu m'aides à concevoir une simulation en HTML (un seul fichier .html, pas de Python), que je puisse facilement partager à mes collègues.
 
-Cette simulation doit permettre de modéliser une réaction chimique et de déterminer son état final. On utilisera la notation suivante : aA + bB → cC + dD.
-A et B sont les réactifs, C et D sont les produits. Les grandeurs a, b, c et d sont les coefficients stœchiométriques associés respectivement aux espèces chimiques A, B, C et D : ce sont des grandeurs d'entrée qui doivent être modifiables facilement.
+Cette simulation modélise une réaction chimique et détermine son état final. Notation : aA + bB → cC + dD.
+A et B sont les réactifs, C et D les produits. Les coefficients stœchiométriques a, b, c et d sont des grandeurs d'entrée, modifiables facilement.
 
-On doit ensuite pouvoir entrer les quantités de matière initiales nA,0, nB,0, nC,0 et nD,0 (en mol) (les « 0 » permettent de comprendre que ce sont bien les quantités de matière initiales), quantités de matière respectivement des espèces chimiques A, B, C et D.
+On entre ensuite les quantités de matière initiales nA,0, nB,0, nC,0 et nD,0 (en mol ; l'indice 0 signifie « initial »).
 
-Le programme doit alors calculer xa = nA,0/a et xb = nB,0/b, puis la grandeur Xf = min(xa, xb) (Xf est l'avancement final) : le minimum des deux grandeurs xa et xb.
-Xf permet de définir le réactif limitant.
-Si Xf = xa, alors le réactif limitant est A.
-Si Xf = xb, alors le réactif limitant est B.
+Le programme calcule xa = nA,0/a et xb = nB,0/b, puis l'avancement final Xf = min(xa, xb), qui désigne le réactif limitant :
+- si Xf = xa, le réactif limitant est A ;
+- si Xf = xb, le réactif limitant est B ;
+- si xa = xb, le mélange est stœchiométrique : A et B sont limitants tous les deux.
 
-J'aimerais que le programme calcule les quantités de matière nA, nB, nC et nD pour n'importe quel avancement X, compris entre 0 et Xf :
+Pour tout avancement X compris entre 0 et Xf, le programme calcule :
 nA = nA,0 − a·X ;
 nB = nB,0 − b·X ;
 nC = nC,0 + c·X ;
 nD = nD,0 + d·X.
 
-J'aimerais que la page affiche un graphique en histogramme, avec en abscisse les 4 espèces chimiques A, B, C et D, et en ordonnée les quantités de matière respectives.
+La page affiche un diagramme en barres : en abscisse les 4 espèces A, B, C et D, en ordonnée leurs quantités de matière. On fait varier X entre 0 et Xf avec un curseur et avec une saisie au clavier ; le diagramme se met à jour aussitôt (les barres des réactifs baissent, celles des produits montent, jusqu'à la disparition du réactif limitant).
 
-Il faudrait prévoir une saisie manuelle de la valeur de l'avancement X pour le faire évoluer entre 0 et Xf. Le graphique devrait alors se mettre à jour automatiquement (plus X augmente, plus les histogrammes des réactifs doivent diminuer et ceux des produits augmenter, jusqu'à disparition complète du réactif limitant !).
+La page affiche aussi l'équation de la réaction, les quantités de matière initiales, l'avancement final Xf et le réactif limitant. Merci !</code><button type="button" class="copier" data-allow data-sim="titrage">📋 Copier</button></div>
+      <p class="etiquette-prompt">② Le titrage : quantités de matière et courbe de pH</p>
+      <div class="phrase"><code>Merci. Génère maintenant un nouveau code, similaire au précédent, qui illustre un titrage acido-basique.
 
-En plus du graphique, la page doit bien sûr afficher l'équation de la réaction, les quantités de matière initiales et l'avancement final Xf ! Merci</code><button type="button" class="copier" data-allow data-sim="titrage">📋 Copier</button></div>
-      <p class="etiquette-prompt">② Le dosage</p>
-      <div class="phrase"><code>Merci. Tu peux maintenant générer un nouveau code, similaire au précédent, mais qui illustre le cas particulier d'un dosage. Dans un dosage, l'espèce A sera définie par défaut comme l'espèce titrée, et B comme l'espèce titrante. Cette fois-ci, ce n'est pas X l'avancement qu'on entrera, mais VB, le volume d'espèce titrante ajouté. VB varie entre 0 et Veq, le volume à l'équivalence versé d'espèce titrante.
+L'espèce A est l'espèce titrée (dans le bécher), B l'espèce titrante (dans la burette). On n'entre plus l'avancement X mais le volume versé VB (en mL), avec un curseur et une saisie, de 0 à 2·Veq, pour voir aussi ce qui se passe après l'équivalence.
 
-À l'état initial, on a une quantité de matière nA,0 = cA·VA (en mmol), avec cA la concentration en quantité de matière de A en mol/L et VA le volume en mL de A. Le volume Veq est défini de la manière suivante : Veq = cA·VA·b/(a·cB), avec cB la concentration en quantité de matière de B en mol/L (Veq est en mL). À l'état initial, nB,0 = nC,0 = nD,0 = 0 (les produits C et D sont absents, tout comme le réactif B, en dehors du bécher puisque dans la burette).
+Données d'entrée : cA (mol/L), VA (mL), cB (mol/L), et les coefficients a et b.
+À l'état initial : nA,0 = cA·VA (en mmol) et nB,0 = nC,0 = nD,0 = 0 (B est encore dans la burette).
+Volume à l'équivalence : Veq = cA·VA·b/(a·cB) (en mL).
 
-Avant l'équivalence (pour un volume VB donné, compris entre 0 et Veq), le réactif titrant B est toujours limitant, donc nB = cB·VB − b·X = 0, donc X = cB·VB/b, avec VB le volume en mL de B versé dans le bécher. On a donc nA = nA,0 − a·X, nC = c·X et nD = d·X. Lorsque VB = Veq, X = Xeq = cB·Veq/b : normalement, on doit donc avoir nA,eq = nB,eq = 0. Pour VB &gt; Veq, le réactif titrant s'accumule : nB = cB·(VB − Veq), nA = 0, nC = c·Xeq et nD = d·Xeq.
+Avant l'équivalence (0 ≤ VB ≤ Veq), B est limitant : X = cB·VB/b, nA = nA,0 − a·X, nB = 0, nC = c·X et nD = d·X. À l'équivalence, nA = nB = 0.
+Après l'équivalence (VB &gt; Veq), A a disparu et B s'accumule : nA = 0, nB = cB·(VB − Veq), nC = c·Xeq et nD = d·Xeq, avec Xeq = cB·Veq/b.
 
-Le code doit être similaire au précédent : afficher l'équation de la réaction, la concentration de l'espèce titrée A, le volume de A, la concentration de l'espèce titrante B, le même graphique qu'avant… etc. !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
-      <p class="etiquette-prompt">③ L'exploitation de mesures (fichier Excel ou CSV)</p>
-      <div class="phrase"><code>Merci. Parfait pour prévoir le volume à l'équivalence ! Maintenant, j'aimerais que tu ajoutes un autre onglet où l'on puisse charger un fichier de type Excel ou CSV, et que la page reconnaisse la colonne du volume V et celle de la grandeur mesurée (par exemple le pH ou un potentiel), et trace l'évolution de la grandeur mesurée en fonction du volume. Et qu'on puisse directement, dans cet onglet, faire l'exploitation, avec le tracé de la dérivée première, de la dérivée seconde, et éventuellement des tangentes ?</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
+Garde le diagramme en barres des quantités de matière, et ajoute à côté la courbe pH = f(VB), tracée de 0 à 2·Veq, avec un point qui suit le volume choisi et une ligne verticale à Veq. Pour cette courbe, on se limite à a = b = 1 (25 °C, pKe = 14), en tenant compte de la dilution (volume total VA + VB) :
+- acide fort titré par une base forte : avant l'équivalence [H3O+] = (cA·VA − cB·VB)/(VA + VB) ; à l'équivalence pH = 7 ; après, [HO−] = (cB·VB − cA·VA)/(VA + VB) et pH = 14 + log[HO−] ;
+- acide faible (pKa modifiable, par exemple 4,8 pour l'acide éthanoïque) titré par une base forte : à VB = 0, pH = ½(pKa − log cA) ; entre les deux, pH = pKa + log(VB/(Veq − VB)) ; à l'équivalence, pH = 7 + ½pKa + ½log(cA·VA/(VA + Veq)) ; après, comme pour l'acide fort.
+Un menu permet de choisir le type d'acide.
+
+La page affiche l'équation de la réaction, cA, VA, cB, Veq, le pH et les quantités de matière pour le volume choisi. Merci !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
+      <p class="etiquette-prompt">③ L'exploitation de mesures (copier-coller depuis Excel ou fichier CSV)</p>
+      <div class="phrase"><code>Merci, parfait pour prévoir le volume à l'équivalence ! Maintenant, j'aimerais que tu ajoutes un onglet « Mes mesures » pour exploiter un vrai titrage.
+
+On y colle ses mesures copiées depuis Excel (deux colonnes), ou on charge un fichier CSV (séparateur « ; » ou « , », virgule décimale acceptée), sans aucune bibliothèque externe. La page reconnaît d'après les en-têtes la colonne du volume V (mL) et celle de la grandeur mesurée (pH, ou potentiel E en mV), et on peut corriger ce choix avec deux menus.
+
+Elle trace alors la grandeur mesurée en fonction de V, et propose trois exploitations, chacune avec le Veq trouvé :
+- la dérivée première dpH/dV : Veq au maximum du pic ;
+- la dérivée seconde : Veq là où elle s'annule en changeant de signe ;
+- la méthode des tangentes parallèles : deux tangentes à placer avec des curseurs, la parallèle à égale distance, et Veq à son intersection avec la courbe.
+
+Compare ces Veq entre eux et avec le Veq théorique de l'onglet de simulation, et ajoute un bouton qui télécharge un exemple de fichier CSV pour tester. Merci !</code><button type="button" class="copier" data-allow>📋 Copier</button></div>
       <p class="note">💡 Sois patient : chaque réponse peut prendre plusieurs minutes.</p>
       </div>
       <div class="bloc-partie attendre">
