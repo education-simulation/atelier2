@@ -611,3 +611,5 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 .lg-chrome::after { content:""; position:absolute; inset:3.5px; border-radius:50%; background:#4285f4; box-shadow:0 0 0 1.3px #fff; }
 .lg { width:14px; height:14px; flex:none; } .lg-ag { filter:grayscale(1); opacity:.75; object-fit:contain; }
 .cp-sugg p { align-items:center; }
+/* antigravity.html : 1 à 4 sur une ligne, puis 5 et 6 dessous */
+.tuiles-ag { grid-template-columns:repeat(4,minmax(0,1fr)); } @media (max-width:560px) { .tuiles-ag { grid-template-columns:repeat(2,minmax(0,1fr)); } }
