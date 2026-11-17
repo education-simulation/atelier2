@@ -319,6 +319,15 @@ b.cle { color:#fde68a; }
 .vers-zone-ag { display:flex; align-items:flex-end; gap:10px; margin:6px 0 0 -8px; color:#dc2626; font-weight:700; font-size:15px; }
 .vers-zone-ag svg { flex:none; animation:vza 1.4s ease-in-out infinite; }
 @keyframes vza { 0%,100% { transform:translate(0,0); } 50% { transform:translate(-10px,9px); } }
+/* étape 5 : confirmer « Low » et « Auto » par deux clics */
+.vz { border-radius:8px; padding:2px 6px; } .zone-ag.verif .vz-low { animation:vz 2s infinite; } .zone-ag.verif .vz-auto { animation:vz 2s 1s infinite; }
+.zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-auto .vz-auto { animation:none; box-shadow:0 0 0 2px #22c55e; }
+@keyframes vz { 0%,100% { box-shadow:0 0 0 0 rgba(245,158,11,0); } 50% { box-shadow:0 0 0 3px #f59e0b; } }
+.verif-btns { display:grid; gap:10px; margin:4px 0 0 38px; } .verif-l { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.verif-btn { all:unset; cursor:pointer; border:2px solid #f59e0b; border-radius:12px; padding:9px 14px; font-weight:800; background:#1f1a10; color:#fff; }
+.verif-btn.ok { border-color:#22c55e; background:#0c1a10; color:#bbf7d0; }
+.verif-non { font-size:14px; color:#a1a1aa; }
+.zone-ag.verif .indice { animation:none; opacity:1; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -367,6 +376,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-e1-fait { background:#f0fdf4; border-color:#86efac; color:#14532d; } .p-recopier { color:#71717a; }
 @keyframes p-script { 0%, 46% { background:#e4e4e7; } 48%, 100% { background:transparent; } }
 .suiv-msg { color:#b45309; }
+.verif-btn { background:#fffbeb; color:#18181b; } .verif-btn.ok { background:#f0fdf4; color:#14532d; } .verif-non { color:#71717a; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -446,13 +456,16 @@ b.cle, .dec-carte b { color:#b45309; }
 
     <section class="etape e5">
       <p class="fini">✅ Antigravity est prêt.</p>
-      <p class="fermer-onglet"><span class="num">✍️</span><span>Dans la zone de message, en bas à gauche, écris <b class="cle mot-continue">continue</b>, puis Entrée.</span></p>
-      <div class="zone-ag" aria-hidden="true">
-        <div class="zone-haut"><span class="indice">Ask anything, @ to mention, / for actions</span><span class="tape">continue</span><span class="curseur"></span></div>
-        <div class="zone-bas"><span>+</span><span>Gemini 3.8 Flash <i>Low</i> ⌃</span><span class="esp"></span><span>🛡 Auto ⌃</span><span>🎤</span><span class="envoyer">⏎</span></div>
+      <p class="fermer-onglet"><span class="num">🔎</span><span>Vérifie ta configuration, <b class="cle">en bas de la zone de message</b> d'Antigravity, puis confirme chaque réglage :</span></p>
+      <div class="zone-ag verif" aria-hidden="true">
+        <div class="zone-haut"><span class="indice">Ask anything, @ to mention, / for actions</span></div>
+        <div class="zone-bas"><span>+</span><span class="vz vz-low">Gemini 3.8 Flash <i>Low</i> ⌃</span><span class="esp"></span><span class="vz vz-auto">🛡 Auto ⌃</span><span>🎤</span><span class="envoyer">⏎</span></div>
       </div>
-      <div class="vers-zone-ag" aria-hidden="true"><svg viewBox="0 0 120 110" width="120" height="110"><path d="M110 8 C 80 30, 50 55, 18 92" fill="none" stroke="#dc2626" stroke-width="7" stroke-linecap="round"/><path d="M8 62 L14 100 L50 92" fill="none" stroke="#dc2626" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg><span>La vraie zone de message est dans Antigravity, <b>en bas à gauche</b></span></div>
-      <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
+      <div class="verif-btns">
+        <div class="verif-l"><button type="button" class="verif-btn" data-verif="low">👀 À gauche, je vois « Gemini 3.8 Flash Low »</button><a class="verif-non" href="#2">Non ? Refais l'étape 2</a></div>
+        <div class="verif-l"><button type="button" class="verif-btn" data-verif="auto">👀 À droite, je vois « Auto »</button><a class="verif-non" href="#3">Non ? Refais l'étape 3</a></div>
+      </div>
+      <p class="vers-suivant verif-ok" hidden>Les deux réglages sont bons : clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
 
     <section class="etape e6">
@@ -513,10 +526,18 @@ b.cle, .dec-carte b { color:#b45309; }
   </div>
 </div>
 
-<div class="bande" id="bande" role="note" hidden><span class="bfleche" aria-hidden="true">⬅</span>
-  <span><b>Réponds à l'IA</b> <em>dans la zone de message d'Antigravity, en bas à gauche</em><span class="quoi">👉 Écris « continue », puis Entrée.</span></span></div>
+
 <script>
 const etapes = [...document.querySelectorAll(".etape")], ronds = [...document.querySelectorAll("#st li")];
+// étape 5 : deux clics pour confirmer « Low » et « Auto » (gardés dans le navigateur)
+const verif = { low:false, auto:false };
+try { verif.low = localStorage.getItem("atelier.verif.low") === "1"; verif.auto = localStorage.getItem("atelier.verif.auto") === "1"; } catch {}
+const verifOk = () => verif.low && verif.auto;
+function majVerif() {
+  document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = (verif[k] ? "✅ " : "👀 ") + (k === "low" ? "À gauche, je vois « Gemini 3.8 Flash Low »" : "À droite, je vois « Auto »"); });
+  document.querySelector(".verif-ok").hidden = !verifOk();
+  document.querySelector(".zone-ag.verif").classList.toggle("ok-low", verif.low); document.querySelector(".zone-ag.verif").classList.toggle("ok-auto", verif.auto);
+}
 // L'étape ouverte est dans l'adresse (#1 … #7) : un lien peut ouvrir directement une étape, et le rechargement la garde
 let n = Math.max(0, Math.min(etapes.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
 window.addEventListener("hashchange", () => { const k = parseInt(location.hash.slice(1), 10); if (k >= 1 && k <= etapes.length && k - 1 !== n) { n = k - 1; montrer(); } });
@@ -527,13 +548,10 @@ function montrer() {
   document.getElementById("prec").hidden = n === 0;
   document.getElementById("suiv").hidden = n === etapes.length - 1;
   // étape 6 : « Suivant » reste bloqué tant que le message n'a pas été copié
-  document.getElementById("suiv").classList.toggle("bloque", etapes[n].classList.contains("e6") && !document.querySelector(".p-e1")?.classList.contains("fait"));
+  // étape 5 : « Suivant » reste bloqué tant que les deux réglages ne sont pas confirmés
+  document.getElementById("suiv").classList.toggle("bloque", (etapes[n].classList.contains("e6") && !document.querySelector(".p-e1")?.classList.contains("fait")) || (etapes[n].classList.contains("e5") && !verifOk()));
   document.getElementById("suiv-msg").hidden = true;
-  // le bandeau jaune : seulement à l'étape « C'est prêt », et 10 secondes
-  const bandeau = document.getElementById("bande");
-  clearTimeout(window.minuteurBande);
-  bandeau.hidden = !etapes[n].classList.contains("e5");
-  if (!bandeau.hidden) window.minuteurBande = setTimeout(() => { bandeau.hidden = true; }, 10000);
+  document.getElementById("suiv-msg").textContent = etapes[n].classList.contains("e5") ? "👀 Confirme d'abord les deux réglages (le modèle « Low » et le mode « Auto ») : le bouton « Suivant » se débloque ensuite." : "📋 Copie d'abord le message de l'étape ①, puis crée ton projet : le bouton « Suivant » se débloque ensuite.";
   // chaque animation repart du début quand on arrive sur son étape
   etapes[n].querySelectorAll("*").forEach((el) => el.getAnimations().forEach((a) => { a.currentTime = 0; }));
 }
@@ -543,6 +561,13 @@ document.getElementById("suiv").addEventListener("click", (e) => {
 });
 document.getElementById("prec").addEventListener("click", () => { n = Math.max(0, n - 1); montrer(); });
 montrer();
+document.querySelectorAll(".verif-btn").forEach((b) => b.addEventListener("click", () => {
+  const k = b.dataset.verif; verif[k] = !verif[k];
+  try { localStorage.setItem("atelier.verif." + k, verif[k] ? "1" : ""); } catch {}
+  majVerif();
+  if (etapes[n].classList.contains("e5")) { document.getElementById("suiv").classList.toggle("bloque", !verifOk()); if (verifOk()) document.getElementById("suiv-msg").hidden = true; }
+}));
+majVerif();
 document.addEventListener("click", (ev) => {
   const b = ev.target.closest("[data-popup]");
   if (!b) return;
