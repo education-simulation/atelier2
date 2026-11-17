@@ -329,6 +329,14 @@ b.cle { color:#fde68a; }
 .verif-non { font-size:14px; color:#a1a1aa; }
 .zone-ag.verif .indice { animation:none; opacity:1; }
 .zone-ag.verif .vz-low, .zone-ag.verif .vz-auto, .zone-ag.verif .envoyer, .zone-ag.verif .curseur { animation:none; } .zone-ag.verif .vz { box-shadow:0 0 0 2px #f59e0b; } .zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-auto .vz-auto { box-shadow:0 0 0 2px #22c55e; }
+/* étape 5 : les deux réglages s'allument l'un après l'autre (Low, puis Auto), tant qu'ils ne sont pas confirmés */
+.zone-ag.verif .vz { box-shadow:none; } .zone-ag.verif .vz-low { animation:vz-a 3s infinite; } .zone-ag.verif .vz-auto { animation:vz-b 3s infinite; }
+@keyframes vz-a { 0%,45% { box-shadow:0 0 0 3px #f59e0b; background:rgba(245,158,11,.15); } 50%,100% { box-shadow:none; background:none; } }
+@keyframes vz-b { 0%,45% { box-shadow:none; background:none; } 50%,95% { box-shadow:0 0 0 3px #f59e0b; background:rgba(245,158,11,.15); } 100% { box-shadow:none; } }
+.zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-auto .vz-auto { animation:none; box-shadow:0 0 0 2px #22c55e; background:none; }
+.verif-btn[data-verif="low"]:not(.ok) { animation:vb-a 3s infinite; } .verif-btn[data-verif="auto"]:not(.ok) { animation:vb-b 3s infinite; }
+@keyframes vb-a { 0%,45% { box-shadow:0 0 0 3px rgba(245,158,11,.35); } 50%,100% { box-shadow:none; } }
+@keyframes vb-b { 0%,45% { box-shadow:none; } 50%,95% { box-shadow:0 0 0 3px rgba(245,158,11,.35); } 100% { box-shadow:none; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
