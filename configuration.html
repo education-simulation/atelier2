@@ -656,7 +656,7 @@ b.cle, .dec-carte b { color:#b45309; }
         <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
         </div>
       </div>
-      <div class="pj-actions"><button type="button" class="p-copier pj-recopier">📋 Copier le message à coller dans la nouvelle conversation</button></div>
+      <div class="pj-actions"><button type="button" class="p-copier pj-voir">📋 Voir le message à copier dans la conversation</button></div>
       </div>
       <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
@@ -779,12 +779,12 @@ const pCopie = (oui) => { pE1.classList.toggle("fait", oui); pSuite.hidden = !ou
 let pDeja = false; try { pDeja = localStorage.getItem("atelier.copie.projet") === "1"; } catch {}
 pCopie(pDeja);
 document.querySelector(".p-recopier").addEventListener("click", () => pE1.classList.remove("fait"));
-document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click", async () => {
+document.querySelector(".pj-voir").addEventListener("click", () => ouvrirColler());
+document.querySelectorAll(".p-copier:not(.pj-voir)").forEach((b) => b.addEventListener("click", async () => {
   const c = document.querySelector(".p-phrase code"), texte = b.textContent;
   setTimeout(() => {
     pCopie(true);
-    if (b.classList.contains("pj-recopier")) ouvrirColler();   // le bouton vert : le message copié, et où le coller
-    if (!b.classList.contains("pj-recopier")) {   // ② ③ ④ apparaissent sous la ligne « Message copié », l'animation part du début
+    if (!b.classList.contains("pj-voir")) {   // ② ③ ④ apparaissent sous la ligne « Message copié », l'animation part du début
       ouvrirProjet();
       const haut = document.querySelector(".haut")?.offsetHeight || 0;
       window.scrollTo({ top: pSuite.getBoundingClientRect().top + window.scrollY - haut - 12, behavior: "smooth" });
