@@ -359,10 +359,7 @@ b.cle { color:#fde68a; }
 @keyframes p-zoom {
   0%, 2% { transform:scale(1); transform-origin:0 125px; }
   6%, 8% { transform:scale(1.6); transform-origin:0 125px; }
-  10%, 46% { transform:scale(1); transform-origin:0 125px; }
-  49%, 55% { transform:scale(1.6); transform-origin:0 150px; }
-  57% { transform:scale(1); transform-origin:0 150px; }
-  58%, 100% { transform:scale(1); transform-origin:0 150px; }
+  10%, 100% { transform:scale(1); transform-origin:0 125px; }
 }
 /* avant la création, « Conversations » est juste sous « Projects » ; la place du projet s'ouvre seulement à sa création */
 .p-projet, .p-conv { opacity:1; overflow:hidden; }
@@ -429,6 +426,10 @@ b.cle { color:#fde68a; }
 .p-suite .pj-actions { justify-content:flex-start; }
 /* étape 6 : une fois le message copié, le bloc ① disparaît (le bouton « Copier à nouveau » reste en bas) */
 .p-e1.fait { display:none; }
+/* étape 6, point 5 : pas de zoom ; la zone de message de la nouvelle conversation entourée en vert, comme « Nouvelle conversation » ; point 6 : l'animation seule, sans bulle */
+.p-saisie { animation:p-saisie-verte 38s infinite; }
+@keyframes p-saisie-verte { 0%, 47% { box-shadow:none; } 49%, 80% { box-shadow:0 0 0 3px #22c55e; } 83%, 100% { box-shadow:none; } }
+.p-info-3 { display:none !important; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
