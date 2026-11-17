@@ -337,6 +337,14 @@ b.cle { color:#fde68a; }
 .verif-btn[data-verif="low"]:not(.ok) { animation:vb-a 3s infinite; } .verif-btn[data-verif="auto"]:not(.ok) { animation:vb-b 3s infinite; }
 @keyframes vb-a { 0%,45% { box-shadow:0 0 0 3px rgba(245,158,11,.35); } 50%,100% { box-shadow:none; } }
 @keyframes vb-b { 0%,45% { box-shadow:none; } 50%,95% { box-shadow:0 0 0 3px rgba(245,158,11,.35); } 100% { box-shadow:none; } }
+/* étape 5, un réglage après l'autre : d'abord « Low » (seul animé, seul bouton), puis « Auto » */
+.zone-ag.verif .vz-low { animation:vz-1 1.4s ease-in-out infinite; } .zone-ag.verif .vz-auto { animation:none; box-shadow:none; background:none; }
+.zone-ag.verif.ok-low .vz-auto { animation:vz-1 1.4s ease-in-out infinite; }
+.zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-low.ok-auto .vz-auto { animation:none; box-shadow:0 0 0 2px #22c55e; background:none; }
+@keyframes vz-1 { 0%,100% { box-shadow:0 0 0 2px #f59e0b; background:rgba(245,158,11,.08); } 50% { box-shadow:0 0 0 4px #f59e0b; background:rgba(245,158,11,.22); } }
+.verif-btn[data-verif]:not(.ok) { animation:vb-1 1.4s ease-in-out infinite; }
+@keyframes vb-1 { 50% { box-shadow:0 0 0 4px rgba(245,158,11,.35); } }
+.verif-l[hidden] { display:none; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -545,6 +553,7 @@ const verifOk = () => verif.low && verif.auto;
 function majVerif() {
   document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = (verif[k] ? "✅ " : "👀 ") + (k === "low" ? "À gauche, je vois « Gemini 3.8 Flash Low »" : "À droite, je vois « Auto »"); });
   document.querySelector(".verif-ok").hidden = !verifOk();
+  document.querySelector('[data-verif="auto"]').closest(".verif-l").hidden = !verif.low;   // « Auto » n'apparaît qu'une fois « Low » confirmé
   document.querySelector(".zone-ag.verif").classList.toggle("ok-low", verif.low); document.querySelector(".zone-ag.verif").classList.toggle("ok-auto", verif.auto);
 }
 // L'étape ouverte est dans l'adresse (#1 … #7) : un lien peut ouvrir directement une étape, et le rechargement la garde
@@ -572,6 +581,7 @@ document.getElementById("prec").addEventListener("click", () => { n = Math.max(0
 montrer();
 document.querySelectorAll(".verif-btn").forEach((b) => b.addEventListener("click", () => {
   const k = b.dataset.verif; verif[k] = !verif[k];
+  if (k === "low" && !verif.low) { verif.auto = false; try { localStorage.setItem("atelier.verif.auto", ""); } catch {} }
   try { localStorage.setItem("atelier.verif." + k, verif[k] ? "1" : ""); } catch {}
   majVerif();
   if (etapes[n].classList.contains("e5")) { document.getElementById("suiv").classList.toggle("bloque", !verifOk()); if (verifOk()) document.getElementById("suiv-msg").hidden = true; }
