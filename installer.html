@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity · Installer Antigravity</title>
-<link rel="stylesheet" href="style.css?v=43">
-<link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=44">
+<link rel="stylesheet" href="clair.css?v=4" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -18,23 +18,30 @@
   <div class="corps">
     <a class="retour-tuiles" href="antigravity.html">‹ Toutes les étapes</a>
     <section id="installer">
-      <ol class="etapes">
-        <li>Ouvre la page officielle de Google et télécharge Antigravity <span class="os os-mac">pour <b class="cle">Mac</b></span><span class="os os-win">pour <b class="cle">Windows</b></span><span class="os os-linux">pour <b class="cle">Linux</b></span> :
-          <div class="phrase"><a class="copier" href="https://antigravity.google/download" target="_blank" rel="noopener">⬇️ Télécharger Antigravity</a></div>
-        </li>
-        <li><span class="os os-mac">Ouvre le fichier téléchargé (dans <b class="cle">Téléchargements</b>), puis glisse l'icône d'Antigravity dans le dossier <b class="cle">Applications</b>.</span><span class="os os-win">Double-clique sur le fichier téléchargé (dans <b class="cle">Téléchargements</b>), puis suis l'installation en cliquant sur <b class="cle">Suivant</b>.</span><span class="os os-linux">Installe le paquet téléchargé comme d'habitude sur ton ordinateur.</span>
-          <p class="note">💻 Ton ordinateur : <button type="button" class="lien-os" data-os="mac">Mac</button> · <button type="button" class="lien-os" data-os="win">Windows</button> · <button type="button" class="lien-os" data-os="linux">Linux</button></p>
-        </li>
-        <li>Ouvre Antigravity et connecte-toi avec ton <b class="cle">compte Google RASF</b>, avec <b class="cle">cotisation à jour</b>.</li>
-        <li>Deux écrans d'accueil en anglais s'affichent : clique sur <b class="cle">Skip</b>, puis sur <b class="cle">Continue</b>. Avant Continue, <b class="cle">décoche la première case</b> si elle est cochée : elle partage tes échanges avec Google.
-          <div class="deux-images">
-            <figure><img src="images/antigravity-bienvenue.webp" alt="L'écran « Hey education! What best describes your work? », avec Skip en bas"><figcaption>① Clique sur <b class="cle">Skip</b>, en bas</figcaption></figure>
-            <figure><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><figcaption>② Décoche la 1<sup>re</sup> case si elle est cochée, puis <b class="cle">Continue</b></figcaption></figure>
-          </div>
-        </li>
-      </ol>
+      <div class="config-bloc">
+        <p>Clique sur <b class="cle">« ⬇️ Télécharger Antigravity »</b> : une fenêtre te montre comment l'installer et te connecter, puis te mène à la page officielle de téléchargement.</p>
+        <div class="phrase"><button type="button" class="copier" data-installer>⬇️ Télécharger Antigravity</button></div>
+      </div>
       <div class="suite-etape"><a class="btn-un" href="configurer.html">Antigravity est installé : étape 2 › Configurer Antigravity</a></div>
     </section>
+  </div>
+</div>
+<div class="cp-voile" hidden>
+  <div class="cp-fen" role="dialog" aria-modal="true" aria-labelledby="in-titre">
+    <button type="button" class="cp-fermer" aria-label="Fermer">✕</button>
+    <h2 id="in-titre">⬇️ Installer Antigravity, puis te connecter</h2>
+    <ol class="in-etapes">
+      <li><b>Une fois téléchargé</b>, installe-le : <span class="os os-mac">Ouvre le fichier téléchargé (dans <b class="cle">Téléchargements</b>), puis glisse l'icône d'Antigravity dans le dossier <b class="cle">Applications</b>.</span><span class="os os-win">Double-clique sur le fichier téléchargé (dans <b class="cle">Téléchargements</b>), puis suis l'installation en cliquant sur <b class="cle">Suivant</b>.</span><span class="os os-linux">Installe le paquet téléchargé comme d'habitude sur ton ordinateur.</span>
+        <p class="note">💻 Ton ordinateur : <button type="button" class="lien-os" data-os="mac">Mac</button> · <button type="button" class="lien-os" data-os="win">Windows</button> · <button type="button" class="lien-os" data-os="linux">Linux</button></p></li>
+      <li>Ouvre Antigravity et <b>connecte-toi avec ton email RASF</b> (cotisation à jour) en cliquant sur <b class="cle">Continue with Google</b>.
+        <figure class="in-img"><img src="images/antigravity-connexion.jpg" alt="L'écran « Welcome to Antigravity! » avec le bouton Continue with Google"></figure></li>
+      <li>Clique sur <b class="cle">Skip</b>, puis sur <b class="cle">Continue</b>. Avant Continue, <b class="cle">décoche la première case</b> si elle est cochée : elle partage tes échanges avec Google.
+        <div class="deux-images">
+          <figure><img src="images/antigravity-bienvenue.webp" alt="L'écran « Hey education! What best describes your work? », avec Skip en bas"><figcaption>① Clique sur <b class="cle">Skip</b>, en bas</figcaption></figure>
+          <figure><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><figcaption>② Décoche la 1<sup>re</sup> case si elle est cochée, puis <b class="cle">Continue</b></figcaption></figure>
+        </div></li>
+    </ol>
+    <div class="cp-actions"><a class="btn-un" href="https://antigravity.google/download" target="_blank" rel="noopener">⬇️ Aller à la page de téléchargement</a></div>
   </div>
 </div>
 <script>
@@ -48,7 +55,7 @@ const choisirOs = (os) => {
 let osDepart = null; try { osDepart = localStorage.getItem("atelier.os"); } catch {}
 choisirOs(osDepart || deviner());
 document.querySelectorAll(".lien-os").forEach((b) => b.addEventListener("click", () => choisirOs(b.dataset.os)));
-document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", async () => {
+document.querySelectorAll("button.copier:not([data-installer])").forEach((b) => b.addEventListener("click", async () => {
   const c = b.previousElementSibling, texte = b.textContent;
   try { await navigator.clipboard.writeText(c.textContent); }
   catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
@@ -70,6 +77,12 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
     }, 2500);
   }
 }));
+const voileIn = document.querySelector(".cp-voile");
+document.querySelector("[data-installer]").addEventListener("click", () => { voileIn.hidden = false; voileIn.querySelector(".cp-fen").scrollTop = 0; voileIn.querySelector(".cp-fermer").focus({ preventScroll: true }); });
+const fermerIn = () => { voileIn.hidden = true; };
+voileIn.querySelector(".cp-fermer").addEventListener("click", fermerIn);
+voileIn.addEventListener("click", (e) => { if (e.target === voileIn) fermerIn(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !voileIn.hidden) fermerIn(); });
 </script>
 </body>
 </html>
