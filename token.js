@@ -3,11 +3,15 @@
 // ③ « Recharger token » envoie le POST au webhook assistantia-creer, et sa réponse s'affiche dans la popup.
 (() => {
   const CREER = "https://n8n.srv757556.hstgr.cloud/webhook/assistantia-creer";
+  // Déclencheur : les boutons [data-token] de la page, sinon un bouton « Ajouter token » dans la barre du haut
   const barre = document.querySelector(".barre");
-  if (!barre) return;
-  const btn = document.createElement("button");
-  btn.type = "button"; btn.className = "token-btn"; btn.textContent = "🔑 Ajouter token";
-  barre.insertBefore(btn, barre.querySelector(".nouvel-atelier"));
+  let btn = document.querySelector("[data-token]");
+  if (!btn) {
+    if (!barre) return;
+    btn = document.createElement("button");
+    btn.type = "button"; btn.className = "token-btn"; btn.textContent = "🔑 Ajouter token";
+    barre.insertBefore(btn, barre.querySelector(".nouvel-atelier"));
+  }
 
   const voile = document.createElement("div");
   voile.className = "token-voile"; voile.hidden = true;

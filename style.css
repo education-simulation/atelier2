@@ -513,3 +513,19 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .nc-deja { display:flex; align-items:center; gap:12px; flex-wrap:wrap; border-top:1px solid #3f3f46; padding-top:12px; }
 .nc-deja-btn { flex:none; background:#27272a; color:#fff; border:1px solid #52525b; border-radius:10px; padding:8px 14px; font-weight:800; text-decoration:none; } .nc-deja-btn:hover { border-color:#f59e0b; }
 .nc-deja span { flex:1 1 260px; font-size:14px; color:#a1a1aa; }
+/* antigravity.html : les cinq tuiles numérotées */
+.tuiles-ag { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; }
+.tuile-ag { all:unset; cursor:pointer; box-sizing:border-box; display:grid; grid-template-columns:auto 1fr; column-gap:10px; align-items:center; border:1px solid #3f3f46; background:#141418; border-radius:14px; padding:12px 14px; }
+.tuile-ag .pas-num { grid-row:span 2; }
+.tuile-ag b { color:#fff; font-size:15.5px; line-height:1.25; } .tuile-ag small { color:#a1a1aa; font-size:13px; }
+.tuile-ag:hover { border-color:#f59e0b; } .tuile-ag[aria-pressed="true"] { border:2px solid #f59e0b; padding:11px 13px; box-shadow:0 0 0 4px rgba(245,158,11,.18); }
+.titre-etape { display:flex; align-items:center; gap:10px; margin:6px 0 12px; font:800 21px 'Outfit',system-ui,sans-serif; }
+.suite-etape { margin-top:14px; display:flex; justify-content:flex-end; } .suite-etape .btn-un { text-decoration:none; }
+#projet .pas-expl, #token .pas-expl { margin-bottom:12px; }
+.faq { display:grid; gap:8px; }
+.faq details { border:1px solid #3f3f46; border-radius:12px; padding:10px 14px; background:#141418; } .faq summary { cursor:pointer; font-weight:800; }
+.faq details p { margin:8px 0 2px; line-height:1.5; }
+.lien-etape { all:unset; cursor:pointer; color:#f59e0b; font-weight:700; text-decoration:underline; }
+.tuiles-ag { grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); }
+.tuile-ag { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:12px; } .tuile-ag[aria-pressed="true"] { padding:11px; }
+.tuile-ag .pas-num { width:30px; height:30px; font-size:15px; }
