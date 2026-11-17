@@ -101,3 +101,4 @@ ol.etapes > li, .info { background:#fffbeb; }
 .nc-deja { border-top-color:#e4e4e7; } .nc-deja-btn { background:#fff; color:#18181b; border-color:#d4d4d8; } .nc-deja span { color:#52525b; }
 .tuile-ag, .faq details { background:#fff; border-color:#e4e4e7; } .tuile-ag b { color:#18181b; } .tuile-ag small { color:#52525b; } .tuile-ag:hover, .tuile-ag[aria-pressed="true"] { border-color:#f59e0b; }
 .lien-etape { color:#b45309; }
+.retour-tuiles { color:#b45309; }
