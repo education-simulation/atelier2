@@ -373,6 +373,10 @@ b.cle { color:#fde68a; }
 .p-info-2 { display:grid; gap:4px; }
 .p-conv { animation:p-ouvre 18s infinite, p-conv-neuve 18s infinite !important; }
 @keyframes p-conv-neuve { 0%, 47% { background:transparent; box-shadow:none; } 49%, 70% { background:#22c55e; color:#052e14; box-shadow:0 0 0 2px #16a34a; } 74%, 100% { background:#3a3a44; color:inherit; box-shadow:none; } }
+/* étape 6 : au survol de l'icône, l'infobulle « Create New Project » d'Antigravity */
+.p-plus { position:relative; }
+.p-tip { position:absolute; right:-6px; bottom:calc(100% + 6px); white-space:nowrap; background:#1c1c22; color:#e4e4e7; border:1px solid #3f3f46; border-radius:999px; padding:3px 10px; font-size:11.5px; font-weight:600; opacity:0; pointer-events:none; animation:p-tip 18s infinite; z-index:5; }
+@keyframes p-tip { 0%, 3.5% { opacity:0; } 4.5%, 8% { opacity:1; } 9%, 100% { opacity:0; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -552,7 +556,7 @@ b.cle, .dec-carte b { color:#b45309; }
           <p class="p-new">+ New Conversation</p>
           <p class="p-menu">◷ Automations</p>
           <p class="p-menu">⧉ Customizations</p>
-          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
+          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+<span class="p-tip">Create New Project</span></span></p>
           <p class="p-projet">📁 mes simulations</p>
           <p class="p-conv">💬 Nouvelle conversation</p>
           <p class="p-titre">Conversations <span>+</span></p>
