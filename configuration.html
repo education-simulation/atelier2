@@ -645,7 +645,9 @@ function majVerif() {
   if (!document.querySelector(".verif-ok")) return;   // page sans l'étape « C'est prêt »
   document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = verif[k] ? (k === "low" ? "✅ Confirmé : « Gemini 3.8 Flash Low »" : "✅ Confirmé : « Auto »") : (k === "low" ? "👆 Clique ici si tu vois « Gemini 3.8 Flash Low » à gauche" : "👆 Clique ici si tu vois « Auto » à droite"); });
   document.querySelector(".verif-ok").hidden = !verifOk();
-  document.querySelector('[data-verif="auto"]').closest(".verif-l").hidden = !verif.low;   // « Auto » n'apparaît qu'une fois « Low » confirmé
+  // un réglage confirmé disparaît ; « Auto » n'apparaît qu'une fois « Low » confirmé
+  document.querySelector('[data-verif="low"]').closest(".verif-l").hidden = verif.low;
+  document.querySelector('[data-verif="auto"]').closest(".verif-l").hidden = !verif.low || verif.auto;
   document.querySelector(".zone-ag.verif").classList.toggle("ok-low", verif.low); document.querySelector(".zone-ag.verif").classList.toggle("ok-auto", verif.auto);
 }
 // L'étape ouverte est dans l'adresse (#1 … #7) : un lien peut ouvrir directement une étape, et le rechargement la garde
