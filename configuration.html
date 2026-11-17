@@ -345,6 +345,31 @@ b.cle { color:#fde68a; }
 .verif-btn[data-verif]:not(.ok) { animation:vb-1 1.4s ease-in-out infinite; }
 @keyframes vb-1 { 50% { box-shadow:0 0 0 4px rgba(245,158,11,.35); } }
 .verif-l[hidden] { display:none; }
+/* étape 6 : la fenêtre ② ③ */
+.pj-voile { position:fixed; inset:0; z-index:150; background:rgba(15,23,42,.6); display:grid; place-items:center; padding:14px; overflow:auto; } .pj-voile[hidden] { display:none; }
+.pj-fen { position:relative; width:min(820px,100%); max-height:calc(100vh - 28px); overflow:auto; box-sizing:border-box; background:#0b0b0f; color:#e4e4e7; border:2px solid #f59e0b; border-radius:16px; padding:16px 20px; }
+.pj-fen h2 { margin:0 0 6px; padding-right:34px; font:800 20px 'Outfit',system-ui,sans-serif; color:#fff; }
+.pj-fermer { all:unset; cursor:pointer; position:absolute; top:12px; right:16px; font-size:18px; color:#a1a1aa; }
+.pj-actions { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+.pj-ok { all:unset; cursor:pointer; background:#f59e0b; color:#1f1300; font-weight:800; border-radius:10px; padding:10px 16px; }
+.p-revoir { all:unset; cursor:pointer; background:#f59e0b; color:#1f1300; font-weight:800; border-radius:10px; padding:10px 16px; margin-top:4px; }
+.p-num-in > span { width:26px; height:26px; margin:0 4px; vertical-align:1px; border-radius:50%; display:inline-grid; place-items:center; background:#f59e0b; color:#1f1300; font-weight:800; font-size:14px; }
+/* zoom : sur « Projects » quand la souris approche, sur le nouveau projet, puis sur la zone où coller */
+.p-zoom { position:absolute; inset:0; animation:p-zoom 18s ease-in-out infinite; }
+@keyframes p-zoom {
+  0%, 2% { transform:scale(1); transform-origin:0 125px; }
+  6%, 8% { transform:scale(1.6); transform-origin:0 125px; }
+  10%, 46% { transform:scale(1); transform-origin:0 125px; }
+  49%, 55% { transform:scale(1.6); transform-origin:0 150px; }
+  57% { transform:scale(1); transform-origin:0 150px; }
+  58% { transform:scale(1); transform-origin:62% 300px; }
+  61%, 70% { transform:scale(1.4); transform-origin:62% 300px; }
+  73%, 100% { transform:scale(1); transform-origin:62% 300px; }
+}
+/* avant la création, « Conversations » est juste sous « Projects » ; la place du projet s'ouvre seulement à sa création */
+.p-projet, .p-conv { opacity:1; overflow:hidden; }
+.p-projet { animation:p-ouvre 18s infinite, p-vise 18s infinite; } .p-conv { animation:p-ouvre 18s infinite; }
+@keyframes p-ouvre { 0%, 46% { max-height:0; padding-top:0; padding-bottom:0; margin-bottom:0; opacity:0; } 48%, 98% { max-height:30px; padding-top:4px; padding-bottom:4px; margin-bottom:8px; opacity:1; } 100% { max-height:0; padding-top:0; padding-bottom:0; margin-bottom:0; opacity:0; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -394,6 +419,7 @@ b.cle, .dec-carte b { color:#b45309; }
 @keyframes p-script { 0%, 46% { background:#e4e4e7; } 48%, 100% { background:transparent; } }
 .suiv-msg { color:#b45309; }
 .verif-btn { background:#fffbeb; color:#18181b; } .verif-btn.ok { background:#f0fdf4; color:#14532d; } .verif-non { color:#71717a; }
+.pj-fen { background:#fff; color:#27272a; } .pj-fen h2 { color:#18181b; } .pj-fermer:hover { color:#18181b; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -493,40 +519,8 @@ b.cle, .dec-carte b { color:#b45309; }
         <p class="p-e1-fait"><span>✓</span> <b>Message copié</b> <button type="button" class="p-recopier">voir le message ou le recopier</button></p>
       </div>
       <div class="p-suite" hidden>
-      <p class="p-num"><span>2</span> <b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
-      <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est configuré »">
-        <div class="p-gauche">
-          <p class="p-new">+ New Conversation</p>
-          <p class="p-menu">◷ Automations</p>
-          <p class="p-menu">⧉ Customizations</p>
-          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
-          <p class="p-projet">📁 mes simulations</p>
-          <p class="p-conv">💬 Nouvelle conversation</p>
-          <p class="p-titre">Conversations <span>+</span></p>
-          <p class="p-script">💬 Script de configuration…</p>
-        </div>
-        <div class="p-saisie">
-          <span class="p-chip">📁 mes simulations ⌄</span>
-          <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>
-          <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🔒 Default ⌃ <span class="p-envoi">↑</span></span></div>
-        </div>
-        <span class="p-info p-info-1">✅ Ton projet est créé : le dossier <b>« 📁 mes simulations »</b> est bien affiché au-dessus de la zone de message</span>
-        <span class="p-info p-info-2">📋 Colle maintenant le message de l'étape ① (Cmd + V), puis valide (Entrée)</span>
-        <div class="p-rep"><b>TIP</b><br>✅ <b>Ton projet est configuré.</b> Ses règles sont dans AGENTS.md.<br>👉 Choisis ton atelier : <u>atelier2.rasf.fr/ateliers.html</u></div>
-        <div class="p-dlg">
-          <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
-          <div class="p-lieux"><p>🖥 Bureau</p><p>📄 Documents</p><p>⬇ Téléchargements</p></div>
-          <div class="p-fichiers"><p>📁 cours</p><p>📁 TP</p><p class="p-cree">📁 mes simulations</p></div>
-          <span class="p-btn p-nouveau">Nouveau dossier</span><span class="p-btn p-annuler">Annuler</span><span class="p-btn p-ouvrir">Ouvrir</span>
-          <div class="p-nom"><b>Nom du nouveau dossier</b><span class="p-champ"><span class="p-tape">mes simulations</span></span><span class="p-btn p-creer">Créer</span></div>
-        </div>
-        <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
-      </div>
-      <ul class="p-legende">
-        <li><b class="cle">Nouveau dossier :</b> donne-lui un nom (par exemple <b class="cle">mes simulations</b>), crée-le, puis clique sur <b class="cle">Ouvrir</b> (sur Windows : <b class="cle">Sélectionner un dossier</b>).</li>
-        <li><b class="cle">Dossier existant :</b> clique simplement dessus, puis sur <b class="cle">Ouvrir</b>.</li>
-      </ul>
-      <p class="p-num"><span>3</span> <b>Colle le message</b> dans la conversation qui s'ouvre dans le projet (son nom s'affiche au-dessus de la zone de message) : <b class="cle">Cmd + V</b> (Mac) ou <b class="cle">Ctrl + V</b> (Windows), puis <b class="cle">Entrée</b>.</p>
+        <p class="p-num"><span>2</span> <b>Crée ton projet</b>, puis <span class="p-num-in"><span>3</span></span> <b>colle le message</b> : une fenêtre te montre comment.</p>
+        <button type="button" class="p-revoir">▶ Voir comment créer le projet et coller le message</button>
       </div>
       <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
     </section>
@@ -544,6 +538,49 @@ b.cle, .dec-carte b { color:#b45309; }
 </div>
 
 
+<div class="pj-voile" hidden>
+  <div class="pj-fen" role="dialog" aria-modal="true" aria-labelledby="pj-titre">
+    <button type="button" class="pj-fermer" aria-label="Fermer">✕</button>
+    <h2 id="pj-titre">📁 Crée ton projet, puis colle le message que tu viens de copier</h2>
+      <p class="p-num"><span>2</span> <b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
+      <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est configuré »">
+        <div class="p-zoom">
+        <div class="p-gauche">
+          <p class="p-new">+ New Conversation</p>
+          <p class="p-menu">◷ Automations</p>
+          <p class="p-menu">⧉ Customizations</p>
+          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+</span></p>
+          <p class="p-projet">📁 mes simulations</p>
+          <p class="p-conv">💬 Nouvelle conversation</p>
+          <p class="p-titre">Conversations <span>+</span></p>
+          <p class="p-script">💬 Script de configuration…</p>
+        </div>
+        <div class="p-saisie">
+          <span class="p-chip">📁 mes simulations ⌄</span>
+          <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>
+          <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🛡 Auto ⌃ <span class="p-envoi">↑</span></span></div>
+        </div>
+        <span class="p-info p-info-1">✅ Ton projet est créé : le dossier <b>« 📁 mes simulations »</b> est bien affiché au-dessus de la zone de message</span>
+        <span class="p-info p-info-2">📋 Colle ici le message que tu viens de copier (Cmd + V), puis valide (Entrée)</span>
+        <div class="p-rep"><b>TIP</b><br>✅ <b>Ton projet est configuré.</b> Ses règles sont dans AGENTS.md.<br>👉 Choisis ton atelier : <u>atelier2.rasf.fr/ateliers.html</u></div>
+        <div class="p-dlg">
+          <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
+          <div class="p-lieux"><p>🖥 Bureau</p><p>📄 Documents</p><p>⬇ Téléchargements</p></div>
+          <div class="p-fichiers"><p>📁 cours</p><p>📁 TP</p><p class="p-cree">📁 mes simulations</p></div>
+          <span class="p-btn p-nouveau">Nouveau dossier</span><span class="p-btn p-annuler">Annuler</span><span class="p-btn p-ouvrir">Ouvrir</span>
+          <div class="p-nom"><b>Nom du nouveau dossier</b><span class="p-champ"><span class="p-tape">mes simulations</span></span><span class="p-btn p-creer">Créer</span></div>
+        </div>
+        <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
+        </div>
+      </div>
+      <ul class="p-legende">
+        <li><b class="cle">Nouveau dossier :</b> donne-lui un nom (par exemple <b class="cle">mes simulations</b>), crée-le, puis clique sur <b class="cle">Ouvrir</b> (sur Windows : <b class="cle">Sélectionner un dossier</b>).</li>
+        <li><b class="cle">Dossier existant :</b> clique simplement dessus, puis sur <b class="cle">Ouvrir</b>.</li>
+      </ul>
+      <p class="p-num"><span>3</span> <b>Colle le message que tu viens de copier</b> dans la conversation qui s'ouvre dans le projet (son nom s'affiche au-dessus de la zone de message) : <b class="cle">Cmd + V</b> (Mac) ou <b class="cle">Ctrl + V</b> (Windows), puis <b class="cle">Entrée</b>.</p>
+    <div class="pj-actions"><button type="button" class="p-copier pj-recopier">📋 Copier à nouveau le message</button><button type="button" class="pj-ok">J'ai compris</button></div>
+  </div>
+</div>
 <script>
 const etapes = [...document.querySelectorAll(".etape")], ronds = [...document.querySelectorAll("#st li")];
 // étape 5 : deux clics pour confirmer « Low » et « Auto » (gardés dans le navigateur)
@@ -598,24 +635,30 @@ document.addEventListener("click", (ev) => {
 });
 // étape 6 : une fois le message copié, ① se replie et la création du projet apparaît (gardé dans le navigateur)
 const pE1 = document.querySelector(".p-e1"), pSuite = document.querySelector(".p-suite");
+// la fenêtre « Crée ton projet, puis colle le message » (② et ③), l'animation repart du début à chaque ouverture
+const pjVoile = document.querySelector(".pj-voile");
+function ouvrirProjet() { pjVoile.hidden = false; pjVoile.querySelectorAll("*").forEach((el) => el.getAnimations().forEach((a) => { a.currentTime = 0; })); pjVoile.querySelector(".pj-fen").scrollTop = 0; }
+function fermerProjet() { pjVoile.hidden = true; }
+pjVoile.querySelector(".pj-fermer").addEventListener("click", fermerProjet);
+pjVoile.querySelector(".pj-ok").addEventListener("click", fermerProjet);
+pjVoile.addEventListener("click", (e) => { if (e.target === pjVoile) fermerProjet(); });
+document.querySelector(".p-revoir").addEventListener("click", ouvrirProjet);
 const pCopie = (oui) => { pE1.classList.toggle("fait", oui); pSuite.hidden = !oui; if (etapes[n].classList.contains("e6")) { document.getElementById("suiv").classList.toggle("bloque", !oui); if (oui) document.getElementById("suiv-msg").hidden = true; } try { localStorage.setItem("atelier.copie.projet", oui ? "1" : ""); } catch {} };
 let pDeja = false; try { pDeja = localStorage.getItem("atelier.copie.projet") === "1"; } catch {}
 pCopie(pDeja);
 document.querySelector(".p-recopier").addEventListener("click", () => pE1.classList.remove("fait"));
 document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click", async () => {
-  const c = b.previousElementSibling, texte = b.textContent;
+  const c = document.querySelector(".p-phrase code"), texte = b.textContent;
   setTimeout(() => {
     pCopie(true);
-    // on descend juste ce qu'il faut : la ligne « Message copié » reste visible sous l'en-tête collant, avec le début de « Crée ton projet »
-    const haut = document.querySelector(".haut")?.offsetHeight || 0;
-    window.scrollTo({ top: pE1.getBoundingClientRect().top + window.scrollY - haut - 12, behavior: "smooth" });
+    if (!b.classList.contains("pj-recopier")) ouvrirProjet();   // la fenêtre montre ② et ③
   }, 700);
   b.textContent = "✅ Copié";
   setTimeout(() => { b.textContent = texte; }, 2500);
   try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
   catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
 }));
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") document.querySelector(".voile")?.remove(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { document.querySelector(".voile")?.remove(); fermerProjet(); } });
 </script>
 </body>
 </html>
