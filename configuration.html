@@ -458,6 +458,13 @@ b.cle { color:#fde68a; }
 @keyframes cm-env { 0%, 65% { box-shadow:none; } 70%, 85% { box-shadow:0 0 0 4px rgba(245,158,11,.8); } 90%, 100% { box-shadow:none; } }
 .cm-toast { position:fixed; left:50%; bottom:28px; transform:translate(-50%,20px); z-index:200; background:#16a34a; color:#fff; font-weight:800; border-radius:12px; padding:12px 18px; box-shadow:0 10px 30px rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; max-width:calc(100% - 32px); text-align:center; }
 .cm-toast.on { opacity:1; transform:translate(-50%,0); }
+/* les vrais logos des suggestions d'Antigravity */
+.lg-chrome { display:inline-block; width:13px; height:13px; border-radius:50%; background:conic-gradient(from -60deg,#ea4335 0 120deg,#fbbc05 0 240deg,#34a853 0); position:relative; flex:none; }
+.lg-chrome::after { content:""; position:absolute; inset:3.5px; border-radius:50%; background:#4285f4; box-shadow:0 0 0 1.3px #fff; }
+.lg { width:14px; height:14px; flex:none; } .lg-ag { filter:grayscale(1); opacity:.75; object-fit:contain; }
+/* les suggestions juste au-dessus de la zone de message ; la bulle « colle » passe en haut */
+.p-sugg { top:auto !important; bottom:132px; } .p-sugg p { align-items:center; }
+.p-info-2 { top:16px; bottom:auto; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -635,7 +642,7 @@ b.cle, .dec-carte b { color:#b45309; }
           <p class="p-titre">Conversations <span>+</span></p>
           <p class="p-script">💬 Script de configuration…</p>
         </div>
-        <div class="p-sugg"><p><span>🌐</span>Build me a web app</p><p><span>✦</span>Add a Gemini feature to my app</p><p><span>Λ</span>Bring over my setup from other Agentic Developer Tools</p></div>
+        <div class="p-sugg"><p><i class="lg-chrome"></i>Build me a web app</p><p><svg class="lg" viewBox="0 0 24 24" width="14" height="14"><defs><linearGradient id="lg-gem-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285f4"/><stop offset=".45" stop-color="#ea4335"/><stop offset=".7" stop-color="#fbbc05"/><stop offset="1" stop-color="#34a853"/></linearGradient></defs><path d="M12 0C12.6 6.5 17.5 11.4 24 12 17.5 12.6 12.6 17.5 12 24 11.4 17.5 6.5 12.6 0 12 6.5 11.4 11.4 6.5 12 0Z" fill="url(#lg-gem-a)"/></svg>Add a Gemini feature to my app</p><p><svg class="lg" viewBox="0 0 24 24" width="14" height="14"><path d="M12 3C9 9 6 16 3 21c2 0 3-2 4.5-5C9 13 10.5 12 12 12s3 1 4.5 4c1.5 3 2.5 5 4.5 5-3-5-6-12-9-18Z" fill="#8a8a93"/></svg>Bring over my setup from other Agentic Developer Tools</p></div>
         <div class="p-saisie">
           <div class="p-haut"><span class="p-chip">📁 mes simulations ⌄</span><span class="p-local">💻 Local Checkout ⌄</span></div>
           <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>

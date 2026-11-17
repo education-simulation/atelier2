@@ -606,3 +606,8 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 .cp-z { background:#422006; color:#fcd34d; }
 @keyframes cp-anneau { 0%,34% { box-shadow:none; border-color:#27272a; } 40%,82% { box-shadow:0 0 0 4px rgba(245,158,11,.6); border-color:#f59e0b; } 90%,100% { box-shadow:none; border-color:#27272a; } }
 .cp-ici { left:34%; }
+/* les vrais logos des suggestions d'Antigravity */
+.lg-chrome { display:inline-block; width:13px; height:13px; border-radius:50%; background:conic-gradient(from -60deg,#ea4335 0 120deg,#fbbc05 0 240deg,#34a853 0); position:relative; flex:none; }
+.lg-chrome::after { content:""; position:absolute; inset:3.5px; border-radius:50%; background:#4285f4; box-shadow:0 0 0 1.3px #fff; }
+.lg { width:14px; height:14px; flex:none; } .lg-ag { filter:grayscale(1); opacity:.75; object-fit:contain; }
+.cp-sugg p { align-items:center; }
