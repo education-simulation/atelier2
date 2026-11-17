@@ -436,6 +436,26 @@ b.cle { color:#fde68a; }
 /* étape 6 : pas de réponse de l'IA dans l'animation */
 .p-rep { display:none !important; }
 .p-pas { margin:10px 0 0; }
+/* étape 6 : fenêtre « colle ce message » */
+.cm-voile { position:fixed; inset:0; z-index:150; background:rgba(15,23,42,.6); display:grid; place-items:center; padding:14px; overflow:auto; } .cm-voile[hidden] { display:none; }
+.cm-fen { position:relative; width:min(720px,100%); max-height:calc(100vh - 28px); overflow:auto; box-sizing:border-box; background:#0b0b0f; color:#e4e4e7; border:2px solid #f59e0b; border-radius:16px; padding:16px 20px; display:grid; gap:12px; }
+.cm-fen h2 { margin:0; padding-right:34px; font:800 20px 'Outfit',system-ui,sans-serif; color:#fff; }
+.cm-fermer { all:unset; cursor:pointer; position:absolute; top:12px; right:16px; font-size:18px; color:#a1a1aa; }
+.cm-msg { display:grid; gap:8px; justify-items:start; } .cm-msg code { width:100%; box-sizing:border-box; max-height:120px; overflow-y:auto; background:#18181b; border:1px dashed #f59e0b; border-radius:10px; padding:10px 12px; font:13px Menlo,Consolas,monospace; color:#fff; white-space:pre-wrap; }
+.cm-copier { all:unset; cursor:pointer; background:#16a34a; color:#fff; font-weight:800; border-radius:10px; padding:9px 16px; }
+.cm-ecran { position:relative; height:268px; background:#0a0a0a; border:1px solid #27272a; border-radius:12px; overflow:hidden; font:13px system-ui,sans-serif; color:#e4e4e7; }
+.cm-sugg { position:absolute; left:20px; top:16px; display:grid; gap:6px; font-size:12.5px; } .cm-sugg p { margin:0; display:flex; gap:8px; } .cm-sugg span { width:14px; text-align:center; }
+.cm-boite { position:absolute; left:14px; right:14px; bottom:12px; border:1px solid #27272a; border-radius:14px; background:#111113; padding:6px; display:grid; gap:4px; }
+.cm-haut { margin:0 0 0 6px; display:flex; gap:14px; font-size:12px; color:#a1a1aa; } .cm-chip { color:#fff; font-weight:700; }
+.cm-saisie { position:relative; border:1px solid #27272a; border-radius:12px; background:#18181b; padding:8px 10px; display:grid; gap:6px; box-shadow:0 0 0 3px #22c55e; }
+.cm-indice { color:#a1a1aa; animation:cm-indice 6s infinite; } .cm-colle { position:absolute; left:10px; top:8px; right:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#fafafa; opacity:0; animation:cm-colle 6s infinite; }
+.cm-bas { display:flex; gap:10px; font-size:11.5px; color:#d4d4d8; } .cm-bas i { font-style:normal; color:#a1a1aa; } .cm-esp { flex:1; } .cm-env { background:#fff; color:#0b0b0f; border-radius:50%; width:18px; height:18px; display:grid; place-items:center; animation:cm-env 6s infinite; }
+.cm-ici { position:absolute; left:50%; bottom:92px; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:2px; pointer-events:none; }
+.cm-ici span { background:#dc2626; color:#fff; font-weight:800; font-size:15px; border-radius:10px; padding:5px 12px; white-space:nowrap; } .cm-ici svg { animation:cm-fleche 1s ease-in-out infinite; }
+@keyframes cm-fleche { 50% { transform:translateY(6px); } }
+@keyframes cm-indice { 0%, 40% { opacity:1; } 45%, 90% { opacity:0; } 95%, 100% { opacity:1; } }
+@keyframes cm-colle { 0%, 40% { opacity:0; } 45%, 90% { opacity:1; } 95%, 100% { opacity:0; } }
+@keyframes cm-env { 0%, 65% { box-shadow:none; } 70%, 85% { box-shadow:0 0 0 4px rgba(245,158,11,.8); } 90%, 100% { box-shadow:none; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -489,6 +509,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-sugg { color:#27272a; } .p-local { color:#52525b; }
 .p-pas button { border-color:#d4d4d8; } .p-pas button b { background:#e4e4e7; color:#18181b; }
 .p-modemenu { background:#fff; border-color:#d4d4d8; color:#27272a; box-shadow:0 10px 24px rgba(0,0,0,.15); }
+.cm-fen { background:#fff; color:#27272a; } .cm-fen h2 { color:#18181b; } .cm-msg code { background:#fafafa; color:#18181b; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -650,6 +671,24 @@ b.cle, .dec-carte b { color:#b45309; }
 </div>
 
 
+<div class="cm-voile" hidden>
+  <div class="cm-fen" role="dialog" aria-modal="true" aria-labelledby="cm-titre">
+    <button type="button" class="cm-fermer" aria-label="Fermer">✕</button>
+    <h2 id="cm-titre">📋 Colle ce message dans la nouvelle conversation du projet</h2>
+    <div class="cm-msg"><code>Prépare ce projet pour mes simulations. Lis les instructions complètes sur https://atelier2.rasf.fr/regles-projet.md et suis-les exactement : elles te disent quels fichiers créer (AGENTS.md, .agent/rules/simulations.md et le registre conversations.md) et comment me répondre. Ne fais rien d'autre.</code><button type="button" class="cm-copier">📋 Copier</button></div>
+    <div class="cm-ecran" aria-hidden="true">
+      <div class="cm-sugg"><p><span>🌐</span>Build me a web app</p><p><span>✦</span>Add a Gemini feature to my app</p><p><span>Λ</span>Bring over my setup from other Agentic Developer Tools</p></div>
+      <div class="cm-ici"><span>Colle ici ce que tu viens de copier, puis Entrée</span><svg viewBox="0 0 60 70" width="40" height="46"><path d="M30 4 C 30 25, 30 40, 30 60" fill="none" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/><path d="M12 44 L30 64 L48 44" fill="none" stroke="#dc2626" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cm-boite">
+        <p class="cm-haut"><span class="cm-chip">📁 mes simulations ⌄</span><span>💻 Local Checkout ⌄</span></p>
+        <div class="cm-saisie">
+          <span class="cm-indice">Ask anything, @ to mention, / for actions</span><span class="cm-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span>
+          <div class="cm-bas"><span>＋ &nbsp;Gemini 3.8 Flash <i>Low</i> ⌄</span><span class="cm-esp"></span><span>🛡 Auto ⌄</span><span>🎤</span><span class="cm-env">⏎</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 const etapes = [...document.querySelectorAll(".etape")], ronds = [...document.querySelectorAll("#st li")];
 // étape 5 : deux clics pour confirmer « Low » et « Auto » (gardés dans le navigateur)
@@ -707,6 +746,20 @@ const pE1 = document.querySelector(".p-e1"), pSuite = document.querySelector(".p
 // la fenêtre « Crée ton projet, puis colle le message » (② et ③), l'animation repart du début à chaque ouverture
 const pjVoile = document.querySelector(".p-suite");
 function ouvrirProjet() { finPas = null; pjVoile.querySelectorAll(".e6p *").forEach((el) => el.getAnimations().forEach((a) => { a.currentTime = 0; a.play(); })); }
+
+// Fenêtre « Colle ce message dans la nouvelle conversation du projet » : le message, un bouton Copier, et où le coller
+const cmVoile = document.querySelector(".cm-voile");
+function ouvrirColler() { cmVoile.hidden = false; cmVoile.querySelectorAll("*").forEach((el) => el.getAnimations().forEach((a) => { a.currentTime = 0; })); cmVoile.querySelector(".cm-fen").scrollTop = 0; }
+const fermerColler = () => { cmVoile.hidden = true; };
+cmVoile.querySelector(".cm-fermer").addEventListener("click", fermerColler);
+cmVoile.addEventListener("click", (e) => { if (e.target === cmVoile) fermerColler(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !cmVoile.hidden) fermerColler(); });
+cmVoile.querySelector(".cm-copier").addEventListener("click", async (e) => {
+  const b = e.currentTarget, c = cmVoile.querySelector(".cm-msg code");
+  try { await navigator.clipboard.writeText(c.textContent); }
+  catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
+  b.textContent = "✅ Copié"; setTimeout(() => { b.textContent = "📋 Copier"; }, 2500);
+});
 // Animation de l'étape 6 : boutons numérotés pour revoir une seule étape (elle se joue puis s'arrête), ou tout revoir
 const pjAnims = () => [...pjVoile.querySelectorAll(".e6p *")].flatMap((el) => el.getAnimations()).filter((a) => a.effect?.getTiming().duration >= 30000);
 const D = 38000; let finPas = null;
@@ -732,6 +785,7 @@ document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click"
   const c = document.querySelector(".p-phrase code"), texte = b.textContent;
   setTimeout(() => {
     pCopie(true);
+    if (b.classList.contains("pj-recopier")) ouvrirColler();   // le bouton vert : le message copié, et où le coller
     if (!b.classList.contains("pj-recopier")) {   // ② ③ ④ apparaissent sous la ligne « Message copié », l'animation part du début
       ouvrirProjet();
       const haut = document.querySelector(".haut")?.offsetHeight || 0;
