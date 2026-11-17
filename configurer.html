@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity · Configurer Antigravity</title>
-<link rel="stylesheet" href="style.css?v=45">
-<link rel="stylesheet" href="clair.css?v=4" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=46">
+<link rel="stylesheet" href="clair.css?v=5" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -18,8 +18,8 @@
   <div class="corps">
     <a class="retour-tuiles" href="antigravity.html">‹ Toutes les étapes</a>
     <section id="configurer">
-      <ol class="etapes">
-        <li>Clique sur <b class="cle">« 📋 Copier et coller dans Antigravity »</b> : le message est copié, et une fenêtre te montre où le coller dans Antigravity.
+      <div class="config-bloc">
+        <p>Clique sur <b class="cle">« 📋 Copier et coller dans Antigravity »</b> : le message est copié, et une fenêtre te montre où le coller dans Antigravity.</p>
           <div class="phrase"><code>Tu accompagnes un professeur qui configure Antigravity pour créer des simulations de chimie. Lis tout ce message, puis suis le déroulé ci-dessous, pas à pas.
 
 Configuration d'Antigravity visée :
@@ -75,11 +75,7 @@ Réponds par le numéro (1 ou 2), puis Entrée.
 &gt; 👉 **Le modèle** (Gemini 3.8 Flash, niveau Low) : https://atelier2.rasf.fr/configuration.html#2
 &gt;
 &gt; 👉 **Le mode** (Auto) : https://atelier2.rasf.fr/configuration.html#3</code><button type="button" class="copier" data-coller>📋 Copier et coller dans Antigravity</button></div>
-        </li>
-        <li>Dans Antigravity, colle le message dans la zone de message, en bas (<b class="cle os os-mac">Cmd + V</b><b class="cle os os-win">Ctrl + V</b><b class="cle os os-linux">Ctrl + V</b>), puis appuie sur <b class="cle">Entrée</b>.</li>
-        <li>Antigravity te répond avec un lien : <b class="cle">clique dessus</b>. La page de configuration s'ouvre et te guide.</li>
-        <li>À la fin de la page de configuration, écris <b class="cle">continue</b> dans Antigravity : il te fait vérifier ta configuration (le modèle et le mode « Auto »).</li>
-      </ol>
+      </div>
       <div class="suite-etape"><a class="btn-un" href="projet.html">Antigravity est configuré : étape 3 › Créer un projet</a></div>
     </section>
   </div>
@@ -106,15 +102,8 @@ Réponds par le numéro (1 ou 2), puis Entrée.
           </div>
         </div>
       </div>
-      <span class="cp-badge cp-b1"><span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span></span>
-      <span class="cp-badge cp-b2">Entrée ⏎</span>
-      <svg class="cp-souris" viewBox="0 0 14 21" width="20" height="30"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
+      <div class="cp-ici"><span>Colle ici ce que tu viens de copier</span><svg viewBox="0 0 60 70" width="46" height="54"><path d="M30 4 C 30 25, 30 40, 30 60" fill="none" stroke="#dc2626" stroke-width="6" stroke-linecap="round"/><path d="M12 44 L30 64 L48 44" fill="none" stroke="#dc2626" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
-    <ol class="cp-etapes">
-      <li>Ouvre Antigravity avec le bouton ci-dessous.</li>
-      <li>Clique dans <b class="cle">la zone de message</b>, en bas de la conversation (zone ②).</li>
-      <li>Colle (<b class="cle os os-mac">Cmd + V</b><b class="cle os os-win">Ctrl + V</b><b class="cle os os-linux">Ctrl + V</b>), puis appuie sur <b class="cle">Entrée</b>.</li>
-    </ol>
     <div class="cp-actions"><button type="button" class="btn-un cp-ouvrir">🚀 Ouvrir Antigravity</button></div>
     <p class="note" id="ouvrir-retour" hidden></p>
   </div>
@@ -147,6 +136,8 @@ voileCp.addEventListener("click", (e) => { if (e.target === voileCp) fermerColle
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !voileCp.hidden) fermerColler(); });
 // « Ouvrir Antigravity » : ouvre l'application (adresse antigravity://), puis vérifie qu'elle s'est ouverte
 voileCp.querySelector(".cp-ouvrir").addEventListener("click", () => {
+  const msg = document.querySelector("[data-coller]").previousElementSibling.textContent;   // on recopie, au cas où
+  navigator.clipboard?.writeText(msg).catch(() => {});
   const retour = document.getElementById("ouvrir-retour");
   let ouvert = false;
   const parti = () => { ouvert = true; };

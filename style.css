@@ -564,3 +564,11 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 .cp-zoom { transform-origin:100% 97%; animation-name:cp-zoom2; } .cp-souris { animation-name:cp-souris2; }
 @keyframes cp-zoom2 { 0%,18% { transform:scale(1); } 32%,82% { transform:scale(1.45); } 94%,100% { transform:scale(1); } }
 @keyframes cp-souris2 { 0%,20% { left:80%; top:30%; opacity:0; } 26% { opacity:1; } 38%,44% { left:49%; top:82%; opacity:1; } 41% { transform:scale(.8); } 50%,100% { left:49%; top:82%; opacity:0; } }
+/* configurer.html : un seul bloc, le bouton juste sous la phrase, le message dessous (taille inchangée) */
+.config-bloc { border:2px solid #f59e0b; background:#1f1a10; border-radius:14px; padding:14px 16px; display:grid; gap:8px; } .config-bloc > p { margin:0; }
+.config-bloc .phrase { flex-direction:column-reverse; align-items:stretch; } .config-bloc .phrase .copier { align-self:flex-start; } .config-bloc .phrase code { width:100%; box-sizing:border-box; }
+.cp-ici { position:absolute; left:50%; bottom:26%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:2px; opacity:0; animation:cp-ici 10s infinite; pointer-events:none; }
+.cp-ici span { background:#dc2626; color:#fff; font-weight:800; font-size:17px; border-radius:10px; padding:6px 14px; white-space:nowrap; box-shadow:0 6px 20px rgba(0,0,0,.25); }
+.cp-ici svg { animation:cp-ici-fleche 1s ease-in-out infinite; }
+@keyframes cp-ici { 0%,28% { opacity:0; } 34%,86% { opacity:1; } 92%,100% { opacity:0; } }
+@keyframes cp-ici-fleche { 50% { transform:translateY(6px); } }
