@@ -469,6 +469,11 @@ b.cle { color:#fde68a; }
 .verif-btn { background:#f59e0b !important; color:#1f1300 !important; border-color:#d97706 !important; box-shadow:0 3px 0 #b45309; padding:11px 18px; font-size:16.5px; }
 .verif-btn:hover { background:#fbbf24 !important; } .verif-btn:active { transform:translateY(2px); box-shadow:0 1px 0 #b45309; }
 .verif-btn.ok { background:#22c55e !important; color:#052e14 !important; border-color:#16a34a !important; box-shadow:none; }
+/* étape 5 : plus aucune pulsation (c'était instable) ; le réglage à vérifier est simplement entouré en orange, fixe */
+.zone-ag.verif .vz-low, .zone-ag.verif.ok-low .vz-auto { animation:none !important; box-shadow:0 0 0 3px #f59e0b; background:rgba(245,158,11,.12); }
+.zone-ag.verif .vz-auto { animation:none !important; }
+.zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-low.ok-auto .vz-auto { box-shadow:0 0 0 2px #22c55e; background:none; }
+.verif-btn { animation:none !important; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -528,6 +533,11 @@ b.cle, .dec-carte b { color:#b45309; }
 .verif-btn { background:#f59e0b !important; color:#1f1300 !important; border-color:#d97706 !important; box-shadow:0 3px 0 #b45309; padding:11px 18px; font-size:16.5px; }
 .verif-btn:hover { background:#fbbf24 !important; } .verif-btn:active { transform:translateY(2px); box-shadow:0 1px 0 #b45309; }
 .verif-btn.ok { background:#22c55e !important; color:#052e14 !important; border-color:#16a34a !important; box-shadow:none; }
+/* étape 5 : plus aucune pulsation (c'était instable) ; le réglage à vérifier est simplement entouré en orange, fixe */
+.zone-ag.verif .vz-low, .zone-ag.verif.ok-low .vz-auto { animation:none !important; box-shadow:0 0 0 3px #f59e0b; background:rgba(245,158,11,.12); }
+.zone-ag.verif .vz-auto { animation:none !important; }
+.zone-ag.verif.ok-low .vz-low, .zone-ag.verif.ok-low.ok-auto .vz-auto { box-shadow:0 0 0 2px #22c55e; background:none; }
+.verif-btn { animation:none !important; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
