@@ -421,7 +421,7 @@ b.cle { color:#fde68a; }
   68%, 70% { left:330px; top:262px; transform:scale(1); }
   76% { left:calc(100% - 44px); top:298px; transform:scale(1); } 77% { left:calc(100% - 44px); top:298px; transform:scale(.8); } 78%, 100% { left:calc(100% - 44px); top:298px; transform:scale(1); }
 }
-/* l'écran « Allow fetch project instructions? » et le bouton pour recopier, dans la page */
+/* le bouton pour recopier, dans la page */
 .p-allow { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:6px 0 10px; } .p-allow img { width:min(340px,100%); border-radius:10px; border:1px solid #3f3f46; } .p-allow p { flex:1 1 220px; margin:0; }
 .p-suite .pj-actions { justify-content:flex-start; }
 /* étape 6 : une fois le message copié, le bloc ① disparaît (le bouton « Copier à nouveau » reste en bas) */
@@ -430,6 +430,9 @@ b.cle { color:#fde68a; }
 .p-saisie { animation:p-saisie-verte 38s infinite; }
 @keyframes p-saisie-verte { 0%, 47% { box-shadow:none; } 49%, 80% { box-shadow:0 0 0 3px #22c55e; } 83%, 100% { box-shadow:none; } }
 .p-info-3 { display:none !important; }
+/* étape 6 : seul le bouton de l'étape montrée par l'animation affiche son nom ; les autres, juste leur numéro */
+.p-pas [data-de] .lbl { display:none; } .p-pas [data-de].ici .lbl { display:inline; }
+.p-pas [data-de] { padding:4px; } .p-pas [data-de].ici { padding:4px 10px 4px 4px; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -617,14 +620,14 @@ b.cle, .dec-carte b { color:#b45309; }
         </div>
       </div>
       <div class="p-pas" role="group" aria-label="Revoir une étape de l'animation">
-        <button type="button" data-de="0" data-a="0.09"><b>1</b> Create New Project</button>
-        <button type="button" data-de="0.09" data-a="0.17"><b>2</b> Nouveau dossier</button>
-        <button type="button" data-de="0.17" data-a="0.36"><b>3</b> Nommer, Créer</button>
-        <button type="button" data-de="0.36" data-a="0.455"><b>4</b> Ouvrir</button>
-        <button type="button" data-de="0.46" data-a="0.57"><b>5</b> Projet créé</button>
-        <button type="button" data-de="0.57" data-a="0.66"><b>6</b> Mode « Auto »</button>
-        <button type="button" data-de="0.66" data-a="0.80"><b>7</b> Coller le message</button>
-        <button type="button" data-de="0.80" data-a="1"><b>8</b> Réponse</button>
+        <button type="button" data-de="0" data-a="0.09"><b>1</b><span class="lbl"> Create New Project</span></button>
+        <button type="button" data-de="0.09" data-a="0.17"><b>2</b><span class="lbl"> Nouveau dossier</span></button>
+        <button type="button" data-de="0.17" data-a="0.36"><b>3</b><span class="lbl"> Nommer, Créer</span></button>
+        <button type="button" data-de="0.36" data-a="0.455"><b>4</b><span class="lbl"> Ouvrir</span></button>
+        <button type="button" data-de="0.46" data-a="0.57"><b>5</b><span class="lbl"> Projet créé</span></button>
+        <button type="button" data-de="0.57" data-a="0.66"><b>6</b><span class="lbl"> Mode « Auto »</span></button>
+        <button type="button" data-de="0.66" data-a="0.80"><b>7</b><span class="lbl"> Coller le message</span></button>
+        <button type="button" data-de="0.80" data-a="1"><b>8</b><span class="lbl"> Réponse</span></button>
         <button type="button" class="p-tout">▶ Tout revoir</button>
       </div>
       <div class="pj-actions"><button type="button" class="p-copier pj-recopier">📋 Copier le message à coller dans la nouvelle conversation</button></div>
