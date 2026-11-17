@@ -529,3 +529,6 @@ body:has(.bande:not([hidden])) { padding-bottom:120px; }
 .tuiles-ag { grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); }
 .tuile-ag { display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:12px; } .tuile-ag[aria-pressed="true"] { padding:11px; }
 .tuile-ag .pas-num { width:30px; height:30px; font-size:15px; }
+a.tuile-ag { text-decoration:none; color:inherit; } a.tuile-ag[aria-current="page"] { border:2px solid #f59e0b; padding:11px; box-shadow:0 0 0 4px rgba(245,158,11,.18); }
+.tuiles-ag.mini { margin-bottom:6px; } .tuiles-ag.mini .tuile-ag { padding:8px 10px; gap:3px; } .tuiles-ag.mini a.tuile-ag[aria-current="page"] { padding:7px 9px; } .tuiles-ag.mini small { display:none; } .tuiles-ag.mini b { font-size:14px; } .tuiles-ag.mini .pas-num { width:24px; height:24px; font-size:13px; }
+a.lien-etape { color:#f59e0b; font-weight:700; }

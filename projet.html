@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier · Antigravity · Créer un projet dans Antigravity</title>
+<link rel="stylesheet" href="style.css?v=43">
+<link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
+<script src="theme.js?v=1"></script>
+</head>
+<body>
+<div class="fen">
+  <header class="haut">
+  <div class="barre"><i></i><i></i><i></i><b>Atelier · Antigravity</b><a href="./">‹ Changer d'IA</a></div>
+  <nav class="ariane" aria-label="Fil d'Ariane"><a href="./">🏠 Accueil</a><i class="sep">›</i><a href="antigravity.html">Antigravity</a><i class="sep">›</i><span aria-current="page">3 · Créer un projet dans Antigravity</span></nav>
+    <div class="titre-haut"><h1><img src="logos/antigravity.png" alt="" style="width:34px;height:34px;vertical-align:-6px"> 3 · Créer un projet dans Antigravity</h1></div>
+  </header>
+  <div class="corps">
+    <nav class="tuiles-ag mini" aria-label="Les étapes">
+      <a class="tuile-ag" href="installer.html"><span class="pas-num">1</span><b>Installer Antigravity</b><small>sur ton ordinateur</small></a>
+      <a class="tuile-ag" href="configurer.html"><span class="pas-num">2</span><b>Configurer Antigravity</b><small>le modèle et le mode</small></a>
+      <a class="tuile-ag" href="projet.html" aria-current="page"><span class="pas-num">3</span><b>Créer un projet dans Antigravity</b><small>le dossier « mes simulations »</small></a>
+      <a class="tuile-ag" href="token.html"><span class="pas-num">4</span><b>Je n'ai plus de token</b><small>recharger avec un nouveau compte</small></a>
+      <a class="tuile-ag" href="faq.html"><span class="pas-num">5</span><b>FAQ</b><small>les questions fréquentes</small></a>
+    </nav>
+
+    <section id="projet">
+      <p class="pas-expl">Dans Antigravity, un <b class="cle">projet</b> est relié à <b class="cle">un dossier de ton ordinateur</b> : toutes tes simulations y seront enregistrées, et toutes les conversations du projet suivront les mêmes règles. On va créer le dossier <b class="cle">« mes simulations »</b> et en faire ton projet.</p>
+      <ol class="etapes">
+        <li>Ouvre la page qui te guide, avec l'animation : tu copies un court message, tu crées le projet, puis tu y colles le message.
+          <div class="phrase"><a class="copier" href="configuration.html#6">⚙️ Créer mon projet « mes simulations »</a></div></li>
+        <li>Quand Antigravity te répond « ✅ Ton projet est configuré », ton projet est prêt : choisis ton atelier.</li>
+      </ol>
+      <div class="suite-etape"><a class="btn-un" href="ateliers.html?ou=dans">Mon projet est prêt › Choisir un atelier</a></div>
+    </section>
+  </div>
+</div>
+<script>
+// Le système de l'ordinateur : deviné, puis modifiable (gardé dans le navigateur)
+const deviner = () => { const u = navigator.userAgent; return /Windows/i.test(u) ? "win" : /Mac/i.test(u) ? "mac" : /Linux|X11/i.test(u) ? "linux" : "mac"; };
+const choisirOs = (os) => {
+  document.body.dataset.os = os;
+  document.querySelectorAll(".lien-os").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.os === os)));
+  try { localStorage.setItem("atelier.os", os); } catch {}
+};
+let osDepart = null; try { osDepart = localStorage.getItem("atelier.os"); } catch {}
+choisirOs(osDepart || deviner());
+document.querySelectorAll(".lien-os").forEach((b) => b.addEventListener("click", () => choisirOs(b.dataset.os)));
+document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", async () => {
+  const c = b.previousElementSibling, texte = b.textContent;
+  try { await navigator.clipboard.writeText(c.textContent); }
+  catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
+  b.textContent = "✅ Copié";
+  setTimeout(() => { b.textContent = texte; }, 2500);
+  // « Copier et ouvrir » : ouvre l'application Antigravity (adresse antigravity://), puis vérifie qu'elle s'est ouverte
+  if (b.dataset.ouvrir) {
+    const retour = document.getElementById("ouvrir-retour");
+    let ouvert = false;
+    const parti = () => { ouvert = true; };
+    window.addEventListener("blur", parti, { once: true });
+    setTimeout(() => { location.href = b.dataset.ouvrir; }, 300);
+    setTimeout(() => {
+      window.removeEventListener("blur", parti);
+      if (!ouvert && document.hasFocus()) {
+        retour.hidden = false;
+        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Ouvre l\'étape <a href=\"installer.html\">1 · Installer Antigravity</a>.";
+      }
+    }, 2500);
+  }
+}));
+</script>
+</body>
+</html>

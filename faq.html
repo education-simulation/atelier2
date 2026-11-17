@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier · Antigravity · FAQ</title>
+<link rel="stylesheet" href="style.css?v=43">
+<link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
+<script src="theme.js?v=1"></script>
+</head>
+<body>
+<div class="fen">
+  <header class="haut">
+  <div class="barre"><i></i><i></i><i></i><b>Atelier · Antigravity</b><a href="./">‹ Changer d'IA</a></div>
+  <nav class="ariane" aria-label="Fil d'Ariane"><a href="./">🏠 Accueil</a><i class="sep">›</i><a href="antigravity.html">Antigravity</a><i class="sep">›</i><span aria-current="page">5 · FAQ</span></nav>
+    <div class="titre-haut"><h1><img src="logos/antigravity.png" alt="" style="width:34px;height:34px;vertical-align:-6px"> 5 · FAQ</h1></div>
+  </header>
+  <div class="corps">
+    <nav class="tuiles-ag mini" aria-label="Les étapes">
+      <a class="tuile-ag" href="installer.html"><span class="pas-num">1</span><b>Installer Antigravity</b><small>sur ton ordinateur</small></a>
+      <a class="tuile-ag" href="configurer.html"><span class="pas-num">2</span><b>Configurer Antigravity</b><small>le modèle et le mode</small></a>
+      <a class="tuile-ag" href="projet.html"><span class="pas-num">3</span><b>Créer un projet dans Antigravity</b><small>le dossier « mes simulations »</small></a>
+      <a class="tuile-ag" href="token.html"><span class="pas-num">4</span><b>Je n'ai plus de token</b><small>recharger avec un nouveau compte</small></a>
+      <a class="tuile-ag" href="faq.html" aria-current="page"><span class="pas-num">5</span><b>FAQ</b><small>les questions fréquentes</small></a>
+    </nav>
+
+    <section id="faq">
+      <div class="faq">
+        <details><summary>Antigravity est-il vraiment gratuit ?</summary><p>Oui, avec ton compte Google RASF, avec cotisation à jour. Si tu atteins la limite d'utilisation, vois l'étape <a class="lien-etape" href="token.html">4 · Je n'ai plus de token</a>.</p></details>
+        <details><summary>Pourquoi le modèle « Gemini 3.8 Flash Low » ?</summary><p>Il est rapide et consomme peu de tokens : c'est largement suffisant pour des simulations. Tu peux en changer à tout moment, en bas à gauche de la zone de message.</p></details>
+        <details><summary>Pourquoi le mode « Auto » ?</summary><p>L'IA travaille sans te demander la permission à chaque commande. Si elle te demande quand même d'autoriser l'écriture dans un dossier (« Allow write access to this path? »), choisis « Yes, and always allow ».</p></details>
+        <details><summary>Où sont mes simulations ?</summary><p>Dans le dossier « mes simulations » de ton ordinateur, un fichier .html par simulation. Pour en voir une, double-clique sur son fichier : elle s'ouvre dans ton navigateur.</p></details>
+        <details><summary>Je ne retrouve plus ma conversation</summary><p>Elle est dans le menu de gauche d'Antigravity, sous le projet « mes simulations ». Sinon, ouvre une nouvelle conversation dans le projet et écris par exemple <b>go titrage</b> : l'IA te redonne le lien vers ta conversation.</p></details>
+        <details><summary>Comment partager une simulation avec un collègue ?</summary><p>Envoie-lui simplement le fichier .html : il s'ouvre dans n'importe quel navigateur, sans connexion et sans rien installer.</p></details>
+        <details><summary>Mes échanges sont-ils partagés avec Google ?</summary><p>À l'installation, décoche la première case de l'écran « One last thing before getting started… » : elle partage tes échanges avec Google pour améliorer ses produits.</p></details>
+      </div>
+    </section>
+  </div>
+</div>
+<script>
+// Le système de l'ordinateur : deviné, puis modifiable (gardé dans le navigateur)
+const deviner = () => { const u = navigator.userAgent; return /Windows/i.test(u) ? "win" : /Mac/i.test(u) ? "mac" : /Linux|X11/i.test(u) ? "linux" : "mac"; };
+const choisirOs = (os) => {
+  document.body.dataset.os = os;
+  document.querySelectorAll(".lien-os").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.os === os)));
+  try { localStorage.setItem("atelier.os", os); } catch {}
+};
+let osDepart = null; try { osDepart = localStorage.getItem("atelier.os"); } catch {}
+choisirOs(osDepart || deviner());
+document.querySelectorAll(".lien-os").forEach((b) => b.addEventListener("click", () => choisirOs(b.dataset.os)));
+document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("click", async () => {
+  const c = b.previousElementSibling, texte = b.textContent;
+  try { await navigator.clipboard.writeText(c.textContent); }
+  catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
+  b.textContent = "✅ Copié";
+  setTimeout(() => { b.textContent = texte; }, 2500);
+  // « Copier et ouvrir » : ouvre l'application Antigravity (adresse antigravity://), puis vérifie qu'elle s'est ouverte
+  if (b.dataset.ouvrir) {
+    const retour = document.getElementById("ouvrir-retour");
+    let ouvert = false;
+    const parti = () => { ouvert = true; };
+    window.addEventListener("blur", parti, { once: true });
+    setTimeout(() => { location.href = b.dataset.ouvrir; }, 300);
+    setTimeout(() => {
+      window.removeEventListener("blur", parti);
+      if (!ouvert && document.hasFocus()) {
+        retour.hidden = false;
+        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Ouvre l\'étape <a href=\"installer.html\">1 · Installer Antigravity</a>.";
+      }
+    }, 2500);
+  }
+}));
+</script>
+</body>
+</html>
