@@ -102,3 +102,4 @@ ol.etapes > li, .info { background:#fffbeb; }
 .tuile-ag, .faq details { background:#fff; border-color:#e4e4e7; } .tuile-ag b { color:#18181b; } .tuile-ag small { color:#52525b; } .tuile-ag:hover, .tuile-ag[aria-pressed="true"] { border-color:#f59e0b; }
 .lien-etape { color:#b45309; }
 .retour-tuiles { color:#b45309; }
+.cp-fen { background:#fff; color:#27272a; } .cp-fen h2 { color:#18181b; } .cp-fermer:hover { color:#18181b; }

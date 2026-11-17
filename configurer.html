@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity · Configurer Antigravity</title>
-<link rel="stylesheet" href="style.css?v=43">
-<link rel="stylesheet" href="clair.css?v=3" id="theme-clair">
+<link rel="stylesheet" href="style.css?v=45">
+<link rel="stylesheet" href="clair.css?v=4" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
 <body>
@@ -19,7 +19,7 @@
     <a class="retour-tuiles" href="antigravity.html">‹ Toutes les étapes</a>
     <section id="configurer">
       <ol class="etapes">
-        <li>Clique sur <b class="cle">« 📋 Copier et ouvrir Antigravity »</b> : le message est copié et Antigravity s'ouvre. Si ton navigateur demande d'ouvrir Antigravity, accepte.
+        <li>Clique sur <b class="cle">« 📋 Copier et coller dans Antigravity »</b> : le message est copié, et une fenêtre te montre où le coller dans Antigravity.
           <div class="phrase"><code>Tu accompagnes un professeur qui configure Antigravity pour créer des simulations de chimie. Lis tout ce message, puis suis le déroulé ci-dessous, pas à pas.
 
 Configuration d'Antigravity visée :
@@ -74,8 +74,7 @@ Réponds par le numéro (1 ou 2), puis Entrée.
 &gt;
 &gt; 👉 **Le modèle** (Gemini 3.8 Flash, niveau Low) : https://atelier2.rasf.fr/configuration.html#2
 &gt;
-&gt; 👉 **Le mode** (Auto) : https://atelier2.rasf.fr/configuration.html#3</code><button type="button" class="copier" data-ouvrir="antigravity://">📋 Copier et ouvrir Antigravity</button></div>
-          <p class="note" id="ouvrir-retour" hidden></p>
+&gt; 👉 **Le mode** (Auto) : https://atelier2.rasf.fr/configuration.html#3</code><button type="button" class="copier" data-coller>📋 Copier et coller dans Antigravity</button></div>
         </li>
         <li>Dans Antigravity, colle le message dans la zone de message, en bas (<b class="cle os os-mac">Cmd + V</b><b class="cle os os-win">Ctrl + V</b><b class="cle os os-linux">Ctrl + V</b>), puis appuie sur <b class="cle">Entrée</b>.</li>
         <li>Antigravity te répond avec un lien : <b class="cle">clique dessus</b>. La page de configuration s'ouvre et te guide.</li>
@@ -83,6 +82,41 @@ Réponds par le numéro (1 ou 2), puis Entrée.
       </ol>
       <div class="suite-etape"><a class="btn-un" href="projet.html">Antigravity est configuré : étape 3 › Créer un projet</a></div>
     </section>
+  </div>
+</div>
+<div class="cp-voile" hidden>
+  <div class="cp-fen" role="dialog" aria-modal="true" aria-labelledby="cp-titre">
+    <button type="button" class="cp-fermer" aria-label="Fermer">✕</button>
+    <h2 id="cp-titre">✅ Message copié : colle-le dans Antigravity</h2>
+    <div class="cp-ecran" aria-hidden="true">
+      <div class="cp-zoom">
+        <div class="cp-menu">
+          <span class="cp-z">① Le menu</span>
+          <p class="cp-new">＋ New Conversation</p><p>⚙ Automations</p><p>✦ Customizations</p>
+          <p class="cp-sec">Projects</p>
+          <p class="cp-sec">Conversations</p>
+        </div>
+        <div class="cp-conv">
+          <span class="cp-z">② La conversation</span>
+          <i class="cp-l"></i><i class="cp-l court"></i>
+          <div class="cp-saisie">
+            <span class="cp-indice">Ask anything, @ to mention, / for actions</span>
+            <span class="cp-colle">Tu accompagnes un professeur qui configure Antigravity…</span>
+            <div class="cp-bas"><span>＋</span><span>Gemini 3.8 Flash Low ⌃</span><span class="cp-esp"></span><span>🛡 Auto ⌃</span><span class="cp-env">⏎</span></div>
+          </div>
+        </div>
+      </div>
+      <span class="cp-badge cp-b1"><span class="os os-mac">Cmd + V</span><span class="os os-win">Ctrl + V</span><span class="os os-linux">Ctrl + V</span></span>
+      <span class="cp-badge cp-b2">Entrée ⏎</span>
+      <svg class="cp-souris" viewBox="0 0 14 21" width="20" height="30"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
+    </div>
+    <ol class="cp-etapes">
+      <li>Ouvre Antigravity avec le bouton ci-dessous.</li>
+      <li>Clique dans <b class="cle">la zone de message</b>, en bas de la conversation (zone ②).</li>
+      <li>Colle (<b class="cle os os-mac">Cmd + V</b><b class="cle os os-win">Ctrl + V</b><b class="cle os os-linux">Ctrl + V</b>), puis appuie sur <b class="cle">Entrée</b>.</li>
+    </ol>
+    <div class="cp-actions"><button type="button" class="btn-un cp-ouvrir">🚀 Ouvrir Antigravity</button></div>
+    <p class="note" id="ouvrir-retour" hidden></p>
   </div>
 </div>
 <script>
@@ -102,22 +136,30 @@ document.querySelectorAll("button.copier").forEach((b) => b.addEventListener("cl
   catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); }
   b.textContent = "✅ Copié";
   setTimeout(() => { b.textContent = texte; }, 2500);
-  // « Copier et ouvrir » : ouvre l'application Antigravity (adresse antigravity://), puis vérifie qu'elle s'est ouverte
-  if (b.dataset.ouvrir) {
-    const retour = document.getElementById("ouvrir-retour");
-    let ouvert = false;
-    const parti = () => { ouvert = true; };
-    window.addEventListener("blur", parti, { once: true });
-    setTimeout(() => { location.href = b.dataset.ouvrir; }, 300);
-    setTimeout(() => {
-      window.removeEventListener("blur", parti);
-      if (!ouvert && document.hasFocus()) {
-        retour.hidden = false;
-        retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Ouvre l\'étape <a href=\"installer.html\">1 · Installer Antigravity</a>.";
-      }
-    }, 2500);
-  }
+  // « Copier et coller dans Antigravity » : une fenêtre montre où coller, avec un bouton qui ouvre Antigravity
+  if (b.dataset.coller !== undefined) ouvrirColler();
 }));
+const voileCp = document.querySelector(".cp-voile");
+function ouvrirColler() { voileCp.hidden = false; document.getElementById("ouvrir-retour").hidden = true; voileCp.querySelector(".cp-ouvrir").focus(); }
+const fermerColler = () => { voileCp.hidden = true; };
+voileCp.querySelector(".cp-fermer").addEventListener("click", fermerColler);
+voileCp.addEventListener("click", (e) => { if (e.target === voileCp) fermerColler(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !voileCp.hidden) fermerColler(); });
+// « Ouvrir Antigravity » : ouvre l'application (adresse antigravity://), puis vérifie qu'elle s'est ouverte
+voileCp.querySelector(".cp-ouvrir").addEventListener("click", () => {
+  const retour = document.getElementById("ouvrir-retour");
+  let ouvert = false;
+  const parti = () => { ouvert = true; };
+  window.addEventListener("blur", parti, { once: true });
+  location.href = "antigravity://";
+  setTimeout(() => {
+    window.removeEventListener("blur", parti);
+    if (!ouvert && document.hasFocus()) {
+      retour.hidden = false;
+      retour.innerHTML = "⚠️ Antigravity ne s'est pas ouvert ? Ouvre-le toi-même : le message est déjà copié. Pas encore installé ? Ouvre l'étape <a href=\"installer.html\">1 · Installer Antigravity</a>.";
+    }
+  }, 2500);
+});
 </script>
 </body>
 </html>

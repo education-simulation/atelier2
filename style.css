@@ -533,3 +533,34 @@ a.tuile-ag { text-decoration:none; color:inherit; } a.tuile-ag[aria-current="pag
 .tuiles-ag.mini { margin-bottom:6px; } .tuiles-ag.mini .tuile-ag { padding:8px 10px; gap:3px; } .tuiles-ag.mini a.tuile-ag[aria-current="page"] { padding:7px 9px; } .tuiles-ag.mini small { display:none; } .tuiles-ag.mini b { font-size:14px; } .tuiles-ag.mini .pas-num { width:24px; height:24px; font-size:13px; }
 a.lien-etape { color:#f59e0b; font-weight:700; }
 .retour-tuiles { justify-self:start; font-size:14px; font-weight:700; color:#f59e0b; text-decoration:none; } .retour-tuiles:hover { text-decoration:underline; }
+/* configurer.html : fenêtre « Copier et coller dans Antigravity », zoom animé sur la zone de message */
+.cp-voile { position:fixed; inset:0; z-index:150; background:rgba(15,23,42,.6); display:grid; place-items:center; padding:14px; overflow:auto; } .cp-voile[hidden] { display:none; }
+.cp-fen { position:relative; width:min(720px,100%); box-sizing:border-box; background:#0b0b0f; color:#e4e4e7; border:2px solid #f59e0b; border-radius:16px; padding:18px 20px; display:grid; gap:12px; }
+.cp-fen h2 { margin:0; padding-right:34px; font:800 20px 'Outfit',system-ui,sans-serif; color:#fff; }
+.cp-fermer { all:unset; cursor:pointer; position:absolute; top:12px; right:16px; font-size:18px; color:#a1a1aa; }
+.cp-etapes { margin:0; padding-left:22px; display:grid; gap:4px; line-height:1.5; } .cp-actions { display:flex; justify-content:center; }
+.cp-ecran { position:relative; aspect-ratio:16/9; border-radius:12px; overflow:hidden; border:1px solid #d4d4d8; background:#fff; font:13px system-ui,sans-serif; color:#27272a; }
+.cp-zoom { position:absolute; inset:0; display:grid; grid-template-columns:30% 70%; transform-origin:64% 84%; animation:cp-zoom 10s ease-in-out infinite; }
+.cp-menu { position:relative; background:#f4f4f5; border-right:1px solid #e4e4e7; padding:30px 10px 10px; display:grid; align-content:start; gap:6px; }
+.cp-menu p { margin:0; padding:3px 6px; border-radius:6px; } .cp-menu .cp-new { background:#e4e4e7; font-weight:700; } .cp-menu .cp-sec { margin-top:6px; font-size:11px; color:#71717a; }
+.cp-conv { position:relative; padding:30px 18px 14px; display:flex; flex-direction:column; gap:8px; }
+.cp-l { display:block; height:8px; width:70%; border-radius:4px; background:#f4f4f5; } .cp-l.court { width:45%; }
+.cp-z { position:absolute; top:6px; left:8px; font-weight:800; font-size:12px; color:#b45309; background:#fef3c7; border-radius:999px; padding:2px 8px; animation:cp-z 10s infinite; }
+.cp-saisie { position:relative; margin-top:auto; border:1px solid #d4d4d8; border-radius:12px; padding:8px 10px; display:grid; gap:6px; animation:cp-anneau 10s infinite; }
+.cp-indice { color:#a1a1aa; animation:cp-indice 10s infinite; } .cp-colle { position:absolute; left:10px; top:8px; right:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#18181b; opacity:0; animation:cp-colle 10s infinite; }
+.cp-bas { display:flex; gap:8px; font-size:11px; color:#52525b; } .cp-esp { flex:1; } .cp-env { background:#18181b; color:#fff; border-radius:50%; width:18px; height:18px; display:grid; place-items:center; animation:cp-env 10s infinite; }
+.cp-badge { position:absolute; left:50%; top:22%; transform:translateX(-50%); background:#18181b; color:#fff; font-weight:800; font-size:18px; border-radius:10px; padding:6px 14px; opacity:0; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+.cp-b1 { animation:cp-b1 10s infinite; } .cp-b2 { animation:cp-b2 10s infinite; }
+.cp-souris { position:absolute; left:80%; top:30%; animation:cp-souris 10s infinite; }
+@keyframes cp-zoom { 0%,18% { transform:scale(1); } 32%,82% { transform:scale(2.3); } 94%,100% { transform:scale(1); } }
+@keyframes cp-z { 0%,18% { opacity:1; } 26%,88% { opacity:0; } 96%,100% { opacity:1; } }
+@keyframes cp-anneau { 0%,34% { box-shadow:none; border-color:#d4d4d8; } 40%,82% { box-shadow:0 0 0 4px rgba(245,158,11,.55); border-color:#f59e0b; } 90%,100% { box-shadow:none; border-color:#d4d4d8; } }
+@keyframes cp-indice { 0%,50% { opacity:1; } 52%,92% { opacity:0; } 96%,100% { opacity:1; } }
+@keyframes cp-colle { 0%,50% { opacity:0; } 52%,92% { opacity:1; } 96%,100% { opacity:0; } }
+@keyframes cp-env { 0%,66% { box-shadow:none; } 70%,80% { box-shadow:0 0 0 4px rgba(245,158,11,.7); } 84%,100% { box-shadow:none; } }
+@keyframes cp-b1 { 0%,44% { opacity:0; } 47%,60% { opacity:1; } 63%,100% { opacity:0; } }
+@keyframes cp-b2 { 0%,64% { opacity:0; } 67%,80% { opacity:1; } 83%,100% { opacity:0; } }
+@keyframes cp-souris { 0%,20% { left:80%; top:30%; opacity:0; } 26% { opacity:1; } 38%,44% { left:55%; top:62%; opacity:1; } 41% { transform:scale(.8); } 50%,100% { left:55%; top:62%; opacity:0; } }
+.cp-zoom { transform-origin:100% 97%; animation-name:cp-zoom2; } .cp-souris { animation-name:cp-souris2; }
+@keyframes cp-zoom2 { 0%,18% { transform:scale(1); } 32%,82% { transform:scale(1.45); } 94%,100% { transform:scale(1); } }
+@keyframes cp-souris2 { 0%,20% { left:80%; top:30%; opacity:0; } 26% { opacity:1; } 38%,44% { left:49%; top:82%; opacity:1; } 41% { transform:scale(.8); } 50%,100% { left:49%; top:82%; opacity:0; } }
