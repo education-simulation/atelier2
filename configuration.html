@@ -435,6 +435,7 @@ b.cle { color:#fde68a; }
 .p-pas [data-de] { padding:4px; } .p-pas [data-de].ici { padding:4px 10px 4px 4px; }
 /* étape 6 : pas de réponse de l'IA dans l'animation */
 .p-rep { display:none !important; }
+.p-pas { margin:10px 0 0; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -588,6 +589,16 @@ b.cle, .dec-carte b { color:#b45309; }
       </div>
       <div class="p-suite" hidden>
       <p class="p-num"><b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
+      <div class="p-pas" role="group" aria-label="Revoir une étape de l'animation">
+        <button type="button" data-de="0" data-a="0.09"><b>1</b><span class="lbl"> Create New Project</span></button>
+        <button type="button" data-de="0.09" data-a="0.17"><b>2</b><span class="lbl"> Nouveau dossier</span></button>
+        <button type="button" data-de="0.17" data-a="0.36"><b>3</b><span class="lbl"> Nommer, Créer</span></button>
+        <button type="button" data-de="0.36" data-a="0.455"><b>4</b><span class="lbl"> Ouvrir</span></button>
+        <button type="button" data-de="0.46" data-a="0.57"><b>5</b><span class="lbl"> Projet créé</span></button>
+        <button type="button" data-de="0.57" data-a="0.66"><b>6</b><span class="lbl"> Mode « Auto »</span></button>
+        <button type="button" data-de="0.66" data-a="1"><b>7</b><span class="lbl"> Coller le message</span></button>
+        <button type="button" class="p-tout">▶ Tout revoir</button>
+      </div>
       <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est configuré »">
         <div class="p-zoom">
         <div class="p-gauche">
@@ -620,16 +631,6 @@ b.cle, .dec-carte b { color:#b45309; }
         </div>
         <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
         </div>
-      </div>
-      <div class="p-pas" role="group" aria-label="Revoir une étape de l'animation">
-        <button type="button" data-de="0" data-a="0.09"><b>1</b><span class="lbl"> Create New Project</span></button>
-        <button type="button" data-de="0.09" data-a="0.17"><b>2</b><span class="lbl"> Nouveau dossier</span></button>
-        <button type="button" data-de="0.17" data-a="0.36"><b>3</b><span class="lbl"> Nommer, Créer</span></button>
-        <button type="button" data-de="0.36" data-a="0.455"><b>4</b><span class="lbl"> Ouvrir</span></button>
-        <button type="button" data-de="0.46" data-a="0.57"><b>5</b><span class="lbl"> Projet créé</span></button>
-        <button type="button" data-de="0.57" data-a="0.66"><b>6</b><span class="lbl"> Mode « Auto »</span></button>
-        <button type="button" data-de="0.66" data-a="1"><b>7</b><span class="lbl"> Coller le message</span></button>
-        <button type="button" class="p-tout">▶ Tout revoir</button>
       </div>
       <div class="pj-actions"><button type="button" class="p-copier pj-recopier">📋 Copier le message à coller dans la nouvelle conversation</button></div>
       </div>
