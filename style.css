@@ -575,3 +575,15 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 .in-etapes { margin:0; padding-left:22px; display:grid; gap:12px; line-height:1.5; } .in-etapes .note { margin:4px 0 0; }
 .in-img { margin:8px 0 0; } .in-img img { display:block; width:min(420px,100%); border-radius:10px; border:1px solid #3f3f46; }
 .cp-fen { max-height:calc(100vh - 28px); overflow:auto; } .cp-actions a.btn-un { text-decoration:none; }
+/* installer.html : trois petites captures côte à côte, la zone où cliquer clignote */
+.trois-images { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:10px; align-items:start; }
+.trois-images figure { margin:0; display:grid; gap:4px; justify-items:center; }
+.trois-images figcaption { font-size:13.5px; text-align:center; line-height:1.3; }
+.zi { position:relative; display:inline-block; max-width:100%; }
+.zi img { display:block; max-width:100%; max-height:170px; width:auto; height:auto; border-radius:8px; border:1px solid #3f3f46; }
+.zi .clic { position:absolute; border:3px solid #ef4444; border-radius:8px; box-sizing:border-box; animation:zi-clic 1.6s ease-in-out infinite; pointer-events:none; }
+.zi .clic.c1 { animation:zi-c1 3.2s infinite; } .zi .clic.c2 { animation:zi-c2 3.2s infinite; }
+@keyframes zi-clic { 0%,100% { box-shadow:0 0 0 0 rgba(239,68,68,.7); transform:scale(1); } 50% { box-shadow:0 0 0 7px rgba(239,68,68,0); transform:scale(1.12); } }
+@keyframes zi-c1 { 0%,45% { opacity:1; transform:scale(1.15); } 22% { transform:scale(.95); } 50%,100% { opacity:0; } }
+@keyframes zi-c2 { 0%,50% { opacity:0; } 55%,95% { opacity:1; } 72% { transform:scale(1.12); } 100% { opacity:0; } }
+@media (max-width:560px) { .trois-images { grid-template-columns:1fr; } }
