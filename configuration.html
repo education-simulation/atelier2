@@ -433,6 +433,8 @@ b.cle { color:#fde68a; }
 /* étape 6 : seul le bouton de l'étape montrée par l'animation affiche son nom ; les autres, juste leur numéro */
 .p-pas [data-de] .lbl { display:none; } .p-pas [data-de].ici .lbl { display:inline; }
 .p-pas [data-de] { padding:4px; } .p-pas [data-de].ici { padding:4px 10px 4px 4px; }
+/* étape 6 : pas de réponse de l'IA dans l'animation */
+.p-rep { display:none !important; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -626,8 +628,7 @@ b.cle, .dec-carte b { color:#b45309; }
         <button type="button" data-de="0.36" data-a="0.455"><b>4</b><span class="lbl"> Ouvrir</span></button>
         <button type="button" data-de="0.46" data-a="0.57"><b>5</b><span class="lbl"> Projet créé</span></button>
         <button type="button" data-de="0.57" data-a="0.66"><b>6</b><span class="lbl"> Mode « Auto »</span></button>
-        <button type="button" data-de="0.66" data-a="0.80"><b>7</b><span class="lbl"> Coller le message</span></button>
-        <button type="button" data-de="0.80" data-a="1"><b>8</b><span class="lbl"> Réponse</span></button>
+        <button type="button" data-de="0.66" data-a="1"><b>7</b><span class="lbl"> Coller le message</span></button>
         <button type="button" class="p-tout">▶ Tout revoir</button>
       </div>
       <div class="pj-actions"><button type="button" class="p-copier pj-recopier">📋 Copier le message à coller dans la nouvelle conversation</button></div>
