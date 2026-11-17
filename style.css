@@ -587,3 +587,9 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 @keyframes zi-c1 { 0%,45% { opacity:1; transform:scale(1.15); } 22% { transform:scale(.95); } 50%,100% { opacity:0; } }
 @keyframes zi-c2 { 0%,50% { opacity:0; } 55%,95% { opacity:1; } 72% { transform:scale(1.12); } 100% { opacity:0; } }
 @media (max-width:560px) { .trois-images { grid-template-columns:1fr; } }
+.zi { cursor:zoom-in; } .zi .clic.gros { border-width:4px; }
+.zi-tag { position:absolute; transform:translate(-50%,-50%); background:#ef4444; color:#fff; font-size:12px; font-weight:800; border-radius:6px; padding:1px 7px; pointer-events:none; animation:zi-tag 1.6s ease-in-out infinite; }
+@keyframes zi-tag { 50% { transform:translate(-50%,-50%) scale(1.12); } }
+.zi-loupe { position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.8); display:grid; place-items:center; padding:20px; cursor:zoom-out; } .zi-loupe[hidden] { display:none; }
+.zi-loupe .zi { cursor:zoom-out; } .zi-loupe .zi img { max-height:calc(100vh - 40px); max-width:calc(100vw - 40px); }
+.zi-loupe .zi-tag { font-size:20px; padding:3px 12px; border-radius:8px; } .zi-loupe .clic { border-width:5px; }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atelier · Antigravity · Installer Antigravity</title>
-<link rel="stylesheet" href="style.css?v=45">
+<link rel="stylesheet" href="style.css?v=46">
 <link rel="stylesheet" href="clair.css?v=4" id="theme-clair">
 <script src="theme.js?v=1"></script>
 </head>
@@ -36,8 +36,8 @@
       <li>Ouvre Antigravity : <b>connecte-toi avec ton email RASF</b> (cotisation à jour) en cliquant sur <b class="cle">Continue with Google</b>, puis clique sur <b class="cle">Skip</b>, <b class="cle">décoche la première case</b> (elle partage tes échanges avec Google) et clique sur <b class="cle">Continue</b>.
         <div class="trois-images">
           <figure><div class="zi"><img src="images/antigravity-connexion.jpg" alt="L'écran « Welcome to Antigravity! » avec le bouton Continue with Google"><i class="clic" style="left:13%;top:57%;width:74%;height:9%"></i></div><figcaption>① <b class="cle">Continue with Google</b></figcaption></figure>
-          <figure><div class="zi"><img src="images/antigravity-bienvenue.webp" alt="L'écran « Hey education! », avec Skip en bas"><i class="clic" style="left:43%;top:87.5%;width:10%;height:6.5%"></i></div><figcaption>② <b class="cle">Skip</b>, en bas</figcaption></figure>
-          <figure><div class="zi"><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><i class="clic c1" style="left:10%;top:67%;width:8.5%;height:6.5%"></i><i class="clic c2" style="left:77%;top:85.5%;width:18%;height:8%"></i></div><figcaption>③ Décoche la 1<sup>re</sup> case, puis <b class="cle">Continue</b></figcaption></figure>
+          <figure><div class="zi"><img src="images/antigravity-bienvenue.webp" alt="L'écran « Hey education! », avec Skip en bas"><i class="clic gros" style="left:36%;top:83%;width:24%;height:14%"></i><b class="zi-tag" style="left:48%;top:70%">Skip</b></div><figcaption>② <b class="cle">Skip</b>, en bas</figcaption></figure>
+          <figure><div class="zi"><img src="images/antigravity-continue.jpg" alt="L'écran « One last thing before getting started… », deux cases et le bouton Continue"><i class="clic" style="left:10%;top:67%;width:8.5%;height:6.5%"></i><i class="clic" style="left:76%;top:85%;width:20%;height:9%"></i><b class="zi-tag" style="left:84%;top:78%">Continue</b><b class="zi-tag" style="left:14%;top:61%">Décoche</b></div><figcaption>③ Décoche la 1<sup>re</sup> case, puis <b class="cle">Continue</b></figcaption></figure>
         </div></li>
     </ol>
     <div class="cp-actions"><a class="btn-un" href="https://antigravity.google/download" target="_blank" rel="noopener">⬇️ Aller à la page de téléchargement</a></div>
@@ -82,6 +82,11 @@ const fermerIn = () => { voileIn.hidden = true; };
 voileIn.querySelector(".cp-fermer").addEventListener("click", fermerIn);
 voileIn.addEventListener("click", (e) => { if (e.target === voileIn) fermerIn(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !voileIn.hidden) fermerIn(); });
+// Clic sur une capture : elle s'affiche en grand (avec sa zone où cliquer) ; clic ou Échap pour fermer
+const loupe = document.createElement("div"); loupe.className = "zi-loupe"; loupe.hidden = true; document.body.appendChild(loupe);
+document.querySelectorAll(".zi").forEach((z) => { z.title = "Cliquer pour agrandir"; z.addEventListener("click", () => { loupe.replaceChildren(z.cloneNode(true)); loupe.hidden = false; }); });
+loupe.addEventListener("click", () => { loupe.hidden = true; });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !loupe.hidden) { e.stopImmediatePropagation(); loupe.hidden = true; } }, true);
 </script>
 </body>
 </html>
