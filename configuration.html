@@ -539,7 +539,7 @@ b.cle, .dec-carte b { color:#b45309; }
     <div class="titre-haut"><h1>Configuration d'Antigravity</h1></div>
   </header>
   <div class="corps">
-    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li><li><span class="rond">6</span>Le projet</li><li><span class="rond">✓</span>Atelier</li></ol>
+    <ol class="st" id="st"><li><span class="rond">1</span>Fermer les fenêtres</li><li><span class="rond">2</span>Le modèle</li><li><span class="rond">3</span>Le mode Auto</li><li><span class="rond">4</span>Découvrir Antigravity</li><li><span class="rond">5</span>C'est prêt</li></ol>
 
     <section class="etape">
       <h2>1. Fermer les petites fenêtres</h2>
@@ -616,70 +616,9 @@ b.cle, .dec-carte b { color:#b45309; }
         <div class="verif-l"><button type="button" class="verif-btn" data-verif="low">👀 À gauche, je vois « Gemini 3.8 Flash Low »</button><a class="verif-non" href="#2">Non ? Refais l'étape 2</a></div>
         <div class="verif-l"><button type="button" class="verif-btn" data-verif="auto">👀 À droite, je vois « Auto »</button><a class="verif-non" href="#3">Non ? Refais l'étape 3</a></div>
       </div>
-      <p class="vers-suivant verif-ok" hidden>Les deux réglages sont bons : clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
+      <div class="verif-ok" hidden><p class="fini">✅ Antigravity est configuré.</p><p style="text-align:center;margin:10px 0 0"><a class="vers-atelier" href="projet.html">📁 Étape suivante : préparer mon projet ›</a></p></div>
     </section>
 
-    <section class="etape e6">
-      <h2>6. Créer un projet simulation dans Antigravity</h2>
-      <div class="p-e1">
-      <p class="p-num"><span>1</span> <b>Copie d'abord ce message</b> : il contient les règles de ton projet.</p>
-      <div class="p-phrase"><code>Prépare ce projet pour mes simulations. Lis les instructions complètes sur https://atelier2.rasf.fr/regles-projet.md et suis-les exactement : elles te disent quels fichiers créer (AGENTS.md, .agent/rules/simulations.md et le registre conversations.md) et comment me répondre. Ne fais rien d'autre.</code><button type="button" class="p-copier">📋 Copier</button></div>
-        <p class="p-e1-fait"><span>✓</span> <b>Message copié</b> <button type="button" class="p-recopier">voir le message ou le recopier</button></p>
-      </div>
-      <div class="p-suite" hidden>
-      <p class="p-num"><b>Crée ton projet</b> : dans le menu de gauche, à droite de <b class="cle">« Projects »</b>, clique sur l'icône du <b class="cle">dossier avec un +</b>, puis choisis <b class="cle">le dossier de ton projet</b>.</p>
-      <div class="p-pas" role="group" aria-label="Revoir une étape de l'animation">
-        <button type="button" data-de="0" data-a="0.09"><b>1</b><span class="lbl"> Create New Project</span></button>
-        <button type="button" data-de="0.09" data-a="0.17"><b>2</b><span class="lbl"> Nouveau dossier</span></button>
-        <button type="button" data-de="0.17" data-a="0.36"><b>3</b><span class="lbl"> Nommer, Créer</span></button>
-        <button type="button" data-de="0.36" data-a="0.455"><b>4</b><span class="lbl"> Ouvrir</span></button>
-        <button type="button" data-de="0.46" data-a="0.57"><b>5</b><span class="lbl"> Projet créé</span></button>
-        <button type="button" data-de="0.57" data-a="0.66"><b>6</b><span class="lbl"> Mode « Auto »</span></button>
-        <button type="button" data-de="0.66" data-a="1"><b>7</b><span class="lbl"> Coller le message</span></button>
-        <button type="button" class="p-tout">▶ Tout revoir</button>
-      </div>
-      <div class="ecran e6p" role="img" aria-label="Antigravity : clic sur l'icône du dossier avec un + à droite de Projects ; une fenêtre s'ouvre pour choisir le dossier du projet ; clic sur Nouveau dossier, nom « mes simulations », Créer, puis Ouvrir ; le projet apparaît sous Projects et une conversation s'ouvre dedans ; on y colle le message (Cmd + V), Entrée, et l'IA répond « Ton projet est prêt »">
-        <div class="p-zoom">
-        <div class="p-gauche">
-          <p class="p-new">+ New Conversation</p>
-          <p class="p-menu">◷ Automations</p>
-          <p class="p-menu">⧉ Customizations</p>
-          <p class="p-titre">Projects <span class="p-plus" title="Create New Project">📁+<span class="p-tip">Create New Project</span></span></p>
-          <p class="p-projet">📁 mes simulations</p>
-          <p class="p-conv">💬 Nouvelle conversation</p>
-          <p class="p-titre">Conversations <span>+</span></p>
-          <p class="p-script">💬 Script de configuration…</p>
-        </div>
-        <div class="p-sugg"><p><i class="lg-chrome"></i>Build me a web app</p><p><svg class="lg" viewBox="0 0 24 24" width="14" height="14"><defs><linearGradient id="lg-gem-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285f4"/><stop offset=".45" stop-color="#ea4335"/><stop offset=".7" stop-color="#fbbc05"/><stop offset="1" stop-color="#34a853"/></linearGradient></defs><path d="M12 0C12.6 6.5 17.5 11.4 24 12 17.5 12.6 12.6 17.5 12 24 11.4 17.5 6.5 12.6 0 12 6.5 11.4 11.4 6.5 12 0Z" fill="url(#lg-gem-a)"/></svg>Add a Gemini feature to my app</p><p><svg class="lg" viewBox="0 0 24 24" width="14" height="14"><path d="M12 3C9 9 6 16 3 21c2 0 3-2 4.5-5C9 13 10.5 12 12 12s3 1 4.5 4c1.5 3 2.5 5 4.5 5-3-5-6-12-9-18Z" fill="#8a8a93"/></svg>Bring over my setup from other Agentic Developer Tools</p></div>
-        <div class="p-saisie">
-          <div class="p-haut"><span class="p-chip">📁 mes simulations ⌄</span><span class="p-local">💻 Local Checkout ⌄</span></div>
-          <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>
-          <div class="p-bas"><span>+ &nbsp;Gemini 3.8 Flash <i>Low</i> ⌄</span><span class="p-mode"><span class="p-def">🔒 Default ⌄</span><span class="p-aut">🛡 Auto ⌄</span> &nbsp;🎤 <span class="p-envoi">↑</span></span></div>
-        </div>
-        <span class="p-info p-info-1">✅ Ton projet <b>« 📁 mes simulations »</b> est créé, et <b>une nouvelle conversation</b> s'est ouverte dedans</span>
-        <span class="p-info p-info-3">⚠️ Vérifie le mode : dans la nouvelle conversation, il doit être <b>« Auto »</b>. Sinon, clique sur <b>« Default »</b>, puis choisis <b>« Auto »</b></span>
-        <div class="p-modemenu"><p><b>Request Review</b></p><p><b>Default</b></p><p class="p-mm-auto"><b>Auto</b></p><p><b>Turbo</b></p></div>
-        <span class="p-info p-info-2"><span>📋 Copie le message avec le <b>bouton vert</b> ci-dessous, puis colle-le dans la <b>nouvelle conversation</b> (Cmd + V) et appuie sur Entrée</span></span>
-        <div class="p-rep"><b>TIP</b><br>✅ <b>Ton projet est prêt.</b> Ses règles sont dans AGENTS.md.<br>👉 Choisis ton atelier : <u>atelier2.rasf.fr/ateliers.html</u></div>
-        <div class="p-dlg">
-          <div class="p-dlg-titre">Choisis le dossier de ton projet</div>
-          <div class="p-lieux"><p>🖥 Bureau</p><p>📄 Documents</p><p>⬇ Téléchargements</p></div>
-          <div class="p-fichiers"><p>📁 cours</p><p>📁 TP</p><p class="p-cree">📁 mes simulations</p></div>
-          <span class="p-btn p-nouveau">Nouveau dossier</span><span class="p-btn p-annuler">Annuler</span><span class="p-btn p-ouvrir">Ouvrir</span>
-          <div class="p-nom"><b>Nom du nouveau dossier</b><span class="p-champ"><span class="p-tape">mes simulations</span></span><span class="p-btn p-creer">Créer</span></div>
-        </div>
-        <svg class="souris" viewBox="0 0 14 21" width="22" height="33" aria-hidden="true"><path d="M0 0 L0 17 L4.5 13 L8 20 L11 18.5 L7.5 12 L13 12 Z" fill="#fff" stroke="#000" stroke-width="1.3"/></svg>
-        </div>
-      </div>
-      <div class="pj-actions"><button type="button" class="p-copier pj-voir">📋 Voir le message à copier dans la conversation</button></div>
-      </div>
-      <p class="vers-suivant">Quand c'est fait, clique sur <b class="cle">« Suivant »</b> <span class="fleche-bas" aria-hidden="true">↘</span></p>
-    </section>
-
-    <section class="etape e7">
-      <h2>7. Ton projet est prêt</h2>
-      <p class="e7-suite">👉 Suis maintenant les instructions dans la conversation du projet <b class="cle">« 📁 mes simulations »</b>, dans Antigravity.</p>
-    </section>
 
     <div class="nav"><button type="button" class="prec" id="prec">‹ Précédent</button><button type="button" class="suiv" id="suiv">Suivant ›</button></div>
     <p class="suiv-msg" id="suiv-msg" hidden>📋 Copie d'abord le message de l'étape ①, puis crée ton projet : le bouton « Suivant » se débloque ensuite.</p>
@@ -695,12 +634,15 @@ b.cle, .dec-carte b { color:#b45309; }
   </div>
 </div>
 <script>
+// la création du projet a sa propre page : les anciens liens #6 et #7 y mènent
+if (/^#[67]$/.test(location.hash)) location.replace("projet.html");
 const etapes = [...document.querySelectorAll(".etape")], ronds = [...document.querySelectorAll("#st li")];
 // étape 5 : deux clics pour confirmer « Low » et « Auto » (gardés dans le navigateur)
 const verif = { low:false, auto:false };
 try { verif.low = localStorage.getItem("atelier.verif.low") === "1"; verif.auto = localStorage.getItem("atelier.verif.auto") === "1"; } catch {}
 const verifOk = () => verif.low && verif.auto;
 function majVerif() {
+  if (!document.querySelector(".verif-ok")) return;   // page sans l'étape « C'est prêt »
   document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = verif[k] ? (k === "low" ? "✅ Confirmé : « Gemini 3.8 Flash Low »" : "✅ Confirmé : « Auto »") : (k === "low" ? "👆 Clique ici si tu vois « Gemini 3.8 Flash Low » à gauche" : "👆 Clique ici si tu vois « Auto » à droite"); });
   document.querySelector(".verif-ok").hidden = !verifOk();
   document.querySelector('[data-verif="auto"]').closest(".verif-l").hidden = !verif.low;   // « Auto » n'apparaît qu'une fois « Low » confirmé
@@ -746,6 +688,7 @@ document.addEventListener("click", (ev) => {
   v.addEventListener("click", (e) => { if (e.target === v || e.target.closest(".revenir")) v.remove(); });
   document.body.appendChild(v);
 });
+if (document.querySelector(".e6")) {   // la création du projet (page projet.html)
 // étape 6 : une fois le message copié, ① se replie et la création du projet apparaît (gardé dans le navigateur)
 const pE1 = document.querySelector(".p-e1"), pSuite = document.querySelector(".p-suite");
 // la fenêtre « Crée ton projet, puis colle le message » (② et ③), l'animation repart du début à chaque ouverture
@@ -808,6 +751,7 @@ document.querySelectorAll(".p-copier:not(.pj-voir)").forEach((b) => b.addEventLi
   try { await Promise.race([navigator.clipboard.writeText(c.textContent), new Promise((_, non) => setTimeout(non, 1500))]); }
   catch { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); document.execCommand("copy"); getSelection().removeAllRanges(); }
 }));
+}
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") document.querySelector(".voile")?.remove(); });
 </script>
 </body>

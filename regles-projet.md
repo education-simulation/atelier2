@@ -9,7 +9,7 @@ Ce fichier s'adresse à l'IA d'Antigravity qui prépare le projet d'un professeu
    > [!WARNING]
    > ⚠️ **Ce message est à coller dans la conversation d'un projet.**
    >
-   > Cette conversation-ci n'est rattachée à **aucun projet**. Crée d'abord le projet « mes simulations », puis colle ce message dans **la nouvelle conversation du projet** : https://atelier2.rasf.fr/configuration.html#6
+   > Cette conversation-ci n'est rattachée à **aucun projet**. Crée d'abord le projet « mes simulations », puis colle ce message dans **la nouvelle conversation du projet** : https://atelier2.rasf.fr/projet.html
 
 
 1. **Crée, à la racine du dossier de ce projet, le fichier `AGENTS.md`**, avec exactement le contenu de la section « Contenu de AGENTS.md » ci-dessous (tout ce qui est entre les deux lignes `~~~~`, sans ces deux lignes).

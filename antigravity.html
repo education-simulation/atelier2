@@ -19,7 +19,7 @@
     <nav class="tuiles-ag" aria-label="Les étapes">
       <a class="tuile-ag" href="installer.html"><span class="pas-num">1</span><b>Installer Antigravity</b><small>sur ton ordinateur</small></a>
       <a class="tuile-ag" href="configurer.html"><span class="pas-num">2</span><b>Configurer Antigravity</b><small>le modèle et le mode</small></a>
-      <a class="tuile-ag" href="configuration.html#6"><span class="pas-num">3</span><b>Créer un projet dans Antigravity</b><small>le dossier « mes simulations »</small></a>
+      <a class="tuile-ag" href="projet.html"><span class="pas-num">3</span><b>Préparer mon projet</b><small>le dossier « mes simulations »</small></a>
       <a class="tuile-ag" href="token.html"><span class="pas-num">4</span><b>Je n'ai plus de token</b><small>recharger avec un nouveau compte</small></a>
       <a class="tuile-ag" href="faq.html"><span class="pas-num">5</span><b>FAQ</b><small>les questions fréquentes</small></a>
     </nav>
@@ -29,7 +29,7 @@
 </div>
 <script>
 // Chaque étape a sa page ; les anciens liens (antigravity.html#installer, #installe, #configurer…) y mènent encore
-const pages = { installer:"installer.html", installe:"configurer.html", configurer:"configurer.html", projet:"configuration.html#6", token:"token.html", faq:"faq.html" };
+const pages = { installer:"installer.html", installe:"configurer.html", configurer:"configurer.html", projet:"projet.html", token:"token.html", faq:"faq.html" };
 const h = location.hash.slice(1); if (pages[h]) location.replace(pages[h]);
 </script>
 </body>
