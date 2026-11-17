@@ -427,6 +427,8 @@ b.cle { color:#fde68a; }
 /* l'écran « Allow fetch project instructions? » et le bouton pour recopier, dans la page */
 .p-allow { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:6px 0 10px; } .p-allow img { width:min(340px,100%); border-radius:10px; border:1px solid #3f3f46; } .p-allow p { flex:1 1 220px; margin:0; }
 .p-suite .pj-actions { justify-content:flex-start; }
+/* étape 6 : une fois le message copié, le bloc ① disparaît (le bouton « Copier à nouveau » reste en bas) */
+.p-e1.fait { display:none; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -734,7 +736,7 @@ document.querySelectorAll(".p-copier").forEach((b) => b.addEventListener("click"
     if (!b.classList.contains("pj-recopier")) {   // ② ③ ④ apparaissent sous la ligne « Message copié », l'animation part du début
       ouvrirProjet();
       const haut = document.querySelector(".haut")?.offsetHeight || 0;
-      window.scrollTo({ top: pE1.getBoundingClientRect().top + window.scrollY - haut - 12, behavior: "smooth" });
+      window.scrollTo({ top: pSuite.getBoundingClientRect().top + window.scrollY - haut - 12, behavior: "smooth" });
     }
   }, 700);
   b.textContent = "✅ Copié";
