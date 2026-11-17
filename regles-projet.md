@@ -14,11 +14,11 @@ Ce fichier s'adresse à l'IA d'Antigravity qui prépare le projet d'un professeu
 
 1. **Crée, à la racine du dossier de ce projet, le fichier `AGENTS.md`**, avec exactement le contenu de la section « Contenu de AGENTS.md » ci-dessous (tout ce qui est entre les deux lignes `~~~~`, sans ces deux lignes).
 2. **Crée le fichier `.agent/rules/simulations.md`**, avec cette seule phrase : « Suivre impérativement les règles définies dans AGENTS.md à la racine du projet. »
-3. **Crée, à la racine du projet, le registre `conversations.md`**, avec la structure de la section « Contenu de conversations.md », et inscris-y tout de suite cette conversation (sujet : « Configuration du projet », fichier : -).
+3. **Crée, à la racine du projet, le registre `conversations.md`**, avec la structure de la section « Contenu de conversations.md », et inscris-y tout de suite cette conversation (sujet : « Préparation du projet », fichier : -).
 4. **Réponds seulement par cet encadré**, rien d'autre :
 
 > [!TIP]
-> ✅ **Ton projet est configuré.** Ses règles sont dans AGENTS.md : elles valent pour toutes les conversations de ce projet.
+> ✅ **Ton projet est prêt.** Ses règles sont dans AGENTS.md : elles valent pour toutes les conversations de ce projet.
 >
 > 👉 **Choisis ton atelier :** https://atelier2.rasf.fr/ateliers.html?ou=dans
 >
