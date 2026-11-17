@@ -465,6 +465,10 @@ b.cle { color:#fde68a; }
 /* les suggestions juste au-dessus de la zone de message ; la bulle « colle » passe en haut */
 .p-sugg { top:auto !important; bottom:132px; } .p-sugg p { align-items:center; }
 .p-info-2 { top:16px; bottom:auto; }
+/* étape 5 : de vrais boutons, pleins, qu'on a envie de cliquer */
+.verif-btn { background:#f59e0b !important; color:#1f1300 !important; border-color:#d97706 !important; box-shadow:0 3px 0 #b45309; padding:11px 18px; font-size:16.5px; }
+.verif-btn:hover { background:#fbbf24 !important; } .verif-btn:active { transform:translateY(2px); box-shadow:0 1px 0 #b45309; }
+.verif-btn.ok { background:#22c55e !important; color:#052e14 !important; border-color:#16a34a !important; box-shadow:none; }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -520,6 +524,10 @@ b.cle, .dec-carte b { color:#b45309; }
 .p-modemenu { background:#fff; border-color:#d4d4d8; color:#27272a; box-shadow:0 10px 24px rgba(0,0,0,.15); }
 .cm-fen { background:#fff; color:#27272a; } .cm-fen h2 { color:#18181b; } .cm-msg code { background:#fafafa; color:#18181b; }
 @keyframes p-conv-neuve { 0%, 47% { background:transparent; box-shadow:none; } 49%, 80% { background:#fff; color:#14532d; box-shadow:0 0 0 2px #22c55e; } 83%, 100% { background:transparent; color:inherit; box-shadow:none; } }
+/* étape 5 : de vrais boutons, pleins, qu'on a envie de cliquer */
+.verif-btn { background:#f59e0b !important; color:#1f1300 !important; border-color:#d97706 !important; box-shadow:0 3px 0 #b45309; padding:11px 18px; font-size:16.5px; }
+.verif-btn:hover { background:#fbbf24 !important; } .verif-btn:active { transform:translateY(2px); box-shadow:0 1px 0 #b45309; }
+.verif-btn.ok { background:#22c55e !important; color:#052e14 !important; border-color:#16a34a !important; box-shadow:none; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -693,7 +701,7 @@ const verif = { low:false, auto:false };
 try { verif.low = localStorage.getItem("atelier.verif.low") === "1"; verif.auto = localStorage.getItem("atelier.verif.auto") === "1"; } catch {}
 const verifOk = () => verif.low && verif.auto;
 function majVerif() {
-  document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = (verif[k] ? "✅ " : "👀 ") + (k === "low" ? "À gauche, je vois « Gemini 3.8 Flash Low »" : "À droite, je vois « Auto »"); });
+  document.querySelectorAll(".verif-btn").forEach((b) => { const k = b.dataset.verif; b.classList.toggle("ok", verif[k]); b.textContent = verif[k] ? (k === "low" ? "✅ Confirmé : « Gemini 3.8 Flash Low »" : "✅ Confirmé : « Auto »") : (k === "low" ? "👆 Clique ici si tu vois « Gemini 3.8 Flash Low » à gauche" : "👆 Clique ici si tu vois « Auto » à droite"); });
   document.querySelector(".verif-ok").hidden = !verifOk();
   document.querySelector('[data-verif="auto"]').closest(".verif-l").hidden = !verif.low;   // « Auto » n'apparaît qu'une fois « Low » confirmé
   document.querySelector(".zone-ag.verif").classList.toggle("ok-low", verif.low); document.querySelector(".zone-ag.verif").classList.toggle("ok-auto", verif.auto);
