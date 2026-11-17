@@ -593,3 +593,16 @@ a.lien-etape { color:#f59e0b; font-weight:700; }
 .zi-loupe { position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.8); display:grid; place-items:center; padding:20px; cursor:zoom-out; } .zi-loupe[hidden] { display:none; }
 .zi-loupe .zi { cursor:zoom-out; } .zi-loupe .zi img { max-height:calc(100vh - 40px); max-width:calc(100vw - 40px); }
 .zi-loupe .zi-tag { font-size:20px; padding:3px 12px; border-radius:8px; } .zi-loupe .clic { border-width:5px; }
+/* La fenêtre « colle ici » : l'écran réel d'Antigravity au premier lancement (sombre, suggestions, « No Project », Gemini 3.8 Flash High, l'astuce « Search Across Conversations ») */
+.cp-ecran { background:#0a0a0a; color:#e4e4e7; border-color:#27272a; }
+.cp-menu { background:#111113; border-right-color:#27272a; } .cp-menu .cp-new { background:#27272a; } .cp-menu .cp-sec { color:#71717a; }
+.cp-conv { padding:30px 14px 12px; }
+.cp-sugg { margin-top:auto; display:grid; gap:7px; font-size:12.5px; color:#e4e4e7; } .cp-sugg p { margin:0; display:flex; gap:8px; align-items:center; } .cp-sugg span { width:14px; text-align:center; }
+.cp-boite { border:1px solid #27272a; border-radius:14px; background:#111113; padding:6px 6px 6px; display:grid; gap:4px; margin-top:6px; }
+.cp-np { margin:0 0 0 6px; font-size:12px; color:#a1a1aa; }
+.cp-saisie { margin-top:0; border-color:#27272a; background:#18181b; } .cp-indice { color:#a1a1aa; } .cp-colle { color:#fafafa; } .cp-bas { color:#d4d4d8; }
+.cp-astuce { position:absolute; right:6px; bottom:10px; width:38%; background:#18181b; border:1px solid #3f3f46; border-radius:10px; padding:8px 10px; display:grid; gap:4px; font-size:10.5px; color:#d4d4d8; box-shadow:0 8px 20px rgba(0,0,0,.5); }
+.cp-astuce b { font-size:12px; color:#fff; } .cp-astuce i { font-style:normal; justify-self:start; background:#27272a; border-radius:999px; padding:2px 10px; color:#fff; }
+.cp-z { background:#422006; color:#fcd34d; }
+@keyframes cp-anneau { 0%,34% { box-shadow:none; border-color:#27272a; } 40%,82% { box-shadow:0 0 0 4px rgba(245,158,11,.6); border-color:#f59e0b; } 90%,100% { box-shadow:none; border-color:#27272a; } }
+.cp-ici { left:34%; }
