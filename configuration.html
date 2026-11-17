@@ -377,6 +377,14 @@ b.cle { color:#fde68a; }
 .p-plus { position:relative; }
 .p-tip { position:absolute; right:-6px; bottom:calc(100% + 6px); white-space:nowrap; background:#1c1c22; color:#e4e4e7; border:1px solid #3f3f46; border-radius:999px; padding:3px 10px; font-size:11.5px; font-weight:600; opacity:0; pointer-events:none; animation:p-tip 18s infinite; z-index:5; }
 @keyframes p-tip { 0%, 3.5% { opacity:0; } 4.5%, 8% { opacity:1; } 9%, 100% { opacity:0; } }
+/* étape 6 : la nouvelle conversation du projet telle qu'Antigravity l'affiche (suggestions, « mes simulations », « Local Checkout », Default) */
+.p-haut { display:flex; gap:14px; align-items:center; margin-bottom:8px; }
+.p-haut .p-chip { margin-bottom:0; }
+.p-local { opacity:0; color:#a1a1aa; font-weight:600; animation:p-apres 18s infinite; }
+.p-bas i { font-style:normal; color:#a1a1aa; }
+.p-sugg { position:absolute; left:232px; top:22px; display:grid; gap:6px; font-size:12.5px; color:#e4e4e7; opacity:0; animation:p-sugg 18s infinite; }
+.p-sugg p { margin:0; display:flex; gap:8px; } .p-sugg span { width:14px; text-align:center; }
+@keyframes p-sugg { 0%, 56% { opacity:0; } 58%, 70% { opacity:1; } 72%, 100% { opacity:0; } }
 </style>
 <style id="theme-clair">
 .theme-bascule { background:#fff; color:#3f3f46; border-color:#d4d4d8; }
@@ -427,6 +435,7 @@ b.cle, .dec-carte b { color:#b45309; }
 .suiv-msg { color:#b45309; }
 .verif-btn { background:#fffbeb; color:#18181b; } .verif-btn.ok { background:#f0fdf4; color:#14532d; } .verif-non { color:#71717a; }
 .pj-fen { background:#fff; color:#27272a; } .pj-fen h2 { color:#18181b; } .pj-fermer:hover { color:#18181b; }
+.p-sugg { color:#27272a; } .p-local { color:#52525b; }
 </style>
 <script src="theme.js?v=1"></script>
 </head>
@@ -562,10 +571,11 @@ b.cle, .dec-carte b { color:#b45309; }
           <p class="p-titre">Conversations <span>+</span></p>
           <p class="p-script">💬 Script de configuration…</p>
         </div>
+        <div class="p-sugg"><p><span>🌐</span>Build me a web app</p><p><span>✦</span>Add a Gemini feature to my app</p><p><span>Λ</span>Bring over my setup from other Agentic Developer Tools</p></div>
         <div class="p-saisie">
-          <span class="p-chip">📁 mes simulations ⌄</span>
+          <div class="p-haut"><span class="p-chip">📁 mes simulations ⌄</span><span class="p-local">💻 Local Checkout ⌄</span></div>
           <div class="p-ask"><span class="p-indice">Ask anything, @ to mention, / for actions</span><span class="p-colle">Prépare ce projet pour mes simulations. Lis les instructions…</span><span class="p-cmdv">Cmd + V</span></div>
-          <div class="p-bas"><span>+ Gemini 3.8 Flash Low ⌃</span><span class="p-mode">🛡 Auto ⌃ <span class="p-envoi">↑</span></span></div>
+          <div class="p-bas"><span>+ &nbsp;Gemini 3.8 Flash <i>Low</i> ⌄</span><span class="p-mode">🔒 Default ⌄ &nbsp;🎤 <span class="p-envoi">↑</span></span></div>
         </div>
         <span class="p-info p-info-1">✅ Ton projet <b>« 📁 mes simulations »</b> est créé, et <b>une nouvelle conversation</b> s'est ouverte dedans</span>
         <span class="p-info p-info-2"><span>① Vérifie que tu vois bien <b>« 📁 mes simulations »</b> au-dessus de la zone de message</span><span>② Colles-y le message (Cmd + V), que tu peux recopier avec le <b>bouton vert</b> en dessous, puis Entrée</span></span>
