@@ -104,3 +104,11 @@ ol.etapes > li, .info { background:#fffbeb; }
 .retour-tuiles { color:#b45309; }
 .cp-fen { background:#fff; color:#27272a; } .cp-fen h2 { color:#18181b; } .cp-fermer:hover { color:#18181b; }
 .config-bloc { background:#fffbeb; }
+/* configurer.html : l'écran d'Antigravity en mode clair (comme Antigravity en thème clair) */
+.cp-ecran { background:#fff; color:#27272a; border-color:#e4e4e7; }
+.cp-menu { background:#f4f4f5; border-right-color:#e4e4e7; } .cp-menu .cp-new { background:#e4e4e7; } .cp-menu .cp-sec { color:#71717a; }
+.cp-sugg { color:#27272a; }
+.cp-boite { background:#f8f8f9; border-color:#e4e4e7; } .cp-np { color:#52525b; }
+.cp-saisie { background:#fff; border-color:#e4e4e7; } .cp-indice { color:#71717a; } .cp-colle { color:#18181b; } .cp-bas { color:#3f3f46; }
+.cp-astuce { background:#fff; border-color:#e4e4e7; color:#3f3f46; box-shadow:0 8px 20px rgba(0,0,0,.12); } .cp-astuce b { color:#18181b; } .cp-astuce i { background:#f4f4f5; color:#18181b; }
+.cp-z { background:#fef3c7; color:#b45309; }
